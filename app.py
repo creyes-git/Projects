@@ -34,22 +34,3 @@ genders = st.multiselect('Select the gender that you want to see: ', list_gender
 
 episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200+"], index=0)
 
-
-
-
-
-st.text("Select the gender that you want to see: ")
-genders = st.multiselect('Multiselect', list_genders, default=list_genders[0])
-
-
-
-
-
-
-
-
-
-
-
-
-
