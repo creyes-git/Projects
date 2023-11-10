@@ -17,8 +17,8 @@ response = requests.get(url, headers=headers, params=querystring)
 df = pd.DataFrame(response.json()["data"])
 
 # Streamlit APP:
-image = Image.open("C:\\Users\\Carlos Reyes\\Desktop\\ksar8qrloqn91.webp")
-st.image(image)
+image = Image.open("C:\\Users\\Carlos Reyes\\Desktop\\kimetsu.png")
+st.image(image, caption="Kimetsu no Yaiba")
 
 st.title("Your Anime Explorer")
 
