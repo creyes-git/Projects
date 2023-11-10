@@ -19,12 +19,19 @@ df = pd.DataFrame(response.json()["data"])
 
 # Streamlit APP:________________________________________________________________________________________________________________________
 picture = Image.open("kimetsu.jpg")
-st.image(picture, caption="Kimetsu no Yaiba")
+st.image(picture, caption="Welcome to the Anime Explorer ")
 
 st.title("Your Anime Explorer")
+st.text("                                                                                     ")
+
+st.radio(" Movie or Serie?", ("Movie", "Serie"))
+
+
 
 st.text("Select the gender that you want to see: ")
 genders = st.multiselect('Multiselect', list_genders, default=list_genders[0])
+
+
 
 
 
