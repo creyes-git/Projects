@@ -17,11 +17,14 @@ response = requests.get(url, headers=headers, params=querystring)
 df = pd.DataFrame(response.json()["data"])
 
 # Streamlit APP:
-st.image("C:\\Users\\Carlos Reyes\\Desktop\\ksar8qrloqn91.webp")
+image = Image.open("C:\\Users\\Carlos Reyes\\Desktop\\ksar8qrloqn91.webp")
+st.image(image)
+
 st.title("Your Anime Explorer")
 
 st.text("Select the gender that you want to see: ")
 genders = st.multiselect('Multiselect', list_genders, default=list_genders[0])
+
 
 
 
