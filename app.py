@@ -18,7 +18,6 @@ response = requests.get(url, headers=headers, params=querystring)
 df = pd.DataFrame(response.json()["data"])
 
 # Streamlit APP:________________________________________________________________________________________________________________________
-st.audio("Kimetsu_2.mp3")
 picture = Image.open("kimetsu.jpg")
 st.image(picture, caption="WELCOME TO ANIME EXPLORER :)")
 
@@ -28,9 +27,13 @@ st.text("                                                                       
 st.text("                                                                                                                              ")
 st.text("                                                                                                                              ")
 
-type = st.radio(" Movie or Serie?", ("Movie", "Serie"), index=0)
+type = st.radio(" Movie or TV Serie?: ", ("Movie", "Serie"), index=0)
 
 genders = st.multiselect('Select the gender that you want to see: ', list_genders, default=list_genders[0])
 
 episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200+"], index=0)
+
+status = st.radio(" Status: ", ("On-Emission", "Completed"), index=0)
+#________________________________________________________________________________________________________________________________________
+
 
