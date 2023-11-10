@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 import streamlit as st
-from PIL import Image as img
+from PIL import Image
 
 url = "https://anime-db.p.rapidapi.com/anime"
 headers = {"X-RapidAPI-Key": "8af8022ddcmsh06e9119b8cc13f3p1a0e1fjsn8138c83b2c3b",
