@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import streamlit as st
+from PIL import Image as img
 
 url = "https://anime-db.p.rapidapi.com/anime"
 headers = {"X-RapidAPI-Key": "8af8022ddcmsh06e9119b8cc13f3p1a0e1fjsn8138c83b2c3b",
@@ -18,7 +19,15 @@ df = pd.DataFrame(response.json()["data"])
 
 # Streamlit APP:
 image = img.open("kimetsu.jpg")
-st.image(image, caption="Kimetsu no Yaiba", use_column_width=True)
+st.image(image, caption="Kimetsu no Yaiba")
+
+st.title("Your Anime Explorer")
+
+st.text("Select the gender that you want to see: ")
+genders = st.multiselect('Multiselect', list_genders, default=list_genders[0])
+
+
+
 
 
 
