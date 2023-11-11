@@ -65,5 +65,5 @@ else:
     
 button = st.button("Search", type= "primary")   
 
-if button:
-    st.dataframe(df)
+if button:        
+     st.dataframe(data = df.head(5))
