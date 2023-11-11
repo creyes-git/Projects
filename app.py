@@ -33,7 +33,13 @@ genders = st.multiselect('Select the gender that you want to see: ', list_gender
 
 episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200+"], index=0)
 
-status = st.radio(" Status: ", ("On-Emission", "Completed"), index=0)
-#________________________________________________________________________________________________________________________________________
+status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 
+
+#search details:
+querystring = {"page":"1","size":"100","genres": genders, "type": type, "status": status, "sortBy":"ranking","sortOrder":"asc"}
+
+response = requests.get(url, headers=headers, params=querystring)
+
+df = st.dataframe(response.json()["data"])
 
