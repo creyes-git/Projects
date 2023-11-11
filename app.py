@@ -37,9 +37,14 @@ status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 
 
 #search details:
-querystring = {"page":"1","size":"100","genres": genders, "type": type, "status": status, "sortBy":"ranking","sortOrder":"asc"}
+querystring = {"page":"1","size":"10000", "sortBy":"ranking","sortOrder":"asc"}
 
 response = requests.get(url, headers=headers, params=querystring)
 
-df = st.dataframe(response.json()["data"])
+df = pd.DataFrame(response.json()["data"])
+df = df.query("type == @type")
+df = df.query("status == @status")
+df = df.query("episodes == @episodes")
+df = df.query("genres in @genders")
 
+st.dataframe(df)
