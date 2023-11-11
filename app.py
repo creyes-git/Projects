@@ -66,5 +66,4 @@ else:
 button = st.button("Search", type= "primary")   
 
 if button:
-    df = df[df["genres"].isin(genders)]
     st.dataframe(df)
