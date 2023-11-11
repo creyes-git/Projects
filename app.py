@@ -33,7 +33,7 @@ type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV"), index=0)
 if type == "TV":
     key = False
 
-episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200-1000"],disabled= key)
+episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200-1000"],disabled= key, placeholder= "Chose a range")
 
 status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 
