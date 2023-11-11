@@ -42,7 +42,7 @@ if button:
     #Calling API:
     response = requests.get(url, headers=headers, params=query)
     df = pd.DataFrame(response.json()["data"])
-    df = df[df["type"] == type]
+   
     
     st.dataframe(df.head(5))
 
