@@ -42,7 +42,7 @@ if button:
     #Calling API:
     response = requests.get(url, headers=headers, params=query)
     df = pd.DataFrame(response.json()["data"])
-    df = df[df["type"] == type] and df[df["status"] == status] and df[df["genres"].isin(genders)]
+    df = df[df["type"] == type]
     
     st.dataframe(df.head(5))
 
