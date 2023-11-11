@@ -24,7 +24,7 @@ st.text("                                                                       
 st.text("                                                                                                                              ")
 st.text("                                                                                                                              ")
 
-type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV Serie"), index=0)
+type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV"), index=0)
 
 genders = st.multiselect('Select the gender that you want to see: ', list_genders, default= None)
 
@@ -42,7 +42,8 @@ if button:
     #Calling API:
     response = requests.get(url, headers=headers, params=query)
     df = pd.DataFrame(response.json()["data"])
-   
+    df = df[df["type"] == type]
     
-    st.dataframe(df.head(5))
+    st.dataframe(df)
+
 
