@@ -28,7 +28,7 @@ type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV"), index=0)
 
 genders = st.multiselect('Select the gender that you want to see: ', list_genders, default= None)
 
-episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200+"], index = None)
+episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200-1000"])
 
 status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 
@@ -43,7 +43,9 @@ if button:
     response = requests.get(url, headers=headers, params=query)
     df = pd.DataFrame(response.json()["data"])
     df = df[df["type"] == type]
-    
+    df = df[df["status"] == status]
+    df = df[df["episodes"] <= int(str(episodes).split("-")[1])]
+        
     st.dataframe(df)
 
 
