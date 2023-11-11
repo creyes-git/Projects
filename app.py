@@ -27,7 +27,7 @@ st.text("                                                                       
 st.text("                                                                                                                              ")
 st.text("                                                                                                                              ")
 
-type = st.radio(" Movie or TV Serie?: ", ("Movie", "Serie"), index=0)
+type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV Serie"), index=0)
 
 genders = st.multiselect('Select the gender that you want to see: ', list_genders, default=list_genders[0])
 
@@ -40,6 +40,8 @@ status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 querystring = {"page":"1","size":"10000", "sortBy":"ranking","sortOrder":"asc"}
 
 response = requests.get(url, headers=headers, params=querystring)
+
+df = pd.DataFrame(response.json()["data"])
 
 df = pd.DataFrame(response.json()["data"])
 
