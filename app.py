@@ -4,18 +4,13 @@ import streamlit as st
 from PIL import Image
 
 url = "https://anime-db.p.rapidapi.com/anime"
+
 headers = {"X-RapidAPI-Key": "8af8022ddcmsh06e9119b8cc13f3p1a0e1fjsn8138c83b2c3b",
             "X-RapidAPI-Host": "anime-db.p.rapidapi.com"}
 
 list_genders = ["Fantasy", "Drama", "Action", "Award Winning", "Slice of Life", "Suspense", "Horror", "Ecchi", "Avant Garde", "Erotica"
                 "Comedy", "Hentai", "Boys Love", "Gourmet", "Girls Love", "Romance", "Adventure", "Mystery", "Supernatural", "Sci-Fi"]
 
-
-querystring = {"page":"1","size":"1000","genres": "Action","sortBy":"ranking","sortOrder":"asc"}
-
-response = requests.get(url, headers=headers, params=querystring)
-
-df = pd.DataFrame(response.json()["data"])
 
 # Streamlit APP:________________________________________________________________________________________________________________________
 picture = Image.open("kimetsu.jpg")
@@ -43,8 +38,6 @@ response = requests.get(url, headers=headers, params=querystring)
 
 df = pd.DataFrame(response.json()["data"])
 
-df = pd.DataFrame(response.json()["data"])
-
 if type == "Movie":
     df = df[df["type"] == "Movie"]
 
@@ -69,4 +62,9 @@ if status == "Finished Airing":
 else:
     df = df[df["status"] == "Not yet aired"]
     
-st.dataframe(df)
+    
+button = st.button("Search", type= "primary")   
+
+if button:
+    df = df[df["genres"].isin(genders)]
+    st.dataframe(df)
