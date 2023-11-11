@@ -42,9 +42,9 @@ querystring = {"page":"1","size":"10000", "sortBy":"ranking","sortOrder":"asc"}
 response = requests.get(url, headers=headers, params=querystring)
 
 df = pd.DataFrame(response.json()["data"])
-df = df.query("type == @type")
-df = df.query("status == @status")
-df = df.query("episodes == @episodes")
-df = df.query("genres in @genders")
+df = df.query(f"type == {type}")
+df = df.query(f"status == {status}")
+df = df.query(f"episodes == {episodes}")
+df = df.query(f"{genders} in genres")
 
 st.dataframe(df)
