@@ -37,15 +37,19 @@ status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 button = st.button("Search", type= "primary")   
 
 
-
 if button:    
     #Calling API:
     response = requests.get(url, headers=headers, params=query)
     df = pd.DataFrame(response.json()["data"])
+    
     df = df[df["type"] == type]
+    
     df = df[df["status"] == status]
-    df = df[df["episodes"] <= int(str(episodes).split("-")[1])]
+    
+    
+        
+    if type == "TV":
+        df = df[df["episodes"] <= int(str(episodes).split("-")[1])]
         
     st.dataframe(df)
-
 
