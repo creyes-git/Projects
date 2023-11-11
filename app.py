@@ -42,9 +42,29 @@ querystring = {"page":"1","size":"10000", "sortBy":"ranking","sortOrder":"asc"}
 response = requests.get(url, headers=headers, params=querystring)
 
 df = pd.DataFrame(response.json()["data"])
-df = df.query(f"type == {type}")
-df = df.query(f"status == {status}")
-df = df.query(f"episodes == {episodes}")
-df = df.query(f"{genders} in genres")
 
+if type == "Movie":
+    df = df[df["type"] == "Movie"]
+
+else:
+    df = df[df["type"] == "TV Serie"]
+    
+if episodes == "1-50":
+    df = df[df["episodes"] <= 50]
+
+elif episodes == "51-100":
+    df = df[(df["episodes"] > 50) & (df["episodes"] <= 100)]
+
+elif episodes == "100-200":
+    df = df[(df["episodes"] > 100) & (df["episodes"] <= 200)]
+
+else:
+    df = df[df["episodes"] > 200]
+    
+if status == "Finished Airing":
+    df = df[df["status"] == "Finished Airing"]
+    
+else:
+    df = df[df["status"] == "Not yet aired"]
+    
 st.dataframe(df)
