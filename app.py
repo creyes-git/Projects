@@ -13,6 +13,7 @@ query = {"page": "1", "size": "10000"}
 list_genders = ["Fantasy", "Drama", "Action", "Award Winning", "Slice of Life", "Suspense", "Horror", "Ecchi", "Avant Garde", "Erotica"
                 "Comedy", "Hentai", "Boys Love", "Gourmet", "Girls Love", "Romance", "Adventure", "Mystery", "Supernatural", "Sci-Fi"]
 
+key = True
 
 # Streamlit APP:
 picture = Image.open("kimetsu.jpg")
@@ -24,17 +25,22 @@ st.text("                                                                       
 st.text("                                                                                                                              ")
 st.text("                                                                                                                              ")
 
-type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV"), index=0)
-
 genders = st.multiselect('Select the gender that you want to see: ', list_genders, default= None)
 
-episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200-1000"])
+type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV"), index=0)
+
+
+if type == "TV":
+    key = False
+
+episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200-1000"],disabled= key)
 
 status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 
 
 #search button:  
 button = st.button("Search", type= "primary")   
+
 
 
 if button:    
