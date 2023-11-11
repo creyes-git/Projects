@@ -44,5 +44,5 @@ if button:
     df = pd.DataFrame(response.json()["data"])
     df = df[df["type"] == type] and df[df["status"] == status] and df[df["genres"].isin(genders)]
     
-    st.dataframe(df)
+    st.dataframe(df.head(5))
 
