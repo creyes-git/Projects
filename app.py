@@ -67,3 +67,4 @@ button = st.button("Search", type= "primary")
 
 if button:        
      st.dataframe(data = df.head(5))
+     st.cache_data.clear()
