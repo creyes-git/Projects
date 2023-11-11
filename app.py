@@ -12,7 +12,7 @@ list_genders = ["Fantasy", "Drama", "Action", "Award Winning", "Slice of Life", 
                 "Comedy", "Hentai", "Boys Love", "Gourmet", "Girls Love", "Romance", "Adventure", "Mystery", "Supernatural", "Sci-Fi"]
 
 
-# Streamlit APP:________________________________________________________________________________________________________________________
+# Streamlit APP:
 picture = Image.open("kimetsu.jpg")
 st.image(picture, caption="WELCOME TO ANIME EXPLORER :)")
 
@@ -24,47 +24,23 @@ st.text("                                                                       
 
 type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV Serie"), index=0)
 
-genders = st.multiselect('Select the gender that you want to see: ', list_genders, default=list_genders[0])
+genders = st.multiselect('Select the gender that you want to see: ', list_genders, default= None)
 
 episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200+"], index=0)
 
 status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 
 
-#search details:
-querystring = {"page":"1","size":"10000", "sortBy":"ranking","sortOrder":"asc"}
-
-response = requests.get(url, headers=headers, params=querystring)
-
-df = pd.DataFrame(response.json()["data"])
-
-if type == "Movie":
-    df = df[df["type"] == "Movie"]
-
-else:
-    df = df[df["type"] == "TV Serie"]
-    
-if episodes == "1-50":
-    df = df[df["episodes"] <= 50]
-
-elif episodes == "51-100":
-    df = df[(df["episodes"] > 50) & (df["episodes"] <= 100)]
-
-elif episodes == "100-200":
-    df = df[(df["episodes"] > 100) & (df["episodes"] <= 200)]
-
-else:
-    df = df[df["episodes"] > 200]
-    
-if status == "Finished Airing":
-    df = df[df["status"] == "Finished Airing"]
-    
-else:
-    df = df[df["status"] == "Not yet aired"]
-    
-    
+#search button:  
 button = st.button("Search", type= "primary")   
 
-if button:        
-     st.dataframe(data = df.head(5))
-     st.cache_data.clear()
+
+if button:
+    
+    #Calling API:
+    response = requests.get(url, headers=headers)
+
+    df = pd.DataFrame(response.json()["data"])
+    df = df[df["type"] == type] and df[df["status"] == status] and df[df["genres"].isin(genders)]
+    
+    st.dataframe(df)
