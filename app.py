@@ -8,6 +8,8 @@ url = "https://anime-db.p.rapidapi.com/anime"
 headers = {"X-RapidAPI-Key": "8af8022ddcmsh06e9119b8cc13f3p1a0e1fjsn8138c83b2c3b",
             "X-RapidAPI-Host": "anime-db.p.rapidapi.com"}
 
+query = {"page": "1", "size": "10000"}
+
 list_genders = ["Fantasy", "Drama", "Action", "Award Winning", "Slice of Life", "Suspense", "Horror", "Ecchi", "Avant Garde", "Erotica"
                 "Comedy", "Hentai", "Boys Love", "Gourmet", "Girls Love", "Romance", "Adventure", "Mystery", "Supernatural", "Sci-Fi"]
 
@@ -26,7 +28,7 @@ type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV Serie"), index=0)
 
 genders = st.multiselect('Select the gender that you want to see: ', list_genders, default= None)
 
-episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200+"], index=0)
+episodes = st.selectbox("How many episodes do you want to see: ", options= ["1-50", "51-100", "100-200", "200+"], index = None)
 
 status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 
@@ -35,12 +37,12 @@ status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 button = st.button("Search", type= "primary")   
 
 
-if button:
-    
-    #Calling API:
-    response = requests.get(url, headers=headers)
 
+if button:    
+    #Calling API:
+    response = requests.get(url, headers=headers, params=query)
     df = pd.DataFrame(response.json()["data"])
     df = df[df["type"] == type] and df[df["status"] == status] and df[df["genres"].isin(genders)]
     
     st.dataframe(df)
+
