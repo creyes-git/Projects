@@ -54,7 +54,7 @@ if button:
     
     
         
-if type == "TV":
+    if type == "TV":
         df = df[df["episodes"] <= int(str(episodes).split("-")[1])] and df[df["episodes"] >= int(str(episodes).split("-")[0])]
     
     df.sort_values(by= "ranking")
@@ -62,7 +62,3 @@ if type == "TV":
         
     st.dataframe(df)
 
-
-        
-   
-    st.dataframe(df)
