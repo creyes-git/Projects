@@ -17,7 +17,7 @@ key = True
 
 # Streamlit APP:
 picture = Image.open("kimetsu.jpg")
-st.image(picture, caption="WELCOME TO ANIME EXPLORER :)")
+st.image(picture, caption="WELCOME TO THE ANIME EXPLORER :)")
 
 st.title("Fill your app preferences")
 
@@ -55,7 +55,9 @@ if button:
     
         
     if type == "TV":
-        df = df[df["episodes"] <= int(str(episodes).split("-")[1])]
+        df = df[df["episodes"] <= int(str(episodes).split("-")[1]) and df["episodes"] >= int(str(episodes).split("-")[0])]
+    
+    df.sort_values(by= "ranking")
+    df.head(10)
         
     st.dataframe(df)
-
