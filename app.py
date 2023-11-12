@@ -43,7 +43,6 @@ button = st.button("Search", type= "primary")
 
 
 
-
 if button:    
     #Calling API:
     response = requests.get(url, headers=headers, params=query)
@@ -59,8 +58,7 @@ if button:
         df = df[df["episodes"] <= int(str(episodes).split("-")[1])] 
         df = df[df["episodes"] >= int(str(episodes).split("-")[0])]
     
-    df.sort_values(by= "ranking")
-    df.head(10)
+    df = df.sort_values(by="score", ascending=False).head(5)
         
     st.dataframe(df)
 
