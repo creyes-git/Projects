@@ -58,6 +58,6 @@ if button:
         df = df[df["episodes"] <= int(str(episodes).split("-")[1])] 
         df = df[df["episodes"] >= int(str(episodes).split("-")[0])]
     
-    df = df.sort_values(by="score", ascending=True).head(5)
+    df = df.sort_values(by="ranking", ascending=True).head(5)
         
     st.dataframe(df)
