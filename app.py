@@ -42,7 +42,6 @@ status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 button = st.button("Search", type= "primary")   
 
 
-
 if button:    
     #Calling API:
     response = requests.get(url, headers=headers, params=query)
@@ -52,13 +51,17 @@ if button:
     
     df = df[df["status"] == status]
     
+    genders_str = str()
+    for i in genders:
+        genders_str = genders_str + i + ","
+    
+    df = df[df["gender"].isin(genders_str)]
     
         
     if type == "TV":
         df = df[df["episodes"] <= int(str(episodes).split("-")[1])] 
         df = df[df["episodes"] >= int(str(episodes).split("-")[0])]
     
-    df = df.sort_values(by="ranking", ascending=False).head(5)
+    df = df.sort_values(by="score", ascending=True).head(5)
         
     st.dataframe(df)
-
