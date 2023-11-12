@@ -51,11 +51,7 @@ if button:
     
     df = df[df["status"] == status]
     
-    genders_str = str()
-    for i in genders:
-        genders_str = genders_str + i + ","
-    
-    df = df[df["genres"].str.contains(genders_str)]
+    df = df[df["genres"].isin(genders)]
     
         
     if type == "TV":
