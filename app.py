@@ -55,7 +55,7 @@ if button:
     for i in genders:
         genders_str = genders_str + i + ","
     
-    df = df[df["gender"].isin(genders_str)]
+    df = df[df["genres"].isin(genders_str)]
     
         
     if type == "TV":
