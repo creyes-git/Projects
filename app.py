@@ -25,7 +25,7 @@ st.text("                                                                       
 st.text("                                                                                                                              ")
 st.text("                                                                                                                              ")
 
-genders = st.multiselect('Select the gender that you want to see: ', list_genders, default= None)
+genders = st.selectbox('Select the gender that you want to see: ', list_genders, default= None)
 
 type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV"), index=0)
 
