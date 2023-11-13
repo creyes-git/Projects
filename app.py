@@ -25,7 +25,7 @@ st.text("                                                                       
 st.text("                                                                                                                              ")
 st.text("                                                                                                                              ")
 
-genders = st.multiselect('Select the gender that you want to see: ', list_genders, default= None)
+genders = st.selectbox('Select the gender that you want to see: ', list_genders)
 
 type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV"), index=0)
 
@@ -42,6 +42,7 @@ status = st.radio(" Status: ", ("Finished Airing", "Not yet aired"), index=0)
 button = st.button("Search", type= "primary")   
 
 
+
 if button:    
     #Calling API:
     response = requests.get(url, headers=headers, params=query)
@@ -51,13 +52,13 @@ if button:
     
     df = df[df["status"] == status]
     
-    df = df[df["genres"].isin(genders)]
+    df = df[df["genres"].apply(lambda x: genders in x)]
     
         
     if type == "TV":
         df = df[df["episodes"] <= int(str(episodes).split("-")[1])] 
         df = df[df["episodes"] >= int(str(episodes).split("-")[0])]
     
-    df = df.sort_values(by="ranking", ascending=True).head(5)
+    df = df.sort_values(by="score", ascending=True).head(5)
         
     st.dataframe(df)
