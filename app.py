@@ -71,3 +71,10 @@ if button:
         st.header(y)
         st.image(Image.open(BytesIO(image_data)))
         st.text(z)
+        
+        st.text("                                                                                                                              ")
+        st.text("                                                                                                                              ")
+        st.text("                                                                                                                              ")
+
+        
+    st.balloons()
