@@ -17,7 +17,7 @@ list_genders = ["Fantasy", "Drama", "Action", "Award Winning", "Slice of Life", 
 key = True
 
 # Streamlit APP:
-picture = Image.open("kimetsu.jpg")
+picture = Image.open("Anime_recomendation/kimetsu.jpg")
 st.image(picture, caption="WELCOME TO THE ANIME EXPLORER :)")
 
 st.title("Fill your app preferences")
