@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import streamlit as st
 from PIL import Image
+from io import BytesIO
 
 url = "https://anime-db.p.rapidapi.com/anime"
 
@@ -25,7 +26,7 @@ st.text("                                                                       
 st.text("                                                                                                                              ")
 st.text("                                                                                                                              ")
 
-genders = st.selectbox('Select the gender that you want to see: ', list_genders)
+genders = st.multiselect('Select the gender that you want to see: ', list_genders, default= None)
 
 type = st.radio(" Movie or TV Serie?: ", ("Movie", "TV"), index=0)
 
@@ -61,5 +62,11 @@ if button:
     
     df = df.sort_values(by="ranking", ascending=True).head(5)
         
-    st.dataframe(df)
+    for i in df["image"]:
+        
+        response = requests.get(i)
+        
+        image_data = response.content
 
+        st.image(Image.open(BytesIO(image_data)))
+        st.write(df["title"])
