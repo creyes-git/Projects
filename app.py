@@ -62,11 +62,12 @@ if button:
     
     df = df.sort_values(by="ranking", ascending=True).head(5)
         
-    for i in df["image"]:
+    for i,y, z in zip(df["image"], df["title"], df["synopsis"]):
         
         response = requests.get(i)
         
         image_data = response.content
 
+        st.header(y)
         st.image(Image.open(BytesIO(image_data)))
-        st.write(df["title"])
+        st.text(z)
