@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+import plotly.express as px
 import requests
 import PIL
 
@@ -11,5 +12,7 @@ response = requests.get(url).json()
 df = pd.DataFrame(response["characters"])
 df.drop(columns=df.columns[12:], inplace=True)
 
+#Sidebar:
+st.sidebar.image("images.jpg")
 st.sidebar.title("Naruto Universe")
-
+st.sidebar.markdown("##")
