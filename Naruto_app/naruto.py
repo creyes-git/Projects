@@ -12,6 +12,6 @@ df = pd.DataFrame(response["characters"])
 df.drop(columns=df.columns[12:], inplace=True)
 
 #Sidebar:
-st.sidebar.image(Image.open("Naruto_app/104822_naruto_icon.png"), width=200, use_column_width=True, clamp=True)
+st.sidebar.image(Image.open("Naruto_app/icons8-naruto-512.png"), width=200, use_column_width=True, clamp=True)
 st.sidebar.title("Naruto Universe")
 st.sidebar.markdown("##")
