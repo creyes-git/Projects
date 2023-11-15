@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import requests
-import PIL
+from PIL import Image
 
 url = "https://narutodb.xyz/api/character?page=1&limit=1431"
 
@@ -12,6 +12,6 @@ df = pd.DataFrame(response["characters"])
 df.drop(columns=df.columns[12:], inplace=True)
 
 #Sidebar:
-st.sidebar.image("images.jpg")
+st.sidebar.image(Image.open("images.jpg"), width=200)
 st.sidebar.title("Naruto Universe")
 st.sidebar.markdown("##")
