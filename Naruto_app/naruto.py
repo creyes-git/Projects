@@ -41,8 +41,9 @@ clans = st.sidebar.button("🥷🏻Clans")
 tailed_beasts = st.sidebar.button("🦊Tailed Beasts")
 akatsuki = st.sidebar.button("🩸Akatsuki")
 
+
 if introduction:
     landing_page()
     
 if characters:
-    st.dataframe(df)
+    st.table(df["name"])
