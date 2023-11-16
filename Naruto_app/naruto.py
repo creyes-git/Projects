@@ -14,17 +14,7 @@ df = pd.DataFrame(response["characters"])
 df.drop(columns=df.columns[12:], inplace=True)
 
 
-#Sidebar:
-st.sidebar.image(Image.open("Naruto_app/icons8-naruto-512.png"), width=90, clamp=True, caption= "Naruverse App")
-st.sidebar.text("__________________________________________________________________________________________________--")
-introduction = st.sidebar.button("📖Introduction")
-characters = st.sidebar.button("🍥Characters")
-villages = st.sidebar.button("🏛️Villages")
-clans = st.sidebar.button("🥷🏻Clans")
-tailed_beasts = st.sidebar.button("🦊Tailed Beasts")
-akatsuki = st.sidebar.button("🩸Akatsuki")
-
-
+#Introduction:
 def landing_page():
     st.image(Image.open("Naruto_app/Landing Page.png"), use_column_width= True)
     st.title("About Naruto")
@@ -87,3 +77,17 @@ def landing_page():
                 the sequel to the NARUTO series, is currently being published in
                 V Jump under the creative supervision of Masashi Kishimoto.
                 Dive into the world of NARUTO and experience this amazing story for yourself!''')
+
+
+landing_page()
+
+
+#Sidebar:
+st.sidebar.image(Image.open("Naruto_app/icons8-naruto-512.png"), width=90, clamp=True, caption= "Naruverse App")
+st.sidebar.text("__________________________________________________________________________________________________--")
+introduction = st.sidebar.button("📖Introduction")
+characters = st.sidebar.button("🍥Characters")
+villages = st.sidebar.button("🏛️Villages")
+clans = st.sidebar.button("🥷🏻Clans")
+tailed_beasts = st.sidebar.button("🦊Tailed Beasts")
+akatsuki = st.sidebar.button("🩸Akatsuki")
