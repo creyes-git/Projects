@@ -15,8 +15,9 @@ df.drop(columns=df.columns[12:], inplace=True)
 
 #Sidebar:
 st.sidebar.image(Image.open("Naruto_app/icons8-naruto-512.png"), width=90, clamp=True, caption= "Naruverse App")
-characters = st.button("🍥Characters")
-villages = st.button("🏛️Villages")
-clans = st.button("🥷🏻Clans")
-tailed_beasts = st.button("🦊Tailed Beasts")
-akatsuki = st.button("🩸Akatsuki")
+characters = st.sidebar.button("🍥Characters")
+villages = st.sidebar.button("🏛️Villages")
+clans = st.sidebar.button("🥷🏻Clans")
+tailed_beasts = st.sidebar.button("🦊Tailed Beasts")
+akatsuki = st.sidebar.button("🩸Akatsuki")
+
