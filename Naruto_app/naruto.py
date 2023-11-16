@@ -33,14 +33,19 @@ landing_page()
 
 #Sidebar:
 st.sidebar.image(Image.open("Naruto_app/icons8-naruto-512.png"), width=90, clamp=True, caption= "Naruverse App")
-st.sidebar.text("__________________________________________________________________________________________________--")
+st.write('''
+         
+         ''')
 introduction = st.sidebar.button("📖Introduction")
 characters = st.sidebar.button("🍥Characters")
 villages = st.sidebar.button("🏛️Villages")
 clans = st.sidebar.button("🥷🏻Clans")
 tailed_beasts = st.sidebar.button("🦊Tailed Beasts")
 akatsuki = st.sidebar.button("🩸Akatsuki")
-
+st.write('''
+         
+         ''')
+audio = st.sidebar.button("🔉")
 
 if introduction:
     landing_page()
