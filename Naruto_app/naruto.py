@@ -16,7 +16,10 @@ df.drop(columns=df.columns[12:], inplace=True)
 
 #Introduction:
 def landing_page():
-    st.image(Image.open("Naruto_app/Landing Page.png"), use_column_width= True)
+    c1, c2 , c3 = st.columns(3)
+    c1 = st.image(Image.open("Naruto_app/Landing Page.png"), use_column_width= True)
+    c2 = st.image(Image.open("Naruto_app/Landing Page.png"), use_column_width= True)
+    c3 = st.image(Image.open("Naruto_app/Landing Page.png"), use_column_width= True)
     st.title("About Naruto")
     st.text('''NARUTO is a manga series created by MasashiKishimoto 
 that was serialized in Weekly ShonenJump. Met with popularity 
@@ -25,9 +28,9 @@ an anime adaptation that commenced broadcasting in 2002. The manga
 concluded in 2014 with a total of 700 chapters. The total number of print 
 copies sold globally exceeds 250 million, and even now NARUTO events, 
 games, merchandise,and more continue to be created and released for fans 
-to enjoy a testament to the series’ enduring influence and 
-popularityaround the world.''')      
-    
+to enjoy a testament to the series’ 
+enduring influence and popularityaround the world.''')                
+
 landing_page()
 
 
@@ -50,3 +53,4 @@ if introduction:
 
 if characters:
     st.table(df["name"])
+    
