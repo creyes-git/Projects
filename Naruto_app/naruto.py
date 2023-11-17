@@ -46,11 +46,11 @@ audio_button = st.sidebar.button("🔉")
 if audio_button:
     count = 0
     if count == 0:
-        audio = st.audio("Naruto_app/Naruto - Naruto.mp3", format="audio/mp3")
+        audio = st.audio("Naruto_app/Naruto.mp3", format="audio/mp3")
         count += 1
     
     else:
-        audio = st.audio("Naruto_app/Naruto - Naruto.mp3", format="audio/mp3", start_time=30)
+        audio = st.audio("Naruto_app/Naruto.mp3", format="audio/mp3", start_time=30)
         count = 0    
 
 if introduction:
