@@ -32,23 +32,30 @@ landing_page()
 
 
 #Sidebar:
-st.sidebar.image(Image.open("Naruto_app/icons8-naruto-512.png"), width=90, clamp=True, caption= "Naruverse App")
-st.write('''
-         
-         ''')
+st.sidebar.image(Image.open("Naruto_app/icons8-naruto-512.png"), width=90, clamp=True, caption= "Naruverse")
 introduction = st.sidebar.button("📖Introduction")
+tailed_beasts = st.sidebar.button("🦊Tailed Beasts")
 characters = st.sidebar.button("🍥Characters")
+akatsuki = st.sidebar.button("🩸Akatsuki")
 villages = st.sidebar.button("🏛️Villages")
 clans = st.sidebar.button("🥷🏻Clans")
-tailed_beasts = st.sidebar.button("🦊Tailed Beasts")
-akatsuki = st.sidebar.button("🩸Akatsuki")
-st.write('''
-         
-         ''')
-audio = st.sidebar.button("🔉")
+audio_button = st.sidebar.button("🔉")
+
+#bottons:
+
+if audio_button:
+    count = 0
+    if count == 0:
+        audio = st.audio("Naruto_app/Naruto - Naruto.mp3", format="audio/mp3")
+        count += 1
+    
+    else:
+        audio = st.audio("Naruto_app/Naruto - Naruto.mp3", format="audio/mp3", start_time=30)
+        count = 0    
 
 if introduction:
     landing_page()
     
+
 if characters:
     st.table(df["name"])
