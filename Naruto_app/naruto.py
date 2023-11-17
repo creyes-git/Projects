@@ -16,10 +16,12 @@ df.drop(columns=df.columns[12:], inplace=True)
 
 #Introduction:
 def landing_page():
-    c1, c2 , c3 = st.columns(3)
-    c1.image(Image.open("Naruto_app/wp2725528-naruto-kakashi-wallpaper.png"), width=250, clamp=True)
-    c3.image(Image.open("Naruto_app/Landing Page.png"), width=250, clamp=True)
-    c2.image(Image.open("Naruto_app/wp4981538-naruto-minimal-wallpapers.png"), width=250, clamp=True)
+    c1, c2 , c3, c4, c5 = st.columns(5)
+    c1.image(Image.open("Naruto_app/wp2725528-naruto-kakashi-wallpaper.png"), width=200, clamp=True)
+    c3.image(Image.open("Naruto_app/Landing Page.png"), width=200, clamp=True)
+    c2.image(Image.open("Naruto_app/wp4981538-naruto-minimal-wallpapers.png"), width=200, clamp=True)
+    c4.image(Image.open("Naruto_app/wp10926937-minimalist-4k-naruto-wallpapers.png"), width=200, clamp=True)
+    c5.image(Image.open("Naruto_app/wp10926937-minimalist-4k-naruto-wallpapers.png"), width=200, clamp=True)
     st.title("About Naruto")
     st.text('''NARUTO is a manga series created by MasashiKishimoto 
 that was serialized in Weekly ShonenJump. Met with popularity 
