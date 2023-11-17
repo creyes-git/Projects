@@ -17,7 +17,7 @@ df.drop(columns=df.columns[12:], inplace=True)
 #Introduction:
 def landing_page():
     c1, c2 , c3 = st.columns(3)
-    c1 = st.image(Image.open("Naruto_app/Landing Page.png"), use_column_width= True)
+    c1 = st.image(Image.open("Naruto_app/wp2725528-naruto-kakashi-wallpaper.png"), use_column_width= True)
     c2 = st.image(Image.open("Naruto_app/Landing Page.png"), use_column_width= True)
     c3 = st.image(Image.open("Naruto_app/Landing Page.png"), use_column_width= True)
     st.title("About Naruto")
