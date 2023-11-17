@@ -39,21 +39,12 @@ characters = st.sidebar.button("🍥Characters")
 akatsuki = st.sidebar.button("🩸Akatsuki")
 villages = st.sidebar.button("🏛️Villages")
 clans = st.sidebar.button("🥷🏻Clans")
-audio_button = st.sidebar.button("🔉")
+
 
 #bottons:
 
-if audio_button:
-    count = 0
-    if count == 0:
-        audio = st.audio("Naruto_app/Naruto.mp3", format="audio/mp3")
-        count += 1
-    
-    else:
-        audio = st.audio("Naruto_app/Naruto.mp3", format="audio/mp3", start_time=30)
-        count = 0    
-
 if introduction:
+    st.cache_resource.clear()
     landing_page()
     
 
