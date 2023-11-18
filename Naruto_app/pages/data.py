@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 
+st.set_page_config(page_title="data", page_icon="🏛")
 url = "https://narutodb.xyz/api/character?page=1&limit=1431"
 
 #Dataframe:
