@@ -6,11 +6,11 @@ st.set_page_config(page_title="Naruverse", page_icon="🍥", layout="wide")
 
 #Introduction
 c1, c2 , c3, c4, c5 = st.columns(5)
-c1.image(Image.open("images\\wp2725528-naruto-kakashi-wallpaper.png"), width=150, clamp=True)
-c2.image(Image.open("images\\wp10367350-minato-minimalist-wallpapers.jpg"), width=150, clamp=True)
-c3.image(Image.open("images\\Landing Page.png"), width=150, clamp=True)
-c4.image(Image.open("images\\wp10926937-minimalist-4k-naruto-wallpapers.png"), width=150, clamp=True)
-c5.image(Image.open("images\\wp5129198-anime-lambang-uciha-wallpapers.jpg"), width=150, clamp=True)
+c1.image(Image.open("Naruto_app/images/wp2725528-naruto-kakashi-wallpaper.png"), width=150, clamp=True)
+c2.image(Image.open("Naruto_app/images/wp10367350-minato-minimalist-wallpapers.jpg"), width=150, clamp=True)
+c3.image(Image.open("Naruto_app/images/Landing Page.png"), width=150, clamp=True)
+c4.image(Image.open("Naruto_app/images/wp10926937-minimalist-4k-naruto-wallpapers.png"), width=150, clamp=True)
+c5.image(Image.open("Naruto_app/images/wp5129198-anime-lambang-uciha-wallpapers.jpg"), width=150, clamp=True)
 st.title("About Naruto")
 st.text('''NARUTO is a manga series created by MasashiKishimoto 
 that was serialized in Weekly ShonenJump. Met with popularity 
