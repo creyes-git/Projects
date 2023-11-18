@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 
-st.sidebar.image(Image.open("Naruto_app/images/icons8-naruto-512.png"), width=90, use_column_width=True, caption= "Naruverse")
+st.sidebar.image(Image.open("Naruto_app/images/icons8-naruto-512.png"), width=90, caption= "Naruverse")
 
 st.set_page_config(page_title="Naruverse", page_icon="🍥")
 
