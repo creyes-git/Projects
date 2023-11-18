@@ -4,7 +4,7 @@ from PIL import Image
 
 menu = ["Home", "Characters", "Tailed Beasts", "Akatsuki", "Villages", "Clans"]
 
-st.set_page_config(page_title="Naruverse", page_icon="🍥", layout="wide", menu_items= menu)
+st.set_page_config(page_title="Naruverse", page_icon="🍥")
 
 #Introduction
 c1, c2 , c3, c4, c5 = st.columns(5)
