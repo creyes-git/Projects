@@ -2,8 +2,6 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 
-menu = ["Home", "Characters", "Tailed Beasts", "Akatsuki", "Villages", "Clans"]
-
 st.set_page_config(page_title="Naruverse", page_icon="🍥")
 
 #Introduction
@@ -25,11 +23,11 @@ to enjoy a testament to the series’
 enduring influence and popularityaround the world.''')                
 
 
-'''#Sidebar:
+#Sidebar:
 st.sidebar.image(Image.open("images\\icons8-naruto-512.png"), width=90, clamp=True, caption= "Naruverse")
 introduction = st.sidebar.button("📖Introduction")
 tailed_beasts = st.sidebar.button("🦊Tailed Beasts")
 characters = st.sidebar.button("🍥Characters")
 akatsuki = st.sidebar.button("🩸Akatsuki")
 villages = st.sidebar.button("🏛️Villages")
-clans = st.sidebar.button("🥷🏻Clans")'''
+clans = st.sidebar.button("🥷🏻Clans")
