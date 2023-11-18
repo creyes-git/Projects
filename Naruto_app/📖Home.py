@@ -2,10 +2,9 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 
-st.set_page_config(page_title="Naruverse", page_icon="🍥")
-
 st.sidebar.image(Image.open("Naruto_app/images/icons8-naruto-512.png"), width=90, clamp=True, caption= "Naruverse")
 
+st.set_page_config(page_title="Naruverse", page_icon="🍥")
 
 #Introduction
 c1, c2 , c3, c4, c5 = st.columns(5)
