@@ -27,11 +27,8 @@ and feared him because of the Nine-Tails trapped within him. Unaware of the mons
 and so vowed to one day become the greatest Hokage the village had ever seen.''')
 
 st.title("Details of Naruto MANGA")
-st.markdown('''
-Copies in circulation: 250 million copies in 47 countries and regions
-Tankōbon: 72 tankōbon released in Japan
-Volumes: 72 volumes
-Age rating: "Teen" or "Teen and Up"
-Naruto is one of the best-selling manga series in history. In Japan, there are 153 million copies in circulation, and 97 million copies elsewhere. 
-Naruto is also a popular anime series. On the MyAnimeList website, Naruto is ranked 7th, behind newer anime like My Hero Academia, One Punch Man, and Attack on Titan. ''')
-
+st.markdown("- Copies in circulation: 250 million copies in 47 countries and regions")
+st.markdown("- Tankōbon: 72 tankōbon released in Japan")
+st.markdown("- Volumes: 72 volumes")
+st.markdown("- Naruto is one of the best-selling manga series in history. In Japan, there are 153 million copies in circulation, and 97 million copies elsewhere.") 
+st.markdown("- Naruto is also a popular anime series. On the MyAnimeList website, Naruto is ranked 7th, behind newer anime like My Hero Academia, One Punch Man, and Attack on Titan.")
