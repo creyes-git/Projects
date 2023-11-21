@@ -16,7 +16,7 @@ Japan in many aspects; those countries maintain balance between themselves throu
 but they are generally not worth much more than the paper they are written on.''')
 st.image(Image.open("Naruto_app//images//Naruto_World_Map.png"), use_column_width= True, clamp=True)
 
-st.image(Image.open("Naruto_app//images//Land_of_Earth_Symbol.png"),caption="The Land of Earth",  width=200)
+st.image(Image.open("Naruto_app//images//Land_of_Earth_Symbol.png"),caption="The Land of Earth",  width=100)
 st.markdown("The Land of Earth (土の国, Tsuchi no Kuni) has seen little attention in the series thus far. It is located north-west of the Land of Fire. Its government leader is the Earth Daimyō. The country is mostly comprised of desolate, rocky areas. The border of the Land of Earth runs along a rocky mountain range, blocking communication with other countries. The wind blowing from the north passes over these mountains, carrying small rocks from the Land of Earth to the surrounding countries. This famous natural phenomenon is called Rock Rain (岩雨, Gan'u).")
 
 st.image(Image.open("Naruto_app//images//Land_of_Fire_Symbol.png"),caption="The Land of Fire")
