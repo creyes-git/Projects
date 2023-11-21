@@ -39,3 +39,26 @@ st.markdown("The Land of Water (水の国, Mizu no Kuni) also known as the Land 
 
 st.image(Image.open("Naruto_app//images//Land_of_Wind_Symbol.png"),caption="The Land of Wind", width=100)
 st.markdown("The Land of Wind (風の国, Kaze no Kuni) is one of the more prominent countries in the series. It is located to the south-west of the Land of Fire and borders the Land of Rivers and Amegakure. Its government leader is the Wind Daimyō. The country covers a vast realm, but is significantly composed of deserts and thus has little productivity.[11] Because there is very little rainfall throughout the year, the people of the country live in villages built on one of the desert's many oases. Despite the country's extremely harsh environment, it has a large population. Although they have warred with each other in the past, the Land of Wind is now on good terms with the Land of Fire, with a great deal of trade going on between the two countries.")
+
+
+st.image(Image.open("Naruto_app//images//kages.png"), use_column_width= True, clamp=True)
+
+st.title("Hidden Villages")
+st.markdown("Hidden Villages are parts of countries in which the country's ninja reside. Their heads stand equally with the landlords ruling the countries they are a part of. A Hidden Village maintains its economy by training its citizens to be ninja from a young age and using them as manpower in various missions others would be willing to pay for, from weeding a garden for a single payment to receiving a constant budget from the country it resides in for being soldiers in case the country is involved in a war.")
+
+st.image(Image.open("Naruto_app//images//Konohagakure_Symbol.png"),caption="Konohagakure", width=100)
+st.markdown("Konohagakure (木ノ葉隠れの里, Konohagakure no Sato, English TV: Village Hidden in the Leaves or Hidden Leaf Village, literally meaning: Village Hidden by Tree Leaves) is the hidden village of the Land of Fire. As the village of one of the Five Great Shinobi Countries, Konohagakure has a Kage as its leader known as the Hokage, of which there have been eight in its history. Konoha resides deep within a forest at the base of a mountain known as the Hokage Rock, which has the faces of all those who have taken the office of Hokage engraved on it.")
+
+st.image(Image.open("Naruto_app//images//Kirigakure_Symbol.png"),caption="Kirigakure", width=100)
+st.markdown("Kirigakure (霧隠れの里, Kirigakure no Sato, English TV: Village Hidden in the Mist, literally meaning: Village Hidden by Mist) is the hidden village of the Land of Water. As the village of one of the Five Great Shinobi Countries, Kiri has a Kage as its leader known as the Mizukage, of which there have been six in its history. Befitting its name, the village is surrounded by a thick mist, with several mountains in the background, making it difficult to find by foreigners.")
+
+st.image(Image.open("Naruto_app//images//Kumogakure_Symbol.png"),caption="Kumogakure", width=100)
+st.markdown("Kumogakure (雲隠れの里, Kumogakure no Sato, English TV: Hidden Cloud Village, literally meaning: Village Hidden by Clouds) is the hidden village of the Land of Lightning and was founded by the First Raikage. As the village of one of the Five Great Shinobi Countries, Kumogakure has a Kage as its leader known as the Raikage, of which there have been five in its history. The village is located in a range of tall mountains, and is literally hidden in the clouds.")
+
+st.image(Image.open("Naruto_app//images//Iwagakure_Symbol.png"),caption="Iwagakure", width=100)
+st.markdown("Iwagakure (岩隠れの里, Iwagakure no Sato, English TV: Hidden Stone Village, literally meaning: Village Hidden by Rocks) is the hidden village of the Land of Earth. As the village of one of the Five Great Shinobi Countries, Iwagakure has a Kage as its leader known as the Tsuchikage, of which there have been four in its history. The rocky mountain ranges that surround the village provide a natural stronghold that it is very proud of.")
+
+st.image(Image.open("Naruto_app//images//Sunagakure_Symbol.png"),caption="Sunagakure", width=100)
+st.markdown("Sunagakure (砂隠れの里, Sunagakure no Sato, literally meaning: Village Hidden by Sand) is the hidden village of the Land of Wind. As the village of one of the Five Great Shinobi Countries, Sunagakure has a Kage as its leader known as the Kazekage, of which there have been five in its history. Being surrounded by desert offers the village a natural deterrent against invasion, as few foreign powers would be willing to endure the sandstorms and water scarcity common to Suna.")
+
+
