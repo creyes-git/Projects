@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 
-st.set_page_config(page_title="World Building", page_icon="🍥")
+st.set_page_config(page_title="Naruverse", page_icon="🍥")
 
 st.title("Naruto World Construction")
 st.markdown('''The Naruto series is set on a fictional terrestrial blue planet called Earth. Most of the series takes place on a large 
