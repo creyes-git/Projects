@@ -8,7 +8,7 @@ st.title("Tailed Beasts History and Characteristics")
 st.markdown("Shukaku and the tailed beasts first came into being in the waning days of Hagoromo Ōtsutsuki, who used his Creation of All Things Technique to divide the Ten-Tails' chakra into nine separate bodies and giving each a name. Some time after being created, the Sage explained to the young tailed beasts that a link existed between them despite their separation. He also foretold of a day when they would be brought together again - though not as they were - and that at that time someone would emerge to show them what true power is. In the anime, before his death, Hagoromo sent Shukaku to live in a temple built for the purpose of protecting it in a desert region that would later become part of the Land of Wind.")
 st.image(Image.open("Naruto_app/images/all beasts.png"), use_column_width= True, clamp=True)
 
-
+st.title("Shukaku")
 st.image(Image.open("Naruto_app/images/1 cola.png"), use_column_width= 100, caption= "Shukaku")
 st.title("Personality")
 st.markdown("Shukaku is characterised as a childish and short-tempered individual, and often speaks in a bombastic and incoherent manner, giving it the demeanour of a drunkard. It uses ore-sama (オレ様, literally meaning: my esteemed self) when referring to itself, as it expresses great pride in its own abilities, especially its sealing techniques and defences. According to Gaara, prior to its introduction, Shukaku relishes the opportunity to kill anyone in sight, even more so during a full moon. Shukaku has also shown to harbour a bitter grudge towards Kurama due to the fox's beliefs that the tailed beasts' strength is measured by the number of tails, therefore viewing the tanuki as the weakest. Because of this, Shukaku strives to find any opportunity to surpass its arrogant rival.")
@@ -19,6 +19,7 @@ Shukaku's most notable ability is its sand manipulation, using it as an effectiv
 Nature Transformation: Shukaku can use Wind and Earth Release nature transformations. It can rapidly fire wind bullets with enough force to level entire forests. Likewise, it can combine its wind abilities with Gaara's sand in order to produce a mass of fast-moving sand bullets. He could also charge these wind bullets to the point they could fire like a Tailed Beast Ball, and wipe out entire landscapes.[28] Shukaku can combine wind and earth elements to use Magnet Release, and is the only tailed beast which can use cursed seals from its markings and infuse them into the Rasengan to create the Sage Art: Magnet Release Rasengan, which was powerful enough to restrain Madara Uchiha's shadow when he was the Ten-Tails' jinchūriki.''')
 
 
+st.title("Matatabi")
 st.image(Image.open("Naruto_app/images/2 cola.png"), use_column_width= 100, caption= "Matatabi")
 st.title("Personality")
 st.markdown("Compared to most of the tailed beasts, Matatabi has shown to be respectful and polite towards others, speaking in a formal manner using watashi (私) when referring to itself and using honourifics when addressing Naruto while introducing itself to the young shinobi.")
@@ -27,6 +28,7 @@ st.markdown("As a tailed beast, Matatabi has an enormous supply of chakra that i
 
 
 
+st.title("Isobu")
 st.image(Image.open("Naruto_app/images/3 cola.png"), use_column_width= 100, caption= "Isobu")
 st.title("Personality")
 st.markdown("")
@@ -35,6 +37,7 @@ st.markdown("")
 
 
 
+st.title("Son Gokū")
 st.image(Image.open("Naruto_app/images/4 cola.png"), use_column_width= 100, caption= "Son Gokū")
 st.title("Personality")
 st.markdown("")
@@ -43,6 +46,7 @@ st.markdown("")
 
 
 
+st.title("Kokuō")
 st.image(Image.open("Naruto_app/images/5 cola.png"), use_column_width= 100, caption= "Kokuō")
 st.title("Personality")
 st.markdown("")
@@ -51,6 +55,7 @@ st.markdown("")
 
 
 
+st.title("Saiken")
 st.image(Image.open("Naruto_app/images/6 cola.png"), use_column_width= 100, caption= "Saiken")
 st.title("Personality")
 st.markdown("")
@@ -59,6 +64,7 @@ st.markdown("")
 
 
 
+st.title("Chōmei")
 st.image(Image.open("Naruto_app/images/7 cola.webp"), use_column_width= 100, caption= "Chōmei")
 st.title("Personality")
 st.markdown("")
@@ -67,6 +73,7 @@ st.markdown("")
 
 
 
+st.title("Gyūki")
 st.image(Image.open("Naruto_app/images/8 cola.png"), use_column_width= 100, caption= "Gyūki")
 st.title("Personality")
 st.markdown("")
@@ -75,6 +82,7 @@ st.markdown("")
 
 
 
+st.title("Kurama")
 st.image(Image.open("Naruto_app/images/9 cola.webp"), use_column_width= 100, caption= "Kurama")
 st.title("Personality")
 st.markdown("")
