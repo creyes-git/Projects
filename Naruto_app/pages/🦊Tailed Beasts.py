@@ -26,10 +26,10 @@ st.image(Image.open("Naruto_app/images/5 cola.png"), use_column_width= 100, capt
 st.image(Image.open("Naruto_app/images/6 cola.png"), use_column_width= 100, caption= "Saiken")
 
 
-st.image(Image.open("Naruto_app/images/7 cola.png"), use_column_width= 100, caption= "Chōmei")
+st.image(Image.open("Naruto_app/images/7 cola.webp"), use_column_width= 100, caption= "Chōmei")
 
 
 st.image(Image.open("Naruto_app/images/8 cola.png"), use_column_width= 100, caption= "Gyūki")
 
 
-st.image(Image.open("Naruto_app/images/9 cola.png"), use_column_width= 100, caption= "Kurama")
+st.image(Image.open("Naruto_app/images/9 cola.webp"), use_column_width= 100, caption= "Kurama")
