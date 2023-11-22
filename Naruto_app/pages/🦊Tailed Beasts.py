@@ -1,15 +1,15 @@
 import pandas as pd
 import streamlit as st
 from PIL import Image
-st.title("Tailed Beasts History and Characteristics")
+
 st.set_page_config(page_title="Naruverse", page_icon="🍥")
 
+st.title("Tailed Beasts History and Characteristics")
+st.markdown("Shukaku and the tailed beasts first came into being in the waning days of Hagoromo Ōtsutsuki, who used his Creation of All Things Technique to divide the Ten-Tails' chakra into nine separate bodies and giving each a name. Some time after being created, the Sage explained to the young tailed beasts that a link existed between them despite their separation. He also foretold of a day when they would be brought together again - though not as they were - and that at that time someone would emerge to show them what true power is. In the anime, before his death, Hagoromo sent Shukaku to live in a temple built for the purpose of protecting it in a desert region that would later become part of the Land of Wind.")
 st.image(Image.open("Naruto_app/images/all beasts.png"), use_column_width= True, clamp=True)
 
 
 st.image(Image.open("Naruto_app/images/1 cola.png"), use_column_width= 100, caption= "Shukaku")
-st.title("Background")
-st.markdown("Shukaku and the tailed beasts first came into being in the waning days of Hagoromo Ōtsutsuki, who used his Creation of All Things Technique to divide the Ten-Tails' chakra into nine separate bodies and giving each a name. Some time after being created, the Sage explained to the young tailed beasts that a link existed between them despite their separation. He also foretold of a day when they would be brought together again - though not as they were - and that at that time someone would emerge to show them what true power is. In the anime, before his death, Hagoromo sent Shukaku to live in a temple built for the purpose of protecting it in a desert region that would later become part of the Land of Wind.")
 st.title("Personality")
 st.markdown("Shukaku is characterised as a childish and short-tempered individual, and often speaks in a bombastic and incoherent manner, giving it the demeanour of a drunkard. It uses ore-sama (オレ様, literally meaning: my esteemed self) when referring to itself, as it expresses great pride in its own abilities, especially its sealing techniques and defences. According to Gaara, prior to its introduction, Shukaku relishes the opportunity to kill anyone in sight, even more so during a full moon. Shukaku has also shown to harbour a bitter grudge towards Kurama due to the fox's beliefs that the tailed beasts' strength is measured by the number of tails, therefore viewing the tanuki as the weakest. Because of this, Shukaku strives to find any opportunity to surpass its arrogant rival.")
 st.title("Abilities")
@@ -20,18 +20,14 @@ Nature Transformation: Shukaku can use Wind and Earth Release nature transformat
 
 
 st.image(Image.open("Naruto_app/images/2 cola.png"), use_column_width= 100, caption= "Matatabi")
-st.title("Background")
-st.markdown("")
 st.title("Personality")
-st.markdown("")
+st.markdown("Compared to most of the tailed beasts, Matatabi has shown to be respectful and polite towards others, speaking in a formal manner using watashi (私) when referring to itself and using honourifics when addressing Naruto while introducing itself to the young shinobi.")
 st.title("Abilities")
-st.markdown("")
+st.markdown("As a tailed beast, Matatabi has an enormous supply of chakra that it can transfer to others and can create the Tailed Beast Ball. As its appearance suggest, it can use Fire Release, which it can lend to its jinchūriki to create fireballs. Matatabi also has flexible muscles, which grant it great speed despite its large size. Matatabi's raw strength can easily crush an opponent or send them flying with one swipe of its paw. When combined with the other tailed beasts' tails, it could shatter and completely obliterate a senjutsu-enhanced complete Susanoo.")
 
 
 
 st.image(Image.open("Naruto_app/images/3 cola.png"), use_column_width= 100, caption= "Isobu")
-st.title("Background")
-st.markdown("")
 st.title("Personality")
 st.markdown("")
 st.title("Abilities")
@@ -40,8 +36,6 @@ st.markdown("")
 
 
 st.image(Image.open("Naruto_app/images/4 cola.png"), use_column_width= 100, caption= "Son Gokū")
-st.title("Background")
-st.markdown("")
 st.title("Personality")
 st.markdown("")
 st.title("Abilities")
@@ -50,8 +44,6 @@ st.markdown("")
 
 
 st.image(Image.open("Naruto_app/images/5 cola.png"), use_column_width= 100, caption= "Kokuō")
-st.title("Background")
-st.markdown("")
 st.title("Personality")
 st.markdown("")
 st.title("Abilities")
@@ -60,8 +52,6 @@ st.markdown("")
 
 
 st.image(Image.open("Naruto_app/images/6 cola.png"), use_column_width= 100, caption= "Saiken")
-st.title("Background")
-st.markdown("")
 st.title("Personality")
 st.markdown("")
 st.title("Abilities")
@@ -70,8 +60,6 @@ st.markdown("")
 
 
 st.image(Image.open("Naruto_app/images/7 cola.webp"), use_column_width= 100, caption= "Chōmei")
-st.title("Background")
-st.markdown("")
 st.title("Personality")
 st.markdown("")
 st.title("Abilities")
@@ -80,8 +68,6 @@ st.markdown("")
 
 
 st.image(Image.open("Naruto_app/images/8 cola.png"), use_column_width= 100, caption= "Gyūki")
-st.title("Background")
-st.markdown("")
 st.title("Personality")
 st.markdown("")
 st.title("Abilities")
@@ -90,10 +76,7 @@ st.markdown("")
 
 
 st.image(Image.open("Naruto_app/images/9 cola.webp"), use_column_width= 100, caption= "Kurama")
-st.title("Background")
-st.markdown("")
 st.title("Personality")
 st.markdown("")
 st.title("Abilities")
 st.markdown("")
-
