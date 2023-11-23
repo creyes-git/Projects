@@ -19,8 +19,6 @@ st.title("Naruto Characters")
 st.image(Image.open("Naruto_app/images/characters.jpg"), use_column_width= True, clamp=True)
 st.warning("Choose the character you want to know more about")
 
-character = st.selectbox( df["name"].unique())
+character = st.selectbox( options= df["name"].unique())
 
 st.write(df[df["name"] == character])
-
-
