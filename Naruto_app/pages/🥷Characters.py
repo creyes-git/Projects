@@ -11,7 +11,7 @@ response = requests.get(url).json()
 
 df = pd.DataFrame(response["characters"])
 df.drop(columns=df.columns[12:], inplace=True)
-df.dropna(axis=0, how="any", thresh=2, inplace=True)
+df.dropna(axis=0, thresh=2, inplace=True)
 
 
 st.title("Naruto Characters")
