@@ -11,7 +11,7 @@ response = requests.get(url).json()
 
 df = pd.DataFrame(response["characters"])
 df.drop(columns=df.columns[12:], inplace=True)
-df = df[df["debut"] != "NA]
+df = df[df["rank"] != "NA"]
 
 
 st.title("Naruto Characters")
