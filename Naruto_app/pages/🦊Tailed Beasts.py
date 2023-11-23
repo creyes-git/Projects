@@ -4,7 +4,7 @@ from PIL import Image
 
 st.set_page_config(page_title="Naruverse", page_icon="🍥")
 
-st.title("Tailed Beasts History and Characteristics")
+st.title("Tailed Beasts Characteristics")
 st.markdown("Shukaku and the tailed beasts first came into being in the waning days of Hagoromo Ōtsutsuki, who used his Creation of All Things Technique to divide the Ten-Tails' chakra into nine separate bodies and giving each a name. Some time after being created, the Sage explained to the young tailed beasts that a link existed between them despite their separation. He also foretold of a day when they would be brought together again - though not as they were - and that at that time someone would emerge to show them what true power is. In the anime, before his death, Hagoromo sent Shukaku to live in a temple built for the purpose of protecting it in a desert region that would later become part of the Land of Wind.")
 st.image(Image.open("Naruto_app/images/all beasts.png"), use_column_width= True, clamp=True)
 
