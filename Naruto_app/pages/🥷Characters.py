@@ -18,11 +18,4 @@ df.drop(columns=df.columns[12:], inplace=True)
 
 
 
-character = st.selectbox("Chose the character", df["name"].unique())
 
-def show_character(character):
-    df = df[df["name"] == character]
-    
-    return st.write(df)
-
-show_character(character)
