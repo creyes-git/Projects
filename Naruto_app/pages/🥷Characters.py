@@ -16,7 +16,7 @@ df.drop(columns=df.columns[12:], inplace=True)
 
 
 st.title("Naruto Characters")
-st.image(Image.open("Naruto_app/images/characters.png"), use_column_width= True, clamp=True)
+st.image(Image.open("Naruto_app/images/characters.jpg"), use_column_width= True, clamp=True)
 st.warning("Choose the character you want to know more about")
 
 character = st.selectbox("Choose the character", df["name"].unique())
