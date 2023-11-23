@@ -21,4 +21,4 @@ st.warning("Choose the character you want to know more about")
 
 character = st.selectbox(label="Character", options= df["name"].unique())
 
-st.write(df[df["name"] == character])
+st.table(df[df["name"] == character])
