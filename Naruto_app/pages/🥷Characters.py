@@ -27,7 +27,9 @@ st.markdown(" ")
 c1, c2, c3 = st.columns(3)
 
 c1.markdown(picked["name"].values[0])
-
 response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
 image = c1.image(Image.open(response_bytes),clamp=True,width=150)
+
+# column 3
+c3.text(picked["natureType"].values[0])
