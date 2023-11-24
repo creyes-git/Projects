@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import requests
 from PIL import Image
+from io import BytesIO
 
 st.set_page_config(page_title="Naruverse", page_icon="🍥")
 
