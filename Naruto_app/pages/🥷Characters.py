@@ -31,13 +31,3 @@ c1.markdown(picked["name"].values[0])
 response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
 image = c1.image(Image.open(response_bytes),clamp=True,width=100)
-
-
-# Create a circular mask
-mask = Image.new("L", image.size, 0)
-mask_draw = ImageDraw.Draw(mask)
-mask_draw.ellipse((0, 0, image.size[0], image.size[1]), fill=255)
-
-# Apply the mask to the image
-circular_image = ImageOps.fit(image, mask.size, centering=(0.5, 0.5))
-circular_image.putalpha(mask)
