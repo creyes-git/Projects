@@ -32,4 +32,4 @@ response_bytes = BytesIO(response.content)
 image = c1.image(Image.open(response_bytes),clamp=True,width=150)
 
 # column 3
-c3.text(picked["natureType"].values[0])
+c3.table(df["natureType"])
