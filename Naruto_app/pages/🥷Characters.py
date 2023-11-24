@@ -28,8 +28,6 @@ c1, c2, c3 = st.columns(3)
 
 c1.markdown(picked["name"].values[0])
 
-
-url = picked["images"].values[0][0]
-c1.markdown(url)
-response = requests.get(url)
-c1.image(Image.open(BytesIO(response.content)))
+response = requests.get(picked["images"].values[0][0])
+response_bytes = BytesIO(response.content)
+c1.image(Image.open(response_bytes),clamp=True,width=100)
