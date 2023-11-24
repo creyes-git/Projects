@@ -23,7 +23,4 @@ picked = df[df["name"] == character]
 st.markdown(" ")
 st.markdown(" ")
 
-c1, c2, c3 = st.columns(3)
-
-c1.text(picked["name"].values[0])
-c1.image(Image.open(picked["images"]))
+st.table(picked)
