@@ -26,4 +26,4 @@ st.markdown(" ")
 c1, c2, c3 = st.columns(3)
 
 c1.markdown(picked["name"].values[0])
-c1.markdown(Image.open(picked["images"].values[0][0]))
+c1.image(Image.open(picked["images"].values[0][0]))
