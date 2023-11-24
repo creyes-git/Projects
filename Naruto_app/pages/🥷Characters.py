@@ -30,4 +30,4 @@ c1.markdown(picked["name"].values[0])
 
 response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
-image = c1.image(Image.open(response_bytes),clamp=True,width=100)
+image = c1.image(Image.open(response_bytes),clamp=True,width=150)
