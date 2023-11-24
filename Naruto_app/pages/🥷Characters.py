@@ -27,5 +27,7 @@ c1, c2, c3 = st.columns(3)
 
 c1.markdown(picked["name"].values[0])
 
-response = requests.get(picked["image"].values[0][0]).content
-c1.image(Image.open(BytesIO(response)))
+
+response = requests.get(picked["image"].values[0][0])
+c1.image(Image.open(response))
+
