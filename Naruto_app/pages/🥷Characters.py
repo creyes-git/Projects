@@ -22,4 +22,4 @@ picked = df[df["name"] == character]
 
 c1, c2, c3 = st.columns(3)
 
-c1.text(picked["name"])
+c1.text(picked["name"][0])
