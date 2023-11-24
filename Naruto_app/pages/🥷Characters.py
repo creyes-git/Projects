@@ -11,8 +11,8 @@ response = requests.get(url).json()
 
 df = pd.DataFrame(response["characters"])
 df.drop(columns=df.columns[12:], inplace=True)
-
-
+df.dropna(axis=0, subset="debut", inplace=True)
+df.dropna(axis=0, subset="jutsu", inplace=True)
 
 st.title("Naruto Characters")
 st.image(Image.open("Naruto_app/images/characters.jpg"), use_column_width= True, clamp=True)
@@ -20,4 +20,4 @@ st.warning("Choose the character you want to know more about")
 
 character = st.selectbox(label="Character", options= df["name"].unique())
 
-st.table(df[df["name"] == character])
+
