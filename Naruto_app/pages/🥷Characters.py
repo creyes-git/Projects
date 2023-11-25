@@ -34,7 +34,7 @@ response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
 c1.image(Image.open(response_bytes),clamp=True,width=150)
 
-# column 3
+# column 4
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
 
@@ -46,3 +46,6 @@ try:
 
 except:
     c4.warning("No Element")
+
+#column 3
+c3.markdown(picked["jutsu"].values[0])
