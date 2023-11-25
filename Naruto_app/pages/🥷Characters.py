@@ -38,5 +38,5 @@ c1.image(Image.open(response_bytes),clamp=True,width=150)
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
 
-for i in picked["natureType"][0]:
+for i in picked["natureType"].values[0]:
     c3.text(i)
