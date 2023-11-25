@@ -38,6 +38,6 @@ c1.image(Image.open(response_bytes),clamp=True,width=150)
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
 
-for i in picked["natureType"]:
+for i in picked["natureType"][0]:
     if i in elements:
         c3.image(Image.open(f"Naruto_app/images/Yang Release.png"),clamp=True,width=50)
