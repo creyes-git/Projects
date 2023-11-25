@@ -55,8 +55,10 @@ else:
     c1.markdown("Rank: None")
     
 # tools
-c1.markdown(picked["tools"].values[0])
-
+c1.markdown("Tools: ")
+for i in picked["tools"].values[0]:
+    c1.markdown(i)
+    
 # column 4
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
