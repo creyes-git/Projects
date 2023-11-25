@@ -39,4 +39,4 @@ elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release"
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
 
 for i in picked["natureType"][0]:
-        c3.text(i)
+    c3.text(i)
