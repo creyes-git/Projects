@@ -35,7 +35,7 @@ response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
 c1.image(Image.open(response_bytes),clamp=True,width=150)
 
-c1.markdown(picked["rank"].values()[0])
+c1.markdown(picked["rank"])
 
 # column 4
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
@@ -56,13 +56,7 @@ c3.markdown("Jutsu List:")
 for i in picked["jutsu"].values[0]:
     c3.markdown(i)
 
+
 # column 2
 c2.markdown("Debut: ")
 c2.markdown(picked["debut"].values[0])
-
-
-
-c2.markdown(picked["tools"].values[0])
-c2.markdown(picked["family"].values[0])
-
-c1.markdown(picked["personal"].values[0])
