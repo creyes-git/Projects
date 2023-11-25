@@ -14,9 +14,9 @@ df.drop(columns=df.columns[12:], inplace=True)
 df.dropna(axis=0, subset=["debut","natureType","jutsu"], inplace=True)
 df.drop(index=df.index[0], inplace=True)
 
+st.warning("Choose the character you want to know more about")
 st.title("Naruto Characters")
 st.image(Image.open("Naruto_app/images/characters.jpg"), use_column_width= True, clamp=True)
-st.warning("Choose the character you want to know more about")
 
 # selectbox
 character = st.selectbox(label="Character", options= df["name"].unique())
@@ -29,7 +29,7 @@ st.markdown(" ")
 c1, c2, c3, c4 = st.columns(4)
 
 # column 1
-c1.markdown(picked["name"].values[0]+": ")
+c1.warning(picked["name"].values[0]+": ")
 
 response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
@@ -49,8 +49,17 @@ except:
     c4.warning("No Element")
     
 
-#column 3
+# column 3
 c3.markdown("Jutsu List:")
 for i in picked["jutsu"].values[0]:
     c3.markdown(i)
 
+# column 2
+c2.markdown("Debut: ")
+c2.markdown(picked["debut"].values[0])
+c2.markdown(picked["tools"].values[0])
+c2.markdown(picked["family"].values[0])
+
+c1.markdown(picked["rank"].values[0])
+c1.markdown(picked["uniqueTraits"].values[0])
+c1.markdown(picked["personal"].values[0])
