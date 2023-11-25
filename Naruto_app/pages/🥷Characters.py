@@ -34,18 +34,18 @@ response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
 c1.image(Image.open(response_bytes),clamp=True,width=150)
 
-# column 4
+# column 3
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
 
-c4.markdown("Element Nature: ")
+c3.markdown("Element Nature: ")
 try:
     for i in picked["natureType"].values[0]:
         if i in elements:
-            c4.image(Image.open(f"Naruto_app/images/{i}.png"),clamp=True,width=100)
+            c3.image(Image.open(f"Naruto_app/images/{i}.png"),clamp=True,width=100)
 
 except:
-    c4.warning("No Element")
+    c3.warning("No Element")
 
 #column 2
-c3.table(picked["jutsu"].values[0])
+c2.table(picked["jutsu"].values[0])
