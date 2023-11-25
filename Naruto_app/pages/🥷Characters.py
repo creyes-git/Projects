@@ -49,5 +49,8 @@ except:
     c4.warning("No Element")
     
 
+
 #column 2
-c2.markdown(picked["jutsu"].values[0])
+st.markdown("Jutsu List:")
+for i in picked["jutsu"].values[0]:
+    c2.text(i)
