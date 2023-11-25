@@ -53,6 +53,9 @@ elif "Genin" in rank:
 
 else:
     c1.markdown("Rank: None")
+    
+# tools
+c1.markdown(picked["tools"].values[0])
 
 # column 4
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
