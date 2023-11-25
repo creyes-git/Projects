@@ -39,6 +39,10 @@ elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release"
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
 
 c3.markdown("Element Nature: ")
-for i in picked["natureType"].values[0]:
-    if i in elements:
-        c3.image(Image.open(f"Naruto_app/images/{i}.png"),clamp=True,width=100)
+try:
+    for i in picked["natureType"].values[0]:
+        if i in elements:
+            c3.image(Image.open(f"Naruto_app/images/{i}.png"),clamp=True,width=100)
+
+except:
+    c3.warning("No Element")
