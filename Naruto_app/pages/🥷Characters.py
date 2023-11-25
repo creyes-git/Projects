@@ -39,7 +39,7 @@ c1.image(Image.open(response_bytes),clamp=True,width=150)
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
 
-c4.markdown("Element Nature: ")
+c4.warning("Element Nature: ")
 try:
     for i in picked["natureType"].values[0]:
         if i in elements:
@@ -50,12 +50,12 @@ except:
     
 
 # column 3
-c3.markdown("Jutsu List:")
+c3.warning("Jutsu List:")
 for i in picked["jutsu"].values[0]:
     c3.markdown(i)
 
 # column 2
-c2.markdown("Debut: ")
+c2.warning("Debut: ")
 c2.markdown(picked["debut"].values[0])
 c2.markdown(picked["tools"].values[0])
 c2.markdown(picked["family"].values[0])
