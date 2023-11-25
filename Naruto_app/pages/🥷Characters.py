@@ -29,13 +29,30 @@ st.markdown(" ")
 c1, c2, c3, c4 = st.columns(4)
 
 # column 1
+# name
 c1.markdown(picked["name"].values[0]+": ")
-
+# profile picture
 response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
 c1.image(Image.open(response_bytes),clamp=True,width=150)
 
-c1.markdown(picked["rank"].values[0])
+# rank
+rank = str(picked["rank"].values[0])
+
+if "Kage" in rank:
+    c1.markdown("Rank: Kage")
+    
+elif "Jōnin" in rank:
+    c1.markdown("Rank: Jōnin")
+    
+elif "Chūnin" in rank:
+    c1.markdown("Rank: Chūnin")
+
+elif "Genin" in rank:
+    c1.markdown("Rank: Genin")
+
+else:
+    c1.markdown("Rank: None")
 
 # column 4
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
