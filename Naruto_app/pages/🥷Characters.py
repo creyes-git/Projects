@@ -40,4 +40,4 @@ elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release"
 
 for i in picked["natureType"]:
     if i in elements:
-        c3.image(Image.open(f"Naruto_app/images/{i}.png"),clamp=True,width=50)
+        c3.image(Image.open(f"Naruto_app/images/Yang Release.png"),clamp=True,width=50)
