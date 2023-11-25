@@ -29,7 +29,7 @@ st.markdown(" ")
 c1, c2, c3, c4 = st.columns(4)
 
 # column 1
-c1.markdown(picked["name"].values[0])
+c1.markdown(picked["name"].values[0]+": ")
 
 response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
@@ -49,8 +49,7 @@ except:
     c4.warning("No Element")
     
 
-
 #column 2
-st.markdown("Jutsu List:")
+c2.markdown("Jutsu List:")
 for i in picked["jutsu"].values[0]:
     c2.text(i)
