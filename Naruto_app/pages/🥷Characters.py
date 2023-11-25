@@ -36,7 +36,8 @@ response_bytes = BytesIO(response.content)
 c1.image(Image.open(response_bytes),clamp=True,width=150)
 
 for i in picked["rank"].values[0]:
-    c1.markdown(i)
+    for y in i:
+        c1.markdown(y)
 
 # column 4
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
