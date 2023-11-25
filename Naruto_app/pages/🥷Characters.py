@@ -12,7 +12,7 @@ response = requests.get(url).json()
 df = pd.DataFrame(response["characters"])
 df.drop(columns=df.columns[12:], inplace=True)
 df.dropna(axis=0, subset=["debut","images", "jutsu"], inplace=True)
-df.drop(df[0], inplace=True)
+df.drop(index=df.index[0], inplace=True)
 
 st.title("Naruto Characters")
 st.image(Image.open("Naruto_app/images/characters.jpg"), use_column_width= True, clamp=True)
