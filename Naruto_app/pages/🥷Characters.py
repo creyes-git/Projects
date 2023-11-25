@@ -11,7 +11,7 @@ response = requests.get(url).json()
 
 df = pd.DataFrame(response["characters"])
 df.drop(columns=df.columns[12:], inplace=True)
-df.dropna(axis=0, subset=["debut","images", "jutsu"], inplace=True)
+df.dropna(axis=0, subset=["debut","natureType","jutsu"], inplace=True)
 df.drop(index=df.index[0], inplace=True)
 
 st.title("Naruto Characters")
@@ -49,11 +49,8 @@ except:
     c4.warning("No Element")
     
 
-
-#column 2
-c2.markdown("Jutsu List:")
-for i in picked["jutsu"].values[0]:
-    c2.markdown(i)
-    
 #column 3
-c3.markdown("Dojutsu?:")
+c3.markdown("Jutsu List:")
+for i in picked["jutsu"].values[0]:
+    c3.markdown(i)
+
