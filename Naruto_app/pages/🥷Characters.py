@@ -35,9 +35,8 @@ response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
 c1.image(Image.open(response_bytes),clamp=True,width=150)
 
-a = picked["rank"].values[0]
-c1.markdown(a.values[0])
-
+c1.markdown(picked["rank"].values[0])
+            
 # column 4
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
