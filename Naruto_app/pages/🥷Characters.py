@@ -25,7 +25,7 @@ picked = df[df["name"] == character]
 st.markdown(" ")
 st.markdown(" ")
 
-c1, c2, c3 = st.columns(3)
+c1, c2, c3, c4 = st.columns(4)
 
 # column 1
 c1.markdown(picked["name"].values[0])
@@ -34,18 +34,19 @@ response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
 c1.image(Image.open(response_bytes),clamp=True,width=150)
 
-# column 3
+# column 4
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
 
-c3.markdown("Element Nature: ")
+c4.markdown("Element Nature: ")
 try:
     for i in picked["natureType"].values[0]:
         if i in elements:
-            c3.image(Image.open(f"Naruto_app/images/{i}.png"),clamp=True,width=100)
+            c4.image(Image.open(f"Naruto_app/images/{i}.png"),clamp=True,width=100)
 
 except:
-    c3.warning("No Element")
+    c4.warning("No Element")
+    
 
 #column 2
-c2.table(picked["jutsu"].values[0])
+c2.markdown(picked["jutsu"].values[0])
