@@ -25,7 +25,7 @@ picked = df[df["name"] == character]
 st.markdown(" ")
 st.markdown(" ")
 
-c1, c2, c3, c4 = st.columns(4)
+c1, c2, c3 = st.columns(3)
 
 # column 1
 c1.markdown(picked["name"].values[0])
