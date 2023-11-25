@@ -47,5 +47,5 @@ try:
 except:
     c4.warning("No Element")
 
-#column 3
-c3.markdown(picked["jutsu"].values[0])
+#column 2
+c3.table(picked["jutsu"].values[0])
