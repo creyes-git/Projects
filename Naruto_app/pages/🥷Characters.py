@@ -30,7 +30,7 @@ c1, c2, c3, c4 = st.columns(4)
 
 # column 1
 # name
-c1.markdown(picked["name"].values[0]+": ")
+c1.header(picked["name"].values[0]+": ")
 # profile picture
 response = requests.get(picked["images"].values[0][0])
 response_bytes = BytesIO(response.content)
