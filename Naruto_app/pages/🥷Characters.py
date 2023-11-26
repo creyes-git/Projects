@@ -108,4 +108,12 @@ family = str(str(picked["family"].values[0]).replace("{","")).replace("}","")
 lista = list(family.split(","))
 for i in lista:
     i = str(i).replace("'","")
-    c2.markdown(mayus(i))
+    i = i.capitalize()
+    count = 0
+    for y in i:
+        if y == " ":
+            count += 1
+        if count == 1:
+            i = i.upper()
+            count = 0    
+    c2.markdown(i)
