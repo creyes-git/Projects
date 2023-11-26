@@ -96,7 +96,8 @@ debut = str(str(picked["debut"].values[0]).split(",")[0]).split(":")[1]
 debut = debut.replace("'","")
 c2.markdown("Manga: "+ debut.split("o")[1])
 
+c2.header("Family: ")
 family = str(picked["family"].values[0]).replace("{","")
-family = str(picked["family"].values[0]).replace("}","")
+family = family.replace("}","")
 lista = list(family.split(","))
 c2.markdown(family)
