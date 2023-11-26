@@ -98,7 +98,9 @@ debut = debut.replace("'","")
 c2.markdown("Manga: "+ debut.split("o")[1])
 
 c2.header("Family: ")
-family = str(picked["family"].values[0]).replace("{","")
-family = family.replace("}","")
+family = str(str(picked["family"].values[0]).replace("{","")).replace("}","")
 lista = list(family.split(","))
-c2.markdown(family)
+for i in lista:
+    i.replace("'","")
+    i.capitalize()
+    c2.markdown(i)
