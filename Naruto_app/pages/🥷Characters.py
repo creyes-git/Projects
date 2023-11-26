@@ -37,7 +37,7 @@ try:
     response_bytes = BytesIO(response.content)
     c1.image(Image.open(response_bytes),clamp=True,width=150)
 except:
-    c1.markdown(picked["images"].values)
+    c1.markdown(picked["images"].values[0])
 
 # rank
 rank = str(picked["rank"].values[0])
