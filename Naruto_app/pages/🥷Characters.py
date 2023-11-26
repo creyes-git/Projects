@@ -55,9 +55,12 @@ else:
     c1.markdown("Rank: None")
     
 # tools
-c1.markdown("Tools: ")
-for i in picked["tools"].values[0]:
-    c1.markdown(i)
+c1.subheader("Tools: ")
+try:
+    for i in picked["tools"].values[0]:
+        c1.markdown(i)
+except:
+    c1.warning("No Tools")
     
 # column 4
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
