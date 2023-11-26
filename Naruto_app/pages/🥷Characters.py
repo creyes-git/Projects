@@ -34,11 +34,10 @@ c1.markdown(picked["name"].values[0]+": ")
 # profile picture
 try:
     response = requests.get(picked["images"].values[0][0])
+    response_bytes = BytesIO(response.content)
+    c1.image(Image.open(response_bytes),clamp=True,width=150)
 except:
-    c1.markdown(picked["images"])
-
-response_bytes = BytesIO(response.content)
-c1.image(Image.open(response_bytes),clamp=True,width=150)
+    c1.markdown(picked["images"].values)
 
 # rank
 rank = str(picked["rank"].values[0])
