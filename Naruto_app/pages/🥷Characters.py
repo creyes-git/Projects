@@ -101,6 +101,6 @@ c2.header("Family: ")
 family = str(str(picked["family"].values[0]).replace("{","")).replace("}","")
 lista = list(family.split(","))
 for i in lista:
-    i.replace("'"," ")
-    i.capitalize()
+    i = str(i).replace("'","")
+    i = str(i).capitalize()
     c2.markdown(i)
