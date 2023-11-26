@@ -82,7 +82,8 @@ except:
 # column 3
 c3.markdown("Jutsu List:")
 for i in picked["jutsu"].values[0]:
-    c3.markdown(i)
+    if "<" not in i and ">" not in i and "[" not in i and "]" not in i and "(" not in i and ")" not in i and "{" not in i and "}" not in i:
+        c3.markdown(i)
 
 
 # column 2
