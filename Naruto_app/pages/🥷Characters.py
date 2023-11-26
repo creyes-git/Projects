@@ -97,5 +97,5 @@ debut = debut.replace("'","")
 c2.markdown("Manga: "+ debut.split("o")[1])
 
 family = str(picked["family"].values[0]).replace(["{","}"],"")
-lista = family.split(",")
+lista = list(family.split(","))
 c2.markdown(family)
