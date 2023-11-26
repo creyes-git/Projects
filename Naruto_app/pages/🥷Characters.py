@@ -55,7 +55,7 @@ else:
     c1.markdown("Rank: None")
     
 # tools
-c1.header("Tools: ")
+c1.subheader("Tools: ")
 for i in picked["tools"].values[0]:
     c1.markdown(i)
     
