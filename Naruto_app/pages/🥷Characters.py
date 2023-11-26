@@ -97,10 +97,15 @@ debut = str(str(picked["debut"].values[0]).split(",")[0]).split(":")[1]
 debut = debut.replace("'","")
 c2.markdown("Manga: "+ debut.split("o")[1])
 
+def mayus(string):
+    for i in string.capitalize():
+        if i == " ":
+            string[i+1].upper()
+    return string    
+
 c2.header("Family: ")
 family = str(str(picked["family"].values[0]).replace("{","")).replace("}","")
 lista = list(family.split(","))
 for i in lista:
     i = str(i).replace("'","")
-    i = str(i).capitalize()
-    c2.markdown(i)
+    c2.markdown(mayus(i))
