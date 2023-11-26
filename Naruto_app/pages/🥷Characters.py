@@ -91,3 +91,6 @@ c2.markdown("Debut: ")
 debut = str(str(picked["debut"].values[0]).split(",")[0]).split(":")[1]
 debut = debut.replace("'","")
 c2.markdown("Manga: "+ debut.split("o")[1])
+
+c2.markdown(picked["family"].values[0])
+c2.markdown(picked["personal"].values[0])
