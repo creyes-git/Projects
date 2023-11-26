@@ -69,7 +69,7 @@ except:
 elements = ["Fire Release", "Wind Release", "Lightning Release", "Earth Release",
 "Water Release", "Yin Release", "Yang Release","Yin-Yang Release"]
 
-c4.header("Element Nature: ")
+c4.markdown("Element Nature: ")
 try:
     for i in picked["natureType"].values[0]:
         if i in elements:
@@ -80,7 +80,7 @@ except:
     
 
 # column 3
-c3.header("Jutsu List:")
+c3.markdown("Jutsu List:")
 count = 0
 for i in picked["jutsu"].values[0]:
     if "<" not in i and ">" not in i and "[" not in i and "]" not in i and "(" not in i and ")" not in i and "{" not in i and "}" not in i:
@@ -92,7 +92,7 @@ for i in picked["jutsu"].values[0]:
         break
     
 # column 2
-c2.header("Debut: ")
+c2.markdown("Debut: ")
 debut = str(str(picked["debut"].values[0]).split(",")[0]).split(":")[1]
 debut = debut.replace("'","")
 c2.markdown("Manga: "+ debut.split("")[1:])
