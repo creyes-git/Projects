@@ -82,4 +82,5 @@ for i in picked["jutsu"].values[0]:
 # column 2
 c2.markdown("Debut: ")
 debut = str(str(picked["debut"].values[0]).split(",")[0]).split(":")[1]
+debut = debut.replace("'","")
 c2.markdown(debut)
