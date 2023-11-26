@@ -78,14 +78,14 @@ try:
 except:
     c4.warning("No Element")
     
-
 # column 3
 c3.markdown("Jutsu List:")
 for i in picked["jutsu"].values[0]:
     if "<" not in i and ">" not in i and "[" not in i and "]" not in i and "(" not in i and ")" not in i and "{" not in i and "}" not in i:
         c3.markdown(i)
-
-
+    else: 
+        c3.warning("No Jutsu Available")
+        
 # column 2
 c2.markdown("Debut: ")
 debut = str(str(picked["debut"].values[0]).split(",")[0]).split(":")[1]
