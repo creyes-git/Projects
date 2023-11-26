@@ -81,4 +81,5 @@ for i in picked["jutsu"].values[0]:
 
 # column 2
 c2.markdown("Debut: ")
-c2.markdown(picked["debut"].values[0])
+for i in picked["debut"].values[0]:
+    c2.markdown(i)
