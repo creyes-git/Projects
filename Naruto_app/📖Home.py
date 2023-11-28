@@ -35,7 +35,6 @@ st.markdown("- Naruto is one of the best-selling manga series in history. In Jap
 st.markdown("- Naruto is also a popular anime series. On the MyAnimeList website, Naruto is ranked 7th, behind newer anime like My Hero Academia, One Punch Man, and Attack on Titan.")
 
 #chart
-st.header("Top 10 Manga's by Sales")
+st.header("Top 10 Manga's by Sales:")
 df = pd.read_csv("Naruto_app/data_anime.csv")
-df.sort_values(by = "Approximate sales", ascending = False, inplace = True)
-st.bar_chart(data = df.head(10), x = "Manga series", y = "Approximate sales", use_container_width = True, color="orange")
+st.bar_chart(data = df.head(10).sort_values(by = "Approximate sales", ascending = False), x = "Manga series", y = "Approximate sales")
