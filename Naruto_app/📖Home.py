@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 from PIL import Image
-import plotly as px
 
 st.set_page_config(page_title="Naruverse", page_icon="🍥")
 
@@ -36,4 +35,4 @@ st.markdown("- Naruto is also a popular anime series. On the MyAnimeList website
 
 df = pd.read_csv("Naruto_app/data_anime.csv")
 df.sort_values(by = "Approximate sales", ascending = False, inplace = True)
-chart_1 = st.plotly_chart(px.bar(df.head(10), x = "Manga series", y = "Approximate sales", ))
+chart_1 = st.plotly_chart(px.bar(df, x = "Manga series", y = "Approximate sales", height = 500, width = 1000))
