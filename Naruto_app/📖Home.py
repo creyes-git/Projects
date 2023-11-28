@@ -35,4 +35,4 @@ st.markdown("- Naruto is also a popular anime series. On the MyAnimeList website
 
 df = pd.read_csv("Naruto_app/data_anime.csv")
 df.sort_values(by = "Approximate sales", ascending = False, inplace = True)
-chart_1 = st.plotly_chart(px.bar(df, x = "Manga series", y = "Approximate sales", height = 500, width = 1000))
+st.bar_chart(data = df.head(10), x = "Manga series", y = "Approximate sales")
