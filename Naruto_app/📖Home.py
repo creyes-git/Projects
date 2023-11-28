@@ -34,4 +34,6 @@ st.markdown("- Naruto is one of the best-selling manga series in history. In Jap
 st.markdown("- Naruto is also a popular anime series. On the MyAnimeList website, Naruto is ranked 7th, behind newer anime like My Hero Academia, One Punch Man, and Attack on Titan.")
 
 df = pd.read_csv("Naruto_app/data_anime.csv")
-chart_1 = st.plotly_chart(x = df["Approximate sales"], y = df["Manga series"])
+df.sort_values(by = "Approximate sales", ascending = False, inplace = True)
+df.head(10)
+chart_1 = st.plotly_chart(px.bar(df, x = df["Approximate sales"], y = df["Manga series"], orientation = "h"), use_container_width = True)
