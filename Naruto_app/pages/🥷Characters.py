@@ -76,6 +76,7 @@ try:
             c4.image(Image.open(f"Naruto_app/images/{i}.png"),clamp=True,width=100)
         else:
             c4.warning("No Element")
+            break
 except:
     c4.warning("No Element")
     
