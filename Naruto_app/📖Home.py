@@ -33,5 +33,5 @@ st.markdown("- Volumes: 72 volumes")
 st.markdown("- Naruto is one of the best-selling manga series in history. In Japan, there are 153 million copies in circulation, and 97 million copies elsewhere.") 
 st.markdown("- Naruto is also a popular anime series. On the MyAnimeList website, Naruto is ranked 7th, behind newer anime like My Hero Academia, One Punch Man, and Attack on Titan.")
 
-df = pd.DataFrame("C:\\Users\\Carlos Reyes\\Desktop\\Naruverse_APP\\data_anime.csv")
+df = pd.DataFrame("Naruto_app/data_anime.csv")
 st.table(df)
