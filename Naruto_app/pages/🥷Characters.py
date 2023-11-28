@@ -74,7 +74,8 @@ try:
     for i in picked["natureType"].values[0]:
         if i in elements:
             c4.image(Image.open(f"Naruto_app/images/{i}.png"),clamp=True,width=100)
-
+        else:
+            c4.warning("No Element")
 except:
     c4.warning("No Element")
     
