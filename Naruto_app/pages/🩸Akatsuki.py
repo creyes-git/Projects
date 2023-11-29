@@ -15,5 +15,5 @@ st.markdown("1. Obtain enough money to support their organisation.")
 st.markdown("2. Provide mercenary services at well under the competitive rate, using the money gathered in the first step to offset costs. This will make countries increasingly dependent on Akatsuki's services, corner the entire market for shinobi missions, and eventually put all of the shinobi villages out of business because they can't compete with Akatsuki's prices. By capturing and strategically deploying the tailed beasts, Akatsuki could quickly start and then quell wars, thereby speeding up the process.")
 st.markdown("3. Once all other major shinobi forces have dissolved, Akatsuki will be able to quickly conquer all the countries of the world.")
 
-st.image(Image.open("Naruto_app//images//members.png"), use_column_width= True, clamp=True)
+st.image(Image.open("Naruto_app//images//members.jpg"), use_column_width= True, clamp=True)
 st.markdown("The early years of Nagato's Akatsuki were very successful, as the hidden villages increasingly hired Akatsuki to fight in wars and perform assassinations that the villages themselves were unwilling to get involved in during times of peace. ")
