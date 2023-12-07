@@ -19,5 +19,5 @@ df = pd.DataFrame(response.json()["results"])
 
 st.sidebar.title("I'm your movie partner")
 
-i = st.image(Image.open("Cinema/pages/1.png"))
+i = st.image(Image.open("Cinema/images/1.png"))
 st.title(f"Trending today: {i}")
