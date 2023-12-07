@@ -1,4 +1,4 @@
-import polars as pl
+import pandas as pd
 import requests
 import json
 import streamlit as st
@@ -15,7 +15,7 @@ headers = {
 }
 
 response = requests.get(url, headers=headers)
-df = pl.DataFrame(response.json()["results"])
+df = pd.DataFrame(response.json()["results"])
 
 st.sidebar.title("I'm your movie partner")
 
