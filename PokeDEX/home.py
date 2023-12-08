@@ -3,7 +3,6 @@ from PIL import Image
 import numpy as np
 import pandas as pd
 import requests
-from streamlit_lottie import st_lottie
 
 st.set_page_config(page_title = "Pokédex",page_icon=":pokeball:", layout = "wide")
 
