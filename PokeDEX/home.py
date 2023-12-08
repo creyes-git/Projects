@@ -19,7 +19,7 @@ def local_css(file_name):
 def get_data():
 	# read null values as empty string
 	# only keep pokemon until generation 6
-	return pd.read_csv('pokedex.csv', keep_default_na = False).iloc[:847] 
+	return pd.read_csv('PokeDEX/pokedex.csv', keep_default_na = False).iloc[:847] 
 
 # load css file and get data
 local_css('PokeDEX/style.css')
