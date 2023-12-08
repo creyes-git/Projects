@@ -95,7 +95,7 @@ def get_image_path(name, id):
 def display_basic_info(match):
 	# get basic info data
 	name = match['name'].iloc[0]
-	#id = match['pokedex_number'].iloc[0]
+	id = match['pokedex_number'].iloc[0]
 	height = str(match['height_m'].iloc[0])
 	weight = str(match['weight_kg'].iloc[0])
 	species = ' '.join(match['species'].iloc[0].split(' ')[:-1])
@@ -106,7 +106,7 @@ def display_basic_info(match):
 	ability2 = match['ability_2'].iloc[0]
 	ability_hidden = match['ability_hidden'].iloc[0]
 	
-	st.title(name + ' #' + str(id).zfill(3))
+	st.title(name)
 	col1, col2, col3 = st.columns(3)
 	
 	# leftmost column col1 displays pokemon image
