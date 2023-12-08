@@ -3,3 +3,4 @@ pandas
 plotly
 matplotlib
 streamlit_lottie
+emoji
