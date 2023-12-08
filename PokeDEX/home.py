@@ -8,7 +8,7 @@ import requests
 from streamlit_lottie import st_lottie
 import emoji
 
-st.set_page_config(page_title = "Pokédex",page_icon=":pokeball:", layout = "wide")
+st.set_page_config(page_title = "Pokédex",page_icon= emoji.emojize(":pokeball:"), layout = "wide")
 
 # css file for displaying Pokemon type (fire, water etc.)
 def local_css(file_name):
