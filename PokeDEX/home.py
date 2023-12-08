@@ -68,27 +68,27 @@ st.sidebar.markdown('Pokemon images taken from <a href="https://www.kaggle.com/d
 def get_image_path(name, id):
 	if name.startswith('Mega'):
 		if name.endswith(' X'):
-			path = 'pokemon_images/' + str(id) + '-mega-x.png'
+			path = 'PokeDEX/pokemon_images/' + str(id) + '-mega-x.png'
 		elif name.endswith(' Y'):
-			path = 'pokemon_images/' + str(id) + '-mega-y.png'
+			path = 'PokeDEX/pokemon_images/' + str(id) + '-mega-y.png'
 		else:
-			path = 'pokemon_images/' + str(id) + '-mega.png'
+			path = 'PokeDEX/pokemon_images/' + str(id) + '-mega.png'
 	elif name.endswith(' Rotom'):
 		rotom_type = name.split()[0].lower()
-		path = 'pokemon_images/' + str(id) + '-' + rotom_type + '.png'
+		path = 'PokeDEX/pokemon_images/' + str(id) + '-' + rotom_type + '.png'
 	elif name.endswith(' Forme') or name.endswith(' Cloak')  or name.endswith(' Form'):
 		if 'Zygarde' in name: # only 1 image present for Zygarde
-			path = 'pokemon_images/' + str(id) + '.png'			
+			path = 'PokeDEX/pokemon_images/' + str(id) + '.png'			
 		else:
 			type = name.split()[1].lower()
-			path = 'pokemon_images/' + str(id) + '-' + type + '.png'
+			path = 'PokeDEX/pokemon_images/' + str(id) + '-' + type + '.png'
 	elif name.startswith('Primal '):
 		type = name.split()[0].lower()
-		path = 'pokemon_images/' + str(id) + '-' + type + '.png'
+		path = 'PokeDEX/pokemon_images/' + str(id) + '-' + type + '.png'
 	elif name.startswith('Arceus'): 
-		path = 'pokemon_images/' + str(id) + '-normal.png' # this is just how Arceus is named in the image file
+		path = 'PokeDEX/pokemon_images/' + str(id) + '-normal.png' # this is just how Arceus is named in the image file
 	else:
-		path = 'pokemon_images/' + str(id) + '.png'
+		path = 'PokeDEX/pokemon_images/' + str(id) + '.png'
 	return path
 	
 
