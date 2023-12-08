@@ -1,9 +1,24 @@
 import streamlit as st
 from PIL import Image
 import numpy as np
+import plotly.express as px
 import pandas as pd
+import matplotlib.pyplot as plt
+import requests
+from streamlit_lottie import st_lottie
 
-st.set_page_config(page_title = "Pokédex", layout = "wide")
+st.set_page_config(page_title = "Pokédex",page_icon=":pokeball:", layout = "wide")
+
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+
+lottie_pokeball = load_lottieurl("C:\\Users\\Carlos Reyes\\Desktop\\Pokedex\\Animation - 1702058651172.json")
+st_lottie(lottie_pokeball, speed=1, height=200, key="initial")
+
 
 # css file for displaying Pokemon type (fire, water etc.)
 def local_css(file_name):
