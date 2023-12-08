@@ -22,7 +22,7 @@ def get_data():
 	return pd.read_csv('pokedex.csv', keep_default_na = False).iloc[:847] 
 
 # load css file and get data
-local_css('style.css')
+local_css('PokeDEX/style.css')
 df = get_data()
 
 # sidebar configuration for searching Pokemon by name
