@@ -17,7 +17,7 @@ def load_lottieurl(url: str):
     return r.json()
 
 
-lottie_pokeball = load_lottieurl("C:\\Users\\Carlos Reyes\\Desktop\\Pokedex\\Animation - 1702058651172.json")
+lottie_pokeball = load_lottieurl("PokeDEX/Animation - 1702058651172.json")
 st_lottie(lottie_pokeball, speed=1, height=200, key="initial")
 
 # css file for displaying Pokemon type (fire, water etc.)
