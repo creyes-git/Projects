@@ -6,18 +6,22 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import requests
 
+# page configuration
 st.set_page_config(page_title = "Pokédex",page_icon= "🎴", layout = "wide")
 
+# css file for displaying Pokemon type (fire, water etc.)
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-		
-# load css
+# load cssp
 local_css('PokeDEX/style.css')
-# load dataset
-df = pd.read_csv('PokeDEX/pokedex.csv')
 
-# sidebar configuration for searching Pokemon by name
+
+# load data until 847 rows due to missing images
+df = pd.read_csv('PokeDEX/pokedex.csv', keep_default_na = False).iloc[:847] 
+
+
+# sidebar for searching Pokemon
 st.sidebar.title('Pokédex')
 name = st.sidebar.text_input('Search Name', '').lower() # input name
 # find names that matches input and return it in a list
@@ -30,31 +34,6 @@ else: # if no name matches input
 
 # filter row of data that matches Pokemon selected in dropdown menu
 match = df[df['name'].str.lower() == name]
-
-# select information to view
-info_list = ['Basic Information', 'Base Stats & Type Defenses', 'Training and Breeding', 'Radar Chart']
-selected_info = st.sidebar.multiselect('View Information', info_list, default = info_list)
-
-# search Pokemon using min and max base stats (speed, special defense etc.)
-with st.sidebar.form(key="my_form"):
-	st.subheader('Search Base Stats Range')
-	min_speed, max_speed = st.select_slider('Speed', range(251), value = [0, 250])
-	min_sp_def, max_sp_def = st.select_slider('Special Defense', range(251), value = [0, 250])
-	min_sp_atk, max_sp_atk = st.select_slider('Special Attack', range(251), value = [0, 250])
-	min_def, max_def = st.select_slider('Defense', range(251), value = [0, 250])
-	min_atk, max_atk = st.select_slider('Attack', range(251), value = [0, 250])
-	min_hp, max_hp = st.select_slider('HP', range(251), value = [0, 250])
-	
-	# pressed is a Boolean that becomes True when the "Search Pokemon" button is pressed
-	# code to handle button pressing is all the way at the bottom
-	pressed = st.form_submit_button("Search Pokemon")
-
-# display credits on sidebar
-st.sidebar.subheader('Credits')
-st.sidebar.write("Of course, I do not claim to own any of the Pokemon data or images in any way. :full_moon_with_face:")
-st.sidebar.write("The Kaggle links below show where I've obtained the data. Note that there are further acknowledgements within the Kaggle pages themselves, as the authors got their data from more original sources.")
-st.sidebar.markdown('Pokemon dataset taken from <a href="https://www.kaggle.com/datasets/mariotormo/complete-pokemon-dataset-updated-090420?select=pokedex_%28Update_04.21%29.csv">this Kaggle link</a>.', unsafe_allow_html = True)
-st.sidebar.markdown('Pokemon images taken from <a href="https://www.kaggle.com/datasets/kvpratama/pokemon-images-dataset">this Kaggle link</a>.', unsafe_allow_html = True)
 
 # use Pokemon name and id to get image path, refer to 'pokemon_images' folder to see how images are named
 def get_image_path(name, id):
