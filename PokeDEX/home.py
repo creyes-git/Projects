@@ -36,17 +36,7 @@ with st.sidebar:
 
 
 # sidebar for searching Pokemon
-name = st.sidebar.selectbox('Name', df['name'].str.lower().unique())
-# find names that matches input and return it in a list
-matches = list(df[df['name'].str.lower().str.contains(name)]['name'])
-# dropdown menu with names that matches input
-if len(matches) >= 1:
-	name = st.sidebar.selectbox('Pokemon Matches', matches).lower()
-else: # if no name matches input
-	name = st.sidebar.selectbox('Pokemon Matches', ['No match'])
-
-# filter row of data that matches Pokemon selected in dropdown menu
-match = df[df['name'].str.lower() == name]
+name = st.sidebar.selectbox('Search your Pokemon', df['name'].str.lower().unique(), index = 0)
 
 # use Pokemon name and id to get image path, refer to 'pokemon_images' folder to see how images are named
 def get_image_path(name, id):
