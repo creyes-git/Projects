@@ -5,7 +5,7 @@ import plotly.express as px
 import pandas as pd
 import matplotlib.pyplot as plt
 import requests
-import streamlit.lottie as st_lottie
+from streamlit_lottie import st_lottie
 import json
 
 # page configuration
