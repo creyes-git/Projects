@@ -115,7 +115,7 @@ def display_basic_info(match):
 			col3.subheader(ability_hidden + ' (Hidden)')
 
 
-def display_base_stats_type_defenses(match):
+def display_stats(match):
 	# list to gather all type weaknesses and resistances
 	weakness_2_types = []
 	weakness_4_types = []
@@ -180,7 +180,7 @@ def display_base_stats_type_defenses(match):
 		col2.markdown(resistance_quarter_text, unsafe_allow_html=True)
 
 
-def display_training_breeding(match):	
+def display_breeding(match):	
 	# get training data
 	catch_rate = match['catch_rate'].iloc[0]
 	base_friendship	= match['base_friendship'].iloc[0] 
@@ -219,7 +219,7 @@ def display_training_breeding(match):
 		col2.metric('Egg Cycles', egg_cycles)
 		
   	
-def display_radar_chart(match):
+def display_charts(match):
 	st.header('Radar Chart of Base Stats')
 	# get base stats of Pokemon and rename columns nicely
 	df_stats = match[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
@@ -234,7 +234,7 @@ def display_radar_chart(match):
 		display_similar_pokemons(match)
 
 
-def display_similar_pokemons(match):
+def display_similars(match):
 	# get base stats of Pokemon and rename columns nicely
 	df_stats = match[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
 	df_stats = df_stats.rename(columns={'hp': 'HP', 'attack': 'Attack', 'defense': 'Defense', 'sp_attack': 'Special Attack', 'sp_defense': 'Special Defense', 'speed': 'Speed'})
@@ -278,7 +278,7 @@ def display_similar_pokemons(match):
 
 # calling the functions
 display_basic_info(match)
-
+display_charts(match)
 hide_streamlit_style = """
 <style>
 #MainMenu {visibility: hidden;}
