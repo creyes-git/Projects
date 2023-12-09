@@ -274,43 +274,6 @@ def display_similar_pokemons(match):
 	st.subheader('20 Most Similar Pokemons')
 	st.table(similar_pokemons_df)
 
-# if "Search Pokemon" button is not pressed,
-# i.e. we are searching Pokemon by name instead of by base stats slider section	
-if not pressed:
-	if len(match) == 0:
-		st.write('Enter name to search for details.')
-	
-	# display information of Pokemon according to the information the user selects in the sidebar multiselector
-	elif len(match) == 1:
-		if 'Basic Information' in selected_info:
-			display_basic_info(match)
-		if 'Base Stats & Type Defenses' in selected_info:
-			display_base_stats_type_defenses(match)
-		if 'Training and Breeding' in selected_info:
-			display_training_breeding(match)
-		if 'Radar Chart' in selected_info:
-			display_radar_chart(match)
-			
-# if "Search Pokemon" button IS PRESSED,
-# filter Pokemon according to the base stats in the slider
-# display all the matched Pokemon and their stats in a table
-# we do not display every bit of information about the search Pokemons as the list may be huge and the app can hang
-else:
-	# get base stats of all Pokemon
-	df_stats_all = df[['name', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']].set_index('name')
-	df_stats_all = df_stats_all.rename(columns={'hp': 'HP', 'attack': 'Attack', 'defense': 'Defense', 'sp_attack': 'Special Attack', 'sp_defense': 'Special Defense', 'speed': 'Speed'})
-	# filter stats according to search criteria from the sliders
-	searched_pokemons_df = df_stats_all[
-		(df_stats_all['HP'] >= min_hp) & (df_stats_all['HP'] <= max_hp) &
-		(df_stats_all['Attack'] >= min_atk) & (df_stats_all['Attack'] <= max_atk) &
-		(df_stats_all['Defense'] >= min_def) & (df_stats_all['Defense'] <= max_def) &
-		(df_stats_all['Special Attack'] >= min_sp_atk) & (df_stats_all['Special Attack'] <= max_sp_atk) &
-		(df_stats_all['Special Defense'] >= min_sp_def) & (df_stats_all['Special Defense'] <= max_sp_def) &
-		(df_stats_all['Speed'] >= min_speed) & (df_stats_all['Speed'] <= max_speed)										
-	]
-	st.header('Pokemon Search Using Base Stats')
-	st.table(searched_pokemons_df)
-
 hide_streamlit_style = """
 <style>
 #MainMenu {visibility: hidden;}
