@@ -94,10 +94,10 @@ def display_basic_info(match):
 	# col2
 	with col2.container():		
 		col2.write('Type')
-		# html code that loads the class defined in css, each Pokemon type has a different style color
-		type_text = f'<span class="icon type-{type1.lower()}">{type1}</span>'
+		# each Pokemon type has a different css style color
+		type_text = f'<span class="icon type-{type1.lower()}>{type1}</span>'
 		if type_number == 2:
-			type_text += f' <span class="icon type-{type2.lower()}">{type2}</span>'
+			type_text += f' <span class="icon type-{type2.lower()}>{type2}</span>'
 		# markdown displays html code directly
 		col2.markdown(type_text, unsafe_allow_html=True)
 		col2.metric("Height", height + " m")
