@@ -36,12 +36,12 @@ with st.sidebar:
 
 
 # sidebar for searching Pokemon
-pokemon_name = str(st.sidebar.selectbox('Search your Pokemon', df['name'].str.lower().unique(), index = 4))
+name = str(st.sidebar.selectbox('Search your Pokemon', df['name'].str.lower().unique(), index = 4))
 match = df[df['name'].str.lower() == pokemon_name]
 id = int(match["pokedex_number"])
 
 # use Pokemon name and id to get image path
-def get_image_path(pokemon_name, id):
+def get_image_path(name, id):
 	if name.startswith('Mega'):
 		if name.endswith(' X'):
 			path = 'PokeDEX/pokemon_images/' + str(id) + '-mega-x.png'
@@ -87,7 +87,7 @@ def display_basic_info(match):
 	
 	# col1
 	try:
-		col1.image(Image.open(get_image_path(pokemon_name, id)))	
+		col1.image(Image.open(get_image_path(name, id)))	
 	except:
 		col1.write('Image not available.')
 	
