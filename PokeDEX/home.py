@@ -223,7 +223,7 @@ def display_charts(match):
 	st.header('Radar Chart of Base Stats')
 	# get base stats of Pokemon and rename columns nicely
 	df_stats = match[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
-	df_stats = df_stats.rename(columns={'hp': 'HP', 'attack': 'Attack', 'defense': 'Defense', 'sp_attack': 'Special Attack', 'sp_defense': 'Special Defense', 'speed': 'Speed'}).T
+	df_stats = df_stats.rename(columns={'hp': 'HP', 'attack': 'Attack', 'defense': 'Defense', 'sp_attack': 'Special Attack', 'sp_defense': 'Special Defense', 'speed': 'Speed'})
 	df_stats.columns=['stats']
 	
 	# use plotly express to plot out radar char of stats
