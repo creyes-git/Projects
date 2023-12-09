@@ -274,6 +274,11 @@ def display_similar_pokemons(match):
 	st.subheader('20 Most Similar Pokemons')
 	st.table(similar_pokemons_df)
 
+
+# calling the functions
+display_basic_info(match)
+
+
 hide_streamlit_style = """
 <style>
 #MainMenu {visibility: hidden;}
