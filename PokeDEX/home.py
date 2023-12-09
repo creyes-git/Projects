@@ -36,7 +36,7 @@ with st.sidebar:
 
 
 # sidebar for searching Pokemon
-name = st.sidebar.text_input('Search Name', '').lower() # input name
+name = st.sidebar.selectbox('Name', df['name'].str.lower().unique())
 # find names that matches input and return it in a list
 matches = list(df[df['name'].str.lower().str.contains(name)]['name'])
 # dropdown menu with names that matches input
