@@ -5,10 +5,8 @@ import plotly.express as px
 import pandas as pd
 import matplotlib.pyplot as plt
 import requests
-from streamlit_lottie import st_lottie
-import emoji
 
-st.set_page_config(page_title = "Pokédex",page_icon= emoji.emojize(":pokeball:"), layout = "wide")
+st.set_page_config(page_title = "Pokédex",page_icon= "🎴", layout = "wide")
 
 # css file for displaying Pokemon type (fire, water etc.)
 def local_css(file_name):
