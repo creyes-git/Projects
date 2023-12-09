@@ -5,6 +5,7 @@ import plotly.express as px
 import pandas as pd
 import matplotlib.pyplot as plt
 import requests
+import streamlit.lottie as st_lottie
 
 # page configuration
 st.set_page_config(page_title = "Pokédex",page_icon= "🎴", layout = "wide")
@@ -19,6 +20,13 @@ local_css('PokeDEX/style.css')
 
 # load data until 847 rows due to missing images
 df = pd.read_csv('PokeDEX/pokedex.csv', keep_default_na = False).iloc[:847] 
+
+
+# load lottie animation
+lottie = requests.get("C:\\Users\\Carlos Reyes\\Documents\\GitHub\\Projects\\PokeDEX\\pokeball.json").json()
+st_lottie(lottie, speed=1, height=200, key="initial")
+
+
 
 
 # sidebar for searching Pokemon
