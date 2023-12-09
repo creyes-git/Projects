@@ -70,17 +70,17 @@ def get_image_path(pokemon_name, id):
  
 # get basic info data
 def display_basic_info(match):
-	name = match['name']
-	id = match['pokedex_number']
-	height = str(match['height_m'])
-	weight = str(match['weight_kg'])
+	name = match['name'].iloc[0]
+	id = match['pokedex_number'].iloc[0]
+	height = str(match['height_m'].iloc[0])
+	weight = str(match['weight_kg'].iloc[0])
 	species = ' '.join(match['species'].iloc[0].split(' ')[:-1])
-	type1 = match['type_1']
-	type2 = match['type_2']
-	type_number = match['type_number']
-	ability1 = match['ability_1']
-	ability2 = match['ability_2']
-	ability_hidden = match['ability_hidden']
+	type1 = match['type_1'].iloc[0]
+	type2 = match['type_2'].iloc[0]
+	type_number = match['type_number'].iloc[0]
+	ability1 = match['ability_1'].iloc[0]
+	ability2 = match['ability_2'].iloc[0]
+	ability_hidden = match['ability_hidden'].iloc[0]
 	
 	st.title(name)
 	col1, col2, col3 = st.columns(3)
@@ -92,7 +92,7 @@ def display_basic_info(match):
 		col1.write('Image not available.')
 	
 	# col2
-	'''with col2.container():		
+	with col2.container():		
 		col2.write('Type')
 		# each Pokemon type has a different css style color
 		type_text = f'<span class="icon type-{type1.lower()}>{type1}</span>'
@@ -101,7 +101,7 @@ def display_basic_info(match):
 		# markdown displays html code directly
 		col2.markdown(type_text, unsafe_allow_html=True)
 		col2.metric("Height", height + " m")
-		col2.metric("Weight", weight + " kg")'''
+		col2.metric("Weight", weight + " kg")
 	
 	# col3
 	with col3.container():
