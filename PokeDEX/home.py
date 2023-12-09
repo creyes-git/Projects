@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import requests
 import streamlit.lottie as st_lottie
+import json
 
 # page configuration
 st.set_page_config(page_title = "Pokédex",page_icon= "🎴", layout = "wide")
@@ -23,10 +24,24 @@ df = pd.read_csv('PokeDEX/pokedex.csv', keep_default_na = False).iloc[:847]
 
 
 # load lottie animation
-lottie = requests.get("C:\\Users\\Carlos Reyes\\Documents\\GitHub\\Projects\\PokeDEX\\pokeball.json").json()
-st_lottie(lottie, speed=1, height=200, key="initial")
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
 
 
+lottie_pokeball = load_lottiefile("PokeDEX\\pokeball.json")  # replace link to local lottie file
+
+st_lottie(
+    lottie_pokeball,
+    speed=1,
+    reverse=False,
+    loop=True,
+    quality="high", # medium ; high
+    renderer="svg", # canvas
+    height=None,
+    width=None,
+    key=None,
+)
 
 
 # sidebar for searching Pokemon

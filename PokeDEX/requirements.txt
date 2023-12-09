@@ -6,6 +6,7 @@ streamlit-extras
 plotly
 matplotlib
 seaborn
+json
 
 
 
