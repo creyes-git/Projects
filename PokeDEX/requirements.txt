@@ -1,4 +1,8 @@
-streamlit
-pandas
-plotly
 matplotlib
+streamlit
+numpy
+pandas
+seaborn>=0.11.0
+streamlit-lottie
+plotly
+streamlit-extras>=0.2.4
