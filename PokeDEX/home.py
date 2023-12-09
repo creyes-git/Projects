@@ -34,8 +34,8 @@ with st.sidebar:
 	text = f'<span class="icon type-text">Pokédex</span>'
 	st.sidebar.markdown(text, unsafe_allow_html=True)
 
+
 # sidebar for searching Pokemon
-st.sidebar.title('Pokédex')
 name = st.sidebar.text_input('Search Name', '').lower() # input name
 # find names that matches input and return it in a list
 matches = list(df[df['name'].str.lower().str.contains(name)]['name'])
