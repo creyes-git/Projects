@@ -229,9 +229,6 @@ def display_charts(match):
 	# use plotly express to plot out radar char of stats
 	fig = px.line_polar(df_stats, r='stats', theta=df_stats.index, line_close=True, range_r=[0, 250])
 	st.plotly_chart(fig)
-	
-	if st.button('Search for Pokemons with Similar Base Stats'):
-		display_similar_pokemons(match)
 
 
 def display_similars(match):
