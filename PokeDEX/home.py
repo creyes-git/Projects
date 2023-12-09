@@ -29,7 +29,7 @@ def load_lottiefile(filepath: str):
         return json.load(f)
 
 lottie_pokeball = load_lottiefile("PokeDEX/pokeball.json")  # replace link to local lottie file
-st.sidebar(st_lottie(lottie_pokeball, height = 200, quality = "high",size = "small"))
+st.sidebar(st_lottie(lottie_pokeball, height = 20, quality = "high"))
 
 
 # sidebar for searching Pokemon
