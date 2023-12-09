@@ -36,9 +36,9 @@ with st.sidebar:
 
 
 # sidebar for searching Pokemon
-name = st.sidebar.selectbox('Search your Pokemon', df['name'].str.lower().unique(), index = None)
+name = str(st.sidebar.selectbox('Search your Pokemon', df['name'].str.lower().unique(), index = 4))
 match = df[df['name'].str.lower() == name]
-id = df[df['name'] == name]["pokedex_number"]
+id = int(match["pokedex_number"])
 
 # use Pokemon name and id to get image path
 def get_image_path(name, id):
@@ -115,6 +115,7 @@ def display_basic_info(match):
 			col3.subheader(ability2)
 		if ability_hidden != '':
 			col3.subheader(ability_hidden + ' (Hidden)')
+
 
 def display_base_stats_type_defenses(match):
 	# list to gather all type weaknesses and resistances
@@ -218,7 +219,8 @@ def display_training_breeding(match):
 			# this metric is not available for Pokemon without eggs, e.g. Mewtwo
 			col2.metric('Percentage Male/Female', 'NA')
 		col2.metric('Egg Cycles', egg_cycles)
-			
+		
+  	
 def display_radar_chart(match):
 	st.header('Radar Chart of Base Stats')
 	# get base stats of Pokemon and rename columns nicely
@@ -232,6 +234,7 @@ def display_radar_chart(match):
 	
 	if st.button('Search for Pokemons with Similar Base Stats'):
 		display_similar_pokemons(match)
+
 
 def display_similar_pokemons(match):
 	# get base stats of Pokemon and rename columns nicely
