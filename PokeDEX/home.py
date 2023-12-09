@@ -37,6 +37,7 @@ with st.sidebar:
 
 # sidebar for searching Pokemon
 name = st.sidebar.selectbox('Search your Pokemon', df['name'].unique(), index = None)
+match = df[df['name'] == name]
 id = df[df['name'] == name]["pokedex_number"]
 
 # use Pokemon name and id to get image path
