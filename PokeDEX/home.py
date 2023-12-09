@@ -8,20 +8,14 @@ import requests
 
 st.set_page_config(page_title = "Pokédex",page_icon= "🎴", layout = "wide")
 
-# css file for displaying Pokemon type (fire, water etc.)
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 		
-@st.experimental_singleton
-def get_data():
-	# read null values as empty string
-	# only keep pokemon until generation 6
-	return pd.read_csv('PokeDEX/pokedex.csv', keep_default_na = False).iloc[:847] 
-
-# load css file and get data
+# load css
 local_css('PokeDEX/style.css')
-df = get_data()
+# load dataset
+df = pd.read_csv('PokeDEX/pokedex.csv')
 
 # sidebar configuration for searching Pokemon by name
 st.sidebar.title('Pokédex')
