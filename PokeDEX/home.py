@@ -87,7 +87,7 @@ def display_basic_info(match):
 	
 	# col1
 	try:
-		col1.image(Image.open(get_image_path(name, id)))	
+		col1.image(Image.open(get_image_path(pokemon_name, id)))	
 	except:
 		col1.write('Image not available.')
 	
