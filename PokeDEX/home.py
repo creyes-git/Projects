@@ -92,7 +92,7 @@ def display_basic_info(match):
 		col1.write('Image not available.')
 	
 	# col2
-	with col2.container():		
+	'''with col2.container():		
 		col2.write('Type')
 		# each Pokemon type has a different css style color
 		type_text = f'<span class="icon type-{type1.lower()}>{type1}</span>'
@@ -101,7 +101,7 @@ def display_basic_info(match):
 		# markdown displays html code directly
 		col2.markdown(type_text, unsafe_allow_html=True)
 		col2.metric("Height", height + " m")
-		col2.metric("Weight", weight + " kg")
+		col2.metric("Weight", weight + " kg")'''
 	
 	# col3
 	with col3.container():
