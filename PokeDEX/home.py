@@ -70,17 +70,17 @@ def get_image_path(name, id):
 
 def display_basic_info(match):
 	# get basic info data
-	name = match['name'].iloc[0]
-	id = match['pokedex_number'].iloc[0]
-	height = str(match['height_m'].iloc[0])
-	weight = str(match['weight_kg'].iloc[0])
-	species = ' '.join(match['species'].iloc[0].split(' ')[:-1])
-	type1 = match['type_1'].iloc[0]
-	type2 = match['type_2'].iloc[0]
-	type_number = match['type_number'].iloc[0]
-	ability1 = match['ability_1'].iloc[0]
-	ability2 = match['ability_2'].iloc[0]
-	ability_hidden = match['ability_hidden'].iloc[0]
+	name = match['name']
+	id = match['pokedex_number']
+	height = str(match['height_m'])
+	weight = str(match['weight_kg'])
+	#species = ' '.join(match['species'].iloc[0].split(' ')[:-1])
+	type1 = match['type_1']
+	type2 = match['type_2']
+	type_number = match['type_number']
+	ability1 = match['ability_1']
+	ability2 = match['ability_2']
+	ability_hidden = match['ability_hidden']
 	
 	st.title(name)
 	col1, col2, col3 = st.columns(3)
