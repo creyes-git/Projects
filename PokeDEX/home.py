@@ -279,7 +279,7 @@ def display_similar_pokemons(match):
 
 
 # calling the functions
-display_basic_info(match)
+st.image(Image.open(get_image_path(name,id)))
 
 
 hide_streamlit_style = """
