@@ -37,9 +37,9 @@ with st.sidebar:
 
 # sidebar for searching Pokemon
 name = st.sidebar.selectbox('Search your Pokemon', df['name'].unique(), index = None)
+id = df[df['name'] == name]['Pokedex_number'].iloc[0]
 
-
-# use Pokemon name and id to get image path, refer to 'pokemon_images' folder to see how images are named
+# use Pokemon name and id to get image path
 def get_image_path(name, id):
 	if name.startswith('Mega'):
 		if name.endswith(' X'):
