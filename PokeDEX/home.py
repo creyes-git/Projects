@@ -29,7 +29,7 @@ def load_lottiefile(filepath: str):
         return json.load(f)
 
 
-lottie_pokeball = load_lottiefile("PokeDEX\\pokeball.json")  # replace link to local lottie file
+lottie_pokeball = load_lottiefile("PokeDEX/pokeball.json")  # replace link to local lottie file
 
 st_lottie(
     lottie_pokeball,
