@@ -36,12 +36,12 @@ with st.sidebar:
 
 
 # sidebar for searching Pokemon
-name = str(st.sidebar.selectbox('Search your Pokemon', df['name'].str.lower().unique(), index = 4))
+pokemon_name = str(st.sidebar.selectbox('Search your Pokemon', df['name'].str.lower().unique(), index = 4))
 match = df[df['name'].str.lower() == name]
 id = int(match["pokedex_number"])
 
 # use Pokemon name and id to get image path
-def get_image_path(name, id):
+def get_image_path(pokemon_name, id):
 	if name.startswith('Mega'):
 		if name.endswith(' X'):
 			path = 'PokeDEX/pokemon_images/' + str(id) + '-mega-x.png'
@@ -67,14 +67,14 @@ def get_image_path(name, id):
 		path = 'PokeDEX/pokemon_images/' + str(id) + '.png'
 	return path
 	
-
+ 
+# get basic info data
 def display_basic_info(match):
-	# get basic info data
 	name = match['name']
 	id = match['pokedex_number']
 	height = str(match['height_m'])
 	weight = str(match['weight_kg'])
-	#species = ' '.join(match['species'].iloc[0].split(' ')[:-1])
+	species = ' '.join(match['species'].iloc[0].split(' ')[:-1])
 	type1 = match['type_1']
 	type2 = match['type_2']
 	type_number = match['type_number']
@@ -85,15 +85,13 @@ def display_basic_info(match):
 	st.title(name)
 	col1, col2, col3 = st.columns(3)
 	
-	# leftmost column col1 displays pokemon image
+	# col1
 	try:
-		path = get_image_path(name, id)
-		image = Image.open(path)
-		col1.image(image)	
-	except: # output 'Image not available' instead of crashing the program when image not found
+		col1.image(Image.open(get_image_path(name, id)))	
+	except:
 		col1.write('Image not available.')
 	
-	# middle column col2 displays nicely formatted Pokemon type using css loaded earlier
+	# col2
 	with col2.container():		
 		col2.write('Type')
 		# html code that loads the class defined in css, each Pokemon type has a different style color
@@ -105,7 +103,7 @@ def display_basic_info(match):
 		col2.metric("Height", height + " m")
 		col2.metric("Weight", weight + " kg")
 	
-	# rightmost column col3 displays Pokemon abilities
+	# col3
 	with col3.container():
 		col3.metric("Species", species)
 		col3.write('Abilities')
@@ -279,8 +277,7 @@ def display_similar_pokemons(match):
 
 
 # calling the functions
-st.image(Image.open(get_image_path(name,id)))
-
+display_basic_info(match)
 
 hide_streamlit_style = """
 <style>
