@@ -117,10 +117,10 @@ def display_basic_info(match):
 
 def display_stats(match):
 	# list to gather all type weaknesses and resistances
-	weakness_2_types = []
-	weakness_4_types = []
-	resistance_half_types = []
-	resistance_quarter_types = []
+	weakness_2_types = list()
+	weakness_4_types = list()
+	resistance_half_types = list()
+	resistance_quarter_types = list()
 	
 	# dataset only shows damage (x4, x2, x0.25, x0.5) of each type towards the Pokemon
 	# manually classify the damages into weaknesses and resistances list
@@ -276,8 +276,7 @@ def display_similars(match):
 
 # calling the functions
 display_basic_info(match)
-display_stats(match)
-
+display_breeding(match)
 
 hide_streamlit_style = """
 <style>
