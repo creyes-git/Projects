@@ -226,7 +226,7 @@ def display_charts(match):
 	#df_stats = df_stats.rename(columns={'hp': 'HP', 'attack': 'Attack', 'defense': 'Defense', 'sp_attack': 'Special Attack', 'sp_defense': 'Special Defense', 'speed': 'Speed'})
 	
 	
-	fig = px.line_polar(df_stats, r=df_stats.index , theta=df_stats.columns, line_close=True, range_r=[0, 250])
+	fig = px.line_polar(df_stats, r=df_stats[1] , theta=df_stats[0], line_close=True, range_r=[0, 250])
 	st.plotly_chart(fig)
 
 
