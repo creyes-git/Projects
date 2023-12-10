@@ -221,11 +221,14 @@ def display_breeding(match):
   	
 def display_charts(match):
 	st.header('Base Stats')
+	
 	df_stats = match[["hp","attack","defense","sp_attack","sp_defense","speed"]]
 	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
+	
 	fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark", 
-    					color_discrete_sequence=px.colors.sequential.Agsunset_r, width=400, height=400,line_shape="spline",range_r = [0, 200])
-	fig.update_traces(fill="toself", hovertemplate=None, hoverinfo="skip", showlegend=False, mode="lines", line_shape="spline")
+    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=400, height=400,line_shape="spline",range_r = [0, 200])
+	fig.update_traces(fill="toself", mode="lines", line_shape="spline")
+	
 	st.plotly_chart(fig)
 
 
@@ -273,7 +276,7 @@ def display_similars(match):
 
 # calling the functions
 display_basic_info(match)
-display_charts(match)
+display_stats(match)
 
 
 hide_streamlit_style = """
