@@ -230,7 +230,7 @@ def display_charts(match):
 	#fig = px.line_polar(df_stats, r='stats', theta=df_stats.index, line_close=True, range_r=[0, 250])
 	#st.plotly_chart(fig)
  
-	fig = px.bar_polar(df_stats, r="frequency", theta="direction", color="strength", template="plotly_dark")
+	fig = px.bar_polar(df_stats, theta="direction", color="strength", template="plotly_dark")
 	st.plotly_chart(fig)
 
 
