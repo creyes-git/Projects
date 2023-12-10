@@ -180,6 +180,19 @@ def display_stats(match):
 		col2.markdown(resistance_quarter_text, unsafe_allow_html=True)
 
 
+def display_charts(match):
+	st.header('Base Stats')
+	
+	df_stats = match[["hp","attack","defense","sp_attack","sp_defense","speed"]]
+	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
+	
+	fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark", 
+    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=400, height=400,line_shape="spline",range_r = [0, 200])
+	fig.update_traces(fill="toself", mode="lines", line_shape="spline")
+	
+	st.plotly_chart(fig)
+
+
 def display_breeding(match):	
 	# get training data
 	catch_rate = match['catch_rate']
@@ -196,6 +209,8 @@ def display_breeding(match):
 		
 	with st.container():
 		col1, col2, col3 = st.columns(3)
+  
+		with col1:display_charts(match)
 		
 		# left column col1 displays training data
 		col2.subheader('Training')		
@@ -217,20 +232,7 @@ def display_breeding(match):
 			# this metric is not available for Pokemon without eggs, e.g. Mewtwo
 			col3.metric('Percentage Male/Female', 'NA')
 		col3.metric('Egg Cycles', egg_cycles)
-		
-  	
-def display_charts(match):
-	st.header('Base Stats')
-	
-	df_stats = match[["hp","attack","defense","sp_attack","sp_defense","speed"]]
-	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
-	
-	fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark", 
-    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=400, height=400,line_shape="spline",range_r = [0, 200])
-	fig.update_traces(fill="toself", mode="lines", line_shape="spline")
-	
-	st.plotly_chart(fig)
-
+		  	
 
 def display_similars(match):
 	# get base stats of Pokemon and rename columns nicely
@@ -275,8 +277,8 @@ def display_similars(match):
 
 
 # calling the functions
-display_basic_info(match)
-display_breeding(match)
+display_basic_info(match)# calling get_image_path function inside
+display_breeding(match) # calling display_charts function inside
 
 hide_streamlit_style = """
 <style>
