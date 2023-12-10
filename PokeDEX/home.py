@@ -230,7 +230,8 @@ def display_charts(match):
 	#fig = px.line_polar(df_stats, r='stats', theta=df_stats.index, line_close=True, range_r=[0, 250])
 	#st.plotly_chart(fig)
  
-	fig = px.bar_polar(df_stats)
+	fig = px.line_polar(df, r='r', theta='theta', line_close=True)
+	fig.update_traces(fill='toself')
 	st.plotly_chart(fig)
 
 
