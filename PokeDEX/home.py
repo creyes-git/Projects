@@ -181,7 +181,7 @@ def display_stats(match):
 
 
 def display_charts(match):
-	st.header('Base Stats')
+	st.subheader('Base Stats')
 	
 	df_stats = match[["hp","attack","defense","sp_attack","sp_defense","speed"]]
 	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
@@ -190,7 +190,7 @@ def display_charts(match):
     color_discrete_sequence=px.colors.sequential.Agsunset_r, width=400, height=400,line_shape="spline",range_r = [0, 200])
 	fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 	
-	st.plotly_chart(fig)
+	return fig
 
 
 def display_breeding(match):	
@@ -210,7 +210,7 @@ def display_breeding(match):
 	with st.container():
 		col1, col2, col3 = st.columns(3)
   
-		with col1:display_charts(match)
+		col1.plotly_chart(display_charts(match))
 		
 		# left column col1 displays training data
 		col2.subheader('Training')		
