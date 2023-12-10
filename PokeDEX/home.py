@@ -182,41 +182,41 @@ def display_stats(match):
 
 def display_breeding(match):	
 	# get training data
-	catch_rate = match['catch_rate'].iloc[0]
-	base_friendship	= match['base_friendship'].iloc[0] 
-	base_experience	= match['base_experience'].iloc[0]
-	growth_rate = match['growth_rate'].iloc[0]
+	catch_rate = match['catch_rate']
+	base_friendship	= match['base_friendship']
+	base_experience	= match['base_experience']
+	growth_rate = match['growth_rate']
 	
 	# get breeding data
-	egg_type_number = match['egg_type_number'].iloc[0]
-	egg_type_1	= match['egg_type_1'].iloc[0] 
-	egg_type_2	= match['egg_type_2'].iloc[0]
-	percentage_male = match['percentage_male'].iloc[0]
-	egg_cycles = match['egg_cycles'].iloc[0]
+	egg_type_number = match['egg_type_number']
+	egg_type_1	= match['egg_type_1']
+	egg_type_2	= match['egg_type_2']
+	percentage_male = match['percentage_male']
+	egg_cycles = match['egg_cycles']
 		
 	with st.container():
-		col1, col2 = st.columns(2)
+		col1, col2, col3 = st.columns(3)
 		
 		# left column col1 displays training data
-		col1.subheader('Training')		
-		col1.metric('Catch Rate', catch_rate)
-		col1.metric('Base Friendship', base_friendship)
-		col1.metric('Base Experience', base_experience)
-		col1.metric('Growth Rate', growth_rate)
+		col2.subheader('Training')		
+		col2.metric('Catch Rate', catch_rate)
+		col2.metric('Base Friendship', base_friendship)
+		col2.metric('Base Experience', base_experience)
+		col2.metric('Growth Rate', growth_rate)
 		
 		# right column col2 displays breeding data
-		col2.subheader('Breeding')		
+		col3.subheader('Breeding')		
 		if egg_type_number == 2: # some Pokemon have 2 egg types
-			col2.metric('Egg Types', egg_type_1 + ', ' + egg_type_2)
+			col3.metric('Egg Types', egg_type_1 + ', ' + egg_type_2)
 		else:
-			col2.metric('Egg Types', egg_type_1)
+			col3.metric('Egg Types', egg_type_1)
 		if percentage_male != '':	
 			percentage_female = str(100 - float(match['percentage_male'].iloc[0]))		
-			col2.metric('Percentage Male/Female', percentage_male + '% / ' + percentage_female + '%' )
+			col3.metric('Percentage Male/Female', percentage_male + '% / ' + percentage_female + '%' )
 		else:
 			# this metric is not available for Pokemon without eggs, e.g. Mewtwo
-			col2.metric('Percentage Male/Female', 'NA')
-		col2.metric('Egg Cycles', egg_cycles)
+			col3.metric('Percentage Male/Female', 'NA')
+		col3.metric('Egg Cycles', egg_cycles)
 		
   	
 def display_charts(match):
