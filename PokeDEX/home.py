@@ -184,8 +184,8 @@ def display_charts(match):
 	df_stats = match[["hp","attack","defense","sp_attack","sp_defense","speed"]]
 	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
 	
-	fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark", 
-    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=350, height=350,line_shape="spline",range_r = [0, 200])
+	fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark", title = "Basic Stats"
+    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=375, height=375,line_shape="spline",range_r = [0, 200])
 	fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 	
 	return fig
@@ -208,7 +208,7 @@ def display_breeding(match):
 	with st.container():
 		col1, col2, col3 = st.columns(3)
 
-		col1.subheader('Stats Chart')
+		#col1.subheader('Stats Chart')
 		col1.plotly_chart(display_charts(match))
 		
 		# left column col1 displays training data
