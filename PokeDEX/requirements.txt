@@ -6,6 +6,4 @@ streamlit-extras
 plotly
 matplotlib
 seaborn
-plotly.graph_objects
-
 
