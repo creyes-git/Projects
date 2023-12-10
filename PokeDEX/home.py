@@ -227,7 +227,10 @@ def display_charts(match):
 	#df_stats.columns=['stats']
 	
 	# use plotly express to plot out radar char of stats
-	fig = px.line_polar(df_stats, r='stats', theta=df_stats.index, line_close=True, range_r=[0, 250])
+	#fig = px.line_polar(df_stats, r='stats', theta=df_stats.index, line_close=True, range_r=[0, 250])
+	#st.plotly_chart(fig)
+ 
+	fig = px.bar_polar(df_stats, r="frequency", theta="direction", color="strength", template="plotly_dark")
 	st.plotly_chart(fig)
 
 
