@@ -256,7 +256,7 @@ def display_similars(match):
 	for row in similar_pokemons_df.iterrows():
 		name = row[0]
 		st.subheader(name) # display Pokemon name
-		id = df[df.name == name]['pokedex_number'].iloc[0]
+		id = df[df.name == name]['pokedex_number']
 		
 		# display Pokemon image
 		try:
@@ -278,7 +278,7 @@ def display_similars(match):
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
 display_breeding(match) # calling display_charts function inside
-#display_similars(match)
+display_similars(match)
 
 
 hide_streamlit_style = """
