@@ -254,7 +254,7 @@ def display_similars(match):
 	for row in similar_pokemons_df.iterrows():
 		name = row[0]
 		st.subheader(name) # display Pokemon name
-		id = df[df['name'] == name]['pokedex_number']
+		id = df[df['name'] == name]['pokedex_number'].values[0]
 		st.markdown(name)
 		st.markdown(id)
 		# display Pokemon image
