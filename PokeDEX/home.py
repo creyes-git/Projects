@@ -245,8 +245,8 @@ def display_similars(match):
 	
 	# find norm 'distance' between this Pokemon and all other Pokemon
 	norm_df = diff_df.apply(np.linalg.norm, axis=1)
-	# find 20 other Pokemon with smallest distance, i.e. with most similar base stats to this Pokemon
-	similar_pokemons = norm_df.nsmallest(5)[1:6].index # index [1:22] so it does not show itself	
+	# find 5 other Pokemons
+	similar_pokemons = norm_df.nsmallest(5)[1:6].index 	
 	# store all similar Pokemon with their stats in df
 	similar_pokemons_df = df_stats_all.loc[similar_pokemons]
 	
@@ -258,16 +258,22 @@ def display_similars(match):
 		
 		# display Pokemon image
 		try:
-			path = get_image_path(name, id)
-			image = Image.open(path)
-			st.image(image)
+			st.image(Image.open(get_image_path(name, id)))
 		except:
 			st.write('Image not available.')
 		
 		# display radar chart	
-		fig = px.line_polar(row[1], r=name, theta=row[1].index, line_close=True, range_r=[0, 255])
-		st.plotly_chart(fig)
+		#fig = px.line_polar(row[1], r=name, theta=row[1].index, line_close=True, range_r=[0, 255])
+		#st.plotly_chart(fig)
 	
+		fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
+    	color_discrete_sequence=px.colors.sequential.Inferno_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
+		fig.update_traces(fill="toself", mode="lines", line_shape="spline")
+	
+ 
+ 
+ 
+ 
 	# display full table of all 20 similar Pokemons and their stats
 	st.subheader('5 Most Similar Pokemons')
 	st.table(similar_pokemons_df)
