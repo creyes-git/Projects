@@ -236,7 +236,6 @@ def display_breeding(match):
 def display_similars(match):
     # get base stats of Pokemon
 	df_stats = match[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
-	
 	# get stats of all other Pokemon in the full dataframe
 	df_stats_all = df[['name', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']].set_index('name')
 	
@@ -249,10 +248,13 @@ def display_similars(match):
 	similar_pokemons = norm_df.nsmallest(5)[1:6].index 	
 	# store all similar Pokemon with their stats in df
 	similar_pokemons_df = df_stats_all.loc[similar_pokemons]
-	
+ 
+	st.markdown("                                                                                                         ")
 	col1, col2, col3 = st.columns(3)
+ 
 	# display name, image, radar chart of each similar Pokemon
 	for row in similar_pokemons_df.iterrows():
+		st.markdown("                                                                                                         ")
 		name = row[0]
 		id = df[df['name'] == name]['pokedex_number'].values[0]
 		
