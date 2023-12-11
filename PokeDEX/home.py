@@ -253,8 +253,8 @@ def display_similars(match):
 	# display name, image, radar chart of each similar Pokemon
 	for row in similar_pokemons_df.iterrows():
 		name = row[0]
-		st.subheader("name") # display Pokemon name
-		id = df[df.name == name]['pokedex_number']
+		st.subheader(name) # display Pokemon name
+		id = df[df['name'] == name]['pokedex_number']
 		
 		# display Pokemon image
 		try:
