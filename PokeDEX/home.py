@@ -113,8 +113,6 @@ def display_basic_info(match):
 			col3.subheader(ability2)
 		if ability_hidden != '':
 			col3.subheader(ability_hidden + ' (Hidden)')
-   
-	
 
 
 def display_stats(match):
@@ -234,8 +232,6 @@ def display_breeding(match):
 			col3.metric('Percentage Male/Female', 'NA')
 		col3.metric('Egg Cycles', egg_cycles)
 
-		
-		  	
 
 def display_similars(match):
 	# get base stats of Pokemon and rename columns nicely
@@ -282,6 +278,8 @@ def display_similars(match):
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
 display_breeding(match) # calling display_charts function inside
+display_similars(match)
+
 
 hide_streamlit_style = """
 <style>
