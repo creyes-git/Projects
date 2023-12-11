@@ -9,7 +9,7 @@ from streamlit_lottie import st_lottie
 import json
 
 # page configuration
-st.set_page_config(page_title = "Pokédex",page_icon= "🎴", layout = "wide")
+st.set_page_config(page_title = "Pokédex",page_icon= "🎴", layout = "wide", css = "style.css")
 
 # css file for displaying Pokemon type (fire, water etc.)
 def local_css(file_name):
@@ -104,7 +104,7 @@ def display_basic_info(match):
 		col2.metric("Weight", weight + " kg")
 	
 	# col3
-	with col3.container():
+	with col3.container('<div class="container">This is a container with a border</div>', unsafe_allow_html=True):
 		col3.metric("Species", species)
 		col3.write('Abilities')
 		if ability1 != '':
@@ -113,6 +113,8 @@ def display_basic_info(match):
 			col3.subheader(ability2)
 		if ability_hidden != '':
 			col3.subheader(ability_hidden + ' (Hidden)')
+   
+	
 
 
 def display_stats(match):
