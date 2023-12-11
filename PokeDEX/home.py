@@ -255,7 +255,8 @@ def display_similars(match):
 		name = row[0]
 		st.subheader(name) # display Pokemon name
 		id = df[df['name'] == name]['pokedex_number']
-		
+		st.markdown(name)
+		st.markdown(id)
 		# display Pokemon image
 		try:
 			st.image(Image.open(get_image_path(name, id)))
