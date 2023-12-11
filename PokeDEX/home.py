@@ -246,7 +246,7 @@ def display_similars(match):
 	# find norm 'distance' between this Pokemon and all other Pokemon
 	norm_df = diff_df.apply(np.linalg.norm, axis=1)
 	# find 20 other Pokemon with smallest distance, i.e. with most similar base stats to this Pokemon
-	similar_pokemons = norm_df.nsmallest(21)[1:22].index # index [1:22] so it does not show itself	
+	similar_pokemons = norm_df.nsmallest(5)[1:6].index # index [1:22] so it does not show itself	
 	# store all similar Pokemon with their stats in df
 	similar_pokemons_df = df_stats_all.loc[similar_pokemons]
 	
@@ -269,7 +269,7 @@ def display_similars(match):
 		st.plotly_chart(fig)
 	
 	# display full table of all 20 similar Pokemons and their stats
-	st.subheader('20 Most Similar Pokemons')
+	st.subheader('5 Most Similar Pokemons')
 	st.table(similar_pokemons_df)
 
 
