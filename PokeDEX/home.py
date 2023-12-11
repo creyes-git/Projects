@@ -218,7 +218,7 @@ def display_breeding(match):
 		col2.metric('Catch Rate', catch_rate)
 		col2.metric('Base Friendship', base_friendship)
 		col2.metric('Base Experience', base_experience)
-		col2.metric('Growth Rate', growth_rate)
+		
 		
 		# right column col2 displays breeding data
 		col3.subheader('Breeding')		
@@ -233,6 +233,8 @@ def display_breeding(match):
 			# this metric is not available for Pokemon without eggs, e.g. Mewtwo
 			col3.metric('Percentage Male/Female', 'NA')
 		col3.metric('Egg Cycles', egg_cycles)
+
+		col2.metric('Growth Rate', growth_rate)
 		  	
 
 def display_similars(match):
