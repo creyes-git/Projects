@@ -239,7 +239,7 @@ def display_similars(match):
 	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
  
 	# get stats of all other Pokemon in the full dataframe
-	df_stats_all = df[['name', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']].set_index('name')
+	df_stats_all = df[['name', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
 	df_stats_all.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
  
 	# find difference between stat of Pokemon and each of the other Pokemons
