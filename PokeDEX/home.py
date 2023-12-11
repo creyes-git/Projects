@@ -250,47 +250,25 @@ def display_similars(match):
 	# store all similar Pokemon with their stats in df
 	similar_pokemons_df = df_stats_all.loc[similar_pokemons]
 	
-	col1, col2 = st.columns(2)
-	count = 1
- 
+	col1, col2, col3 = st.columns(3)
 	# display name, image, radar chart of each similar Pokemon
 	for row in similar_pokemons_df.iterrows():
 		name = row[0]
 		id = df[df['name'] == name]['pokedex_number'].values[0]
 		
-		if count % 2 != 0:
-			col1.subheader(name) 
-			try:
-				col1.image(Image.open(get_image_path(name, id)),width=150, caption=name)
-				count += 1
-			except:
-				col1.write('Image not available.')
+		col1.subheader(name) 
+		try:
+			col1.image(Image.open(get_image_path(name, id)),width=150, caption=name)
+		except:
+			col1.write('Image not available.')
 			
-			# display radar chart	
-			#fig = px.line_polar(row[1], r=name, theta=row[1].index, line_close=True, range_r=[0, 255])
-			#st.plotly_chart(fig)
+		# display radar chart	
+		#fig = px.line_polar(row[1], r=name, theta=row[1].index, line_close=True, range_r=[0, 255])
+		#st.plotly_chart(fig)
 		
-			fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
-			color_discrete_sequence=px.colors.sequential.Inferno_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
-			fig.update_traces(fill="toself", mode="lines", line_shape="spline")
-
-		if count % 2 == 0:
-			col2.subheader(name)
-			try:
-				col2.image(Image.open(get_image_path(name, id)),width=150, caption=name)
-				count += 1
-			except:
-				col2.write('Image not available.')
-			
-			# display radar chart	
-			#fig = px.line_polar(row[1], r=name, theta=row[1].index, line_close=True, range_r=[0, 255])
-			#st.plotly_chart(fig)
-		
-			fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
-			color_discrete_sequence=px.colors.sequential.Inferno_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
-			fig.update_traces(fill="toself", mode="lines", line_shape="spline")
-
-  
+		fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
+		color_discrete_sequence=px.colors.sequential.Inferno_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
+		fig.update_traces(fill="toself", mode="lines", line_shape="spline")
   
   
   
