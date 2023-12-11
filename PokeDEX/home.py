@@ -225,7 +225,7 @@ def display_breeding(match):
 		else:
 			col3.metric('Egg Types', egg_type_1)
 		if percentage_male != '':	
-			percentage_female = str(100 - float(match['percentage_male'].iloc[0]))		
+			percentage_female = str(100 - float(match['percentage_male']))		
 			col3.metric('Percentage Male/Female', percentage_male + '% / ' + percentage_female + '%' )
 		else:
 			# this metric is not available for Pokemon without eggs, e.g. Mewtwo
@@ -278,7 +278,7 @@ def display_similars(match):
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
 display_breeding(match) # calling display_charts function inside
-display_similars(match)
+#display_similars(match)
 
 
 hide_streamlit_style = """
