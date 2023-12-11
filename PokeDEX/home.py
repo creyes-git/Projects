@@ -258,7 +258,7 @@ def display_similars(match):
 		
 		# display Pokemon image
 		try:
-			st.image(Image.open(get_image_path(name, id)))
+			st.image(Image.open(get_image_path(name.lower(), id)))
 		except:
 			st.write('Image not available.')
 		
