@@ -104,7 +104,7 @@ def display_basic_info(match):
 		col2.metric("Weight", weight + " kg")
 	
 	# col3
-	with col3.container('<div class="container">', unsafe_allow_html=True):
+	with col3.container():
 		col3.metric("Species", species)
 		col3.write('Abilities')
 		if ability1 != '':
