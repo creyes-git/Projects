@@ -260,13 +260,9 @@ def display_similars(match):
 			col1.image(Image.open(get_image_path(name, id)),width=150, caption=name)
 		except:
 			col1.write('Image not available.')
-			
-		# display radar chart	
-		#fig = px.line_polar(row[1], r=name, theta=row[1].index, line_close=True, range_r=[0, 255])
-		#st.plotly_chart(fig)
 		
 		fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
-		color_discrete_sequence=px.colors.sequential.Plasma_r, width=165, height=165,line_shape="spline",range_r = [0, 200])
+		color_discrete_sequence=px.colors.sequential.Plasma_r, width=265, height=265,line_shape="spline",range_r = [0, 200])
 		fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 		col2.plotly_chart(fig)
 
