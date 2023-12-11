@@ -261,7 +261,7 @@ def display_similars(match):
 		if count % 2 != 0:
 			col1.subheader(name) 
 			try:
-				col1.image(Image.open(get_image_path(name, id)))
+				col1.image(Image.open(get_image_path(name, id)),width=300, caption=name)
 				count += 1
 			except:
 				col1.write('Image not available.')
@@ -277,7 +277,7 @@ def display_similars(match):
 		if count % 2 == 0:
 			col2.subheader(name)
 			try:
-				col2.image(Image.open(get_image_path(name, id)))
+				col2.image(Image.open(get_image_path(name, id)),width=300, caption=name)
 				count += 1
 			except:
 				col2.write('Image not available.')
