@@ -255,12 +255,11 @@ def display_similars(match):
  
 	# display name, image, radar chart of each similar Pokemon
 	for row in similar_pokemons_df.iterrows():
-		
 		name = row[0]
-		st.subheader(name) # display Pokemon name
 		id = df[df['name'] == name]['pokedex_number'].values[0]
 		
 		if count % 2 != 0:
+			col1.subheader(name) 
 			try:
 				col1.image(Image.open(get_image_path(name, id)))
 				count += 1
@@ -276,6 +275,7 @@ def display_similars(match):
 			fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 
 		if count % 2 == 0:
+			col2.subheader(name)
 			try:
 				col2.image(Image.open(get_image_path(name, id)))
 				count += 1
