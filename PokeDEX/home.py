@@ -256,7 +256,6 @@ def display_similars(match):
 		name = row[0]
 		id = df[df['name'] == name]['pokedex_number'].values[0]
 		
-		col1.subheader(name) 
 		try:
 			col1.image(Image.open(get_image_path(name, id)),width=150, caption=name)
 		except:
@@ -269,12 +268,8 @@ def display_similars(match):
 		fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
 		color_discrete_sequence=px.colors.sequential.Inferno_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
 		fig.update_traces(fill="toself", mode="lines", line_shape="spline")
-  
-  
-  
-  
-  
-  
+		col2.plotly_chart(fig)
+
 
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
