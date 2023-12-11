@@ -236,12 +236,12 @@ def display_breeding(match):
 def display_similars(match):
 	# get base stats of Pokemon and rename columns nicely
 	df_stats = match[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
-	df_stats = df_stats.rename(columns={'hp': 'HP', 'attack': 'Attack', 'defense': 'Defense', 'sp_attack': 'Special Attack', 'sp_defense': 'Special Defense', 'speed': 'Speed'})
-	
+	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
+ 
 	# get stats of all other Pokemon in the full dataframe
 	df_stats_all = df[['name', 'hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']].set_index('name')
-	df_stats_all = df_stats_all.rename(columns={'hp': 'HP', 'attack': 'Attack', 'defense': 'Defense', 'sp_attack': 'Special Attack', 'sp_defense': 'Special Defense', 'speed': 'Speed'})
-	
+	df_stats_all.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
+ 
 	# find difference between stat of Pokemon and each of the other Pokemons
 	diff_df = pd.DataFrame(df_stats_all.values - df_stats.values, index = df_stats_all.index)
 	
