@@ -234,7 +234,7 @@ def display_breeding(match):
 
 
 def display_similars(match):
-	# get base stats of Pokemon and rename columns nicely
+    # get base stats of Pokemon
 	df_stats = match[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
 	
 	# get stats of all other Pokemon in the full dataframe
@@ -250,35 +250,53 @@ def display_similars(match):
 	# store all similar Pokemon with their stats in df
 	similar_pokemons_df = df_stats_all.loc[similar_pokemons]
 	
+	col1, col2 = st.columns(2)
+	count = 1
+ 
 	# display name, image, radar chart of each similar Pokemon
 	for row in similar_pokemons_df.iterrows():
+		
 		name = row[0]
 		st.subheader(name) # display Pokemon name
 		id = df[df['name'] == name]['pokedex_number'].values[0]
-		st.markdown(name)
-		st.markdown(id)
-		# display Pokemon image
-		try:
-			st.image(Image.open(get_image_path(name, id)))
-		except:
-			st.write('Image not available.')
 		
-		# display radar chart	
-		#fig = px.line_polar(row[1], r=name, theta=row[1].index, line_close=True, range_r=[0, 255])
-		#st.plotly_chart(fig)
-	
-		fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
-    	color_discrete_sequence=px.colors.sequential.Inferno_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
-		fig.update_traces(fill="toself", mode="lines", line_shape="spline")
-	
- 
- 
- 
- 
-	# display full table of all 20 similar Pokemons and their stats
-	st.subheader('5 Most Similar Pokemons')
-	st.table(similar_pokemons_df)
+		if count % 2 != 0:
+			try:
+				col1.image(Image.open(get_image_path(name, id)))
+				count += 1
+			except:
+				col1.write('Image not available.')
+			
+			# display radar chart	
+			#fig = px.line_polar(row[1], r=name, theta=row[1].index, line_close=True, range_r=[0, 255])
+			#st.plotly_chart(fig)
+		
+			fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
+			color_discrete_sequence=px.colors.sequential.Inferno_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
+			fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 
+		if count % 2 == 0:
+			try:
+				col2.image(Image.open(get_image_path(name, id)))
+				count += 1
+			except:
+				col2.write('Image not available.')
+			
+			# display radar chart	
+			#fig = px.line_polar(row[1], r=name, theta=row[1].index, line_close=True, range_r=[0, 255])
+			#st.plotly_chart(fig)
+		
+			fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
+			color_discrete_sequence=px.colors.sequential.Inferno_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
+			fig.update_traces(fill="toself", mode="lines", line_shape="spline")
+
+  
+  
+  
+  
+  
+  
+  
 
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
