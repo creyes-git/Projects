@@ -234,7 +234,7 @@ def display_breeding(match):
 			col3.metric('Percentage Male/Female', 'NA')
 		col3.metric('Egg Cycles', egg_cycles)
 
-		col2.metric('Growth Rate', growth_rate)
+		col3.metric('Growth Rate', growth_rate)
 		  	
 
 def display_similars(match):
