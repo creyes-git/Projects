@@ -266,7 +266,7 @@ def display_similars(match):
 		#st.plotly_chart(fig)
 		
 		fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
-		color_discrete_sequence=px.colors.sequential.Inferno_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
+		color_discrete_sequence=px.colors.sequential.Plasma_r, width=165, height=165,line_shape="spline",range_r = [0, 200])
 		fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 		col2.plotly_chart(fig)
 
