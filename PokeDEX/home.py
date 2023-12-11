@@ -10,7 +10,7 @@ import json
 
 # page configuration
 st.set_page_config(page_title = "Pokédex",page_icon= "🎴", layout = "wide")
-st.image(Image.open('PokeDEX/pokemon_images/full.png'), use_column_width= True, clamp=True)
+st.image(Image.open('PokeDEX/largita.png'), use_column_width= True, clamp=True)
 # css file for displaying Pokemon type (fire, water etc.)
 def local_css(file_name):
     with open(file_name) as f:
