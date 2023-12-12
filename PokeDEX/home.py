@@ -248,6 +248,7 @@ def display_similars(match):
 	similar_pokemons = norm_df.nsmallest(5)[1:6].index 	
 	# store all similar Pokemon with their stats in df
 	similar_pokemons_df = df_stats_all.loc[similar_pokemons]
+	similar_pokemons.index = ['Name', 'HP', 'Attack', 'Defense', 'Special Attack', 'Special Defense', 'Speed']
  
 	st.markdown("                                                                                                             ")
 	
