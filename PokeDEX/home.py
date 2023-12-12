@@ -254,6 +254,12 @@ def display_similars(match):
 	col1, col2 = st.columns(2)
 	col1.subheader('Others Similar Pokemons:')
 	col2.subheader("Basic Stats:")
+ 
+	#list of color sequences for display:
+	colors = list(px.colors.sequential.Plasma_r, px.color.sequential.Magenta_r, px.colors.sequential.Rainbow_r,
+    				px.colors.sequential.Viridis_r, px.colors.sequential.Cividis_r)
+	count = 0
+	
 	# display name, image, radar chart of each similar Pokemon
 	for row in similar_pokemons_df.iterrows():
 		st.markdown("                                                                                                         ")
@@ -267,14 +273,15 @@ def display_similars(match):
 				col1.image(Image.open(get_image_path(name, id)),width=200)
 
 				fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
-				color_discrete_sequence=px.colors.sequential.Plasma_r, width=300, height=300,line_shape="spline",range_r = [0, 200])
+				color_discrete_sequence= colors[count], width=300, height=300,line_shape="spline",range_r = [0, 200])
 				fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 				col2.plotly_chart(fig)
+    
+			count += 1
 		except:
 			col1.write('Image not available.')
 		
 		
-
 
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
