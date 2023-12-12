@@ -250,7 +250,8 @@ def display_similars(match):
 	similar_pokemons_df = df_stats_all.loc[similar_pokemons]
  
 	st.markdown("                                                                                                             ")
-	col1, col2, col3 = st.columns(3)
+	st.subheader('Similar Pokemons')
+	col1, col2 = st.columns(2)
  
 	# display name, image, radar chart of each similar Pokemon
 	for row in similar_pokemons_df.iterrows():
