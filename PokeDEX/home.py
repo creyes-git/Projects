@@ -259,15 +259,17 @@ def display_similars(match):
 		id = df[df['name'] == name]['pokedex_number'].values[0]
 		
 		try:
-			st.markdown(name)
-			col1.image(Image.open(get_image_path(name, id)),width=150, caption=name)
+			col1.markdown(name)
+			col1.image(Image.open(get_image_path(name, id)),width=150)
+
+			fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
+			color_discrete_sequence=px.colors.sequential.Plasma_r, width=265, height=265,line_shape="spline",range_r = [0, 200])
+			fig.update_traces(fill="toself", mode="lines", line_shape="spline")
+			col2.plotly_chart(fig)
 		except:
 			col1.write('Image not available.')
 		
-		fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
-		color_discrete_sequence=px.colors.sequential.Plasma_r, width=265, height=265,line_shape="spline",range_r = [0, 200])
-		fig.update_traces(fill="toself", mode="lines", line_shape="spline")
-		col2.plotly_chart(fig)
+		
 
 
 # calling the functions
