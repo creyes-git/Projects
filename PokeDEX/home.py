@@ -249,7 +249,7 @@ def display_similars(match):
 	# store all similar Pokemon with their stats in df
 	similar_pokemons_df = df_stats_all.loc[similar_pokemons]
  
-	st.markdown("                                                                                                         ")
+	st.markdown("                                                                                                             ")
 	col1, col2, col3 = st.columns(3)
  
 	# display name, image, radar chart of each similar Pokemon
@@ -259,6 +259,7 @@ def display_similars(match):
 		id = df[df['name'] == name]['pokedex_number'].values[0]
 		
 		try:
+			st.markdown(name)
 			col1.image(Image.open(get_image_path(name, id)),width=150, caption=name)
 		except:
 			col1.write('Image not available.')
