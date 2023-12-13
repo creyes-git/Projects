@@ -173,9 +173,11 @@ def display_charts(match):
 	df_stats = match[["hp","attack","defense","sp_attack","sp_defense","speed"]]
 	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
 	
-	fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark",
-    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
-	fig.update_traces(fill="toself", mode="lines", line_shape="spline")
+	#fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark",
+    #color_discrete_sequence=px.colors.sequential.Agsunset_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
+	#fig.update_traces(fill="toself", mode="lines", line_shape="spline")
+	
+	fig = px.bar(df_stats, x = df_stats.index, y = df_stats.values, template="plotly_dark", color_continuous_scale=px.colors.sequential.Agsunset)
 	
 	return fig
 
