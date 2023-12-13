@@ -174,7 +174,7 @@ def display_charts(match):
 	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
 	
 	fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark",
-    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=350, height=350,line_shape="spline",range_r = [0, 200])
+    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
 	fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 	
 	return fig
@@ -260,7 +260,7 @@ def display_similars(match):
                 #color_discrete_sequence = px.colors.sequential.Sunset_r ,line_shape="spline", range_r = [0, 200])
 				#fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 				
-				fig = px.bar(row[1], x = row[1].index, y = name, template = "plotly_dark", color_continuous_scale=px.colors.sequential.Agsunset)
+				fig = px.bar(row[1], y = row[1].index, x = name, template = "plotly_dark", range_color=[0, 250])
 				col2.plotly_chart(fig)
 		except:
 			col1.write('Image not available.')
