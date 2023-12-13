@@ -138,14 +138,12 @@ def display_stats(match):
 					
 	with st.container():	
 		col1, col2 = st.columns(2)	
-		
-		col1.subheader('Resistances and Weaknesses')
 		# get base stats of Pokemon and rename columns nicely
 		df_stats = match[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
 		df_stats.index = ['HP', 'Attack', 'Defense', 'Special Attack', 'Special Defense', 'Speed']
 		
 		# the displayed types are nicely formatted using css (same as earlier)
-
+		col1.subheader('Resistances')
 		col1.write('Strong Weaknesses (x4)')	
 		weakness_text = ''
 		for type in weakness_4_types:
@@ -157,6 +155,7 @@ def display_stats(match):
 			weakness_text += f' <span class="icon type-{type}">{type}</span>'
 		col1.markdown(weakness_text, unsafe_allow_html=True)
 		
+		col1.subheader('Weaknesses')
 		col2.write('Resistances (x0.5)')
 		resistance_half_text = ''
 		for type in resistance_half_types:
