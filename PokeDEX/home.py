@@ -143,8 +143,7 @@ def display_stats(match):
 		col1.subheader('Base Stats')
 		# get base stats of Pokemon and rename columns nicely
 		df_stats = match[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
-		df_stats = df_stats.rename(columns={'hp': 'HP', 'attack': 'Attack', 'defense': 'Defense', 'sp_attack': 'Special Attack', 'sp_defense': 'Special Defense', 'speed': 'Speed'}).T
-		df_stats.columns=['stats']
+		df_stats.index = ['HP', 'Attack', 'Defense', 'Special Attack', 'Special Defense', 'Speed']
 		
 		# plot horizontal bar chart using matplotlib.pyplot
 		fig, ax = plt.subplots()
