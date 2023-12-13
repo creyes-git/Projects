@@ -210,9 +210,9 @@ def display_breeding(match):
 		# right column col2 displays breeding data
 		col3.subheader('Breeding')		
 		if egg_type_number == 2: # some Pokemon have 2 egg types
-			col3.metric('Egg Types', f' <span class="icon type-{egg_type_1}">{egg_type_1}</span>' + ', ' + f' <span class="icon type-{egg_type_2}">{egg_type_2}</span>')
+			col3.metric('Egg Types', f' <span class="icon type-{egg_type_1.lower()}">{egg_type_1.lower()}</span>' + ', ' + f' <span class="icon type-{egg_type_2.lower()}">{egg_type_2.lower()}</span>')
 		else:
-			col3.metric('Egg Types', f' <span class="icon type-{egg_type_1}">{egg_type_1}</span>')
+			col3.metric('Egg Types', f' <span class="icon type-{egg_type_1.lower()}">{egg_type_1.lower()}</span>')
 		if percentage_male != '':	
 			percentage_female = str(100 - float(match['percentage_male']))		
 			col3.metric('Percentage Male/Female', percentage_male + '% / ' + percentage_female + '%' )
