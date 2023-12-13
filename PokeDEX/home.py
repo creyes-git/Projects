@@ -266,10 +266,9 @@ def display_similars(match):
 
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
-#display_breeding(match) # calling display_charts function inside
-#display_similars(match)
+display_breeding(match) # calling display_charts function inside
 display_stats(match)
-
+display_similars(match)
 
 hide_streamlit_style = """
 <style>
