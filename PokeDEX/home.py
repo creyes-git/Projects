@@ -145,11 +145,6 @@ def display_stats(match):
 		df_stats = match[['hp', 'attack', 'defense', 'sp_attack', 'sp_defense', 'speed']]
 		df_stats.index = ['HP', 'Attack', 'Defense', 'Special Attack', 'Special Defense', 'Speed']
 		
-		# plot horizontal bar chart using matplotlib.pyplot
-		fig, ax = plt.subplots()
-		ax.barh(y = df_stats.index, width = df_stats.values)
-		plt.xlim([0, 250])
-		col1.pyplot(fig)
 		
 		# right column col2 displays the weaknesses and resistances
 		# the displayed types are nicely formatted using css (same as earlier)
