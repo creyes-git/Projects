@@ -144,29 +144,29 @@ def display_stats(match):
 		
 		# the displayed types are nicely formatted using css (same as earlier)
 		col1.subheader('Resistances')
-		col1.write('Strong Weaknesses (x4)')	
+		col2.write('Strong Weaknesses (x4)')	
 		weakness_text = ''
 		for type in weakness_4_types:
 			weakness_text += f' <span class="icon type-{type}">{type}</span>'
-		col1.markdown(weakness_text, unsafe_allow_html=True)		
-		col1.write('Weaknesses (x2)')	
+		col2.markdown(weakness_text, unsafe_allow_html=True)		
+		col2.write('Weaknesses (x2)')	
 		weakness_text = ''
 		for type in weakness_2_types:
 			weakness_text += f' <span class="icon type-{type}">{type}</span>'
-		col1.markdown(weakness_text, unsafe_allow_html=True)
+		col2.markdown(weakness_text, unsafe_allow_html=True)
 		
 		col2.subheader('Weaknesses')
-		col2.write('Resistances (x0.5)')
+		col1.write('Resistances (x0.5)')
 		resistance_half_text = ''
 		for type in resistance_half_types:
 			resistance_half_text += f' <span class="icon type-{type}">{type}</span>'
-		col2.markdown(resistance_half_text, unsafe_allow_html=True)
+		col1.markdown(resistance_half_text, unsafe_allow_html=True)
 		
-		col2.write('Strong Resistances (x0.25)')
+		col1.write('Strong Resistances (x0.25)')
 		resistance_quarter_text = ''
 		for type in resistance_quarter_types:
 			resistance_quarter_text += f' <span class="icon type-{type}">{type}</span>'
-		col2.markdown(resistance_quarter_text, unsafe_allow_html=True)
+		col1.markdown(resistance_quarter_text, unsafe_allow_html=True)
 
 
 def display_charts(match):
@@ -209,10 +209,11 @@ def display_breeding(match):
 		
 		# right column col2 displays breeding data
 		col3.subheader('Breeding')		
+		
 		if egg_type_number == 2: # some Pokemon have 2 egg types
-			col3.metric('Egg Types', egg_type_1 + ', ' + egg_type_2)
+			col3.metric('Egg Types', f' <span class="icon type-{type}">{type}</span>' + ', ' + f' <span class="icon type-{type}">{type}</span>')
 		else:
-			col3.metric('Egg Types', egg_type_1)
+			col3.metric('Egg Types', f' <span class="icon type-{type}">{type}</span>')
 		if percentage_male != '':	
 			percentage_female = str(100 - float(match['percentage_male']))		
 			col3.metric('Percentage Male/Female', percentage_male + '% / ' + percentage_female + '%' )
@@ -265,7 +266,7 @@ def display_similars(match):
 
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
-display_breeding(match) # calling display_charts function inside
+#display_breeding(match) # calling display_charts function inside
 #display_similars(match)
 display_stats(match)
 
