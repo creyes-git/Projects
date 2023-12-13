@@ -173,11 +173,9 @@ def display_charts(match):
 	df_stats = match[["hp","attack","defense","sp_attack","sp_defense","speed"]]
 	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
 	
-	#fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark",
-    #color_discrete_sequence=px.colors.sequential.Agsunset_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
-	#fig.update_traces(fill="toself", mode="lines", line_shape="spline")
-	
-	fig = px.bar(df_stats, x = df_stats.index, y = df_stats.values, template="plotly_dark", color_continuous_scale=px.colors.sequential.Agsunset)
+	fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark",
+    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
+	fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 	
 	return fig
 
@@ -258,9 +256,11 @@ def display_similars(match):
 				col1.markdown(name)
 				col1.image(Image.open(get_image_path(name, id)),width=200)
 
-				fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark", width=300, height=300,
-                color_discrete_sequence = px.colors.sequential.Sunset_r ,line_shape="spline", range_r = [0, 200])
-				fig.update_traces(fill="toself", mode="lines", line_shape="spline")
+				#fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark", width=300, height=300,
+                #color_discrete_sequence = px.colors.sequential.Sunset_r ,line_shape="spline", range_r = [0, 200])
+				#fig.update_traces(fill="toself", mode="lines", line_shape="spline")
+				
+				fig = px.bar(row[1], x = row[1].index, y = name, template = "plotly_dark", color_continuous_scale=px.colors.sequential.Agsunset)
 				col2.plotly_chart(fig)
 		except:
 			col1.write('Image not available.')
