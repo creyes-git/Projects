@@ -174,7 +174,7 @@ def display_charts(match):
 	df_stats.index = ["HP", "Attack", "Defense", "Special Attack", "Special Defense", "Speed"]	
 	
 	fig = px.line_polar(df_stats, r = df_stats.values, theta = df_stats.index, line_close=True, template="plotly_dark",
-    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
+    color_discrete_sequence=px.colors.sequential.Agsunset_r, width=350, height=350,line_shape="spline",range_r = [0, 200])
 	fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 	
 	return fig
