@@ -260,8 +260,12 @@ def display_similars(match):
                 #color_discrete_sequence = px.colors.sequential.Sunset_r ,line_shape="spline", range_r = [0, 200])
 				#fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 				
-				fig = px.bar(row[1], y = row[1].index, x = name, template = "plotly_dark", range_color=[0, 250], labels={"x": "Stats", "y": "Value"},
-                title = "Base Stats of Charmander", color = df_stats.values, color_continuous_scale = px.colors.sequential.Agsunset)
+				fig = px.bar(row[1], y = row[1].index, x = name, template = "plotly_dark", range_color=[0, 250], color_continuous_scale = px.colors.sequential.Agsunset)
+
+				fig.update_layout(
+					xaxis_title="Value",
+					yaxis_title="Basic Stats")
+    			
 				col2.plotly_chart(fig)
 		except:
 			col1.write('Image not available.')
