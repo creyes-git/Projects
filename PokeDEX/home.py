@@ -278,7 +278,10 @@ def display_similars(match):
 display_basic_info(match)# calling get_image_path function inside
 display_breeding(match) # calling display_charts function inside
 #display_similars(match)
-display_stats(match)
+#display_stats(match)
+code = '''for i in match:
+			print(i)'''
+st.code(code, language='python')
 
 
 hide_streamlit_style = """
