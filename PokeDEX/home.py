@@ -256,7 +256,7 @@ def display_similars(match):
 	col2.subheader("Basic Stats:")
 	# display name, image, radar chart of each similar Pokemon
 	for row in similar_pokemons_df.iterrows():
-		st.markdown("                                                                                                         ")
+		st.write("\n")
 		name = row[0]
 		id = df[df['name'] == name]['pokedex_number'].values[0]
 		
@@ -277,7 +277,8 @@ def display_similars(match):
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
 display_breeding(match) # calling display_charts function inside
-display_similars(match)
+#display_similars(match)
+display_stats(match)
 
 
 hide_streamlit_style = """
