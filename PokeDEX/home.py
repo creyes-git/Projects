@@ -211,7 +211,7 @@ def display_breeding(match):
 		col3.subheader('Breeding')
 		col3.markdown('Egg Type')
 		if egg_type_number == 2: # some Pokemon have 2 egg types
-			col3.markdown(f'<span class="icon type-{egg_type_1.lower()}">{egg_type_1}</span>' + ', ' + f'<span class="icon type-{egg_type_2.lower()}">{egg_type_2}</span>', unsafe_allow_html=True)
+			col3.markdown(f'<span class="icon type-{egg_type_1.lower()}">{egg_type_1}</span>' + ' & ' + f'<span class="icon type-{egg_type_2.lower()}">{egg_type_2}</span>', unsafe_allow_html=True)
 		else:
 			col3.markdown(f'<span class="icon type-{egg_type_1.lower()}">{egg_type_1}</span>', unsafe_allow_html=True)
 		if percentage_male != '':	
