@@ -250,6 +250,9 @@ def display_similars(match):
 	similar_pokemons_df = df_stats_all.loc[similar_pokemons]
 	
 	st.empty()
+	st.empty()
+	st.empty()	
+	st.empty()
  
 	col1, col2 = st.columns(2)
 	col1.subheader('Others Similar Pokemons:')
