@@ -268,7 +268,7 @@ def display_similars(match):
 				col1.image(Image.open(get_image_path(name, id)),width=200)
 
 				fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark", width=300, height=300,
-                color_discrete_sequence = px.colors.sequential.RdBu ,line_shape="spline", range_r = [0, 200])
+                color_discrete_sequence = px.colors.sequential.OrRd ,line_shape="spline", range_r = [0, 200])
 				fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 				col2.plotly_chart(fig)
 		except:
