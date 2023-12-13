@@ -124,18 +124,17 @@ def display_stats(match):
 	
 	# dataset only shows damage (x4, x2, x0.25, x0.5) of each type towards the Pokemon
 	# manually classify the damages into weaknesses and resistances list
-	for i, j in match.iterrows():
-		for column, value in j.iteritems():
-			if column.startswith('against_'):
-				type = column.split('_')[1]
-				if value == 0.5:
-					resistance_half_types.append(type)
-				elif value == 0.25:
-					resistance_quarter_types.append(type)
-				elif value == 2:
-					weakness_2_types.append(type)
-				elif value == 4:
-					weakness_4_types.append(type)
+	for column, value in zip(match.index, match.values):
+		if column.startswith('against_'):
+			type = column.split('_')[1]
+			if value == 0.5:
+				resistance_half_types.append(type)
+			elif value == 0.25:
+				resistance_quarter_types.append(type)
+			elif value == 2:
+				weakness_2_types.append(type)
+			elif value == 4:
+				weakness_4_types.append(type)
 					
 	with st.container():	
 		col1, col2 = st.columns(2)	
@@ -278,9 +277,7 @@ def display_similars(match):
 display_basic_info(match)# calling get_image_path function inside
 display_breeding(match) # calling display_charts function inside
 #display_similars(match)
-#display_stats(match)
-code = "for i in match: print(i)"
-st.code(code, language='python')
+display_stats(match)
 
 
 hide_streamlit_style = """
