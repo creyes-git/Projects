@@ -177,7 +177,7 @@ def display_charts(match):
     #color_discrete_sequence=px.colors.sequential.Agsunset_r, width=325, height=325,line_shape="spline",range_r = [0, 200])
 	#fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 	
-	fig = px.bar(df_stats, x = df_stats.index, y = df_stats.values, template="plotly_dark", color_continuous_scale=px.colors.sequential.Agsunset)
+	fig = px.bar(df_stats, y = df_stats.index, x = df_stats.values, template="plotly_dark", color_continuous_scale = px.colors.sequential.Agsunset)
 	
 	return fig
 
