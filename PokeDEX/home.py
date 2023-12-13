@@ -255,11 +255,6 @@ def display_similars(match):
 	col1, col2 = st.columns(2)
 	col1.subheader('Others Similar Pokemons:')
 	col2.subheader("Basic Stats:")
- 
-	#list of color sequences for display:
-	colors = list("ffd524")
-	count = 0
-	
 	# display name, image, radar chart of each similar Pokemon
 	for row in similar_pokemons_df.iterrows():
 		st.markdown("                                                                                                         ")
@@ -272,15 +267,12 @@ def display_similars(match):
 				col1.markdown(name)
 				col1.image(Image.open(get_image_path(name, id)),width=200)
 
-				fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark",
-				color = "#f59" , width=300, height=300,line_shape="spline",range_r = [0, 200])
+				fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark", width=300, height=300,
+                color_discrete_sequence = px.colors.sequential.Viridis_r ,line_shape="spline", range_r = [0, 200])
 				fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 				col2.plotly_chart(fig)
-    
-			count += 1
 		except:
 			col1.write('Image not available.')
-		
 		
 
 # calling the functions
