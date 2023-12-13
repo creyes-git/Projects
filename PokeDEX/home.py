@@ -249,9 +249,7 @@ def display_similars(match):
 	# store all similar Pokemon with their stats in df
 	similar_pokemons_df = df_stats_all.loc[similar_pokemons]
 	
-	tab1, tab2 = st.tabs(["tab1", "tab2"])
-	tab1.subheader('                                                                                                          ')
-	tab2.subheader('                                                                                                          ')
+	st.empty()
  
 	col1, col2 = st.columns(2)
 	col1.subheader('Others Similar Pokemons:')
