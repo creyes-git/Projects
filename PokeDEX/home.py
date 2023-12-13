@@ -209,11 +209,10 @@ def display_breeding(match):
 		
 		# right column col2 displays breeding data
 		col3.subheader('Breeding')		
-		
 		if egg_type_number == 2: # some Pokemon have 2 egg types
-			col3.metric('Egg Types', f' <span class="icon type-{type}">{type}</span>' + ', ' + f' <span class="icon type-{type}">{type}</span>')
+			col3.metric('Egg Types', f' <span class="icon type-{egg_type_1}">{egg_type_1}</span>' + ', ' + f' <span class="icon type-{egg_type_2}">{egg_type_2}</span>')
 		else:
-			col3.metric('Egg Types', f' <span class="icon type-{type}">{type}</span>')
+			col3.metric('Egg Types', f' <span class="icon type-{egg_type_1}">{egg_type_1}</span>')
 		if percentage_male != '':	
 			percentage_female = str(100 - float(match['percentage_male']))		
 			col3.metric('Percentage Male/Female', percentage_male + '% / ' + percentage_female + '%' )
@@ -267,8 +266,9 @@ def display_similars(match):
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
 display_breeding(match) # calling display_charts function inside
+#display_similars(match)
 display_stats(match)
-display_similars(match)
+
 
 hide_streamlit_style = """
 <style>
