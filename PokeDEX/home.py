@@ -147,7 +147,7 @@ def display_stats(match):
 		
 		# plot horizontal bar chart using matplotlib.pyplot
 		fig, ax = plt.subplots()
-		ax.barh(y = df_stats.index, width = df_stats.stats)
+		ax.barh(y = df_stats.index, width = df_stats.values)
 		plt.xlim([0, 250])
 		col1.pyplot(fig)
 		
