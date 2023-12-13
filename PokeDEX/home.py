@@ -155,7 +155,7 @@ def display_stats(match):
 			weakness_text += f' <span class="icon type-{type}">{type}</span>'
 		col1.markdown(weakness_text, unsafe_allow_html=True)
 		
-		col1.subheader('Weaknesses')
+		col2.subheader('Weaknesses')
 		col2.write('Resistances (x0.5)')
 		resistance_half_text = ''
 		for type in resistance_half_types:
