@@ -266,7 +266,8 @@ def display_similars(match):
 
 def space():
     st.write("\n\n\n\n")	
-
+    
+    
 # calling the functions
 display_basic_info(match)# calling get_image_path function inside
 display_breeding(match) # calling display_charts function inside
