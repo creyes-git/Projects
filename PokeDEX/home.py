@@ -256,11 +256,11 @@ def display_similars(match):
 				col1.markdown(name)
 				col1.image(Image.open(get_image_path(name, id)),width=200)
 
-				#fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark", width=300, height=300,
-                #color_discrete_sequence = px.colors.sequential.Sunset_r ,line_shape="spline", range_r = [0, 200])
-				#fig.update_traces(fill="toself", mode="lines", line_shape="spline")
+				fig = px.line_polar(row[1], r = name, theta = row[1].index, line_close=True, template="plotly_dark", width=300, height=300,
+                color_discrete_sequence = px.colors.sequential.Sunset_r ,line_shape="spline", range_r = [0, 200])
+				fig.update_traces(fill="toself", mode="lines", line_shape="spline")
 				
-				fig = px.bar(row[1], y = row[1].index, x = name, template = "plotly_dark", color_continuous_scale=px.colors.get_colorscale('Greens'))
+				#fig = px.bar(row[1], y = row[1].index, x = name, template = "plotly_dark", color_continuous_scale=px.colors.get_colorscale('Greens'))
 
 				fig.update_layout(
 					xaxis_title="Value",
