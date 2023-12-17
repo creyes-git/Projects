@@ -4,6 +4,5 @@ streamlit
 streamlit-lottie
 streamlit-extras
 plotly
-matplotlib
-seaborn
-
+requests
+PIL

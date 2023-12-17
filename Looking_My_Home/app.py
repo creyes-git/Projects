@@ -1,13 +1,15 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+from streamlit_lottie import st_lottie
 import plotly.express as px
-import requests
-import json
-import os
+import plotly.graph_objects as go
 from datetime import date
 from PIL import Image
-from streamlit_lottie import st_lottie
+import requests
+import warnings
+import json
+import os
 
 #setting the page config
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
@@ -49,7 +51,7 @@ def get_rentcast_data_of_month(api_key):
     headers = {"accept": "application/json",
             "X-Api-Key": api_key}
 
-    if not os.path.exists(f""):
+    if not os.path.exists(f"Looking_My_Home/rentcast_data_{current_month_year}.csv"):
         #creating an empty dataframe
         df = pd.DataFrame()
 
@@ -61,4 +63,6 @@ def get_rentcast_data_of_month(api_key):
             df = pd.concat([df, pd.DataFrame(response)], ignore_index=True)
                 
         #saving the dataframe to a csv file       
-        df.to_csv(f"rentcast_data_{current_month_year}.csv", index=False)
+        df.to_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv", index=False)
+    else:
+        warnings.warn("File already exists. You can call the API only once a month")    
