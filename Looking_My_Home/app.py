@@ -74,7 +74,6 @@ df = pd.read_csv(data)
 df.dropna(how="all", inplace=True)
 df.drop_duplicates(inplace=True)
 
-st.table(df)
     
     
     
