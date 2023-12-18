@@ -10,7 +10,7 @@ import requests
 import warnings
 import json
 import os
-from credentials import api_key
+from creeds import api_key
 
 #setting the page config
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
