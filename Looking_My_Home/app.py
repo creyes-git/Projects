@@ -66,7 +66,7 @@ def get_data_and_path(api_key):
     
     
 # getting the api key from a txt file
-with open("rentcast_api_key.txt", "r") as f: 
+with open("My_files/rentcast_api_key.txt", "r") as f: 
     api_key = f.read()
     
 df = pd.read_csv(get_data_and_path(api_key))
