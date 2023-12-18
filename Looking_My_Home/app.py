@@ -67,13 +67,15 @@ def get_data_and_path(api_key):
         return f"Looking_My_Home/rentcast_data_{current_month_year}.csv"
     else:
         return f"Looking_My_Home/rentcast_data_{current_month_year}.csv"
+  
     
-
+config()
 data = get_data_and_path(os.getenv("api_key"))
 df = pd.read_csv(data)
 df.dropna(how="all", inplace=True)
 df.drop_duplicates(inplace=True)
 
+st.table(df)
     
     
     
