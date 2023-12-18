@@ -5,4 +5,4 @@ streamlit-lottie
 streamlit-extras
 plotly
 requests
-dotenv
+python-dotenv

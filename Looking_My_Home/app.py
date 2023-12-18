@@ -68,7 +68,7 @@ def get_data_and_path(api_key):
     else:
         return f"Looking_My_Home/rentcast_data_{current_month_year}.csv"
   
-# get the data and path   
+ 
 config()
 data = get_data_and_path(os.getenv("api_key"))
 df = pd.read_csv(data)
