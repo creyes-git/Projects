@@ -5,3 +5,5 @@ streamlit-lottie
 streamlit-extras
 plotly
 requests
+python-dotenv==1.0.0
+pip
