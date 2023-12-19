@@ -10,13 +10,11 @@ import requests
 import warnings
 import json
 import os
-from dotenv import load_dotenv
+import dotenv
 
+dotenv.load_dotenv()
 #setting the page config
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
-
-def config():
-    load_dotenv()
 
 def local_css(file_name):
     with open(file_name) as f:
@@ -68,8 +66,7 @@ def get_data_and_path(api_key):
     else:
         return f"Looking_My_Home/rentcast_data_{current_month_year}.csv"
   
- 
-config()
+
 data = get_data_and_path(os.getenv("api_key"))
 df = pd.read_csv(data)
 df.dropna(how="all", inplace=True)
