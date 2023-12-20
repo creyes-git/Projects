@@ -10,9 +10,7 @@ import requests
 import warnings
 import json
 import os
-import dotenv
 
-dotenv.load_dotenv()
 #setting the page config
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
 
@@ -24,9 +22,9 @@ def local_css(file_name):
 current_month_year = str(date.today()).split("-")[1] + "-" + str(date.today()).split("-")[0]
     
 
-def get_data_and_path(api_key):
+def get_data_and_path():
     headers = {"accept": "application/json",
-            "X-Api-Key": api_key}
+            "X-Api-Key": st.secrets["api_key"]}
     
     list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=2&status=Active&limit=500",
@@ -67,7 +65,7 @@ def get_data_and_path(api_key):
         return f"Looking_My_Home/rentcast_data_{current_month_year}.csv"
   
 
-data = get_data_and_path(os.getenv("api_key"))
+data = get_data_and_path()
 df = pd.read_csv(data)
 df.dropna(how="all", inplace=True)
 df.drop_duplicates(inplace=True)
