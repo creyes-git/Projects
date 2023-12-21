@@ -72,6 +72,15 @@ def get_data_and_path():
         df.drop_duplicates(inplace=True)
         return df
 
+# load lottie animation
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
+
+lottie_home = load_lottiefile("Looking_My_Home\home1.json")
+with st.sidebar:
+	st_lottie(lottie_home, height = 60, quality = "high")
+	
 
 
     
