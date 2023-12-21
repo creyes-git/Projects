@@ -79,7 +79,7 @@ def load_lottiefile(filepath: str):
 
 lottie_home = load_lottiefile("Looking_My_Home/home1.json")
 with st.sidebar:
-	st_lottie(lottie_home, height = 60, quality = "high")
+	st_lottie(lottie_home, height = 120, quality = "high")
 	
 
 
