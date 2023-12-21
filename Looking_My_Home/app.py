@@ -4,6 +4,7 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 import plotly.express as px
 import plotly.graph_objects as go
+import plotly.figure_factory as ff
 from datetime import date
 from PIL import Image
 import requests
@@ -19,7 +20,7 @@ def local_css(file_name):
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
 # calling the api, 1 time per month, saving the data in a csv file and loading it and returning a dataframe
-def get_data_and_path():
+def get_data_and_loaddf():
     #getting the current date
     current_month_year = str(date.today()).split("-")[1] + "-" + str(date.today()).split("-")[0]
     # st.secrets call the secret api key from streamlit
@@ -82,7 +83,11 @@ def lottie_sidebar(path):
 
 lottie_sidebar("Looking_My_Home/home1.json")
 
-
+def display_ga_map(dataframe):
+    fig = ff.create_choropleth(dataframe)
+    st.plotly_chart(fig)
+    
+display_ga_map(get_data_and_loaddf())
     
     
     
