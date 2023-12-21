@@ -73,14 +73,14 @@ def get_data_and_path():
         return df
 
 # load lottie animation
-def load_lottiefile(filepath: str):
-    with open(filepath, "r") as f:
-        return json.load(f)
+def lottie_sidebar(path):
+    with open(path, "r") as f:
+        lottie_home = json.load(f)
+    with st.sidebar:
+	    st_lottie(lottie_home, height = 120, quality = "high")
 
-lottie_home = load_lottiefile("Looking_My_Home/home1.json")
-with st.sidebar:
-	st_lottie(lottie_home, height = 120, quality = "high")
-	
+
+lottie_sidebar("Looking_My_Home/home1.json")
 
 
     
