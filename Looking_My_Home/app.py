@@ -17,15 +17,15 @@ st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="w
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
-#getting the current date
-current_month_year = str(date.today()).split("-")[1] + "-" + str(date.today()).split("-")[0]
     
-
+# calling the api, 1 time per month, saving the data in a csv file and loading it and returning a dataframe
 def get_data_and_path():
+    #getting the current date
+    current_month_year = str(date.today()).split("-")[1] + "-" + str(date.today()).split("-")[0]
+    # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
             "X-Api-Key": st.secrets["api_key"]}
-    
+    # list of urls to call
     list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=2&status=Active&limit=500",
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=3&status=Active&limit=500",
@@ -60,17 +60,20 @@ def get_data_and_path():
         #saving the dataframe to a csv file       
         df.to_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv", index=False)
         
-        return f"Looking_My_Home/rentcast_data_{current_month_year}.csv"
+        # creating and cleaning the dataframe
+        df = pd.read_csv(get_data_and_path())
+        df.dropna(how="all", inplace=True)
+        df.drop_duplicates(inplace=True)
+        return df
+    
     else:
-        return f"Looking_My_Home/rentcast_data_{current_month_year}.csv"
-  
+        df = pd.read_csv(get_data_and_path())
+        df.dropna(how="all", inplace=True)
+        df.drop_duplicates(inplace=True)
+        return df
 
-data = get_data_and_path()
-df = pd.read_csv(data)
-df.dropna(how="all", inplace=True)
-df.drop_duplicates(inplace=True)
 
-st.table(df)
+
     
     
     
