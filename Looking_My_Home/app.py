@@ -86,8 +86,9 @@ lottie_sidebar("Looking_My_Home/home1.json")
 def display_ga_map(dataframe):
     fig = ff.create_choropleth(dataframe)
     st.plotly_chart(fig)
-st.table(get_data_and_loaddf())    
-#display_ga_map(get_data_and_loaddf())
+
+
+display_ga_map(get_data_and_loaddf())
     
     
     
