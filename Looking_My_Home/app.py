@@ -62,13 +62,13 @@ def get_data_and_loaddf():
         df.to_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv", index=False)
         
         # creating and cleaning the dataframe
-        df = pd.read_csv(get_data_and_path())
+        df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
         df.dropna(how="all", inplace=True)
         df.drop_duplicates(inplace=True)
         return df
     
     else:
-        df = pd.read_csv(get_data_and_path())
+        df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
         df.dropna(how="all", inplace=True)
         df.drop_duplicates(inplace=True)
         return df
