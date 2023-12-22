@@ -84,9 +84,14 @@ def lottie_sidebar(path):
 lottie_sidebar("Looking_My_Home/home3.json")
 
 def display_ga_map(dataframe):
-    fig = px.choropleth(dataframe, lat = "latitude", lon = "longitude", locationmode="USA-states", scope="usa", color="price")
-    st.plotly_chart(fig.show())
-    
+    fig = px.choropleth(dataframe, locations="city", color="price", locationmode="USA-states", scope="usa")
+    fig.update_layout(
+        template='plotly_dark',
+        plot_bgcolor='rgba(0, 0, 0, 0)',
+        paper_bgcolor='rgba(0, 0, 0, 0)',
+        margin=dict(l=0, r=0, t=0, b=0),
+        height=350)
+    st.plotly_chart(fig)
     
 display_ga_map(get_data_and_loaddf())
     
