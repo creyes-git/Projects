@@ -11,6 +11,7 @@ import requests
 import warnings
 import json
 import os
+from urllib.request import urlopen
 
 #setting the page config
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
@@ -81,31 +82,22 @@ def lottie_sidebar(path):
 	    st_lottie(lottie_home, height = 100, quality = "high")
 
 
-lottie_sidebar("Looking_My_Home/home3.json")
+lottie_sidebar("Looking_My_Home/home1.json")
 
 def display_ga_map(dataframe):
-    fig = go.Figure()
+    with urlopen("https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json") as response:
+        counties = json.load(response)
 
-    fig.add_trace(go.Choroplethmapbox(
-        geojson="https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json",
-        locations=["GA"],
-        z=[1],  # Set a dummy value for the color scale
-        colorscale="Viridis",
-        zmin=0,
-        zmax=1,
-        marker_opacity=0.7,
-        marker_line_width=0,
-    ))
-
-    fig.update_layout(
-        title_text="Choropleth Map of Georgia State",
-        mapbox=dict(
-            center=dict(lat=32.678125, lon=-83.222976),
-            zoom=6,
-        ),
-    )
-
-    st.plotly_chart(fig)
+    fig = px.choropleth_mapbox(dataframe, geojson=counties, locations=["GA"],
+                            color_continuous_scale="Viridis",
+                            range_color=(0, 12),
+                            mapbox_style="carto-positron",
+                            zoom=3, center = {"lat": 37.0902, "lon": -95.7129},
+                            opacity=0.5)
+    
+    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    st.plotly_chart(fig, use_container_width=True)
+            
 
     
 display_ga_map(get_data_and_loaddf())
