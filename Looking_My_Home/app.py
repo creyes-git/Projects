@@ -84,11 +84,10 @@ def lottie_sidebar(path):
 lottie_sidebar("Looking_My_Home/home3.json")
 
 def display_ga_map(dataframe):
-
-    fig = px.scatter_mapbox(data_frame=dataframe, lat="latitude", lon="longitude", hover_data=["formattedAddress", "price"], hover_name= "city",
-                            zoom=9, height=500, color="price", color_continuous_scale="oranges")
-    #fig.update_layout(mapbox_style="open-street-map")
-    #fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    px.set_mapbox_access_token(open(".mapbox_token").read())
+    
+    fig = px.scatter_mapbox(dataframe, lat="latitude", lon="longitude", size="price", zoom=10, color="price",
+                    color_continuous_scale=px.colors.cyclical.IceFire, size_max=15, zoom=10)
     st.plotly_chart(fig)
 
 
