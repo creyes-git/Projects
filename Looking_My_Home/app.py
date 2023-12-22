@@ -78,7 +78,7 @@ def lottie_sidebar(path):
     with open(path, "r") as f:
         lottie_home = json.load(f)
     with st.sidebar:
-	    st_lottie(lottie_home, height = 120, quality = "high")
+	    st_lottie(lottie_home, height = 100, quality = "high")
 
 
 lottie_sidebar("Looking_My_Home/home3.json")
@@ -88,7 +88,7 @@ def display_ga_map(dataframe):
     fig = px.scatter_mapbox(data_frame=dataframe, lat="latitude", lon="longitude", zoom=9,)
     #fig.update_layout(mapbox_style="open-street-map")
     #fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-    fig.show()
+    st.plotly_chart(fig)
 
 
 display_ga_map(get_data_and_loaddf())
