@@ -84,13 +84,29 @@ def lottie_sidebar(path):
 lottie_sidebar("Looking_My_Home/home3.json")
 
 def display_ga_map(dataframe):
-    fig = px.choropleth(dataframe, locations="city", color="price", locationmode="USA-states", scope="usa")
+    fig = go.Figure(go.Scattermapbox(
+            lat=dataframe['latitude'],
+            lon=dataframe['longitude'],
+            mode='markers',
+            marker=go.scattermapbox.Marker(
+                size=9
+            ),
+            text=dataframe['formattedAddress'],))
+
     fig.update_layout(
-        template='plotly_dark',
-        plot_bgcolor='rgba(0, 0, 0, 0)',
-        paper_bgcolor='rgba(0, 0, 0, 0)',
-        margin=dict(l=0, r=0, t=0, b=0),
-        height=350)
+        autosize=True,
+        hovermode='closest',
+        mapbox=dict( 
+            bearing=0,
+            center=dict(
+                lat=38.92,
+                lon=-77.07
+            ),
+            pitch=0,
+            zoom=10
+        ),
+    )
+
     st.plotly_chart(fig)
     
 display_ga_map(get_data_and_loaddf())
