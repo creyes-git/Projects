@@ -84,28 +84,37 @@ def lottie_sidebar(path):
 lottie_sidebar("Looking_My_Home/home3.json")
 
 def display_ga_map(dataframe):
-    fig = go.Figure(go.Scattermapbox(
-            lat=dataframe['latitude'],
-            lon=dataframe['longitude'],
-            mode='markers',
-            marker=go.scattermapbox.Marker(
-                size=9
+    limits = [(0,2),(3,10),(11,20),(21,50),(50,3000)]
+    colors = ["royalblue","crimson","lightseagreen","orange","lightgrey"]
+    cities = dataframe['city'].unique()
+    scale = 5000
+
+    fig = go.Figure()
+
+    for i in range(len(limits)):
+        lim = limits[i]
+        df_sub = dataframe[lim[0]:lim[1]]
+        fig.add_trace(go.Scattergeo(
+            locationmode = 'USA-states',
+            lon = df_sub['longitude'],
+            lat = df_sub['latitude'],
+            text = df_sub['city'],
+            marker = dict(
+                size = df_sub['price']/scale,
+                color = colors[i],
+                line_color='rgb(40,40,40)',
+                line_width=0.5,
+                sizemode = 'area'
             ),
-            text=dataframe['formattedAddress'],))
+            name = '{0} - {1}'.format(lim[0],lim[1])))
 
     fig.update_layout(
-        autosize=True,
-        hovermode='closest',
-        mapbox=dict( 
-            bearing=0,
-            center=dict(
-                lat=38.92,
-                lon=-77.07
-            ),
-            pitch=0,
-            zoom=10
-        ),
-    )
+            title_text = '2014 US city populations<br>(Click legend to toggle traces)',
+            showlegend = True,
+            geo = dict(
+                scope = 'usa',
+                landcolor = 'rgb(217, 217, 217)',))
+
 
     st.plotly_chart(fig)
     
