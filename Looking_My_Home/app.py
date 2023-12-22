@@ -95,7 +95,8 @@ def display_ga_map(dataframe):
         lim = limits[i]
         df_sub = dataframe[lim[0]:lim[1]]
         fig.add_trace(go.Scattergeo(
-            locationmode = 'USA-GA',
+            locationmode = 'USA-states',
+            locations= ['GA'],
             lon = df_sub['longitude'],
             lat = df_sub['latitude'],
             text = df_sub['city'],
