@@ -95,7 +95,7 @@ def display_ga_map(dataframe):
         lim = limits[i]
         df_sub = dataframe[lim[0]:lim[1]]
         fig.add_trace(go.Scattergeo(
-            locationmode = 'GA-city',
+            locationmode = 'Georgia',
             lon = df_sub['longitude'],
             lat = df_sub['latitude'],
             text = df_sub['city'],
@@ -109,6 +109,7 @@ def display_ga_map(dataframe):
             name = '{0} - {1}'.format(lim[0],lim[1])))
 
     fig.update_layout(
+            template = 'plotly_dark',
             title_text = '2014 US city populations<br>(Click legend to toggle traces)',
             showlegend = True,
             geo = dict(
