@@ -84,41 +84,29 @@ def lottie_sidebar(path):
 lottie_sidebar("Looking_My_Home/home3.json")
 
 def display_ga_map(dataframe):
-    limits = [(0,2),(3,10),(11,20),(21,50),(50,3000)]
-    colors = ["royalblue","crimson","lightseagreen","orange","lightgrey"]
-    cities = dataframe['city'].unique()
-    scale = 5000
-
     fig = go.Figure()
 
-    for i in range(len(limits)):
-        lim = limits[i]
-        df_sub = dataframe[lim[0]:lim[1]]
-        fig.add_trace(go.Scattergeo(
-            locationmode = 'GA.geojson',
-            locations= df_sub['city'],
-            lon = df_sub['longitude'],
-            lat = df_sub['latitude'],
-            text = df_sub['city'],
-            marker = dict(
-                size = df_sub['price']/scale,
-                color = colors[i],
-                line_color='rgb(40,40,40)',
-                line_width=0.5,
-                sizemode = 'area'
-            ),
-            name = '{0} - {1}'.format(lim[0],lim[1])))
+    fig.add_trace(go.Choroplethmapbox(
+        geojson="https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json",
+        locations=["GA"],
+        z=[1],  # Set a dummy value for the color scale
+        colorscale="Viridis",
+        zmin=0,
+        zmax=1,
+        marker_opacity=0.7,
+        marker_line_width=0,
+    ))
 
     fig.update_layout(
-            template = 'plotly_dark',
-            title_text = '2014 US city populations<br>(Click legend to toggle traces)',
-            showlegend = True,
-            geo = dict(
-                scope = 'usa',
-                landcolor = 'rgb(217, 217, 217)',))
-
+        title_text="Choropleth Map of Georgia State",
+        mapbox=dict(
+            center=dict(lat=32.678125, lon=-83.222976),
+            zoom=6,
+        ),
+    )
 
     st.plotly_chart(fig)
+
     
 display_ga_map(get_data_and_loaddf())
     
