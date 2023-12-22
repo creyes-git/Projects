@@ -86,7 +86,7 @@ lottie_sidebar("Looking_My_Home/home3.json")
 def display_ga_map(dataframe):
     fig = px.scatter_mapbox(dataframe[["latitude", "longitude", "squareFootage", "price", "city", "state", "propertyType", "bedrooms", "bathrooms"]], lat="latitude", lon="longitude", zoom=10, color="price",
                             hover_name="city", hover_data=["propertyType", "bedrooms", "bathrooms", "price"])
-    st.plotly_chart(fig)
+    st.plotly_chart(fig.show(), use_container_width=True)
 
 
 display_ga_map(get_data_and_loaddf())
