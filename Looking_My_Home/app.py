@@ -99,11 +99,11 @@ def display_ga_map(dataframe):
     fig.update_layout(
         mapbox=dict(
             center={"lat": 33, "lon": -83.23},
-            zoom=6,
+            zoom=5.5,
             style="carto-positron",
             ))
     
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, width = 700, height = 500)
 
 display_ga_map(get_data_and_loaddf())
     
