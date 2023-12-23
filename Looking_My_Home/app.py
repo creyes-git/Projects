@@ -85,23 +85,16 @@ def lottie_sidebar(path):
 lottie_sidebar("Looking_My_Home/home1.json")
 
 def display_ga_map(dataframe):
-    with urlopen("https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json") as response:
-        counties = json.load(response)
+    fig = go.Figure(go.Scattergeo())
+    fig.update_geos(
+        visible=False, resolution=110, scope="ga",
+        showcountries=True, countrycolor="Black",
+        showsubunits=True, subunitcolor="Blue"
+    )
+    fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0})
+    fig.show()  
 
-    fig = px.choropleth_mapbox(dataframe, geojson=counties, locations=["GA"],
-                            color_continuous_scale="Viridis",
-                            range_color=(0, 12),
-                            mapbox_style="carto-positron",
-                            zoom=3, center = {"lat": 37.0902, "lon": -95.7129},
-                            opacity=0.5)
-    
-    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-    st.plotly_chart(fig, use_container_width=True)
-            
-
-    
-display_ga_map(get_data_and_loaddf())
-    
+        
     
     
     
