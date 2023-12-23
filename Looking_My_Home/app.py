@@ -91,18 +91,15 @@ def display_ga_map(dataframe):
     # Create the choropleth map
     fig = px.choropleth_mapbox(
         dataframe,
-        hover_name="formattedAddress",
-        hover_data=["price","bedrooms","bathrooms","propertyType"],
-        color="price",
-        color_continuous_scale=px.colors.sequential.Plasma,
         mapbox_style="carto-positron",
         geojson=geojson_data,
         locations='state',
         center={"lat": 32.6782, "lon": -83.2220},  # Georgia center
         zoom=6,
         template="plotly_dark")
-    
-    
+    # Add a scatter mapbox layer
+    fig.add_scattermapbox(px.scatter_mapbox(dataframe, lat="latitude", lon="longitude", hover_name="city", hover_data=["State", "Population"],
+                            color_discrete_sequence=["fuchsia"], zoom=3, height=300))
     st.plotly_chart(fig)
 
         
