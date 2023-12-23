@@ -105,16 +105,8 @@ def display_ga_map(dataframe):
             style="carto-positron"
         )
     )
-
-    # Combine the choropleth map and scatter mapbox
-    fig_combined = fig.update_traces(marker=dict(size=10, opacity=0.5))
-
-    # Add the scatter mapbox data to the choropleth map
-    for data in fig_scatter.data:
-        fig_combined.add_trace(data)
-
     # Show the combined map
-    st.plotly_chart(fig_combined, use_container_width=True)
+    st.plotly_chart(fig_scatter, use_container_width=True)
 
         
 display_ga_map(get_data_and_loaddf())
