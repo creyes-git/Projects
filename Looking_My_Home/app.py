@@ -97,6 +97,7 @@ def display_ga_map(dataframe):
 
     # Update the layout of the scatter mapbox
     fig.update_layout(
+        template='plotly_dark',
         mapbox=dict(
             center={"lat": 33, "lon": -83.23},
             zoom=5.25,
