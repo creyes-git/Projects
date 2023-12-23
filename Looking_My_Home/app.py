@@ -91,8 +91,9 @@ def display_ga_map(dataframe):
     fig.add_trace(go.Scattermapbox(
         lat=dataframe['latitude'],
         lon=dataframe['longitude'],
-        mode='markers',
-        marker=dict(size=14, color='red'),
+        mode="markers",
+        marker=dict(size=5, color=dataframe['price'], opacity=0.5),
+        coloraxis="coloraxis",
         text=dataframe['price']))
 
     # Update the layout of the scatter mapbox
@@ -100,7 +101,7 @@ def display_ga_map(dataframe):
         mapbox=dict(
             center={"lat": 32.6782, "lon": -83.2220},
             zoom=5.5,
-            style="dark"))
+            style="plotly_dark"))
     
     st.plotly_chart(fig)
 
