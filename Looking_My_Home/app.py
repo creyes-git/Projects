@@ -92,7 +92,7 @@ def display_ga_map(dataframe):
         lat=dataframe['latitude'],
         lon=dataframe['longitude'],
         mode='markers',
-        marker=dict(size=10, color = ),
+        marker=dict(size=10, color = dataframe['price']),
         text=str(dataframe['price'])+"$"))
 
     # Update the layout of the scatter mapbox
