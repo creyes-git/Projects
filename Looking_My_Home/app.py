@@ -92,7 +92,7 @@ def display_ga_map(dataframe):
         lat=dataframe['latitude'],
         lon=dataframe['longitude'],
         mode='markers',
-        marker=dict(size=7, color = dataframe['price']),
+        marker=dict(size=10, color = "green"),
         text=str(dataframe['price'])+"$"))
 
     # Update the layout of the scatter mapbox
@@ -101,8 +101,7 @@ def display_ga_map(dataframe):
             center={"lat": 33, "lon": -83.23},
             zoom=6,
             style="carto-positron",
-            width=800,
-            height=600))
+            ))
     
     st.plotly_chart(fig)
 
