@@ -104,7 +104,7 @@ def display_ga_map(dataframe):
     
     st.plotly_chart(fig_scatter)
 
-c1,c2,c3,c4,c5 = st.columns(3)      
+c1,c2,c3,c4,c5 = st.columns(5)      
 with c3: 
     display_ga_map(get_data_and_loaddf())
     
