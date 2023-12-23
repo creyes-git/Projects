@@ -98,8 +98,8 @@ def display_ga_map(dataframe):
     # Update the layout of the scatter mapbox
     fig.update_layout(
         mapbox=dict(
-            center={"lat": 32.6782, "lon": -83.2220},
-            zoom=5,
+            center={"lat": 33, "lon": -83.23},
+            zoom=6,
             style="carto-positron"))
     
     st.plotly_chart(fig, use_container_width=True)
