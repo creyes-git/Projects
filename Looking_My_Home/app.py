@@ -100,8 +100,7 @@ def display_ga_map(dataframe):
         template='plotly_dark',
         mapbox=dict(
             center={"lat": 33, "lon": -83.23},
-            zoom=5.25,
-            style="carto-positron",
+            zoom=5.25
             ))
     
     st.plotly_chart(fig)
