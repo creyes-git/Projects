@@ -93,12 +93,12 @@ def display_ga_map(dataframe):
         dataframe,
         geojson=geojson_data,
         locations='state',
-        mapbox_style="carto-positron",
         center={"lat": 32.6782, "lon": -83.2220},  # Georgia center
         zoom=6,
         template="plotly_dark")
+    
+    
     st.plotly_chart(fig)
-
 
         
 display_ga_map(get_data_and_loaddf())
