@@ -85,18 +85,7 @@ def lottie_sidebar(path):
 lottie_sidebar("Looking_My_Home/home1.json")
 
 def display_ga_map(dataframe):
-    # Load GeoJSON data for Georgia
-    with open("Looking_My_Home//GA.geojson") as geojson_file:
-        geojson_data = json.load(geojson_file)
-    # Create the choropleth map
-    fig = px.choropleth_mapbox(
-        dataframe,
-        mapbox_style="carto-positron",
-        geojson=geojson_data,
-        locations='state',
-        center={"lat": 32.6782, "lon": -83.2220},  # Georgia center
-        zoom=6,
-        template="plotly_dark")
+    
     
     # Create the scatter mapbox layer
     fig_scatter = go.Figure()
