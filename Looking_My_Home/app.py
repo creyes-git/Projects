@@ -99,13 +99,13 @@ def display_ga_map(dataframe):
     fig_scatter.update_layout(
         mapbox=dict(
             center={"lat": 32.6782, "lon": -83.2220},
-            zoom=6,
-            style="carto-positron"))
+            zoom=3,
+            style="open-street-map"))
     
     st.plotly_chart(fig_scatter)
 
-c1,c2,c3 = st.columns(3)      
-with c1: 
+c1,c2,c3,c4,c5 = st.columns(3)      
+with c3: 
     display_ga_map(get_data_and_loaddf())
     
     
