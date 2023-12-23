@@ -86,28 +86,19 @@ lottie_sidebar("Looking_My_Home/home1.json")
 
 def display_ga_map(dataframe):
     # Load GeoJSON data for Georgia
-    with open('path/to/georgia.geojson') as geojson_file:
+    with open("Looking_My_Home//GA.geojson") as geojson_file:
         geojson_data = json.load(geojson_file)
-
-    # Create a DataFrame for Plotly
-    # You can customize this DataFrame based on your data
-    data = {'State': ['Georgia']}
-    df = pd.DataFrame(data)
-
     # Create the choropleth map
     fig = px.choropleth_mapbox(
-        df,
+        dataframe,
         geojson=geojson_data,
         locations='State',
         featureidkey="properties.NAME",
         color_discrete_sequence=['blue'],  # Customize the color
         mapbox_style="carto-positron",
         center={"lat": 32.6782, "lon": -83.2220},  # Centered around Georgia
-        zoom=6
-    )
-
-    # Show the map
-    fig.show()
+        zoom=6)
+    st.plotly_chart(fig)
 
 
         
