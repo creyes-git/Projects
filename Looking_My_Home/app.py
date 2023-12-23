@@ -86,7 +86,7 @@ lottie_sidebar("Looking_My_Home/home1.json")
 
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
-    fig = go.Figure()
+    fig = go.Figure(layout=go.Layout(height=700))
 
     fig.add_trace(go.Scattermapbox(
         lat=dataframe['latitude'],
