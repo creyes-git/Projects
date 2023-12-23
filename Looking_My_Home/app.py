@@ -85,14 +85,30 @@ def lottie_sidebar(path):
 lottie_sidebar("Looking_My_Home/home1.json")
 
 def display_ga_map(dataframe):
-    fig = go.Figure(go.Scattergeo())
-    fig.update_geos(
-        visible=False, resolution=110, scope="ga",
-        showcountries=True, countrycolor="Black",
-        showsubunits=True, subunitcolor="Blue"
+    # Load GeoJSON data for Georgia
+    with open('path/to/georgia.geojson') as geojson_file:
+        geojson_data = json.load(geojson_file)
+
+    # Create a DataFrame for Plotly
+    # You can customize this DataFrame based on your data
+    data = {'State': ['Georgia']}
+    df = pd.DataFrame(data)
+
+    # Create the choropleth map
+    fig = px.choropleth_mapbox(
+        df,
+        geojson=geojson_data,
+        locations='State',
+        featureidkey="properties.NAME",
+        color_discrete_sequence=['blue'],  # Customize the color
+        mapbox_style="carto-positron",
+        center={"lat": 32.6782, "lon": -83.2220},  # Centered around Georgia
+        zoom=6
     )
-    fig.update_layout(height=300, margin={"r":0,"t":0,"l":0,"b":0})
-    fig.show()  
+
+    # Show the map
+    fig.show()
+
 
         
 display_ga_map(get_data_and_loaddf())
