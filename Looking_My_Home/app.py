@@ -95,7 +95,7 @@ def display_ga_map(dataframe):
     fig.show()  
 
         
-    
+display_ga_map(get_data_and_loaddf())
     
     
         
