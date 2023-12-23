@@ -103,7 +103,7 @@ def display_ga_map(dataframe):
             style="carto-positron",
             ))
     
-    st.plotly_chart(fig, width = 500, height = 500)
+    st.plotly_chart(fig, width = 300, height = 300)
 c1, c2,c3 = st.columns(3)
 with c2:
     display_ga_map(get_data_and_loaddf())
