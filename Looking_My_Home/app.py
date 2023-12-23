@@ -92,11 +92,9 @@ def display_ga_map(dataframe):
     fig = px.choropleth_mapbox(
         dataframe,
         geojson=geojson_data,
-        locations='State',
-        featureidkey="properties.NAME",
-        color_discrete_sequence=['blue'],  # Customize the color
+        locations='state',
         mapbox_style="carto-positron",
-        center={"lat": 32.6782, "lon": -83.2220},  # Centered around Georgia
+        center={"lat": 32.6782, "lon": -83.2220},  # Georgia center
         zoom=6)
     st.plotly_chart(fig)
 
