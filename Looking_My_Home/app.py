@@ -102,7 +102,7 @@ def display_ga_map(dataframe):
             zoom=5,
             style="open-street-map"))
     
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True, theme= "dark")
 
 display_ga_map(get_data_and_loaddf())
     
