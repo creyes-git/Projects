@@ -97,10 +97,35 @@ def display_ga_map(dataframe):
         center={"lat": 32.6782, "lon": -83.2220},  # Georgia center
         zoom=6,
         template="plotly_dark")
-    # Add a scatter mapbox layer
-    fig.add_scattermapbox(px.scatter_mapbox(dataframe, lat="latitude", lon="longitude", hover_name="city", hover_data=["State", "Population"],
-                            color_discrete_sequence=["fuchsia"], zoom=3, height=300))
-    st.plotly_chart(fig)
+    
+    # Create the scatter mapbox layer
+    fig_scatter = go.Figure()
+
+    fig_scatter.add_trace(go.Scattermapbox(
+        lat=dataframe['latitude'],
+        lon=dataframe['longitude'],
+        mode='markers',
+        marker=dict(size=14, color='red'),
+        text=dataframe['price']))
+
+    # Update the layout of the scatter mapbox
+    fig_scatter.update_layout(
+        mapbox=dict(
+            center={"lat": 32.6782, "lon": -83.2220},
+            zoom=6,
+            style="carto-positron"
+        )
+    )
+
+    # Combine the choropleth map and scatter mapbox
+    fig_combined = fig.update_traces(marker=dict(size=10, opacity=0.5))
+
+    # Add the scatter mapbox data to the choropleth map
+    for data in fig_scatter.data:
+        fig_combined.add_trace(data)
+
+    # Show the combined map
+    st.plotly_chart(fig_combined, use_container_width=True)
 
         
 display_ga_map(get_data_and_loaddf())
