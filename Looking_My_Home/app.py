@@ -102,14 +102,12 @@ def display_ga_map(dataframe):
             zoom=5.25,
             style= "white-bg"))
     
-    fig.update_geos(
-    showcountries=True,
-    showland=True,  
-    landcolor='black',
-    showocean=True,
-    oceancolor='white',
-    showcoastlines=True,
-    coastlinecolor='black')
+    fig.add_trace(go.Scattermapbox(
+    mode="lines",
+    lon=[-85.605166, -80.840646, -80.840646, -85.605166, -85.605166],
+    lat=[30.355644, 30.355644, 35.000771, 35.000771, 30.355644],
+    line=dict(width=2, color="red"),
+    text=["Georgia Border"]))
     
     st.plotly_chart(fig)
 
