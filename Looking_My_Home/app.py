@@ -99,7 +99,7 @@ def display_ga_map(dataframe):
     fig.update_layout(
         mapbox=dict(
             center={"lat": 32.75, "lon": -83.23},
-            zoom=5.5,
+            zoom=5.75,
             style= "carto-positron"))
     
     return fig
