@@ -101,8 +101,7 @@ def display_ga_map(dataframe):
         mapbox=dict(
             center={"lat": 32.75, "lon": -83.23},
             zoom=5.5,
-            style= "carto-positron",
-            title = "GA properties distribution: "))
+            style= "carto-positron"))
     
     return fig
 
