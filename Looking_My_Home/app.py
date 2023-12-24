@@ -100,15 +100,8 @@ def display_ga_map(dataframe):
         mapbox=dict(
             center={"lat": 32.75, "lon": -83.23},
             zoom=5.25,
-            style="outdoors",
-            opacity=0.9,
-            hovertemplate = "Price: %{text}",
-            font = dict(
-                family = "Arial",
-                size = 12,
-                color = "#7f7f7f",
-            )
-            )
+            style="Dark",
+            opacity=0.9)
     )
     
     return fig
