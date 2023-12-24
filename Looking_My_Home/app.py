@@ -100,14 +100,7 @@ def display_ga_map(dataframe):
         mapbox=dict(
             center={"lat": 32.75, "lon": -83.23},
             zoom=5.25,
-            style= "white-bg"))
-    
-    fig.add_trace(go.Scattermapbox(
-    mode="lines",
-    lon=[-85.605166, -80.840646, -80.840646, -85.605166, -85.605166],
-    lat=[30.355644, 30.355644, 35.000771, 35.000771, 30.355644],
-    line=dict(width=2, color="red"),
-    text=["Georgia Border"]))
+            style= "carto-positron"))
     
     st.plotly_chart(fig)
 
