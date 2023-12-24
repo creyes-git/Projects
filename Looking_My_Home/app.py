@@ -100,8 +100,16 @@ def display_ga_map(dataframe):
         mapbox=dict(
             center={"lat": 32.75, "lon": -83.23},
             zoom=5.25,
-            style="carto-positron",
-            ))
+            style="carto-positron"),
+        geo=dict(
+            bgcolor='rgba(0,0,0,0)',
+            landcolor='gray', 
+            showocean=True, 
+            oceancolor='black', 
+            showland=True, 
+            showcountries=True,
+            countrycolor='white')
+    )
     
     return fig
 
