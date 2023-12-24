@@ -103,14 +103,6 @@ def display_ga_map(dataframe):
             zoom=5.5,
             style= "carto-positron"))
     
-    fig.update_layout(
-    autosize=False,
-    width=600,
-    height=600,
-    margin=dict(l=0, r=0, t=0, b=0),
-    aspectmode='manual',
-    aspectratio=dict(x=1, y=1))
-    
     return fig
 
 st.plotly_chart(display_ga_map(get_data_and_loaddf()))
