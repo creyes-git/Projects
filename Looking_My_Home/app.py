@@ -86,7 +86,7 @@ lottie_sidebar("Looking_My_Home/home1.json")
 
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
-    fig = go.Figure(layout=go.Layout(height=500, width=500))
+    fig = go.Figure(layout=go.Layout(height=550, width=500))
 
     fig.add_trace(go.Scattermapbox(
         lat=dataframe['latitude'],
@@ -99,23 +99,10 @@ def display_ga_map(dataframe):
     fig.update_layout(
         mapbox=dict(
             center={"lat": 32.75, "lon": -83.23},
-            zoom=5.25,
+            zoom=5.5,
             style= "carto-positron"))
     
-    fig.update_geos(
-    projection_type="orthographic",
-    overwrite=True,
-    showcountries=False,  # Hide country boundaries
-    showland=True,  # Show land
-    landcolor='white',  # Set land color to white
-    showocean=True,  # Show ocean
-    oceancolor='white',  # Set ocean color to white
-    showcoastlines=True,  # Show coastlines
-    coastlinecolor='black',  # Set coastline color to black
-)
+    return fig
 
-    
-    st.plotly_chart(fig)
-
-display_ga_map(get_data_and_loaddf())
+st.plotly_chart(display_ga_map(get_data_and_loaddf()))
 
