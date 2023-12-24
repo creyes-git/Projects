@@ -103,6 +103,8 @@ def display_ga_map(dataframe):
             style= "carto-positron"))
     
     fig.update_geos(
+    projection_type="orthographic",
+    overwrite=True,
     showcountries=False,  # Hide country boundaries
     showland=True,  # Show land
     landcolor='white',  # Set land color to white
