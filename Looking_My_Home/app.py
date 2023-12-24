@@ -106,13 +106,7 @@ def display_ga_map(dataframe):
     return fig
 
 
-c1, c2 = st.columns(2)
-with st.container():
-    c1.plotly_chart(display_ga_map(get_data_and_loaddf()))
-    c2.plotly_chart(display_ga_map(get_data_and_loaddf()))
-    
-    
-    
+st.plotly_chart(display_ga_map(get_data_and_loaddf()))
         
 
 
