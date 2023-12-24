@@ -100,7 +100,7 @@ def display_ga_map(dataframe):
         mapbox=dict(
             center={"lat": 32.75, "lon": -83.23},
             zoom=5.25,
-            style= "open-street-map"
+            style= "carto-positron"
             ),
     geo = dict() 
         
