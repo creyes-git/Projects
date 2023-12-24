@@ -103,9 +103,9 @@ def display_ga_map(dataframe):
             style= "white-bg"))
     
     fig.update_geos(
-    showcountries=False,
+    showcountries=True,
     showland=True,  
-    landcolor='white',
+    landcolor='black',
     showocean=True,
     oceancolor='white',
     showcoastlines=True,
