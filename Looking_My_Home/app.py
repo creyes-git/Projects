@@ -100,18 +100,7 @@ def display_ga_map(dataframe):
         mapbox=dict(
             center={"lat": 32.75, "lon": -83.23},
             zoom=5.5,
-            style= "carto-positron",
-            layers=[
-                dict(
-                    sourcetype = "geojson",
-                    source = dataframe,
-                    type = "symbol",
-                    symbol = "circle",
-                    color = dataframe['price'],
-                    size = 10,
-                    opacity = 0.5)]
-                )
-            )
+            style= "carto-positron"))
     
     return fig
 
