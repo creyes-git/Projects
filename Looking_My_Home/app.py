@@ -109,12 +109,7 @@ def display_ga_map(dataframe):
                     symbol = "circle",
                     color = dataframe['price'],
                     size = 10,
-                    opacity = 0.5,
-                    text = str(dataframe['price'])+"$",
-                    hoverinfo = "text",
-                    textposition = "bottom center",
-                    hovertext = str(dataframe['price'])+"$",
-                    hovertemplate = "%{text}<extra></extra>")]
+                    opacity = 0.5)]
                 )
             )
     
