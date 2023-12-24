@@ -101,13 +101,9 @@ def display_ga_map(dataframe):
             center={"lat": 32.75, "lon": -83.23},
             zoom=5.25,
             style="carto-darkmatter",
-            opacity=0.9)
-    )
+            opacity=0.9))
     
-    return fig
+    st.plotly_chart(fig)
 
-
-st.plotly_chart(display_ga_map(get_data_and_loaddf()))
-        
-
+display_ga_map(get_data_and_loaddf())
 
