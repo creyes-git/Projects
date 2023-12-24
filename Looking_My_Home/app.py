@@ -92,15 +92,31 @@ def display_ga_map(dataframe):
         lat=dataframe['latitude'],
         lon=dataframe['longitude'],
         mode='markers',
-        marker=dict(size=5, color = dataframe['price'], cmin=200000, cmax=1000000, colorscale='Sunset', colorbar_title="Price"),
+        marker=dict(size=7, color = dataframe['price'], cmin=200000, cmax=1000000, colorscale='Sunset', colorbar_title="Price"),
         text=str(dataframe['price'])+"$"))
 
     # Update the layout of the scatter mapbox
     fig.update_layout(
         mapbox=dict(
             center={"lat": 32.75, "lon": -83.23},
-            zoom=5.75,
-            style= "carto-positron"))
+            zoom=5.5,
+            style= "carto-positron",
+            layers=[
+                dict(
+                    sourcetype = "geojson",
+                    source = dataframe,
+                    type = "symbol",
+                    symbol = "circle",
+                    color = dataframe['price'],
+                    size = 10,
+                    opacity = 0.5,
+                    text = str(dataframe['price'])+"$",
+                    hoverinfo = "text",
+                    textposition = "bottom center",
+                    hovertext = str(dataframe['price'])+"$",
+                    hovertemplate = "%{text}<extra></extra>")]
+                )
+            )
     
     return fig
 
