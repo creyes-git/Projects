@@ -101,7 +101,7 @@ def display_ga_map(dataframe):
             accesstoken= "mapbox://styles/mapbox/navigation-night-v1",
             center={"lat": 32.75, "lon": -83.23},
             zoom=5.25,
-            style="carto-darkmatter",
+            style= "navigation-night-v1",
             ))
     
     st.plotly_chart(fig)
