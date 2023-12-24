@@ -103,11 +103,11 @@ def display_ga_map(dataframe):
             style="carto-positron"),
         geo=dict(
             bgcolor='rgba(0,0,0,0)',
-            landcolor='gray', 
-            showocean=True, 
+            landcolor='black', 
+            showocean=False, 
             oceancolor='black', 
-            showland=True, 
-            showcountries=True,
+            showland=False, 
+            showcountries=False,
             countrycolor='white')
     )
     
