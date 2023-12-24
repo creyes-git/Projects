@@ -102,6 +102,17 @@ def display_ga_map(dataframe):
             zoom=5.25,
             style= "carto-positron"))
     
+    fig.update_geos(
+    showcountries=False,  # Hide country boundaries
+    showland=True,  # Show land
+    landcolor='white',  # Set land color to white
+    showocean=True,  # Show ocean
+    oceancolor='white',  # Set ocean color to white
+    showcoastlines=True,  # Show coastlines
+    coastlinecolor='black',  # Set coastline color to black
+)
+
+    
     st.plotly_chart(fig)
 
 display_ga_map(get_data_and_loaddf())
