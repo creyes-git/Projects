@@ -100,11 +100,16 @@ def display_ga_map(dataframe):
         mapbox=dict(
             center={"lat": 32.75, "lon": -83.23},
             zoom=5.25,
-            style= "carto-positron"
-            ),
-    geo = dict() 
-        
-    )
+            style= "white-bg"))
+    
+    fig.update_geos(
+    showcountries=False,
+    showland=True,  
+    landcolor='white',
+    showocean=True,
+    oceancolor='white',
+    showcoastlines=True,
+    coastlinecolor='black')
     
     st.plotly_chart(fig)
 
