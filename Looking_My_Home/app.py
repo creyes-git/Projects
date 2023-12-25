@@ -116,15 +116,17 @@ def display_choro_map(dataframe):
     with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
         counties = json.load(response)
         
-        df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv", dtype={"fips": str})
-
-    fig = px.choropleth_mapbox(df, geojson=counties, locations='fips', color='unemp',
+    df = dataframe[["county", "price"]]
+    df = counties.groupby("county").mean().sort_values("price", ascending=False)
+    
+    fig = px.choropleth_mapbox(df, geojson=counties, locations='fips', color='price',
                             color_continuous_scale="Viridis",
-                            range_color=(0, 12),
+                            #range_color=(0, 12),
                             mapbox_style="white-bg",
-                            zoom=3, center = {"lat": 37.0902, "lon": -95.7129},
-                            opacity=0.5,
-                            labels={'unemp':'unemployment rate'}
+                            zoom=3, 
+                            center={"lat": 32.75, "lon": -83.23},
+                            opacity=0.9,
+                            labels={'price':'Average Price ($)'}
                             )
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     return fig
