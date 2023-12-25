@@ -119,10 +119,10 @@ def display_choro_map(dataframe):
     counties = dataframe[["county", "price"]]
     counties = counties.groupby("county").mean().sort_values("price", ascending=False)
     
-    fig = px.choropleth_mapbox(counties, geojson=gjson, locations=counties.index, color='price',
+    fig = px.choropleth_mapbox(counties, geojson=gjson, color='price',
                             color_continuous_scale="Viridis",
                             range_color=(0, 12),
-                            mapbox_style="carto-positron",
+                            mapbox_style="white-bg",
                             zoom=5.5, 
                             center={"lat": 32.75, "lon": -83.23},
                             opacity=0.9,
