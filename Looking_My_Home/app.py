@@ -106,8 +106,8 @@ def display_ga_map(dataframe):
     return fig
 
 def display_counties_ranking(dataframe):
-    counties = dataframe[["city", "price"]]
-    counties = counties.groupby("city").mean().sort_values("price", ascending=False)
+    counties = dataframe[["county", "price"]]
+    counties = counties.groupby("county").mean().sort_values("price", ascending=False)
     counties["price"] = counties["price"].astype(int)
 
 
@@ -124,8 +124,7 @@ def display_counties_ranking(dataframe):
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
     
-with st.container():
-    display_counties_ranking(get_data_and_loaddf())
+display_counties_ranking(get_data_and_loaddf())
 
 
 
