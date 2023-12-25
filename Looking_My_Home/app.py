@@ -105,5 +105,10 @@ def display_ga_map(dataframe):
     
     return fig
 
-st.plotly_chart(display_ga_map(get_data_and_loaddf()))
+def display_counties_ranking(dataframe):
+    counties = dataframe[["county", "price"]]
+    counties = counties.groupby("county").mean().sort_values("price", ascending=False)
+    
+    return counties
 
+st.table(display_counties_ranking(get_data_and_loaddf()))
