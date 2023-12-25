@@ -114,7 +114,7 @@ def display_counties_ranking(dataframe):
     st.dataframe(counties,
                  column_order=("county", "price"),
                  hide_index=False,
-                 width=325, height=525,
+                 width=250, height=450,
                  column_config={
                     "county": st.column_config.TextColumn(
                         "County"),
@@ -124,6 +124,8 @@ def display_counties_ranking(dataframe):
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
+st.markdown("GEORGIA PROPERTIES MARKET DASHBOARD")  
+st.markdown("GEORGIA PROPERTIES MARKET DASHBOARD")  
 st.markdown("GEORGIA PROPERTIES MARKET DASHBOARD")  
 display_counties_ranking(get_data_and_loaddf())
 
