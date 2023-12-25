@@ -113,7 +113,7 @@ def display_counties_ranking(dataframe):
     st.dataframe(counties,
                  column_order=("county", "price"),
                  hide_index=False,
-                 width=325,
+                 width=325, height=325,
                  column_config={
                     "county": st.column_config.TextColumn(
                         "County"),
@@ -121,7 +121,7 @@ def display_counties_ranking(dataframe):
                         "Price",
                         format="%f",
                         min_value=0,
-                        max_value=max(counties["price"]))})
+                        max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
     
 display_counties_ranking(get_data_and_loaddf())
 
