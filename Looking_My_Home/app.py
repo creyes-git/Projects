@@ -116,8 +116,8 @@ def display_choro_map(dataframe):
     with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
         gjson = json.load(response)
         
-        counties = dataframe[["county", "price"]]
-        counties = counties.groupby("county").mean().sort_values("price", ascending=False)
+    counties = dataframe[["county", "price"]]
+    counties = counties.groupby("county").mean().sort_values("price", ascending=False)
     
     fig = px.choropleth_mapbox(counties, geojson=gjson, locations='county', color='price',
                             color_continuous_scale="Viridis",
