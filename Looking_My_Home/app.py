@@ -121,7 +121,7 @@ def display_choro_map(dataframe):
     fig = px.choropleth_mapbox(df, geojson=counties, locations='fips', color='unemp',
                             color_continuous_scale="Viridis",
                             range_color=(0, 12),
-                            mapbox_style="carto-positron",
+                            mapbox_style="white-bg",
                             zoom=3, center = {"lat": 37.0902, "lon": -95.7129},
                             opacity=0.5,
                             labels={'unemp':'unemployment rate'}
