@@ -124,7 +124,8 @@ def display_counties_ranking(dataframe):
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
     
-display_counties_ranking(get_data_and_loaddf())
+with st.container():
+    display_counties_ranking(get_data_and_loaddf())
 
 
 
