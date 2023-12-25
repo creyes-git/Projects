@@ -114,16 +114,19 @@ def display_counties_ranking(dataframe):
 
 def display_choro_map(dataframe):
     with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
-        counties = json.load(response)
-
-    fig = px.choropleth_mapbox(dataframe, geojson=counties, locations='county', color='price',
+        gjson = json.load(response)
+        
+        counties = dataframe[["county", "price"]]
+        counties = counties.groupby("county").mean().sort_values("price", ascending=False)
+    
+    fig = px.choropleth_mapbox(counties, geojson=gjson, locations='county', color='price',
                             color_continuous_scale="Viridis",
                             range_color=(0, 12),
-                            mapbox_style="carto-positron",
-                            zoom=3, 
+                            mapbox_style="white-bg",
+                            zoom=5.5, 
                             center={"lat": 32.75, "lon": -83.23},
-                            opacity=0.5,
-                            labels={'unemp':'price'}
+                            opacity=0.9,
+                            labels={'county':'price'}
                             )
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     return fig
