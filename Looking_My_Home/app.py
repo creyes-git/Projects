@@ -112,8 +112,8 @@ def display_counties_ranking(dataframe):
 
     st.dataframe(counties,
                  column_order=("county", "price"),
-                 hide_index=True,
-                 width=None,
+                 hide_index=False,
+                 width=325,
                  column_config={
                     "county": st.column_config.TextColumn(
                         "County"),
