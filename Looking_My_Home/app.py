@@ -108,27 +108,76 @@ def display_ga_map(dataframe):
 def display_counties_ranking(dataframe):
     counties = dataframe[["city", "price"]]
     counties = counties.groupby("city").mean().sort_values("price", ascending=False)
+
+
+    st.dataframe(counties,
+                 column_order=("county", "price"),
+                 hide_index=True,
+                 width=None,
+                 column_config={
+                    "county": st.column_config.TextColumn(
+                        "County"),
+                    "price": st.column_config.ProgressColumn(
+                        "Price",
+                        format="%f",
+                        min_value=0,
+                        max_value=max(counties["price"]))})
     
-    return counties
+display_counties_ranking(get_data_and_loaddf())
 
 
-def display_choro_map(dataframe):
-    with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
-        counties = json.load(response)
-        
-    df = dataframe[["county", "price"]]
-    df = counties.groupby("county").mean().sort_values("price", ascending=False)
-    
-    fig = px.choropleth_mapbox(df, geojson=counties["features"]["properties"], locations='county', featureidkey='NAME', color='price',
-                            color_continuous_scale="Viridis",
-                            #range_color=(0, 12),
-                            mapbox_style="white-bg",
-                            zoom=3, 
-                            center={"lat": 32.75, "lon": -83.23},
-                            opacity=0.9,
-                            labels={'price':'Average Price ($)'}
-                            )
-    fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-    return fig
 
-st.plotly_chart(display_choro_map(get_data_and_loaddf()))
+
+
+
+
+
+
+# CSS styling
+st.markdown(
+"""
+<style>
+
+[data-testid="block-container"] {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 0rem;
+    margin-bottom: -7rem;
+}
+
+[data-testid="stVerticalBlock"] {
+    padding-left: 0rem;
+    padding-right: 0rem;
+}
+
+[data-testid="stMetric"] {
+    background-color: #393939;
+    text-align: center;
+    padding: 15px 0;
+}
+
+[data-testid="stMetricLabel"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[data-testid="stMetricDeltaIcon-Up"] {
+    position: relative;
+    left: 38%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+[data-testid="stMetricDeltaIcon-Down"] {
+    position: relative;
+    left: 38%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+</style>
+""", unsafe_allow_html=True)
