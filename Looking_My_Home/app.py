@@ -114,14 +114,12 @@ def display_counties_ranking(dataframe):
     st.dataframe(counties,
                  column_order=("county", "price"),
                  hide_index=False,
-                 width=325, height=325,
+                 width=325, height=525,
                  column_config={
                     "county": st.column_config.TextColumn(
                         "County"),
                     "price": st.column_config.ProgressColumn(
                         "Price",
-                        title = "Price",
-                        
                         format="%f",
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
