@@ -126,8 +126,9 @@ def display_choro_map(dataframe):
                             zoom=5.5, 
                             center={"lat": 32.75, "lon": -83.23},
                             opacity=0.9,
-                            labels={'county':'price'},
-                            hover_data={'county':True, 'price':True})
+                            #labels={'county':'price'},
+                            #hover_data={'county':True, 'price':True}
+                            )   
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     return fig
 
