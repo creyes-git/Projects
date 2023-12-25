@@ -106,8 +106,8 @@ def display_ga_map(dataframe):
     return fig
 
 def display_counties_ranking(dataframe):
-    counties = dataframe[["county", "price"]]
-    counties = counties.groupby("county").mean().sort_values("price", ascending=False)
+    counties = dataframe[["city", "price"]]
+    counties = counties.groupby("city").mean().sort_values("price", ascending=False)
     
     return counties
 
