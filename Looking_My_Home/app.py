@@ -122,7 +122,7 @@ def display_choro_map(dataframe):
     fig = px.choropleth_mapbox(counties, geojson=gjson, locations='county', color='price',
                             color_continuous_scale="Viridis",
                             range_color=(0, 12),
-                            mapbox_style="white-bg",
+                            mapbox_style="carto-positron",
                             zoom=5.5, 
                             center={"lat": 32.75, "lon": -83.23},
                             opacity=0.9,
