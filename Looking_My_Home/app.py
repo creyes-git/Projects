@@ -120,6 +120,8 @@ def display_counties_ranking(dataframe):
                         "County"),
                     "price": st.column_config.ProgressColumn(
                         "Price",
+                        title = "Price",
+                        
                         format="%f",
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
