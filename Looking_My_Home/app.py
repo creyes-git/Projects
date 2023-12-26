@@ -127,8 +127,8 @@ st.write('''
 
 with st.sidebar:
     df = get_data_and_loaddf()
-    st.markdown('<span class="icon type-text">Search</span>' +"    " '<span class="icon type-text2">Your</span>'+"    "
-                '<span class="icon type-text3">GA</span>' +"    " '<span class="icon type-text4">Property</span>' +"    " + ":house_with_garden:", unsafe_allow_html=True)
+    st.markdown('<span class="icon type-text">Search</span>' +"  " '<span class="icon type-text2">Your</span>'+"  "
+                '<span class="icon type-text3">GA</span>' +"  " '<span class="icon type-text4">Property</span>' +" " + ":house_with_garden:", unsafe_allow_html=True)
     st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose a type")
     st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
     with st.container():
