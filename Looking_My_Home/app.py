@@ -117,7 +117,7 @@ def display_counties_ranking(dataframe):
                         "County"),
                     "price": st.column_config.ProgressColumn(
                         "Average Price ($)",
-                        format="%d",
+                        format="$%d",
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
@@ -130,7 +130,7 @@ with st.sidebar:
     df = get_data_and_loaddf()
     st.markdown("Search your ideal GA property:house_with_garden:")
     st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose a type")
-    st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])),format="$%d")
+    st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
     with st.container():
         st.radio("Bedrooms: ", df["bedrooms"].unique() , index=0)
         st.radio("Bathrooms: ", df["bathrooms"].unique() , index=0)
