@@ -61,14 +61,10 @@ def get_data_and_loaddf():
         
         # creating and cleaning the dataframe
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        df.dropna(how="all", inplace=True)
-        df.drop_duplicates(inplace=True)
         return df
     
     else:
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        df.dropna(how="all", inplace=True)
-        df.drop_duplicates(inplace=True)
         return df
 
 # load lottie animation
@@ -77,8 +73,7 @@ def lottie_sidebar(path):
         lottie_home = json.load(f)
     with st.sidebar:
 	    st_lottie(lottie_home, height = 100, quality = "high")
-
-
+     
 lottie_sidebar("Looking_My_Home/home1.json")
 
 def display_ga_map(dataframe):
