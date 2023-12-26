@@ -130,10 +130,11 @@ with st.sidebar:
     df = get_data_and_loaddf()
     st.markdown("Search your ideal GA property:house_with_garden:")
     st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose a type")
-    st.slider("Price Range: ", 0, max(df["price"]), (0, 1000000))
-    st.radio("Bedrooms: ", df["bedrooms"].unique() , index=0)
-    st.radio("Bathrooms: ", df["bathrooms"].unique() , index=0)
-    st.button("Search", type= "primary",)
+    st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])),format="$%d")
+    with st.container():
+        st.radio("Bedrooms: ", df["bedrooms"].unique() , index=0)
+        st.radio("Bathrooms: ", df["bathrooms"].unique() , index=0)
+    st.button("Search", type= "primary", on_click= None)
 
 local_css('Looking_My_Home/style.css')
 
