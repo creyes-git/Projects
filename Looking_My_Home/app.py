@@ -124,59 +124,19 @@ def display_counties_ranking(dataframe):
 # Page Configuration and functions calling: #############################################################################################
 st.write("n/")
 st.markdown('<span class="icon type-text">Georgia</span>' +"    " '<span class="icon type-text2">Property</span>'+"    "
-            '<span class="icon type-text3">Market</span>' +"    " '<span class="icon type-text4">Market</span>' +"    " + 
-            ":house_with_garden:", unsafe_allow_html=True)
+            '<span class="icon type-text3">Market</span>' +"    " '<span class="icon type-text4">Market</span>' +"    ", unsafe_allow_html=True)
+
+with st.sidebar:
+    df = get_data_and_loaddf()
+    st.markdown("Search your ideal GA property:house_with_garden:")
+    st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose a type")
+    st.slider("Price Range: ", 0, max(df["price"]), (0, 1000000))
+    st.radio("Bedrooms: ", df["bedrooms"].unique() , index=0)
+    st.radio("Bathrooms: ", df["bathrooms"].unique() , index=0)
+    st.button("Search", type= "primary",)
 
 local_css('Looking_My_Home/style.css')
 
 display_counties_ranking(get_data_and_loaddf())   
 display_ga_map(get_data_and_loaddf())
 
-# CSS styling
-st.markdown(
-"""
-<style>
-
-[data-testid="block-container"] {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 0rem;
-    margin-bottom: -7rem;
-}
-
-[data-testid="stVerticalBlock"] {
-    padding-left: 0rem;
-    padding-right: 0rem;
-}
-
-[data-testid="stMetric"] {
-    background-color: #393939;
-    text-align: center;
-    padding: 15px 0;
-}
-
-[data-testid="stMetricLabel"] {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-[data-testid="stMetricDeltaIcon-Up"] {
-    position: relative;
-    left: 38%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
-
-[data-testid="stMetricDeltaIcon-Down"] {
-    position: relative;
-    left: 38%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-}
-
-</style>
-""", unsafe_allow_html=True)
