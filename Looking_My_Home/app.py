@@ -119,15 +119,15 @@ def display_counties_ranking(dataframe):
                     "county": st.column_config.TextColumn(
                         "County"),
                     "price": st.column_config.ProgressColumn(
-                        "Price",
+                        "Average Price ($)",
                         format="%d",
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
 
 st.markdown("/n") 
-st.markdown('<span class="icon type-text">Georgia</span>' +"  " '<span class="icon type-text2">Property</span>'+"  "
-            '<span class="icon type-text3">Market</span>' +"  " '<span class="icon type-text4">Market</span>' +"  " ":house_with_garden:", unsafe_allow_html=True)
+st.markdown('<span class="icon type-text">Georgia</span>' +"    " '<span class="icon type-text2">Property</span>'+"    "
+            '<span class="icon type-text3">Market</span>' +"    " '<span class="icon type-text4">Market</span>' +"    " + ":house_with_garden:", unsafe_allow_html=True)
 
 
 local_css('Looking_My_Home/style.css')
