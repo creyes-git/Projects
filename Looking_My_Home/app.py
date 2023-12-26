@@ -121,16 +121,16 @@ def display_counties_ranking(dataframe):
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
-# Page Configuration and functions calling: #####################################################################################################
-st.markdown("/n") 
+# Page Configuration and functions calling: #############################################################################################
 st.markdown('<span class="icon type-text">Georgia</span>' +"    " '<span class="icon type-text2">Property</span>'+"    "
-            '<span class="icon type-text3">Market</span>' +"    " '<span class="icon type-text4">Market</span>' +"    " + ":house_with_garden:", unsafe_allow_html=True)
-
+            '<span class="icon type-text3">Market</span>' +"    " '<span class="icon type-text4">Market</span>' +"    " + 
+            ":house_with_garden:", unsafe_allow_html=True)
 
 local_css('Looking_My_Home/style.css')
+
 with st.container():
     display_counties_ranking(get_data_and_loaddf())
-    st.plotly_chartdisplay_ga_map(get_data_and_loaddf())
+    display_ga_map(get_data_and_loaddf())
 
 # CSS styling
 st.markdown(
