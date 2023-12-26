@@ -126,9 +126,8 @@ def display_counties_ranking(dataframe):
 
 
 st.markdown("/n") 
-st.markdown("Georgia Property Market Dashboard :house_with_garden:")
-st.markdown('<span class="icon type-text">Georgia</span>' + '<span class="icon type-text2">Property</span>'+
-            '<span class="icon type-text3">Market</span>' + '<span class="icon type-text4">Market</span>', unsafe_allow_html=True)
+st.markdown('<span class="icon type-text">Georgia</span>' +"  " '<span class="icon type-text2">Property</span>'+"  "
+            '<span class="icon type-text3">Market</span>' +"  " '<span class="icon type-text4">Market</span>' +"  " ":house_with_garden:", unsafe_allow_html=True)
 
 
 local_css('Looking_My_Home/style.css')
