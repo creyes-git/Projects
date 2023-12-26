@@ -100,7 +100,7 @@ def display_ga_map(dataframe):
             zoom=5.5,
             style= "carto-positron"))
     
-    return fig
+    st.plotly_chart(fig)
 
 def display_counties_ranking(dataframe):
     counties = dataframe[["county", "price"]]
@@ -111,7 +111,7 @@ def display_counties_ranking(dataframe):
     st.dataframe(counties,
                  column_order=("county", "price"),
                  hide_index=False,
-                 width=250, height=425,
+                 width=250, height=415,
                  column_config={
                     "county": st.column_config.TextColumn(
                         "County"),
@@ -130,7 +130,7 @@ st.markdown('<span class="icon type-text">Georgia</span>' +"    " '<span class="
 local_css('Looking_My_Home/style.css')
 with st.container():
     display_counties_ranking(get_data_and_loaddf())
-    display_ga_map(get_data_and_loaddf())
+    st.plotly_chartdisplay_ga_map(get_data_and_loaddf())
 
 # CSS styling
 st.markdown(
