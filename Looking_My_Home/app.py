@@ -116,19 +116,19 @@ def display_counties_ranking(dataframe):
                     "county": st.column_config.TextColumn(
                         "County"),
                     "price": st.column_config.ProgressColumn(
-                        "Average Price ($)",
+                        "Average Price",
                         format="$%d",
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
 # Page Configuration and functions calling: #############################################################################################
-st.write("n/")
-st.markdown('<span class="icon type-text">Georgia</span>' +"    " '<span class="icon type-text2">Property</span>'+"    "
-            '<span class="icon type-text3">Market</span>' +"    " '<span class="icon type-text4">Market</span>' +"    ", unsafe_allow_html=True)
+st.write('''
+         ''')
 
 with st.sidebar:
     df = get_data_and_loaddf()
-    st.markdown("Search your ideal GA property:house_with_garden:")
+    st.markdown('<span class="icon type-text">Search</span>' +"    " '<span class="icon type-text2">Your</span>'+"    "
+                '<span class="icon type-text3">GA</span>' +"    " '<span class="icon type-text4">Property</span>' +"    " + ":house_with_garden:", unsafe_allow_html=True)
     st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose a type")
     st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
     with st.container():
