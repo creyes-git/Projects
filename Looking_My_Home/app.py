@@ -4,14 +4,11 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 import plotly.express as px
 import plotly.graph_objects as go
-import plotly.figure_factory as ff
 from datetime import date
 from PIL import Image
 import requests
-import warnings
 import json
 import os
-from urllib.request import urlopen
 
 #setting the page config
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
@@ -124,7 +121,7 @@ def display_counties_ranking(dataframe):
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
-
+# Page Configuration and functions calling: #####################################################################################################
 st.markdown("/n") 
 st.markdown('<span class="icon type-text">Georgia</span>' +"    " '<span class="icon type-text2">Property</span>'+"    "
             '<span class="icon type-text3">Market</span>' +"    " '<span class="icon type-text4">Market</span>' +"    " + ":house_with_garden:", unsafe_allow_html=True)
