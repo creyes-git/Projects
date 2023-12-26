@@ -128,8 +128,9 @@ st.markdown('<span class="icon type-text">Georgia</span>' +"    " '<span class="
 
 
 local_css('Looking_My_Home/style.css')
-display_counties_ranking(get_data_and_loaddf())
-
+with st.container():
+    display_counties_ranking(get_data_and_loaddf())
+    display_ga_map(get_data_and_loaddf())
 
 # CSS styling
 st.markdown(
