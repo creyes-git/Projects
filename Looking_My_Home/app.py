@@ -124,9 +124,10 @@ def display_counties_ranking(dataframe):
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
-st.markdown("GEORGIA PROPERTIES MARKET DASHBOARD")  
-st.markdown("GEORGIA PROPERTIES MARKET DASHBOARD")  
-st.markdown("GEORGIA PROPERTIES MARKET DASHBOARD")  
+st.markdown("/n")  
+st.markdown(f'<span class="icon type-text">Georgia Property Market Dashboard</span>', unsafe_allow_html=True)
+
+local_css('Looking_My_Home/style.css')
 display_counties_ranking(get_data_and_loaddf())
 
 
