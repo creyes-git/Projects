@@ -126,9 +126,7 @@ def display_counties_ranking(dataframe):
 
 
 st.markdown("/n") 
-st.markdown("Here's a bouquet &mdash;\
-...             :tulip::cherry_blossom::rose::hibiscus::sunflower::blossom:")
-#st.markdown("Georgia Property Market Dashboard",config) 
+st.markdown("Georgia Property Market Dashboard" + ":home:") 
 #st.markdown(f'<span class="icon type-text">Georgia Property Market Dashboard</span>', unsafe_allow_html=True)
 
 
