@@ -130,10 +130,11 @@ st.markdown('<span class="icon type-text">Georgia</span>' +"    " '<span class="
 local_css('Looking_My_Home/style.css')
 
 c1,c2 = st.columns(2)
-with c1:
-    display_counties_ranking(get_data_and_loaddf())
-with c2:    
-    display_ga_map(get_data_and_loaddf())
+with st.container():
+    with c1:
+        display_counties_ranking(get_data_and_loaddf())
+    with c2:    
+        display_ga_map(get_data_and_loaddf())
 
 # CSS styling
 st.markdown(
