@@ -114,7 +114,7 @@ def display_counties_ranking(dataframe):
     st.dataframe(counties,
                  column_order=("county", "price"),
                  hide_index=False,
-                 width=250, height=450,
+                 width=250, height=425,
                  column_config={
                     "county": st.column_config.TextColumn(
                         "County"),
@@ -124,18 +124,16 @@ def display_counties_ranking(dataframe):
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
-st.markdown("/n")  
-st.markdown(f'<span class="icon type-text">Georgia Property Market Dashboard</span>', unsafe_allow_html=True)
+
+st.markdown("/n") 
+st.markdown("Here's a bouquet &mdash;\
+...             :tulip::cherry_blossom::rose::hibiscus::sunflower::blossom:")
+#st.markdown("Georgia Property Market Dashboard",config) 
+#st.markdown(f'<span class="icon type-text">Georgia Property Market Dashboard</span>', unsafe_allow_html=True)
+
 
 local_css('Looking_My_Home/style.css')
 display_counties_ranking(get_data_and_loaddf())
-
-
-
-
-
-
-
 
 
 # CSS styling
