@@ -127,14 +127,20 @@ st.write('''
 
 with st.sidebar:
     df = get_data_and_loaddf()
-    st.markdown('<span class="icon type-text">Search</span>' +"  " '<span class="icon type-text2">Your</span>'+"  "
-                '<span class="icon type-text3">GA</span>' +"  " '<span class="icon type-text4">Property</span>' + ":house_with_garden:", unsafe_allow_html=True)
-    st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose a type")
+    st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
+                '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
+    st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one")
     st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
     with st.container():
         st.radio("Bedrooms: ", df["bedrooms"].unique() , index=0)
         st.radio("Bathrooms: ", df["bathrooms"].unique() , index=0)
     st.button("Search", type= "primary", on_click= None)
+    with st.expander('About', expanded=True):
+        st.write('''
+            - Data: [U.S. Census Bureau](https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html).
+            - :orange[**Gains/Losses**]: states with high inbound/ outbound migration for selected year
+            - :orange[**States Migration**]: percentage of states with annual inbound/ outbound migration > 50,000
+            ''')
 
 local_css('Looking_My_Home/style.css')
 
