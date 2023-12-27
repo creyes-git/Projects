@@ -16,7 +16,20 @@ st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="w
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-    
+
+local_css('Looking_My_Home/style.css')
+
+
+# load lottie animation
+def lottie_sidebar(path):
+    with open(path, "r") as f:
+        lottie_home = json.load(f)
+    with st.sidebar:
+	    st_lottie(lottie_home, height = 100, quality = "high")
+     
+lottie_sidebar("Looking_My_Home/home1.json")
+
+
 # calling the api, 1 time per month, saving the data in a csv file and loading it and returning a dataframe
 def get_data_and_loaddf():
     #getting the current date
@@ -41,20 +54,16 @@ def get_data_and_loaddf():
         
         # creating and cleaning the dataframe
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+        df.drop_duplicates(inplace=True)
+        df.dropna(how="all", inplace=True)
         return df
     
     else:
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+        df.drop_duplicates(inplace=True)
+        df.dropna(how="all", inplace=True)
         return df
 
-# load lottie animation
-def lottie_sidebar(path):
-    with open(path, "r") as f:
-        lottie_home = json.load(f)
-    with st.sidebar:
-	    st_lottie(lottie_home, height = 100, quality = "high")
-     
-lottie_sidebar("Looking_My_Home/home1.json")
 
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
@@ -76,6 +85,7 @@ def display_ga_map(dataframe):
     
     st.plotly_chart(fig)
 
+
 def display_counties_ranking(dataframe):
     counties = dataframe[["county", "price"]]
     counties = counties.groupby("county").mean().sort_values("price", ascending=False)
@@ -95,26 +105,25 @@ def display_counties_ranking(dataframe):
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
+
+def call_sidebar():
+    with st.sidebar:
+        df = get_data_and_loaddf()
+        st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
+                    '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
+        st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one")
+        st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
+        with st.container():
+            st.radio("Bedrooms: ", df["bedrooms"].unique() , index=0)
+            st.radio("Bathrooms: ", df["bathrooms"].unique() , index=0)
+        st.button("Search", type= "primary", on_click= None)
+        with st.expander('About', expanded=True):
+            st.write('''
+                - Data: [U.S. Census Bureau](https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html).
+                - :orange[**Gains/Losses**]: states with high inbound/ outbound migration for selected year
+                - :orange[**States Migration**]: percentage of states with annual inbound/ outbound migration > 50,000
+                ''')
+
 # Page Configuration and functions calling: #############################################################################################
-st.write('''
-         ''')
 
-with st.sidebar:
-    df = get_data_and_loaddf()
-    st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
-                '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
-    st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one")
-    st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
-    with st.container():
-        st.radio("Bedrooms: ", df["bedrooms"].unique() , index=0)
-        st.radio("Bathrooms: ", df["bathrooms"].unique() , index=0)
-    st.button("Search", type= "primary", on_click= None)
-    with st.expander('About', expanded=True):
-        st.write('''
-            - Data: [U.S. Census Bureau](https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html).
-            - :orange[**Gains/Losses**]: states with high inbound/ outbound migration for selected year
-            - :orange[**States Migration**]: percentage of states with annual inbound/ outbound migration > 50,000
-            ''')
 
-local_css('Looking_My_Home/style.css')
-display_ga_map(get_data_and_loaddf())
