@@ -13,6 +13,7 @@ import os
 #setting the page config
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
 
+# loading css file
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -34,12 +35,29 @@ lottie_sidebar("Looking_My_Home/home1.json")
 def get_data_and_loaddf():
     #getting the current date
     current_month_year = str(date.today()).split("-")[1] + "-" + str(date.today()).split("-")[0]
+    
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-            "X-Api-Key": st.secrets["api_key"]}
+            "X-Api-Key": "32f4a4cf6b4b4078b8f00d0bd185d850"}
+    
     # list of urls to call
-    list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500"]
-
+    list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=2&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=3&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=4&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=1&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=2&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=3&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=4&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Apartment&bedrooms=1&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Apartment&bedrooms=2&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Apartment&bedrooms=3&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Apartment&bedrooms=4&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=1&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=2&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=3&status=Active&limit=500",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=4&status=Active&limit=500"]
+    
     # checking if the csv file of the current month already exists
     if not os.path.exists(f"Looking_My_Home/rentcast_data_{current_month_year}.csv"):
         df = pd.DataFrame()
@@ -54,17 +72,13 @@ def get_data_and_loaddf():
         
         # creating and cleaning the dataframe
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        df.drop_duplicates(inplace=True)
-        df.dropna(how="all", inplace=True)
         return df
     
     else:
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        df.drop_duplicates(inplace=True)
-        df.dropna(how="all", inplace=True)
         return df
 
-
+# 
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
     fig = go.Figure(layout=go.Layout(height=550, width=500))
@@ -125,5 +139,3 @@ def call_sidebar():
                 ''')
 
 # Page Configuration and functions calling: #############################################################################################
-
-
