@@ -18,8 +18,6 @@ def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-local_css('Looking_My_Home/style.css')
-
 
 # load lottie animation
 def lottie_sidebar(path):
@@ -28,8 +26,6 @@ def lottie_sidebar(path):
     with st.sidebar:
 	    st_lottie(lottie_home, height = 100, quality = "high")
      
-lottie_sidebar("Looking_My_Home/home1.json")
-
 
 # calling the api, 1 time per month, saving the data in a csv file and loading it and returning a dataframe
 def get_data_and_loaddf():
@@ -38,7 +34,7 @@ def get_data_and_loaddf():
     
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-            "X-Api-Key": "32f4a4cf6b4b4078b8f00d0bd185d850"}
+            "X-Api-Key": st.secrets("api_key")}
     
     # list of urls to call
     list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
@@ -49,10 +45,6 @@ def get_data_and_loaddf():
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=2&status=Active&limit=500",
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=3&status=Active&limit=500",
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=4&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Apartment&bedrooms=1&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Apartment&bedrooms=2&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Apartment&bedrooms=3&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Apartment&bedrooms=4&status=Active&limit=500",
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=1&status=Active&limit=500",
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=2&status=Active&limit=500",
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=3&status=Active&limit=500",
@@ -78,7 +70,8 @@ def get_data_and_loaddf():
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
         return df
 
-# 
+
+# displaying the scatter map
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
     fig = go.Figure(layout=go.Layout(height=550, width=500))
@@ -100,6 +93,7 @@ def display_ga_map(dataframe):
     st.plotly_chart(fig)
 
 
+# displaying the counties table
 def display_counties_ranking(dataframe):
     counties = dataframe[["county", "price"]]
     counties = counties.groupby("county").mean().sort_values("price", ascending=False)
@@ -120,9 +114,13 @@ def display_counties_ranking(dataframe):
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
 
+#sidebar configuration
 def call_sidebar():
     with st.sidebar:
+        lottie_sidebar("Looking_My_Home/home1.json")
+        
         df = get_data_and_loaddf()
+        
         st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
                     '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
         st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one")
@@ -131,6 +129,7 @@ def call_sidebar():
             st.radio("Bedrooms: ", df["bedrooms"].unique() , index=0)
             st.radio("Bathrooms: ", df["bathrooms"].unique() , index=0)
         st.button("Search", type= "primary", on_click= None)
+        
         with st.expander('About', expanded=True):
             st.write('''
                 - Data: [U.S. Census Bureau](https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html).
@@ -138,4 +137,8 @@ def call_sidebar():
                 - :orange[**States Migration**]: percentage of states with annual inbound/ outbound migration > 50,000
                 ''')
 
+
 # Page Configuration and functions calling: #############################################################################################
+local_css('Looking_My_Home/style.css')
+call_sidebar()
+display_ga_map(get_data_and_loaddf())
