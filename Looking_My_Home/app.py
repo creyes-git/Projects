@@ -12,7 +12,7 @@ import os
 
 #setting the page config
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
-st.cache_data.clear()
+
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -41,14 +41,10 @@ def get_data_and_loaddf():
         
         # creating and cleaning the dataframe
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        st.markdown(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        st.markdown("Existe")
         return df
     
     else:
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        st.markdown(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        st.markdown("No Existe")
         return df
 
 # load lottie animation
