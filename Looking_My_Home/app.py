@@ -133,6 +133,3 @@ with st.sidebar:
 
 local_css('Looking_My_Home/style.css')
 
-display_counties_ranking(get_data_and_loaddf())   
-display_ga_map(get_data_and_loaddf())
-
