@@ -12,7 +12,7 @@ import os
 
 #setting the page config
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
-
+st.cache_data.clear()
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
