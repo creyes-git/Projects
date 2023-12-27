@@ -41,10 +41,14 @@ def get_data_and_loaddf():
         
         # creating and cleaning the dataframe
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+        st.markdown(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+        st.markdown("Existe")
         return df
     
     else:
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+        st.markdown(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+        st.markdown("No Existe")
         return df
 
 # load lottie animation
