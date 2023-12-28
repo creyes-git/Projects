@@ -125,17 +125,22 @@ def call_sidebar():
         
         st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
                     '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
+       
         st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one")
         st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
+        
         with st.container():
             c1,c2 = st.columns(2)
             c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
             c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)
+        
         st.button("Search", type= "primary", on_click= None)
         
         with st.expander('About', expanded=True):
-            st.write('''- Data: [RentCast API](https://app.rentcast.io/app).
-                        - :red[**Info**]: This app only shows Georgia state properties. The data is updated every month.''')
+            st.write('''- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app).\n
+                        - :yellow[**Info**]: This app only shows Georgia state properties. The data is updated every month.]\n
+                        - :green[**Sample limit**]: The sample of the total data is 5000 properties per month.\n
+                        - :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)''')
 
 
 # Page Configuration and functions calling: #############################################################################################
