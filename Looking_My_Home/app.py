@@ -136,11 +136,11 @@ def call_sidebar():
         
         st.button("Search", type= "primary", on_click= None)
         
-        with st.expander('About', expanded=True):
+        with st.container():
             st.write('''- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app).
-                        :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)\
-                        :green[**Info & Sample**]: This app only shows Georgia state properties. The data is updated every month. 
-                        The sample of the total data is 5000 properties per month.''')
+                        - :yellow[**Info & Sample**]: This app only shows Georgia state properties. The data is updated every month.
+                        - :green[**Sample **]: The sample of the total data is 5000 properties per month.
+                        - :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)''')
 
 
 # Page Configuration and functions calling: #############################################################################################
