@@ -128,16 +128,13 @@ def call_sidebar():
         st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one")
         st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
         with st.container():
-            st.radio("Bedrooms: ", df["bedrooms"].unique() , index=0)
-            st.radio("Bathrooms: ", df["bathrooms"].unique() , index=0)
+            st.radio("Bedrooms: ", df["bedrooms"].unique().sort() , index=0)
+            st.radio("Bathrooms: ", df["bathrooms"].unique().sort() , index=0)
         st.button("Search", type= "primary", on_click= None)
         
         with st.expander('About', expanded=True):
-            st.write('''
-                - Data: [U.S. Census Bureau](https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html).
-                - :orange[**Gains/Losses**]: states with high inbound/ outbound migration for selected year
-                - :orange[**States Migration**]: percentage of states with annual inbound/ outbound migration > 50,000
-                ''')
+            st.write('''- Data: [RentCast API](https://app.rentcast.io/app).
+                        - :red[**Info**]: This app only shows Georgia state properties. The data is updated every month.''')
 
 
 # Page Configuration and functions calling: #############################################################################################
