@@ -137,7 +137,7 @@ def call_sidebar():
         st.button("Search", type= "primary", on_click= None)
         
         # space
-        for i in range(5):
+        for i in range(10):
             st.markdown(" ")
         
         with st.container():
