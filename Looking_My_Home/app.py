@@ -128,8 +128,8 @@ def call_sidebar():
         st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one")
         st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
         with st.container():
-            st.radio("Bedrooms: ", df["bedrooms"].unique().sort() , index=0)
-            st.radio("Bathrooms: ", df["bathrooms"].unique().sort() , index=0)
+            st.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
+            st.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)
         st.button("Search", type= "primary", on_click= None)
         
         with st.expander('About', expanded=True):
