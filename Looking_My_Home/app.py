@@ -34,7 +34,7 @@ def get_data_and_loaddf():
     
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-            "X-Api-Key": st.secrets("api_key")}
+            "X-Api-Key": st.secrets["api_key"]}
     
     # list of urls to call
     list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
@@ -64,12 +64,14 @@ def get_data_and_loaddf():
         
         # creating and cleaning the dataframe
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        return df
     
     else:
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        return df
 
+    df.dropna(subset= ["bathrooms"], how="any", inplace=True)
+    df["bathrooms"] = df["bathrooms"].astype(int)
+    
+    return df
 
 # displaying the scatter map
 def display_ga_map(dataframe):
@@ -141,4 +143,5 @@ def call_sidebar():
 # Page Configuration and functions calling: #############################################################################################
 local_css('Looking_My_Home/style.css')
 call_sidebar()
+display_counties_ranking(get_data_and_loaddf())
 display_ga_map(get_data_and_loaddf())
