@@ -138,9 +138,9 @@ def call_sidebar():
         
         with st.container():
             st.write('''- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app).
-                        - :yellow[**Info & Sample**]: This app only shows Georgia state properties. The data is updated every month.
-                        - :green[**Sample **]: The sample of the total data is 5000 properties per month.
                         - :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)''')
+            st.write(''' - :yellow[**Info & Sample**]: This app only shows Georgia state properties. The data is updated every month.
+                        - :green[**Sample **]: The sample of the total data is 5000 properties per month.''')
 
 
 # Page Configuration and functions calling: #############################################################################################
