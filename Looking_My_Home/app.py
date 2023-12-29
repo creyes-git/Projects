@@ -146,8 +146,13 @@ def call_sidebar():
             st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
             st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
 
+
+def text_buuble(text):
+    return f'<span class="element type-text">{text}</span>'
+    
+    
+
 # Page Configuration and functions calling: #############################################################################################
 local_css('Looking_My_Home/style.css')
 call_sidebar()
-display_counties_ranking(get_data_and_loaddf())
-display_ga_map(get_data_and_loaddf())
+st.markdown(text_buuble("Looking My Home"), unsafe_allow_html=True)
