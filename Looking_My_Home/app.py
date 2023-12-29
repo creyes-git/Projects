@@ -158,7 +158,7 @@ def display_scatter_map(dataframe):
     fig.update_layout(
         xaxis_title="Square Footage",
         yaxis_title="Price($)",
-        title = f'<span class="icon type-text">Relationship / Square Footage & Price</span>')
+        title = st.markdown(f'<span class="icon type-text">Relationship / Square Footage & Price</span>'),unsafe_allow_html=True)
     
 
     return st.plotly_chart(fig)
