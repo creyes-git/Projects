@@ -152,14 +152,14 @@ def display_scatter_map(dataframe):
     dataframe = dataframe[dataframe["price"] <= 7500000] 
 
     fig = px.scatter(dataframe, x ="squareFootage" , y="price", width=500, height=500, color="propertyType",
-                    color_discrete_sequence=["red", "orange", "green"], hover_name="addressLine1", 
-                    hover_data=["county", "city","daysOnMarket", "yearBuilt", "bathrooms", "bedrooms"])
+                    color_discrete_sequence=["red", "green", "orange"], hover_name="addressLine1", 
+                    hover_data=["city","daysOnMarket", "yearBuilt", "bathrooms", "bedrooms"])
     
     fig.update_layout(
         xaxis_title="Square Footage",
         yaxis_title="Price($)",
-        title = "Relationship between Square Footage and Price"
-    )
+        title = f'<span class="icon type-text">Relationship / Square Footage & Price</span>')
+    
 
     return st.plotly_chart(fig)
     
