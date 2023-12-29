@@ -149,7 +149,7 @@ def call_sidebar():
 
 def display_scatter_map(dataframe):
     
-    fig = px.scatter(dataframe, x=dataframe["squareFootage" < 10000], y="price", color="propertyType", colors = ["red", "green", "yellow"])
+    fig = px.scatter(dataframe, x = dataframe[["squareFootage"] < 100000], y="price", color="propertyType", colors = ["red", "green", "yellow"])
     
     fig.update_layout(
         xaxis_title="Square Footage",
