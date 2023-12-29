@@ -123,7 +123,7 @@ def call_sidebar():
         
         df = get_data_and_loaddf()
         
-        st.markdown('<span class="element type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
+        st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
                     '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
        
         st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one")
