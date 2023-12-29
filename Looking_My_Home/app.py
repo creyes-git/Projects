@@ -151,8 +151,8 @@ def display_scatter_map(dataframe):
     dataframe = dataframe[dataframe["squareFootage"] <= 10000]
     dataframe = dataframe[dataframe["price"] <= 7500000] 
 
-    fig = px.scatter(dataframe, x ="squareFootage" , y="price",
-                    color = {"Condo": "red", "Single Family": "green", "Townhouse": "orange"}, width=500, height=500, hover_name="addressLine1", 
+    fig = px.scatter(dataframe, x = "squareFootage" , y= "price", color_discrete_sequence=["red", "green", "orange"],
+                    color= "propertyType", width=500, height=500, hover_name="addressLine1", 
                     hover_data=["county", "city","daysOnMarket", "yearBuilt", "bathrooms", "bedrooms"])
     
     fig.update_layout(
