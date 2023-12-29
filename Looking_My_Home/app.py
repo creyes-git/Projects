@@ -148,7 +148,7 @@ def call_sidebar():
 
 
 def display_scatter_map(dataframe):
-    dataframe = dataframe[dataframe["squareFootage"] <= 10000 and dataframe["price"] <= 8000000] 
+    dataframe = dataframe[dataframe["squareFootage"] <= 10000] 
 
     fig = px.scatter(dataframe, x ="squareFootage" , y="price", color="propertyType", colors = ["red", "green", "yellow"])
     
