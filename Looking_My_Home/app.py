@@ -147,12 +147,19 @@ def call_sidebar():
             st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
 
 
-def text_buuble(text):
-    return f'<span class="element type-text">{text}</span>'
+def display_scatter_map(dataframe):
     
+    fig = px.scatter(dataframe, x="squareFootage", y="price", color="propertyType")
+    
+    fig.update_layout(
+        xaxis_title="Square Footage",
+        yaxis_title="Price"
+    )
+
+    return st.plotly_chart(fig)
     
 
 # Page Configuration and functions calling: #############################################################################################
 local_css('Looking_My_Home/style.css')
 call_sidebar()
-st.markdown(text_buuble("Looking My Home"), unsafe_allow_html=True)
+display_scatter_map(get_data_and_loaddf())

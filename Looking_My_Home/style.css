@@ -34,17 +34,3 @@
     background-color:rgb(210, 97, 33)
 }
 
-.element {
-    width: 250px;
-    height: 250px;
-    background-color: rgba(255, 255, 255, 1);
-    color: #000;
-    border-radius: 10px;
-    box-shadow: 0px 19px 38px 0px rgba(0,0,0,0.3),
-    0px 15px 12px 0px rgba(0,0,0,0.22);
-    border-radius: 33px;
-    background: #ffffff;
-    box-shadow:  19px 19px 38px #dedede,
-    -19px -19px 38px #ffffff;
-}
-
