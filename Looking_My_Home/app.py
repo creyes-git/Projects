@@ -167,12 +167,7 @@ def display_scatter_map(dataframe):
 
 def display_year_built_impact(dataframe):
     
-    fig =go.Figure(go.Icicle(
-    labels=dataframe["yearBuilt"],
-    parents=dataframe["propertyType"],
-    values=dataframe["price"],
-    branchvalues="total",
-    root_color="lightgrey"))
+    fig = px.density_heatmap(dataframe, x="yearBuilt", y="price",size="price")
     
     return st.plotly_chart(fig)
 
