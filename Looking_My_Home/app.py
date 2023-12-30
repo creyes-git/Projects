@@ -168,7 +168,7 @@ def display_scatter_map(dataframe):
 
 def display_county_builds_hmap(dataframe):
 
-    fig = px.density_heatmap(dataframe, x="yearBuilt", y="price")
+    fig = px.icicle(dataframe, names='yearBuilt', parents='yearBuilt', values='price')
         
     return st.plotly_chart(fig)
 
