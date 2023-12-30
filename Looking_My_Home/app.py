@@ -167,7 +167,17 @@ def display_scatter_map(dataframe):
 
 def display_year_built_impact(dataframe):
     
-    fig = px.icicle(dataframe, path=px.Constant('yearBuilt'),names='yearBuilt', values='price', color='price') 
+    fig = go.Figure(go.Icicle(
+    ids = dataframe["yearBuilt"],
+    labels = dataframe["yearBuilt"],
+    parents = dataframe["price"],
+    values = dataframe["price"],
+    branchvalues = "total"))
+
+    fig.update_layout(
+    title="Price and Year of Build",
+    xaxis_title="Year of Build",
+    yaxis_title="Price")
     
     return st.plotly_chart(fig)
 
