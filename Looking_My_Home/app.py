@@ -126,8 +126,8 @@ def call_sidebar():
         st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
                     '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
        
-        st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one")
-        st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county")
+        st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one:")
+        st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county:")
         st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
         
         with st.container():
@@ -175,6 +175,23 @@ def display_city_heatmap(dataframe):
     return
 
 
-# Page Configuration and functions calling: #############################################################################################
+def display_year_built_impact(dataframe):
+    
+    dataframe = dataframe.groupby("yearBuilt").mean()
+    
+    
+    return
+
+# General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
 call_sidebar()
+
+
+
+# Specific info functions and dynamic charts for user choices:
+df = get_data_and_loaddf()
+
+df = df["price","yearBuilt"].groupby("yearBuilt").mean()
+st.table(df)
+
+
