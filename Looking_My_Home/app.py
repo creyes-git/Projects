@@ -191,5 +191,5 @@ call_sidebar()
 # Specific info functions and dynamic charts for user choices:
 df = get_data_and_loaddf()
 
-df.groupby("yearBuilt")["price"].mean()
-st.table(df)
+df = df.groupby("yearBuilt")["price"].mean()
+st.table(df["price", "yearBuilt"].sort_values("yearBuilt", ascending=False))
