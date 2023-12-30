@@ -167,7 +167,7 @@ def display_scatter_map(dataframe):
 
 def display_year_built_impact(dataframe):
     
-    fig = px.density_heatmap(dataframe, x="yearBuilt", y="price",size="price")
+    fig = px.density_heatmap(dataframe, x="yearBuilt", y="price", width=500, height=500, nbinsx=25, nbinsy=25)
     
     return st.plotly_chart(fig)
 
