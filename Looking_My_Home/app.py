@@ -164,16 +164,26 @@ def display_scatter_map(dataframe):
 
     return st.plotly_chart(fig)
     
-    
 
 def display_county_builds_hmap(dataframe):
 
-    fig = px.icicle(dataframe, names='yearBuilt', values='price', color='yearBuilt')
-        
-    return st.plotly_chart(fig)
+    return 
 
 
 def display_year_built_impact(dataframe):
+    
+    fig = px.icicle(dataframe, path=[px.Constant("all"), 'yearBuilt'], values='price', color='price', hover_data=['price'], height=800) 
+    
+    return st.plotly_chart(fig)
+
+
+def display_bedrooms_impact(dataframe):
+    
+    fig = go.Figure()
+    
+    fig.add_trace(
+        
+    )
     
     return
 
