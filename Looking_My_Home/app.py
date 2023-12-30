@@ -165,11 +165,6 @@ def display_scatter_map(dataframe):
     return st.plotly_chart(fig)
     
 
-def display_county_builds_hmap(dataframe):
-
-    return 
-
-
 def display_year_built_impact(dataframe):
     
     fig = px.icicle(dataframe, path=[px.Constant('yearBuilt'), 'yearBuilt'],names='yearBuilt', values='price', color='price') 
@@ -190,7 +185,7 @@ def display_bedrooms_impact(dataframe):
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
 call_sidebar()
-display_county_builds_hmap(get_data_and_loaddf())
+display_year_built_impact(get_data_and_loaddf())
 
 
 # Specific info functions and dynamic charts for user choices:
