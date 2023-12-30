@@ -170,7 +170,7 @@ def display_county_builds_hmap(dataframe):
 
     fig = px.density_heatmap(dataframe, x="county", y="yearBuilt", z="price")
         
-    return fig
+    return st.plotly_chart(fig)
 
 
 def display_year_built_impact(dataframe):
