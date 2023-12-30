@@ -127,6 +127,7 @@ def call_sidebar():
                     '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
        
         st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one")
+        st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county")
         st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
         
         with st.container():
@@ -177,6 +178,3 @@ def display_city_heatmap(dataframe):
 # Page Configuration and functions calling: #############################################################################################
 local_css('Looking_My_Home/style.css')
 call_sidebar()
-df = get_data_and_loaddf()
-st.write(len(df["county"].unique().tolist()))
-st.write(len(df["city"].unique().tolist()))
