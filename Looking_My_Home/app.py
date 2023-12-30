@@ -172,7 +172,7 @@ def display_county_builds_hmap(dataframe):
 
 def display_year_built_impact(dataframe):
     
-    fig = px.icicle(dataframe, path=[px.Constant("all"), 'yearBuilt'], values='price', color='price', hover_data=['price'], height=800) 
+    fig = px.icicle(dataframe, path=[px.Constant('yearBuilt'), 'yearBuilt'],names='yearBuilt', values='price', color='price') 
     
     return st.plotly_chart(fig)
 
