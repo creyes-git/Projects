@@ -34,7 +34,7 @@ def get_data_and_loaddf():
     
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-            "X-Api-Key": st.secrets["api_key"]}
+            "X-Api-Key": "st.secrets[api_key]"}
     
     # list of urls to call
     list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
@@ -164,32 +164,23 @@ def display_scatter_map(dataframe):
 
     return st.plotly_chart(fig)
     
-
-def display_donut():
     
-    return
 
+def display_county_builds_hmap(dataframe):
 
-def display_city_heatmap(dataframe):
-    
-    return
+    fig = px.density_heatmap(dataframe, x="county", y="yearBuilt", z="price")
+        
+    return fig
 
 
 def display_year_built_impact(dataframe):
-    
-    dataframe = dataframe.groupby("yearBuilt").mean()
-    
     
     return
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
 call_sidebar()
-
+display_county_builds_hmap(get_data_and_loaddf())
 
 
 # Specific info functions and dynamic charts for user choices:
-df = get_data_and_loaddf()
-
-df = df.groupby("yearBuilt")["price"].mean()
-st.table(df["price"])
