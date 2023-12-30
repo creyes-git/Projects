@@ -192,4 +192,4 @@ call_sidebar()
 df = get_data_and_loaddf()
 
 df = df.groupby("yearBuilt")["price"].mean()
-st.table(df[["price", "yearBuilt"]].sort_values("yearBuilt", ascending=False))
+st.table(df["price"])
