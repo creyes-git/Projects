@@ -164,7 +164,19 @@ def display_scatter_map(dataframe):
     return st.plotly_chart(fig)
     
 
+def display_donut():
+    
+    return
+
+
+def display_city_heatmap(dataframe):
+    
+    return
+
+
 # Page Configuration and functions calling: #############################################################################################
 local_css('Looking_My_Home/style.css')
 call_sidebar()
-display_scatter_map(get_data_and_loaddf())
+df = get_data_and_loaddf()
+st.write(len(df["county"].unique().tolist()))
+st.write(len(df["city"].unique().tolist()))
