@@ -167,7 +167,7 @@ def display_scatter_map(dataframe):
 
 def display_year_built_impact(dataframe):
     
-    fig = px.icicle(dataframe, path=[px.Constant('all'), 'yearBuilt'],names='yearBuilt', values='price', color='price') 
+    fig = px.icicle(dataframe, path=px.Constant('yearBuilt'),names='yearBuilt', values='price', color='price') 
     
     return st.plotly_chart(fig)
 
