@@ -168,7 +168,7 @@ def display_scatter_map(dataframe):
 
 def display_county_builds_hmap(dataframe):
 
-    fig = px.icicle(dataframe, names='yearBuilt', values='price', color='yearBuilt', range_color= "price")
+    fig = px.icicle(dataframe, names='yearBuilt', values='price', color='yearBuilt')
         
     return st.plotly_chart(fig)
 
