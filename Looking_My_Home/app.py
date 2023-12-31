@@ -167,25 +167,31 @@ def display_scatter_map(dataframe):
 
 def display_year_built_impact(dataframe):
     
-    fig = px.density_heatmap(dataframe, x="yearBuilt", y="price", width=500, height=500, nbinsx=25, nbinsy=25)
+    fig = px.density_heatmap(dataframe, x="yearBuilt", y="price",  width=500, height=500, nbinsx=25, nbinsy=25)
     
     return st.plotly_chart(fig)
 
 
 def display_bedrooms_impact(dataframe):
     
-    fig = go.Figure()
+    type = list(dataframe["propertyType"].unique()) 
     
-    fig.add_trace(
-        
-    )
+    fig = go.Figure(data=[
+    go.Bar(name=type[0], x=str(type[0]), y=dataframe[dataframe["propertyType"] == type[0]]["price"].mean()),
+    go.Bar(name=type[1], x=str(type[1]), y=dataframe[dataframe["propertyType"] == type[0]]["price"].mean()),
+    go.Bar(name=type[2], x=str(type[2]), y=dataframe[dataframe["propertyType"] == type[0]]["price"].mean())
+    
+    ])
+    # Change the bar mode
+    fig.update_layout(barmode='group')
+
     
     return
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
 call_sidebar()
-display_year_built_impact(get_data_and_loaddf())
+display_bedrooms_impact(get_data_and_loaddf())
 
 
 # Specific info functions and dynamic charts for user choices:
