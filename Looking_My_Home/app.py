@@ -116,6 +116,23 @@ def display_counties_ranking(dataframe):
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
 
+def display_scatter_map(dataframe):
+    dataframe = dataframe[dataframe["squareFootage"] <= 10000]
+    dataframe = dataframe[dataframe["price"] <= 7500000] 
+
+    fig = px.scatter(dataframe, x ="squareFootage" , y="price", width=500, height=500, color="propertyType",
+                    color_discrete_sequence=["red", "green", "orange"], hover_name="addressLine1", 
+                    hover_data=["city","daysOnMarket", "yearBuilt", "bathrooms", "bedrooms"])
+    
+    fig.update_layout(
+        xaxis_title="Square Footage",
+        yaxis_title="Price($)",
+        title = "         Relationship / Square Footage & Price")
+    
+
+    return st.plotly_chart(fig)
+
+
 #sidebar configuration
 def call_sidebar():
     with st.sidebar:
@@ -148,43 +165,16 @@ def call_sidebar():
             st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
 
 
-def display_scatter_map(dataframe):
-    dataframe = dataframe[dataframe["squareFootage"] <= 10000]
-    dataframe = dataframe[dataframe["price"] <= 7500000] 
+def avg_price(dataframe):
+    
+    return dataframe["price"].values.mean()
 
-    fig = px.scatter(dataframe, x ="squareFootage" , y="price", width=500, height=500, color="propertyType",
-                    color_discrete_sequence=["red", "green", "orange"], hover_name="addressLine1", 
-                    hover_data=["city","daysOnMarket", "yearBuilt", "bathrooms", "bedrooms"])
-    
-    fig.update_layout(
-        xaxis_title="Square Footage",
-        yaxis_title="Price($)",
-        title = "         Relationship / Square Footage & Price")
-    
-
-    return st.plotly_chart(fig)
-    
-
-def display_year_built_impact(dataframe):
-    
-    fig = px.density_heatmap(dataframe, x="yearBuilt", y="price",  width=500, height=500, nbinsx=25, nbinsy=25)
-    
-    return st.plotly_chart(fig)
-
-
-def display_bedrooms_impact(dataframe):
-    
-    grouped_data = dataframe.groupby(["bedrooms", "propertyType"])["price"].mean().reset_index()
-    
-    fig = px.bar(grouped_data, x="bedrooms", y="price",  width=500, height=500,barmode="group")
-    
-
-    return st.plotly_chart(fig)
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
 call_sidebar()
-display_bedrooms_impact(get_data_and_loaddf())
+
+st.markdown(avg_price(get_data_and_loaddf()))
 
 
 # Specific info functions and dynamic charts for user choices:
