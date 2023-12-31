@@ -173,19 +173,17 @@ def display_year_built_impact(dataframe):
 
 
 def display_bedrooms_impact(dataframe):
-    
-    type = list(dataframe["propertyType"].unique()) 
+    type = list()
+    for i in dataframe["propertyType"].unique():
+        type.append(i)
     
     fig = go.Figure(data=[
     go.Bar(name=type[0], x=str(type[0]), y=dataframe[dataframe["propertyType"] == type[0]]["price"].mean()),
     go.Bar(name=type[1], x=str(type[1]), y=dataframe[dataframe["propertyType"] == type[0]]["price"].mean()),
-    go.Bar(name=type[2], x=str(type[2]), y=dataframe[dataframe["propertyType"] == type[0]]["price"].mean())
-    
-    ])
+    go.Bar(name=type[2], x=str(type[2]), y=dataframe[dataframe["propertyType"] == type[0]]["price"].mean())])
     # Change the bar mode
     fig.update_layout(barmode='group')
 
-    
     return
 
 # General info functions and stable charts:
