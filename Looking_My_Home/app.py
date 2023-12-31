@@ -165,16 +165,26 @@ def call_sidebar():
             st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
 
 
-def avg_price(dataframe):
+# get average properties stats of price, bathrooms, bedrooms, days on market and size
+def avg_stats(dataframe):
     
-    return dataframe["price"].values.mean().astype(int).round(-3)
+    avg_price = dataframe["price"].values.mean().astype(int).round(-3)
+    avg_size = dataframe["squareFootage"].values.mean().astype(int)
+    avg_beds = dataframe["bedrooms"].values.mean().astype(int)
+    avg_baths = dataframe["bathrooms"].values.mean().astype(int)
+    avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
+    
+    return [avg_price, avg_size, avg_beds, avg_baths, avg_days_market]
 
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
 call_sidebar()
 
-st.markdown(avg_price(get_data_and_loaddf()))
+a = avg_stats(get_data_and_loaddf())
+
+for i in a:
+    st.markdown(i)
 
 
 # Specific info functions and dynamic charts for user choices:
