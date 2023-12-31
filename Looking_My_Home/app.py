@@ -167,7 +167,7 @@ def call_sidebar():
 
 def avg_price(dataframe):
     
-    return dataframe["price"].values.mean()
+    return dataframe["price"].values.mean().astype(int)
 
 
 # General info functions and stable charts:
