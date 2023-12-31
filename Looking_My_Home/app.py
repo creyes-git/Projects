@@ -174,7 +174,7 @@ def display_year_built_impact(dataframe):
 
 def display_bedrooms_impact(dataframe):
     
-    fig = px.bar(dataframe, x="bedrooms", y=dataframe["price"],  width=500, height=500,barmode="group")
+    fig = px.bar(dataframe, x="bedrooms", y=pd.Series(dataframe["price"]).mean(),  width=500, height=500,barmode="group")
     
 
     return st.plotly_chart(fig)
