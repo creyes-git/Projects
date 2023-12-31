@@ -173,18 +173,11 @@ def display_year_built_impact(dataframe):
 
 
 def display_bedrooms_impact(dataframe):
-    type = list()
-    for i in dataframe["propertyType"].unique():
-        type.append(i)
     
-    fig = go.Figure(data=[
-    go.Bar(name=type[0], x=str(type[0]), y=dataframe[dataframe["propertyType"] == type[0]]["price"].mean()),
-    go.Bar(name=type[1], x=str(type[1]), y=dataframe[dataframe["propertyType"] == type[0]]["price"].mean()),
-    go.Bar(name=type[2], x=str(type[2]), y=dataframe[dataframe["propertyType"] == type[0]]["price"].mean())])
-    # Change the bar mode
-    fig.update_layout(barmode='group')
+    fig = px.bar(dataframe, x="bedrooms", y="price",  width=500, height=500)
+    
 
-    return
+    return st.plotly_chart(fig)
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
