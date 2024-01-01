@@ -34,7 +34,7 @@ def get_data_and_loaddf():
     
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-            "X-Api-Key": st.secrets["auth_token"]}
+            "X-Api-Key": st.secrets["api_key"]}
     
     # list of urls to call
     list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
