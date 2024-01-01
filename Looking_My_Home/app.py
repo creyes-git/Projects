@@ -34,7 +34,7 @@ def get_data_and_loaddf():
     
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-            "X-Api-Key": st.secrets("api_key")}
+            "X-Api-Key": st.secrets["api_key"]}
     
     # list of urls to call
     list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
@@ -181,10 +181,10 @@ def avg_stats(dataframe):
 local_css('Looking_My_Home/style.css')
 call_sidebar()
 
-a = avg_stats(get_data_and_loaddf())
+#a = avg_stats(get_data_and_loaddf())
 
-for i in a:
-    st.markdown(i)
+#for i in a:
+    #st.markdown(i)
 
 
 # Specific info functions and dynamic charts for user choices:
