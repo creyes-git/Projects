@@ -181,10 +181,9 @@ def avg_stats(dataframe):
 local_css('Looking_My_Home/style.css')
 call_sidebar()
 
-#a = avg_stats(get_data_and_loaddf())
-
-#for i in a:
-    #st.markdown(i)
+display_counties_ranking(get_data_and_loaddf())
+display_ga_map(get_data_and_loaddf())
+display_scatter_map(get_data_and_loaddf())
 
 
 # Specific info functions and dynamic charts for user choices:
