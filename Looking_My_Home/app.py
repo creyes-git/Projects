@@ -169,7 +169,7 @@ def call_sidebar():
 def avg_stats(dataframe):
     
     avg_price = dataframe["price"].values.mean().astype(int).round(-3)
-    avg_size = dataframe["squareFootage"].values.mean()
+    avg_size = dataframe["squareFootage"].dropna(how="any").values.mean().astype(int)
     avg_beds = dataframe["bedrooms"].values.mean().astype(int)
     avg_baths = dataframe["bathrooms"].values.mean().astype(int)
     avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
