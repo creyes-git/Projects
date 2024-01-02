@@ -185,5 +185,8 @@ display_counties_ranking(get_data_and_loaddf())
 display_ga_map(get_data_and_loaddf())
 display_scatter_map(get_data_and_loaddf())
 
+for i in avg_stats(get_data_and_loaddf()):
+    st.write(i)
+
 
 # Specific info functions and dynamic charts for user choices:
