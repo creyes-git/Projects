@@ -178,10 +178,10 @@ def avg_price_size_bed_bath_mdays(dataframe):
         col1, col2 = st.columns(2)
         with st.container():
             col1.markdown('<span class="icon type-text">Avg price: </span>', unsafe_allow_html=True)
-            col1.markdown(f"# :rainbow[{str(avg_price)}]")
+            col1.markdown(f"# :rainbow[{str(avg_price)}$]")
         with st.container():
             col2.markdown('<span class="icon type-text2">Avg size: </span>', unsafe_allow_html=True)
-            col2.markdown(f"# :rainbow[{str(avg_size)}]")
+            col2.markdown(f"# :rainbow[{str(avg_size)} sqft]")
         with st.container():
             col1.markdown('<span class="icon type-text3">Beds/Baths: </span>', unsafe_allow_html=True)
             col1.markdown(f"# :rainbow[{str(avg_beds)}/{str(avg_baths)}]")
