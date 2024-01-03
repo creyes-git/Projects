@@ -180,13 +180,13 @@ def avg_price_size_bed_bath_mdays(dataframe):
             col1.markdown('<span class="icon type-text">Avg price: </span>', unsafe_allow_html=True)
             col1.markdown(f"# :rainbow[{str(avg_price)}]")
         with st.container():
-            col2.markdown('<span class="icon type-text2">Avg size: </span>')
+            col2.markdown('<span class="icon type-text2">Avg size: </span>', unsafe_allow_html=True)
             col2.markdown(f"# :rainbow[{str(avg_size)}]")
         with st.container():
-            col1.markdown('<span class="icon type-text3">Beds/Baths: </span>')
+            col1.markdown('<span class="icon type-text3">Beds/Baths: </span>', unsafe_allow_html=True)
             col1.markdown(f"# :rainbow[{str(avg_beds)}/{str(avg_baths)}]")
         with st.container():
-            col2.markdown('<span class="icon type-text4">Days on market: </span>')
+            col2.markdown('<span class="icon type-text4">Days on market: </span>', unsafe_allow_html=True)
             col2.markdown(f"# :rainbow[{str(avg_days_market)}]")
 
 # General info functions and stable charts:
