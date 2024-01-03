@@ -178,7 +178,7 @@ def avg_price_size_bed_bath_mdays(dataframe):
         col1, col2 = st.columns(2)
         with st.container():
             col1.markdown(f"# :rainbow[Avg Price: ]", unsafe_allow_html=True)
-            col1.markdown(f"# :rainbow[{str(avg_price)}$]")
+            col1.markdown(f"{str(avg_price)}$")
         with st.container():
             col2.markdown(f"# :rainbow[Avg Size: ]", unsafe_allow_html=True)
             col2.markdown(f"# :rainbow[{str(avg_size)} sqft]")
