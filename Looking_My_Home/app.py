@@ -166,7 +166,7 @@ def call_sidebar():
 
 
 # get average properties stats of price, bathrooms, bedrooms, days on market and size
-def avg_stats(dataframe):
+def avg_price_size_bed_bath_mdays(dataframe):
     
     avg_price = dataframe["price"].values.mean().astype(int).round(-3)
     avg_size = dataframe["squareFootage"].dropna(how="any").values.mean().astype(int)
@@ -181,12 +181,8 @@ def avg_stats(dataframe):
 local_css('Looking_My_Home/style.css')
 call_sidebar()
 
-display_counties_ranking(get_data_and_loaddf())
-display_ga_map(get_data_and_loaddf())
-display_scatter_map(get_data_and_loaddf())
+avg = avg_price_size_bed_bath_mdays(get_data_and_loaddf())
 
-for i in avg_stats(get_data_and_loaddf()):
-    st.write(i)
-
+st.markdown(f"# :rainbow[{str(avg[0])}]")
 
 # Specific info functions and dynamic charts for user choices:
