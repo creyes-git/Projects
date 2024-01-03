@@ -175,19 +175,14 @@ def avg_price_size_bed_bath_mdays(dataframe):
     avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
     
     with st.container():
-        col1, col2 = st.columns(2)
-        with st.container():
-            col1.markdown(f"# :rainbow[Avg Price: {str(avg_price)}$ ]", unsafe_allow_html=True)
-            col1.markdown(f"{str(avg_price)}$")
-        with st.container():
-            col2.markdown(f"# :rainbow[Avg Size: ]", unsafe_allow_html=True)
-            col2.markdown(f"# :rainbow[{str(avg_size)} sqft]")
-        with st.container():
-            col1.markdown(f"# :rainbow[Beds/Baths: ]", unsafe_allow_html=True)
-            col1.markdown(f"# :rainbow[{str(avg_beds)}/{str(avg_baths)}]")
-        with st.container():
-            col2.markdown(f"# :rainbow[Days on Market: ]", unsafe_allow_html=True)
-            col2.markdown(f"# :rainbow[{str(avg_days_market)}]")
+            st.markdown(f"# :rainbow[Avg Price: {str(avg_price)}$ ]", unsafe_allow_html=True)
+            st.markdown(f"{str(avg_price)}$")
+            st.markdown(f"# :rainbow[Avg Size: ]", unsafe_allow_html=True)
+            st.markdown(f"# :rainbow[{str(avg_size)} sqft]")
+            st.markdown(f"# :rainbow[Beds/Baths: ]", unsafe_allow_html=True)
+            st.markdown(f"# :rainbow[{str(avg_beds)}/{str(avg_baths)}]")
+            st.markdown(f"# :rainbow[Days on Market: ]", unsafe_allow_html=True)
+            st.markdown(f"# :rainbow[{str(avg_days_market)}]")
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
