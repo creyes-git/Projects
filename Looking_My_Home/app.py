@@ -176,16 +176,15 @@ def avg_price_size_bed_bath_mdays(dataframe):
     
     with st.container():
         col1, col2 = st.columns(2)
-        col1.markdown(f"# :red[{str(avg_price)}]")
-        col2.markdown(f"# :green[{str(avg_size)}]")
-        col1.markdown(f"# :yellow[{str(avg_beds)}]")
-        col2.markdown(f"# :orange[{str(avg_days_market)}]")
+        col1.metric("Avg Price: ", f"# :red[{str(avg_price)}]")
+        col2.metric("Avg Size: ", f"# :green[{str(avg_size)}]")
+        col1.metric("Avg baths/beds: ", f"# :yellow[{str(avg_beds)}]")
+        col2.metric("Avg Days on Market: ", f"# :orange[{str(avg_days_market)}]")
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
 call_sidebar()
 
 
-st.markdown(f"# :rainbow[{str(avg[0])}]")
-
+avg_price_size_bed_bath_mdays(get_data_and_loaddf())
 # Specific info functions and dynamic charts for user choices:
