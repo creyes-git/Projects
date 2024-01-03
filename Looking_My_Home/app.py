@@ -180,8 +180,8 @@ def avg_price_size_bed_bath_mdays(dataframe):
             col1.text("Average Price: ")
             col1.markdown(f"# :rainbow[{str(avg_price)}]")
         col2.markdown(f"# :red[{str(avg_size)}]")
-        col1.markdown(f"# :green[{str(avg_beds)}]")
-        col2.metric("Avg", st.markdown(f"# :orange[{str(avg_days_market)}]"))
+        col1.markdown(f"# :green[{str(avg_beds)}/{str(avg_baths)}]")
+        col2.markdown(f"# :orange[{str(avg_days_market)}]")
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
