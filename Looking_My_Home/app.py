@@ -174,14 +174,17 @@ def avg_price_size_bed_bath_mdays(dataframe):
     avg_baths = dataframe["bathrooms"].values.mean().astype(int)
     avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
     
-    return [avg_price, avg_size, avg_beds, avg_baths, avg_days_market]
-
+    with st.container():
+        col1, col2 = st.columns(2)
+        col1.metric("Average Price", f"# :red[{str(avg_price)}]")
+        col2.metric("Average Size", f"# :green[{str(avg_size)}]")
+        col1.metric("Avg ", f"# :rainbow[{str(avg_beds)}+/+{str(avg_baths)}]")
+        col2.metric("Avg Days on Market: ", f"# :orange[{str(avg_days_market)}]")
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
 call_sidebar()
 
-avg = avg_price_size_bed_bath_mdays(get_data_and_loaddf())
 
 st.markdown(f"# :rainbow[{str(avg[0])}]")
 
