@@ -175,7 +175,7 @@ def avg_price_size_bed_bath_mdays(dataframe):
     avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
     
     with st.container():
-            st.markdown(f"# :rainbow[Average Statistics: ]")
+            st.markdown(f"# :rainbow[Average Statistics: ]", unsafe_allow_html=True,size = 20)
             st.markdown(f"# :rainbow[Avg Price: ]" + f" :red[{str(avg_price)}$ ]")
             st.markdown(f"# :rainbow[Avg Size: {str(avg_size)} sqft]")
             st.markdown(f"# :rainbow[Beds/Baths: {str(avg_beds)}/{str(avg_baths)}]")
