@@ -193,6 +193,10 @@ def avg_price_size_bed_bath_mdays(dataframe):
 local_css('Looking_My_Home/style.css')
 call_sidebar()
 
-
-avg_price_size_bed_bath_mdays(get_data_and_loaddf())
+with st.container():
+    c1, c2 = st.columns(2)
+    with c1:
+        display_ga_map(get_data_and_loaddf())
+    with c2:
+        avg_price_size_bed_bath_mdays(get_data_and_loaddf())
 # Specific info functions and dynamic charts for user choices:
