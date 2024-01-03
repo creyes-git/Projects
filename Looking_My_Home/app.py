@@ -178,7 +178,7 @@ def avg_price_size_bed_bath_mdays(dataframe):
         col1, col2 = st.columns(2)
         col1.metric("Avg Price: ", f"# :red[{str(avg_price)}]")
         col2.metric("Avg Size: ", f"# :green[{str(avg_size)}]")
-        col1.metric("Avg baths/beds: ", f"# :rainbow[{str(avg_beds)}]")
+        col1.metric("Avg baths/beds: ", f"# :yellow[{str(avg_beds)}]")
         col2.metric("Avg Days on Market: ", f"# :orange[{str(avg_days_market)}]")
 
 # General info functions and stable charts:
