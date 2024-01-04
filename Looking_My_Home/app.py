@@ -154,8 +154,8 @@ local_css('Looking_My_Home/style.css')
 st.title(":rainbow[**General information on GA properties market**]")
 
 with st.container():
-    c1, c2, c3 = st.columns(3)
-    with c3:
+    c1, c2 = st.columns(2)
+    with c2:
         display_scatter_map(get_data_and_loaddf())
     with c1:
         display_ga_map(get_data_and_loaddf())
