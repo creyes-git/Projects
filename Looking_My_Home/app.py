@@ -82,13 +82,13 @@ def display_ga_map(dataframe):
         lon=dataframe['longitude'],
         mode='markers',
         marker=dict(size=7, color = dataframe['price'], cmin=200000, cmax=1000000, colorscale='Sunset', colorbar_title="Price"),
-        text=str(dataframe['price'])+"$",
-        title="GA Map"
-        ))
+        text=str(dataframe['price'])+"$"))
 
     # Update the layout of the scatter mapbox
     fig.update_layout(
         mapbox=dict(
+            labels=dict("GA"),
+        
             center={"lat": 33, "lon": -83},
             zoom=5,
             style= "carto-positron"))
