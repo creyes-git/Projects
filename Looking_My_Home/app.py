@@ -126,9 +126,9 @@ def display_scatter_map(dataframe):
     
     fig.update_layout(
         xaxis_title=None,
-        yaxis_title="Price($)",
+        yaxis_title=None,
         legend_title="Property Type",
-        title = "         Relationship / Square Footage & Price")
+        title = "         Price($) vs Square Footage")
     
 
     return st.plotly_chart(fig)
