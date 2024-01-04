@@ -125,10 +125,10 @@ def display_scatter_map(dataframe):
                     hover_data=["city","daysOnMarket", "yearBuilt", "bathrooms", "bedrooms"])
     
     fig.update_layout(
-        xaxis_title=None,
-        yaxis_title=None,
+        xaxis_title="Square Footage",
+        yaxis_title="Price($)",
         legend_title="Property Type",
-        title = "         Price($) vs Square Footage")
+        title = "         Relationship / Square Footage & Price")
     
 
     return st.plotly_chart(fig)
