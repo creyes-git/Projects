@@ -8,7 +8,7 @@ import requests
 import json
 import os
 
-#setting the page config
+#setting the page config and creating the functions
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
 
 # loading css file
@@ -151,7 +151,9 @@ def display_avg_stats(dataframe):
 
 
 
-# load css file
+
+
+# General info and functions
 local_css('Looking_My_Home/style.css')
 st.title(":rainbow[**General information on GA properties market**]")
 st.markdown(" ")
@@ -171,6 +173,13 @@ with st.container():
         display_scatter_map(get_data_and_loaddf())
     with c1:
         display_ga_map(get_data_and_loaddf())
+
+st.markdown(":rainbow[**Search Results Information **] ")
+
+
+# Dynamic charts functions for user choices:
+   
+        
 
 #sidebar configuration
 with st.sidebar:
@@ -199,6 +208,7 @@ with st.sidebar:
             
             # globitos
             st.balloons()
+            st.dataframe(df)
             
         # space
         for i in range(3):
@@ -209,10 +219,3 @@ with st.sidebar:
             st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
             st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
             st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
-
-# Fix charts functions 
-
-
-
-
-# Dynamic charts functions for user choices:
