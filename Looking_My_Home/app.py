@@ -75,7 +75,7 @@ def get_data_and_loaddf():
 # displaying the scatter map
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
-    fig = go.Figure(layout=go.Layout(height=500, width=500))
+    fig = go.Figure(layout=go.Layout(height=550, width=500))
 
     fig.add_trace(go.Scattermapbox(
         lat=dataframe['latitude'],
@@ -89,7 +89,7 @@ def display_ga_map(dataframe):
         title='Georgia Scatter Map',
         mapbox=dict(
             center={"lat": 33, "lon": -82.90},
-            zoom=5.35,
+            zoom=5.30,
             style= "carto-positron"))
     
     st.plotly_chart(fig)
