@@ -81,9 +81,9 @@ def display_ga_map(dataframe):
         lat=dataframe['latitude'],
         lon=dataframe['longitude'],
         mode='markers',
-        marker=dict(size=7, color = dataframe['price'], cmin=200000, cmax=1000000, colorscale='Sunset', colorbar_title="Price"),
+        marker=dict(size=7, color = dataframe['price'], cmin=200000, cmax=1000000, colorscale='Viridis', colorbar_title="Price"),
         text=str(dataframe['price'])+"$",
-        title="GA"
+        hoverinfo=["price"]
         ))
 
     # Update the layout of the scatter mapbox
