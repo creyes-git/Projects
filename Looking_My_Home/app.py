@@ -154,14 +154,16 @@ def display_avg_stats(dataframe):
 # load css file
 local_css('Looking_My_Home/style.css')
 st.title(":rainbow[**General information on GA properties market**]")
+st.markdown(" ")
 
 with st.container():
     c1, c2 = st.columns(2)
     with c2:
+        st.markdown(" Basic Property Stats:  ")
         display_avg_stats(get_data_and_loaddf())
     with c1:
+        st.markdown(" AVG Price County Ranking:  ")
         display_counties_ranking(get_data_and_loaddf())
-        
         
 with st.container():
     c1, c2 = st.columns(2)
@@ -187,7 +189,7 @@ with st.sidebar:
             beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
             baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)
         
-        if st.button(":gray[**Search**]", type= "primary"):
+        if st.button("**Search**", type= "primary"):
             # dataset configuration
             df = df[df["propertyType"] == prop_type]
             df = df[df["county"] == county]
