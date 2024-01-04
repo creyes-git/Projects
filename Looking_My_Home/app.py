@@ -175,7 +175,7 @@ def avg_price_size_bed_bath_mdays(dataframe):
     avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
     
     with st.container():
-            st.metric("Average Price: ", f"{str(avg_price)}$", delta=f"{str(avg_price)}%", delta_color="inverse", help="Help text", label_visibility="collapsed", delta_position="bottom")
+            st.metric("Average Price: ", f"{str(avg_price)}$", delta=f"{str(avg_price)}%", delta_color="inverse")
             st.metric("Average Size: ", f"{str(avg_size)} sqft")
             st.metric("Bedrooms/Bathrooms: ", f"{str(avg_beds)}/{str(avg_baths)}")
             st.metric("Days on Market: ", f"{str(avg_days_market)} days")
