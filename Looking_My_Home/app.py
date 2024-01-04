@@ -148,24 +148,16 @@ def display_avg_stats(dataframe):
             st.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)} days")
 
 
-#sidebar configuration
-def play_dashboard(df):
-    display_avg_stats(df)
-    display_counties_ranking(df)
-    display_ga_map(df)
-    display_scatter_map(df)
-
-
 
 # load css file
 local_css('Looking_My_Home/style.css')
+st.markdown(":rainbow[**General information on GA properties market**]")
 
-st.warning("Set your search criteria and click on Search button to see the results", icon="⚠️")
 
-df = get_data_and_loaddf()
 
 #sidebar configuration
 with st.sidebar:
+        df = get_data_and_loaddf()
         lottie_sidebar("Looking_My_Home/home1.json")
         
         st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
@@ -201,6 +193,9 @@ with st.sidebar:
             st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
             st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
 
+# Fix charts functions 
 
-# Info functions and dynamic charts for user choices:
-play_dashboard(df)
+
+
+
+# Dynamic charts functions for user choices:
