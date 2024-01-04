@@ -205,8 +205,15 @@ with st.sidebar:
             beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
             baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)
         
-        button = st.button(":rainbow[**Search**]:Search:", type= "primary", on_click = None)
-        
+        if st.button(":gray[**Search**]", type= "primary"):
+            df = df[df["propertyType"] == prop_type]
+            df = df[df["county"] == county]
+            df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
+            df = df[df["bedrooms"] == beds]
+            df = df[df["bathrooms"] == baths]
+            st.balloons()
+            st.snow()
+            
         # space
         for i in range(3):
             st.markdown(" ")
