@@ -216,6 +216,11 @@ with st.sidebar:
             # globitos
             st.balloons()
             
+            display_avg_stats(df)
+            display_counties_ranking(df)
+            display_ga_map(df)
+            display_scatter_map(df)
+            
             
         # space
         for i in range(3):
@@ -229,7 +234,3 @@ with st.sidebar:
 
 
 # Info functions and dynamic charts for user choices:
-display_avg_stats(df)
-display_counties_ranking(df)
-display_ga_map(df)
-display_scatter_map(df)
