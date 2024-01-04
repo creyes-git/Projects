@@ -184,6 +184,9 @@ def call_sidebar():
 
 # load css file
 local_css('Looking_My_Home/style.css')
+
+st.warning("Set your search criteria and click on Search button to see the results", icon="⚠️")
+
 df = get_data_and_loaddf()
 
 #sidebar configuration
@@ -202,7 +205,7 @@ with st.sidebar:
             beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
             baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)
         
-        button = st.button(":rainbow[**Search**]", type= "primary", on_click = None)
+        button = st.button(":rainbow[**Search**]:Search:", type= "primary", on_click = None)
         
         # space
         for i in range(3):
