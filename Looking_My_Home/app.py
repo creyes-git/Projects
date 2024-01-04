@@ -151,7 +151,7 @@ def display_avg_stats(dataframe):
 
 # load css file
 local_css('Looking_My_Home/style.css')
-st.title(":rainbow[General information on GA properties market]")
+st.title(":rainbow[**General information on GA properties market**]")
 
 
 
