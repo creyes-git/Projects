@@ -1,11 +1,9 @@
 import pandas as pd
-import numpy as np
 import streamlit as st
 from streamlit_lottie import st_lottie
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import date
-from PIL import Image
 import requests
 import json
 import os
@@ -73,6 +71,7 @@ def get_data_and_loaddf():
     
     return df
 
+
 # displaying the scatter map
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
@@ -133,6 +132,22 @@ def display_scatter_map(dataframe):
     return st.plotly_chart(fig)
 
 
+# get average properties stats of price, bathrooms, bedrooms, days on market and size
+def display_avg_stats(dataframe):
+    
+    avg_price = dataframe["price"].values.mean().astype(int).round(-3)
+    avg_size = dataframe["squareFootage"].dropna(how="any").values.mean().astype(int)
+    avg_beds = dataframe["bedrooms"].values.mean().astype(int)
+    avg_baths = dataframe["bathrooms"].values.mean().astype(int)
+    avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
+    
+    with st.container():
+            st.metric(f" :red[**Average Price**]", f"{str(avg_price)}$",)
+            st.metric(f" :blue[**Average Size**]", f"{str(avg_size)} sqft")
+            st.metric(f" :green[**Bedrooms/Bathrooms**]", f"{str(avg_beds)}/{str(avg_baths)}")
+            st.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)} days")
+
+
 #sidebar configuration
 def call_sidebar():
     with st.sidebar:
@@ -165,29 +180,41 @@ def call_sidebar():
             st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
 
 
-# get average properties stats of price, bathrooms, bedrooms, days on market and size
-def avg_price_size_bed_bath_mdays(dataframe):
-    
-    avg_price = dataframe["price"].values.mean().astype(int).round(-3)
-    avg_size = dataframe["squareFootage"].dropna(how="any").values.mean().astype(int)
-    avg_beds = dataframe["bedrooms"].values.mean().astype(int)
-    avg_baths = dataframe["bathrooms"].values.mean().astype(int)
-    avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
-    
-    with st.container():
-            st.metric(f" :red[**Average Price**]", f"{str(avg_price)}$",)
-            st.metric(f" :blue[**Average Size**]", f"{str(avg_size)} sqft")
-            st.metric(f" :green[**Bedrooms/Bathrooms**]", f"{str(avg_beds)}/{str(avg_baths)}")
-            st.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)} days")
 
-# General info functions and stable charts:
+
+# load css file
 local_css('Looking_My_Home/style.css')
-call_sidebar()
+df = get_data_and_loaddf()
 
-with st.container():
-    c1, c2 = st.columns(2)
-    with c1:
-        display_ga_map(get_data_and_loaddf())
-    with c2:
-        avg_price_size_bed_bath_mdays(get_data_and_loaddf())
+#sidebar configuration
+with st.sidebar:
+        lottie_sidebar("Looking_My_Home/home1.json")
+        
+        st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
+                    '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
+       
+        prop_type = st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one:")
+        county = st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county:")
+        price_range = st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
+        
+        with st.container():
+            c1,c2 = st.columns(2)
+            beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
+            baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)
+        
+        button = st.button(":rainbow[**Search**]", type= "primary", on_click = None)
+        
+        # space
+        for i in range(3):
+            st.markdown(" ")
+        
+        with st.container():
+            st.write("- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app)")
+            st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
+            st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
+            st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
+
+
+
+
 # Specific info functions and dynamic charts for user choices:
