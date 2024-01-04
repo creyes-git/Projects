@@ -75,7 +75,7 @@ def get_data_and_loaddf():
 # displaying the scatter map
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
-    fig = go.Figure(layout=go.Layout(height=550, width=500))
+    fig = go.Figure(layout=go.Layout(height=500, width=500))
 
     fig.add_trace(go.Scattermapbox(
         lat=dataframe['latitude'],
