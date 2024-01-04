@@ -175,11 +175,10 @@ def avg_price_size_bed_bath_mdays(dataframe):
     avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
     
     with st.container():
-            st.markdown(f"# :[Average Statistics: ]")
-            st.markdown(f"# :rainbow[Avg Price: ]" + f"{str(avg_price)}$")
-            st.markdown(f"# :rainbow[Avg Size: {str(avg_size)} sqft]")
-            st.markdown(f"# :rainbow[Beds/Baths: {str(avg_beds)}/{str(avg_baths)}]")
-            st.markdown(f"# :rainbow[Days on Market: {str(avg_days_market)}]")
+            st.metric("Average Price: ", f"{str(avg_price)}]")
+            st.metric("Average Size: ", f"{str(avg_size)}]")
+            st.metric("Bedrooms/Bathrooms: ", f"{str(avg_beds)}/{str(avg_baths)}]")
+            st.metric("Days on Market: ", f"{str(avg_days_market)}]")
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
