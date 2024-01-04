@@ -75,7 +75,7 @@ def get_data_and_loaddf():
 # displaying the scatter map
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
-    fig = go.Figure(layout=go.Layout(height=525, width=500))
+    fig = go.Figure(layout=go.Layout(height=500, width=500))
 
     fig.add_trace(go.Scattermapbox(
         lat=dataframe['latitude'],
@@ -120,7 +120,7 @@ def display_scatter_map(dataframe):
     dataframe = dataframe[dataframe["squareFootage"] <= 10000]
     dataframe = dataframe[dataframe["price"] <= 7500000] 
 
-    fig = px.scatter(dataframe, x ="squareFootage" , y="price", width=500, height=500, color="propertyType",
+    fig = px.scatter(dataframe, x ="squareFootage" , y="price", width=550, height=475, color="propertyType",
                     color_discrete_sequence=["red", "green", "orange"], hover_name="addressLine1", 
                     hover_data=["city","daysOnMarket", "yearBuilt", "bathrooms", "bedrooms"])
     
