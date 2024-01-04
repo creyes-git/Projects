@@ -86,7 +86,7 @@ def display_ga_map(dataframe):
 
     # Update the layout of the scatter mapbox
     fig.update_layout(
-        title='Georgia Scatter Map',
+        title='Georgia Properties Scatter Map',
         mapbox=dict(
             center={"lat": 33, "lon": -82.90},
             zoom=5.30,
@@ -120,12 +120,12 @@ def display_scatter_map(dataframe):
     dataframe = dataframe[dataframe["squareFootage"] <= 10000]
     dataframe = dataframe[dataframe["price"] <= 7500000] 
 
-    fig = px.scatter(dataframe, x ="squareFootage" , y="price", width=550, height=475, color="propertyType",
+    fig = px.scatter(dataframe, x ="squareFootage" , y="price", width=500, height=500, color="propertyType",
                     color_discrete_sequence=["red", "green", "orange"], hover_name="addressLine1", 
                     hover_data=["city","daysOnMarket", "yearBuilt", "bathrooms", "bedrooms"])
     
     fig.update_layout(
-        xaxis_title="Square Footage",
+        xaxis_title=None,
         yaxis_title="Price($)",
         legend_title="Property Type",
         title = "         Relationship / Square Footage & Price")
