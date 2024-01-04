@@ -159,9 +159,6 @@ with st.container():
         display_scatter_map(get_data_and_loaddf())
     with c1:
         display_ga_map(get_data_and_loaddf())
-    with c2:
-        display_counties_ranking(get_data_and_loaddf())
-
 
 #sidebar configuration
 with st.sidebar:
