@@ -153,6 +153,14 @@ def display_avg_stats(dataframe):
 local_css('Looking_My_Home/style.css')
 st.title(":rainbow[**General information on GA properties market**]")
 
+with st.container():
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        display_scatter_map(get_data_and_loaddf())
+    with c2:
+        display_avg_stats(get_data_and_loaddf())
+    with c3:
+        display_counties_ranking(get_data_and_loaddf())
 
 
 #sidebar configuration
