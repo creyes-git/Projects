@@ -200,15 +200,18 @@ with st.sidebar:
         
         if st.button("**Search**", type= "primary"):
             # dataset configuration
-            df = df[df["propertyType"] == prop_type]
-            df = df[df["county"] == county]
-            df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
-            df = df[df["bedrooms"] == beds]
-            df = df[df["bathrooms"] == baths]
+            def botonsito_df():
+                df = get_data_and_loaddf()
+                df = df[df["propertyType"] == prop_type]
+                df = df[df["county"] == county]
+                df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
+                df = df[df["bedrooms"] == beds]
+                df = df[df["bathrooms"] == baths]
+                
+                return df
             
             # globitos
             st.balloons()
-            st.dataframe(df)
             
         # space
         for i in range(3):
@@ -219,3 +222,5 @@ with st.sidebar:
             st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
             st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
             st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
+            
+st.dataframe(botonsito_df(), use_container_width=True)
