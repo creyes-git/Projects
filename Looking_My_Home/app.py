@@ -206,13 +206,16 @@ with st.sidebar:
             baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)
         
         if st.button(":gray[**Search**]", type= "primary"):
+            # dataset configuration
             df = df[df["propertyType"] == prop_type]
             df = df[df["county"] == county]
             df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
             df = df[df["bedrooms"] == beds]
             df = df[df["bathrooms"] == baths]
+            
+            # globitos
             st.balloons()
-            st.snow()
+            
             
         # space
         for i in range(3):
@@ -225,6 +228,8 @@ with st.sidebar:
             st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
 
 
-
-
-# Specific info functions and dynamic charts for user choices:
+# Info functions and dynamic charts for user choices:
+display_avg_stats(df)
+display_counties_ranking(df)
+display_ga_map(df)
+display_scatter_map(df)
