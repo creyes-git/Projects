@@ -176,9 +176,9 @@ def avg_price_size_bed_bath_mdays(dataframe):
     
     with st.container():
             st.metric(f" :red[**Average Price**]", f"{str(avg_price)}$",)
-            st.metric(f" :blue[**Average Size: **]", f"{str(avg_size)} sqft")
-            st.metric(f" :green[**Bedrooms/Bathrooms: **]", f"{str(avg_beds)}/{str(avg_baths)}")
-            st.metric(f" :orange[**Average Days on Market: **]", f"{str(avg_days_market)} days")
+            st.metric(f" :blue[**Average Size**]", f"{str(avg_size)} sqft")
+            st.metric(f" :green[**Bedrooms/Bathrooms**]", f"{str(avg_beds)}/{str(avg_baths)}")
+            st.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)} days")
 
 # General info functions and stable charts:
 local_css('Looking_My_Home/style.css')
