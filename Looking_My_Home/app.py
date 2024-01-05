@@ -184,7 +184,7 @@ st.markdown(":rainbow[**Search Results Information **] ")
 #sidebar configuration
 with st.sidebar:
         df = get_data_and_loaddf()
-        
+           
         lottie_sidebar("Looking_My_Home/home1.json")
         
         st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
@@ -199,18 +199,8 @@ with st.sidebar:
             beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
             baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)
         
-          
-        # space
-        for i in range(3):
-            st.markdown(" ")
         
-        with st.container():
-            st.write("- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app)")
-            st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
-            st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
-            st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
-            
-def botonsito():
+        def botonsito():
             # dataset configuration
             df = df[df["propertyType"] == prop_type]
             df = df[df["county"] == county]
@@ -221,6 +211,18 @@ def botonsito():
             # globitos and df display
             st.balloons()    
             st.dataframe(df, use_container_width=True)
-                
-st.sidebar.button("**Search**", type= "primary", on_click= botonsito())
-          
+             
+             
+        st.button("**Search**", type= "primary", on_click= botonsito())
+        
+            
+        # space
+        for i in range(3):
+            st.markdown(" ")
+        
+        with st.container():
+            st.write("- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app)")
+            st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
+            st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
+            st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
+            
