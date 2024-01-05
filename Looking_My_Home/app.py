@@ -201,7 +201,7 @@ with st.sidebar:
              
     st.markdown(" ")
     
-    st.button("**Search**", type= "primary")
+    st.button("**Search**", type= "primary",k)
         
     st.markdown(" ")
         
@@ -224,3 +224,6 @@ def botonsito():
     st.balloons()    
     st.dataframe(df, use_container_width=True)
             
+            
+if st.sidebar.button("Search"):
+    botonsito()
