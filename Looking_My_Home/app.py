@@ -183,32 +183,32 @@ st.markdown(":rainbow[**Search Results Information **] ")
 
 #sidebar configuration
 with st.sidebar:
-        df = get_data_and_loaddf()
-           
-        lottie_sidebar("Looking_My_Home/home1.json")
-        
-        st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
-                    '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
+    df = get_data_and_loaddf()
        
-        prop_type = st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one:")
-        county = st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county:")
-        price_range = st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
+    lottie_sidebar("Looking_My_Home/home1.json")
         
-        with st.container():
-            c1,c2 = st.columns(2)
-            beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
-            baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0) 
+    st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
+                '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
+       
+    prop_type = st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one:")
+    county = st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county:")
+    price_range = st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
+        
+    with st.container():
+        c1,c2 = st.columns(2)
+        beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
+        baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0) 
              
-        st.button("**Search**", type= "primary", on_click= botonsito())
+    st.button("**Search**", type= "primary")
         
             
-        # space
-        for i in range(3):
-            st.markdown(" ")
+    # space
+    for i in range(3):
+        st.markdown(" ")
         
-        with st.container():
-            st.write("- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app)")
-            st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
-            st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
-            st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
+    with st.container():
+        st.write("- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app)")
+        st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
+        st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
+        st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
             
