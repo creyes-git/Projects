@@ -197,9 +197,12 @@ with st.sidebar:
     with st.container():
         c1,c2 = st.columns(2)
         beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
-        baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)   
+        baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)  
+
+    st.markdown("") 
             
-if st.sidebar.button("[**Search**]", type= "primary"):
+            
+if st.sidebar.button("**Search**", type= "primary"):
     # dataset configuration
     df = df[df["propertyType"] == prop_type]
     df = df[df["county"] == county]
@@ -209,6 +212,7 @@ if st.sidebar.button("[**Search**]", type= "primary"):
     
     st.balloons()    
     st.dataframe(df, use_container_width=True)
+       
        
 # Info and sources
 with st.sidebar.container():
