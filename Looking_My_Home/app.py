@@ -190,19 +190,25 @@ with st.sidebar:
     st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
                 '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
        
-    prop_type = st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one:")
-    county = st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county:")
-    price_range = st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
+    prop_type1 = st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one:")
+    county1 = st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county:")
+    price_range1 = st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
         
     with st.container():
         c1,c2 = st.columns(2)
-        beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
-        baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)  
+        beds1 = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
+        baths1 = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)  
 
     st.markdown("") 
             
 # button!!!      
 if st.sidebar.button("**Search**", type= "primary"):
+    prop_type = prop_type1
+    county = county1
+    price_range = price_range1
+    beds = beds1
+    baths = baths1
+    
     # dataset configuration
     if prop_type is not None:
         df = df[df["propertyType"] == prop_type]
