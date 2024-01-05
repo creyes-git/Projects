@@ -197,21 +197,7 @@ with st.sidebar:
         with st.container():
             c1,c2 = st.columns(2)
             beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
-            baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)
-        
-        
-        def botonsito():
-            # dataset configuration
-            df = df[df["propertyType"] == prop_type]
-            df = df[df["county"] == county]
-            df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
-            df = df[df["bedrooms"] == beds]
-            df = df[df["bathrooms"] == baths]
-           
-            # globitos and df display
-            st.balloons()    
-            st.dataframe(df, use_container_width=True)
-             
+            baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0) 
              
         st.button("**Search**", type= "primary", on_click= botonsito())
         
