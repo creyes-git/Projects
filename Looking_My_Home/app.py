@@ -201,14 +201,19 @@ with st.sidebar:
 
     st.markdown("") 
             
-            
+# button!!!      
 if st.sidebar.button("**Search**", type= "primary"):
     # dataset configuration
-    df = df[df["propertyType"] == prop_type]
-    df = df[df["county"] == county]
-    df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
-    df = df[df["bedrooms"] == beds]
-    df = df[df["bathrooms"] == baths]
+    if prop_type is not None:
+        df = df[df["propertyType"] == prop_type]
+    if county is not None:
+        df = df[df["county"] == county]
+    if price_range is not None:
+        df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
+    if beds is not None:
+        df = df[df["bedrooms"] == beds]
+    if baths is not None:
+        df = df[df["bathrooms"] == baths]
     
     st.balloons()    
     st.dataframe(df, use_container_width=True)
