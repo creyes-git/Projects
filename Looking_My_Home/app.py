@@ -199,8 +199,8 @@ with st.sidebar:
         beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
         baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)   
             
-if st.sidebar.button(":rainbow[**Search**]", type= "primary"):
-     # dataset configuration
+if st.sidebar.button("[**Search**]", type= "primary"):
+    # dataset configuration
     df = df[df["propertyType"] == prop_type]
     df = df[df["county"] == county]
     df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
@@ -210,9 +210,9 @@ if st.sidebar.button(":rainbow[**Search**]", type= "primary"):
     st.balloons()    
     st.dataframe(df, use_container_width=True)
        
-# Info and sources     
-
+# Info and sources
 with st.sidebar.container():
+    st.markdown(" ")
     st.write("- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app)")
     st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
     st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
