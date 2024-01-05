@@ -201,7 +201,7 @@ with st.sidebar:
              
     st.markdown(" ")
     
-    st.button("**Search**", type= "primary",k)
+    #st.button("**Search**", type= "primary")
         
     st.markdown(" ")
         
