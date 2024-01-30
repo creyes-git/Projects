@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import sqlite3 as sql
 
-st.set_page_config(page_icon= "",page_title= "CreditHub", layout= "wide")
+st.set_page_config(page_icon= "",page_title= "CreditHub", layout= "wide", initial_sidebar_state= "expanded")
 
 connection = sql.connect("CreditHub\\DB\\Database.db")
 cursor = connection.cursor()
