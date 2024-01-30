@@ -17,3 +17,7 @@ Issuer_Name = st.text_area("Enter the name of the issuer")
 Pros = st.text_area("Enter 3 PROS of the card separated by commas")
 Cons =  st.text_area("Enter 3 CONS of the card separated by commas")
 
+if st.button("Submit"):
+    cursor.execute("INSERT INTO Cards VALUES(?, ?, ?, ?, ?, ?, ?, ?)", (Name, Category, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Issuer_Name, Pros, Cons))
+    connection.commit()
+    connection.close()
