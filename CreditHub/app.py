@@ -29,5 +29,4 @@ if st.button("Show all cards"):
     cursor = connection.cursor()
     st.text(cursor.execute("SELECT * FROM Card").fetchall())
     connection.commit()
-    connection.backup()
     connection.close()
