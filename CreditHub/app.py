@@ -21,9 +21,6 @@ if st.button("Submit"):
     cursor.execute("CREATE TABLE IF NOT EXISTS Cards(Issuer_Name TEXT, Name TEXT, Category TEXT, Welcome_Bonus INTEGER, Annual_Fee INTEGER, Recommended_Credit_Score TEXT, Pros TEXT, Cons TEXT)")
     cursor.execute("INSERT INTO Cards VALUES(?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons))
     st.success("Your card has been submitted!")
-    st.text("Thank you for using CreditHub!")
     st.text(cursor.execute("SELECT * FROM Cards").fetchall())
-    
     connection.commit()
-    connection.close()
 
