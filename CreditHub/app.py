@@ -17,8 +17,14 @@ Issuer_Name = st.text_area("Enter the name of the issuer")
 Pros = st.text_area("Enter 3 PROS of the card separated by commas")
 Cons =  st.text_area("Enter 3 CONS of the card separated by commas")
 
-
+if st.button("Submit"):
+    cursor.execute("CREATE TABLE fish (name TEXT, species TEXT, tank_number INTEGER)")
+    connection.commit()
+    connection.close()
+    
+'''
 if st.button("Submit"):
     cursor.execute("INSERT INTO Database VALUES(?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons))
     connection.commit()
     connection.close()
+'''
