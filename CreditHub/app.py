@@ -4,7 +4,7 @@ import sqlite3 as sql
 
 st.set_page_config(page_icon= "",page_title= "CreditHub", layout= "wide", initial_sidebar_state= "expanded")
 
-connection = sql.connect("CreditHub\\DB\\Database.db")
+connection = sql.connect("Database.db")
 cursor = connection.cursor()
 
 
