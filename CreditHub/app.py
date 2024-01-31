@@ -27,6 +27,6 @@ if st.button("Save"):
 if st.button("Show all cards"):
     connection = sql.connect("CreditHub\\DB\\My_Database.db")
     cursor = connection.cursor()
-    st.text(cursor.execute("SELECT * FROM Card").fetchall())
+    st.table(cursor.execute("SELECT * FROM Card").fetchall())
     connection.commit()
     connection.close()
