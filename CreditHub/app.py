@@ -28,9 +28,7 @@ if st.button("Save"):
     connection.close()
 
 if st.button("View Cards"):
-    df = pd.read_sql_query(cursor.execute("SELECT * FROM Cards"))
-    df.columns = ["Issuer_Name", "Name", "Category", "Rewards_rate", "Welcome_Bonus", "Annual_Fee", "Recommended_Credit_Score", "Pros", "Cons", "Image_URL"]
-    st.dataframe(df)
+    st.dataframe(cursor.execute("SELECT * FROM Cards"),column_config= {"Issuer_Name": st.column_config.TextColumn("Issuer_Name"), "Name": st.column_config.TextColumn("Name"), "Rewards_rate": st.column_config.TextColumn("Rewards_rate"), "Category": st.column_config.TextColumn("Category"), "Welcome_Bonus": st.column_config.TextColumn("Welcome_Bonus"), "Annual_Fee": st.column_config.TextColumn("Annual_Fee"), "Recommended_Credit_Score": st.column_config.TextColumn("Recommended_Credit_Score"), "Pros": st.column_config.TextColumn("Pros"), "Cons": st.column_config.TextColumn("Cons"), "Image_URL": st.column_config.TextColumn("Image_URL")})
     connection.commit()
     connection.close()
 
