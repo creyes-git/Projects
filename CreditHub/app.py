@@ -32,6 +32,9 @@ if st.button("View Cards"):
     connection.commit()
     connection.close()
 
+else:
+    st.warning("No cards found. Please submit a card.")
+
 if st.button("Clear Cards"):
     st.table(cursor.execute("DROP TABLE Cards"))
     connection.commit()
