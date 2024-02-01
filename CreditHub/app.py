@@ -10,7 +10,7 @@ cursor = connection.cursor()
 
 Name = st.text_area("Enter the card name")
 Category = st.selectbox("Choose the category", options=  ["Travel", "Grocery", "Cash Back", "0% APR", "Airline", "Business", "Hotel", "Balance Transfer", "Rewards"])
-Rewards_rate = st.text_input("Enter the rewards rate")
+Rewards_rate = st.text_area("Enter the rewards rate")
 Welcome_Bonus = st.number_input("Enter the welcome bonus in Points", min_value= 0) 
 Annual_Fee = st.number_input("Enter the annual fee", min_value= 0)
 Recommended_Credit_Score = st.selectbox("Choose the recommended credit score range", options=["Bad (0-649)", "Fair (650-699)", "Good (700-749) ", "Excellent (750+)"])
