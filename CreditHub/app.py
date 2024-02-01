@@ -28,7 +28,7 @@ if st.button("Save"):
     connection.close()
 
 if st.button("View Cards"):
-    st.dataframe(cursor.execute("SELECT * FROM Cards"))
+    st.dataframe(cursor.execute("SELECT * FROM Cards"), column_config= ["Name", "Category", "Rewards_rate", "Welcome_Bonus", "Annual_Fee", "Recommended_Credit_Score", "Pros", "Cons", "Image_URL"])
     connection.commit()
     connection.close()
 
