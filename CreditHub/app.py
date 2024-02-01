@@ -22,17 +22,18 @@ Image_URL = st.text_input("Enter the URL of the card image")
 
 if st.button("Save"):
     cursor.execute("CREATE TABLE IF NOT EXISTS Cards(Issuer_Name TEXT, Name TEXT, Rewards_rate TEXT, Category TEXT, Welcome_Bonus INTEGER, Annual_Fee INTEGER, Recommended_Credit_Score TEXT, Pros TEXT, Cons TEXT, Image_URL TEXT)")
-    cursor.execute("INSERT INTO Cards VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
+    cursor.execute("INSERT INTO Cards VALUES(Issuer_Name, Name, Rewards_rate, Category, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
     st.success("Your card has been submitted!")
     connection.commit()
     connection.close()
 
 if st.button("View Cards"):
-    st.dataframe(cursor.execute("SELECT * FROM Cards"),column_config= {"Issuer_Name": st.column_config.TextColumn("Issuer_Name"), "Name": st.column_config.TextColumn("Name"), "Rewards_rate": st.column_config.TextColumn("Rewards_rate"), "Category": st.column_config.TextColumn("Category"), "Welcome_Bonus": st.column_config.TextColumn("Welcome_Bonus"), "Annual_Fee": st.column_config.TextColumn("Annual_Fee"), "Recommended_Credit_Score": st.column_config.TextColumn("Recommended_Credit_Score"), "Pros": st.column_config.TextColumn("Pros"), "Cons": st.column_config.TextColumn("Cons"), "Image_URL": st.column_config.TextColumn("Image_URL")})
+    st.table(cursor.execute("SELECT * FROM Cards"))
     connection.commit()
     connection.close()
 
-# df = pd.read_sql_query("SELECT * FROM Cards", connection)
-
-
+if st.button("Clear Cards"):
+    st.table(cursor.execute("DELETE * FROM Cards"))
+    connection.commit()
+    connection.close()
 
