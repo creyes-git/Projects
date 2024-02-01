@@ -7,7 +7,7 @@ st.set_page_config(page_icon= "",page_title= "CreditHub", layout= "wide", initia
 connection = sql.connect("CreditHub\\DB\\My_DB.db")
 cursor = connection.cursor()
 
-Issuer_Name = st.text_area("Enter the name of the issuer")
+Issuer_Name = st.text_area("Enter the name of the issuer", on_change= lambda: None)
 Name = st.text_area("Enter the card name")
 Category = st.selectbox("Choose the category", options=  ["Travel", "Grocery", "Cash Back", "0% APR", "Airline", "Business", "Hotel", "Balance Transfer", "Rewards"])
 Rewards_rate = st.text_area("Enter the rewards rate")
