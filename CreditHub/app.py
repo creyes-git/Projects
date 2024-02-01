@@ -21,8 +21,8 @@ if st.button("Save"):
 if count % 2 != 0:
     connection = sql.connect("CreditHub\\DB\\My_Database.db")
     cursor = connection.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS Card(Issuer_Name TEXT, Name TEXT, Category TEXT, Welcome_Bonus INTEGER, Annual_Fee INTEGER, Recommended_Credit_Score TEXT, Pros TEXT, Cons TEXT)")
-    cursor.execute("INSERT INTO Card VALUES(?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons))
+    cursor.execute("CREATE TABLE IF NOT EXISTS Cardssss(Issuer_Name TEXT, Name TEXT, Category TEXT, Welcome_Bonus INTEGER, Annual_Fee INTEGER, Recommended_Credit_Score TEXT, Pros TEXT, Cons TEXT)")
+    cursor.execute("INSERT INTO Cardssss VALUES(?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons))
     st.success("Your card has been submitted!")
     connection.commit()
     connection.close()
