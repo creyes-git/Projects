@@ -21,7 +21,7 @@ Image_URL = st.text_input("Enter the URL of the card image")
 
 if st.button("Save"):
     cursor.execute("CREATE TABLE IF NOT EXISTS Cards(Issuer_Name TEXT, Name TEXT, Rewards_rate TEXT, Category TEXT, Welcome_Bonus INTEGER, Annual_Fee INTEGER, Recommended_Credit_Score TEXT, Pros TEXT, Cons TEXT, Image_URL TEXT)")
-    cursor.execute("INSERT INTO Cards VALUES(Issuer_Name, Name, Rewards_rate, Category, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
+    cursor.execute("INSERT INTO Cards VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
     st.success("Your card has been submitted!")
     connection.commit()
     connection.close()
