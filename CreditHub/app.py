@@ -28,15 +28,17 @@ if st.button("Save"):
     connection.close()
 
 if st.button("View Cards"):
-    st.table(cursor.execute("SELECT * FROM Cards"))
-    connection.commit()
-    connection.close()
-
-else:
-    st.warning("No cards found. Please submit a card.")
-
+    try:
+        st.table(cursor.execute("SELECT * FROM Cards"))
+        connection.commit()
+        connection.close()
+    except:
+        st.warning("No cards yet!")
+        
 if st.button("Clear Cards"):
-    st.table(cursor.execute("DROP TABLE Cards"))
-    connection.commit()
-    connection.close()
-
+    try:
+        st.table(cursor.execute("DROP TABLE Cards"))
+        connection.commit()
+        connection.close()
+    except:
+        st.warning("No cards yet!")
