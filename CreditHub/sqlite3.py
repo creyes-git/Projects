@@ -1,11 +1,11 @@
 import streamlit as st
 import pandas as pd
 import sqlite3 as sql
-from streamlit import connections
 
 st.set_page_config(page_icon= "",page_title= "CreditHub", layout= "wide", initial_sidebar_state= "expanded")
 
-conn = st.experimental_connection("CreditHub\\DB\\Card_DB.db", type= "sqlite")
+connection = sql.connect("CreditHub\\DB\\My_DB.db")
+cursor = connection.cursor()
 
 Issuer_Name = st.text_area("Enter the name of the issuer", on_change= lambda: None, key= "")
 Name = st.text_area("Enter the card name")
@@ -20,4 +20,24 @@ Image_URL = st.text_input("Enter the URL of the card image")
 
 
 if st.button("Save"):
-    conn.query("CREATE TABLE IF NOT EXISTS Cards(Issuer_Name TEXT, Name TEXT, Rewards_rate TEXT, Category TEXT, Welcome_Bonus INTEGER, Annual_Fee INTEGER, Recommended_Credit_Score TEXT, Pros TEXT, Cons TEXT, Image_URL TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS Cards(Issuer_Name TEXT, Name TEXT, Rewards_rate TEXT, Category TEXT, Welcome_Bonus INTEGER, Annual_Fee INTEGER, Recommended_Credit_Score TEXT, Pros TEXT, Cons TEXT, Image_URL TEXT)")
+    cursor.execute("INSERT INTO Cards VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
+    st.success("Your card has been submitted!")
+    connection.commit()
+    connection.close()
+    
+if st.button("View Cards"):
+    try:
+        st.table(cursor.execute("SELECT * FROM Cards"))
+        connection.commit()
+        connection.close()
+    except:
+        st.warning("No cards yet!")
+        
+if st.button("Clear Cards"):
+    try:
+        st.table(cursor.execute("DROP TABLE Cards"))
+        connection.commit()
+        connection.close()
+    except:
+        st.warning("No cards yet!")
