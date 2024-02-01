@@ -33,7 +33,7 @@ if st.button("View Cards"):
     connection.close()
 
 if st.button("Clear Cards"):
-    st.table(cursor.execute("DELETE * FROM Cards"))
+    st.table(cursor.execute("DROP TABLE Cards"))
     connection.commit()
     connection.close()
 
