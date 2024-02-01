@@ -25,7 +25,7 @@ if st.button("Save"):
     st.success("Your card has been submitted!")
     connection.commit()
     connection.close()
-    
+    st.session_state.clear()
     
 if st.button("View Cards"):
     try:
