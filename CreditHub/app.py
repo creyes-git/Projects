@@ -5,7 +5,7 @@ from streamlit import connections
 
 st.set_page_config(page_icon= "",page_title= "CreditHub", layout= "wide", initial_sidebar_state= "expanded")
 
-conn = st.experimental_connection("CreditHub\\DB\\Card_DB.db", type= "sqlite")
+conn = st.experimental_connection("CreditHub\\DB\\Card_DB.db", type= "sql")
 
 Issuer_Name = st.text_area("Enter the name of the issuer", on_change= lambda: None, key= "")
 Name = st.text_area("Enter the card name")
