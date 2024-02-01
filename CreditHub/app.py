@@ -26,6 +26,17 @@ if st.button("Save"):
     st.success("Your card has been submitted!")
     connection.commit()
     connection.close()
+    
+    Name = None
+    Category = None
+    Rewards_rate = None
+    Welcome_Bonus = None
+    Annual_Fee = None
+    Recommended_Credit_Score = None
+    Issuer_Name = None
+    Pros = None
+    Cons =  None
+    Image_URL = None
 
 if st.button("View Cards"):
     try:
