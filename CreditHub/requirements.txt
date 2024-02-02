@@ -4,4 +4,3 @@ streamlit-lottie
 plotly
 requests
 sqlite3
-SQLAlchemy==1.4
