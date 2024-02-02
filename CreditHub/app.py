@@ -4,8 +4,9 @@ import sqlite3 as sql
 
 st.set_page_config(page_icon= "",page_title= "CreditHub", layout= "wide", initial_sidebar_state= "expanded")
 
-connection = sql.connect("CreditHub\\DB\\Card_DB.db")
+connection = sql.connect("CreditHub\\Card_DB.db")
 cursor = connection.cursor()
+
 
 with st.form(key="card_form", clear_on_submit= True):
     Issuer_Name = st.text_area("Enter the name of the issuer")
@@ -18,8 +19,8 @@ with st.form(key="card_form", clear_on_submit= True):
     Pros = st.text_area("Enter 3 PROS of the card separated by line breaks")
     Cons =  st.text_area("Enter 3 CONS of the card separated by line breaks")
     Image_URL = st.text_input("Enter the URL of the card image")
-
-
+    
+    submit = st.form_submit_button("Submit", on_click= st.experimental_rerun)
 
 
 if st.button("Save"):
