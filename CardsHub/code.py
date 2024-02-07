@@ -34,3 +34,9 @@ if st.button("View Cards"):
     st.table(cursor.execute("SELECT * FROM Cards"))
     connection.commit()
     connection.close()
+    
+if st.button("Delete Cards"):
+    cursor.execute("DELETE FROM Cards")
+    st.success("All cards have been deleted!")
+    connection.commit()
+    connection.close()
