@@ -7,9 +7,14 @@ st.set_page_config(page_icon= "",page_title= "CardsHub", layout= "wide", initial
 connection = sql.connect("CardsHub\\Cards.db")
 cursor = connection.cursor()
 
+with st.sidebar:
+    st.write("## CardsHub")
+
+st.title("Fill card details on the form below:")
+
 
 with st.form(key="card_form", clear_on_submit= True):
-    Issuer_Name = st.text_area("Enter the name of the issuer")
+    Issuer_Name = st.selectbox("Select the issuer", options=  ["Discover", "Chase", "Bank of America","Wells Fargo","Citi", "Capital One", "Credit One Bank", "American Express", "VISA", "Mastercard"])
     Name = st.text_area("Enter the card name")
     Category = st.selectbox("Choose the category", options=  ["Travel", "Cash Back", "0% APR","Student","Secured", "Business", "Balance Transfer", "Rewards"])
     Rewards_rate = st.text_area("Enter the rewards rate")
