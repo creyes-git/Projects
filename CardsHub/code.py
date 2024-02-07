@@ -29,3 +29,8 @@ with st.form(key="card_form", clear_on_submit= True):
         st.success("Your card has been submitted!")
         connection.commit()
         connection.close()
+
+if st.button("View Cards"):
+    st.table(cursor.execute("SELECT * FROM Cards"))
+    connection.commit()
+    connection.close()
