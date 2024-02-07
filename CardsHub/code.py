@@ -11,7 +11,7 @@ cursor = connection.cursor()
 with st.form(key="card_form", clear_on_submit= True):
     Issuer_Name = st.text_area("Enter the name of the issuer")
     Name = st.text_area("Enter the card name")
-    Category = st.selectbox("Choose the category", options=  ["Travel", "Grocery", "Cash Back", "0% APR", "Airline", "Business", "Hotel", "Balance Transfer", "Rewards"])
+    Category = st.selectbox("Choose the category", options=  ["Travel", "Cash Back", "0% APR","Student","Secured", "Business", "Balance Transfer", "Rewards"])
     Rewards_rate = st.text_area("Enter the rewards rate")
     Welcome_Bonus = st.number_input("Enter the welcome bonus in dollars", min_value= 0) 
     Annual_Fee = st.number_input("Enter the annual fee", min_value= 0)
