@@ -5,7 +5,7 @@ import sqlite3 as sql
 with st.sidebar:
     st.write("## CardsHub")
     
-st.set_page_config(page_icon= ":credit_card:",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
+st.set_page_config(page_icon= ":card:",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
 
 connection = sql.connect("CardsHub\\Cards.db")
 cursor = connection.cursor()
