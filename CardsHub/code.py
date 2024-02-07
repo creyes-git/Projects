@@ -2,13 +2,15 @@ import streamlit as st
 import pandas as pd
 import sqlite3 as sql
 
-st.set_page_config(page_icon= "",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
+with st.sidebar:
+    st.write("## CardsHub")
+    
+st.set_page_config(page_icon= ":credit_card:",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
 
 connection = sql.connect("CardsHub\\Cards.db")
 cursor = connection.cursor()
 
-with st.sidebar:
-    st.write("## CardsHub")
+
 
 st.title("Fill card details on the form below:")
 
