@@ -1,6 +1,0 @@
-pandas
-streamlit
-streamlit-lottie
-streamlit-extras
-plotly
-
