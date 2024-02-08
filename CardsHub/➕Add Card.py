@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import sqlite3 as sql
-import plotly.express as px
-import PIL
 
 #setting credit card page icon and title
 st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
