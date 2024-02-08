@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
 import sqlite3 as sql
-
-
+import plotly.express as px
+import PIL
 
 #setting credit card page icon and title
 st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
@@ -10,10 +10,7 @@ st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", ini
 connection = sql.connect("CardsHub\\Cards.db")
 cursor = connection.cursor()
 
-
-
 st.title("Fill card details on the form below:")
-
 
 with st.form(key="card_form", clear_on_submit= True):
     Issuer_Name = st.selectbox("Select the issuer", options=  ["Discover", "Chase", "Bank of America","Wells Fargo","Citi", "Capital One", "Credit One Bank", "American Express", "VISA", "Mastercard"])
@@ -38,7 +35,7 @@ with st.form(key="card_form", clear_on_submit= True):
         connection.close()
 
 if st.button("View Cards"):
-    st.table(cursor.execute("SELECT * FROM Cards"))
+    st.dataframe(cursor.execute("SELECT * FROM Cards"))
     connection.commit()
     connection.close()
     
