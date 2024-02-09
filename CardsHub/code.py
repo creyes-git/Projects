@@ -23,10 +23,11 @@ def show_cards():
 
 
 def to_sql():
-    conn = sql.connect('cards.db')
-    df.to_sql('cards', conn, if_exists='replace', index=False)
-    conn.close()
-
+    cursor.execute("CREATE TABLE IF NOT EXISTS cards (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL)")
+    cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
+    cursor.commit()
+    cursor.close()
+    
 st.title("Fill card details on the form below:")
 
 # card form
@@ -43,8 +44,8 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     Image_URL = st.text_input("Enter the URL of the card image")
     
     if st.form_submit_button("Submit"):
-        save_card()
+        to_sql()
         st.success("Card details saved successfully")
 
 if st.button("Show cards"):
-    show_cards()
+    st.dataframe(cursor.execute("SELECT * FROM cards"))
