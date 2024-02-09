@@ -31,11 +31,11 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     # submit button, save cards data
     if st.form_submit_button("Submit"):
         df = pd.concat([df, pd.DataFrame(form_data, index= df.columns).transpose()])
-
         st.dataframe(df)
-
+        dataframe = df
+    
 if st.button("Show cards"):
-    st.dataframe(df)
+    st.dataframe(dataframe)
     
 if st.button("Clear"):
     del(df[0:])
