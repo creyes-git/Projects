@@ -17,7 +17,7 @@ def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
 
-lottie = load_lottiefile("CardsHub/images/lottie1.json")  # replace link to local lottie file
+lottie = load_lottiefile("CardsHub\\images\\lottie1.json")  # replace link to local lottie file
 with st.sidebar:
 	st_lottie(lottie, height = 60, quality = "high")
 
