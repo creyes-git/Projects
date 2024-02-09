@@ -12,9 +12,6 @@ st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", ini
 df = pd.DataFrame(columns= ["Issuer_Name", "Name", "Category", "Rewards_rate", "Welcome_Bonus", "Annual_Fee", 
                             "Recommended_Credit_Score", "Pros", "Cons", "Image_URL"])
 
-def save_card(new_card):
-    df = pd.concat([df, new_card], ignore_index= True)
-
 st.title("Fill card details on the form below:")
 # card form
 with st.form(key="card_form", clear_on_submit= True) as card_form:
@@ -33,7 +30,8 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
         
     # submit button, save cards data
     if st.form_submit_button("Submit"):
-        save_card(pd.DataFrame(form_data))
+        df = pd.concat([df, pd.Series(form_data)])
+
         st.dataframe(df)
 
 if st.button("Show cards"):
