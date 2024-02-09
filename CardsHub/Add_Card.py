@@ -1,3 +1,4 @@
+import pandas as pd
 import sqlite3 as sql
 import streamlit as st
 
@@ -26,3 +27,10 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
         cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
         st.dataframe(cursor.execute("SELECT * FROM cards"))
         connection.commit()
+        
+def a_csv():
+    df = pd.read_sql("SELECT * FROM cards", connection)
+    df.to_sql("cards", connection, if_exists="replace", index= False)
+    
+if st.button("Save to CSV"):
+    a_csv()
