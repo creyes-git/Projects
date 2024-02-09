@@ -11,13 +11,7 @@ st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", ini
 # DF
 df = pd.DataFrame(columns= ["Issuer_Name", "Name", "Category", "Rewards_rate", "Welcome_Bonus", "Annual_Fee", 
                             "Recommended_Credit_Score", "Pros", "Cons", "Image_URL"])
-
-
-def lottie_sidebar(path):
-    with open(path, "r") as f:
-        return json.load(f)
-st_lottie(lottie_sidebar("CardsHub/lottie1.json"), height = 100, quality = "high")
-     
+  
 
 st.title("Fill card details on the form below:")
 # card form
