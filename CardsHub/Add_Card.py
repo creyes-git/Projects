@@ -30,7 +30,9 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
         
 def a_csv():
     df = pd.read_sql("SELECT * FROM cards", connection)
-    df.to_sql("cards", connection, if_exists="replace", index= False)
+    df.to_csv("C:\\Users\\Carlos Reyes\\Desktop\\cards.csv", index= False)
     
 if st.button("Save to CSV"):
     a_csv()
+    
+code = st.button("Query", on_click= st.code(lenguage="sql", lines="all"))
