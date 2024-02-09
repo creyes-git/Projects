@@ -8,6 +8,9 @@ import json
 #setting credit card page icon and title
 st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
 
+connection = sql.connect("CardsHub/Cards.db")
+cursor = connection.cursor()
+
 # DF
 df = pd.DataFrame(columns= ["Issuer_Name", "Name", "Category", "Rewards_rate", "Welcome_Bonus", "Annual_Fee", 
                             "Recommended_Credit_Score", "Pros", "Cons", "Image_URL"])
