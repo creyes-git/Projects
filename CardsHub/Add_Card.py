@@ -1,17 +1,11 @@
-import pandas as pd
 import sqlite3 as sql
 import streamlit as st
-import streamlit_lottie as st_lottie
-from PIL import Image
-import json
 
-#setting credit card page icon and title
-st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
+st.set_page_config(page_icon= "💳",page_title= "CardsHwub", layout= "wide", initial_sidebar_state= "expanded")
 
-# DF
-df = pd.DataFrame()
+connection = sql.connect("C:\\Users\\Carlos Reyes\\Desktop\\carticas.db")
+cursor = connection.cursor()
 
-st.title("Fill card details on the form below:")
 # card form
 with st.form(key="card_form", clear_on_submit= True) as card_form:
     Issuer_Name = st.selectbox("Select the issuer", options=  ["Discover", "Chase", "Bank of America","Wells Fargo","Citi", "Capital One", "Credit One Bank", "American Express", "VISA", "Mastercard"])
@@ -25,12 +19,10 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     Cons =  st.text_area("Enter 3 CONS of the card separated by line breaks")
     Image_URL = st.text_input("Enter the URL of the card image")
     
-    form_data = [Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL]
-    df = pd.concat([df, pd.DataFrame(form_data, index= df.columns).transpose()])
-      
+
     # submit button, save cards data
     if st.form_submit_button("Submit"):
-        st.dataframe(df)
-    
-if st.button("Show cards"):
-    st.dataframe(df)
+        cursor.execute("CREATE TABLE IF NOT EXISTS cards (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL)")  
+        cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
+        st.dataframe(cursor.execute("SELECT * FROM cards"))
+        connection.commit()
