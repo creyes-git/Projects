@@ -8,7 +8,18 @@ import json
 st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
 
 # load lottie animation
-st_lottie(json.load("CardsHub\\images\\lottie1.json"), height = 60, quality = "high")
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
+
+lottie_card = load_lottiefile("CardsHub\\images\\lottie1.json")  # replace link to local lottie file
+st_lottie(lottie_card, height = 60, quality = "high")
+
+
+
+
+
+
 
 st.title("Fill card details on the form below:")
 
@@ -25,4 +36,3 @@ with st.form(key="card_form", clear_on_submit= True):
     Cons =  st.text_area("Enter 3 CONS of the card separated by line breaks")
     Image_URL = st.text_input("Enter the URL of the card image")
     
-    #if st.form_submit_button("Submit Card"):
