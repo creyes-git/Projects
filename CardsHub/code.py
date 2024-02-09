@@ -30,7 +30,7 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
         
     # submit button, save cards data
     if st.form_submit_button("Submit"):
-        df = pd.concat([df, pd.Series(form_data, index= df.columns)],ignore_index= True)
+        df = pd.concat([df, pd.Series(form_data, index= df.columns)])
 
         st.dataframe(df)
 
