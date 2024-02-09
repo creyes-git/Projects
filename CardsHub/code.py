@@ -8,28 +8,20 @@ import json
 #setting credit card page icon and title
 st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
 
-connection = sql.connect("CardsHub/Cards.db")
-cursor = connection.cursor()
-
 # DF
 df = pd.DataFrame(columns= ["Issuer_Name", "Name", "Category", "Rewards_rate", "Welcome_Bonus", "Annual_Fee", 
                             "Recommended_Credit_Score", "Pros", "Cons", "Image_URL"])
 
-def save_card():
-    df.loc[len(df)] = [Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL]
 
-def show_cards():
-    st.dataframe(df)
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
 
+lottie = load_lottiefile("CardsHub/images/lottie1.json")  # replace link to local lottie file
+with st.sidebar:
+	st_lottie(lottie, height = 60, quality = "high")
 
-def to_sql():
-    cursor.execute("CREATE TABLE IF NOT EXISTS cards (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL)")
-    cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
-    cursor.commit()
-    cursor.close()
-    
 st.title("Fill card details on the form below:")
-
 # card form
 with st.form(key="card_form", clear_on_submit= True) as card_form:
     Issuer_Name = st.selectbox("Select the issuer", options=  ["Discover", "Chase", "Bank of America","Wells Fargo","Citi", "Capital One", "Credit One Bank", "American Express", "VISA", "Mastercard"])
@@ -43,9 +35,9 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     Cons =  st.text_area("Enter 3 CONS of the card separated by line breaks")
     Image_URL = st.text_input("Enter the URL of the card image")
     
+    # submit button, save cards data
     if st.form_submit_button("Submit"):
-        to_sql()
-        st.success("Card details saved successfully")
-
+        df.insert(0, card_form)
+        
 if st.button("Show cards"):
-    st.dataframe(cursor.execute("SELECT * FROM cards"))
+    st.dataframe(df)
