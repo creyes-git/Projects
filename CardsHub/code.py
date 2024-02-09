@@ -34,7 +34,3 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     
 if st.button("Show cards"):
     st.dataframe(df)
-    
-if st.button("Clear"):
-    del(df[0:])
-    st.dataframe(df)
