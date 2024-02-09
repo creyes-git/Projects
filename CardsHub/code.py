@@ -29,17 +29,8 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     
     # submit button, save cards data
     if st.form_submit_button("Submit"):
-        df.insert(0, "Issuer_Name", Issuer_Name)
-        df.insert(1, "Name", Name)
-        df.insert(2, "Category", Category)
-        df.insert(3, "Rewards_rate", Rewards_rate)
-        df.insert(4, "Welcome_Bonus", Welcome_Bonus)
-        df.insert(5, "Annual_Fee", Annual_Fee)
-        df.insert(6, "Recommended_Credit_Score", Recommended_Credit_Score)
-        df.insert(7, "Pros", Pros)
-        df.insert(8, "Cons", Cons)
-        df.insert(9, "Image_URL", Image_URL)
-        
+        form_data = pd.Series([Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL])
+        df.concat([df, form_data])
         
 if st.button("Show cards"):
     st.dataframe(df)
