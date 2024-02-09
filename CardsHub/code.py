@@ -16,7 +16,7 @@ df = pd.DataFrame(columns= ["Issuer_Name", "Name", "Category", "Rewards_rate", "
 def lottie_sidebar(path):
     with open(path, "r") as f:
         return json.load(f)
-st_lottie(lottie_sidebar("CardsHub/images/lottie1.json"), height = 100, quality = "high")
+st_lottie(lottie_sidebar("CardsHub/lottie1.json"), height = 100, quality = "high")
      
 
 st.title("Fill card details on the form below:")
