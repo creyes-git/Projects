@@ -27,15 +27,14 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     Image_URL = st.text_input("Enter the URL of the card image")
     
     form_data = [Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL]
-        
+    df = pd.concat([df, pd.DataFrame(form_data, index= df.columns).transpose()])
+      
     # submit button, save cards data
     if st.form_submit_button("Submit"):
-        df = pd.concat([df, pd.DataFrame(form_data, index= df.columns).transpose()])
         st.dataframe(df)
-        dataframe = df
     
 if st.button("Show cards"):
-    st.dataframe(dataframe)
+    st.dataframe(df)
     
 if st.button("Clear"):
     del(df[0:])
