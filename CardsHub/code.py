@@ -8,11 +8,7 @@ import json
 st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
 
 # load lottie animation
-def load_lottiefile(filepath: str):
-    with open(filepath, "r") as f:
-        return json.load(f)
-
-st_lottie(load_lottiefile("CardsHub\\images\\lottie1.json"), height = 60, quality = "high")
+st_lottie(json.load("CardsHub\\images\\lottie1.json"), height = 60, quality = "high")
 
 st.title("Fill card details on the form below:")
 
