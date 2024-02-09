@@ -13,7 +13,7 @@ df = pd.DataFrame(columns= ["Issuer_Name", "Name", "Category", "Rewards_rate", "
                             "Recommended_Credit_Score", "Pros", "Cons", "Image_URL"])
 
 def save_card():
-    df.index[len(df)] = pd.Series(card_form)
+    df[len(df)] = pd.Series(card_form)
     
 
 def show_cards():
