@@ -1,11 +1,22 @@
 import pandas as pd
 import sqlite3 as sql
 import streamlit as st
+import streamlit_lottie as st_lottie
+import json
 
 st.set_page_config(page_icon= "💳",page_title= "CardsHwub", layout= "wide", initial_sidebar_state= "expanded")
 
+st_lottie(json.load(open("CardsHub//lottie1.json")), height = 100, quality = "high")
+
 connection = sql.connect("C:\\Users\\Carlos Reyes\\Desktop\\carticas.db")
 cursor = connection.cursor()
+
+# func
+def sql_to_csv(table: str):
+    df = pd.read_sql(f"SELECT * FROM {table}", connection)
+    df.to_csv("CardsHub/cards_table.csv", index= False)
+    
+
 
 # card form
 with st.form(key="card_form", clear_on_submit= True) as card_form:
@@ -27,12 +38,8 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
         cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
         st.dataframe(cursor.execute("SELECT * FROM cards"))
         connection.commit()
-        
-def a_csv():
-    df = pd.read_sql("SELECT * FROM cards", connection)
-    df.to_csv("C:\\Users\\Carlos Reyes\\Desktop\\cards.csv", index= False)
-    
-if st.button("Save to CSV"):
-    a_csv()
-    
-code = st.button("Query", on_click= st.code(lenguage="sql", lines="all"))
+        sql_to_csv("cards")
+        st.success("Card added successfully")
+
+
+if
