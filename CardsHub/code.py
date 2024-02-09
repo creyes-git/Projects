@@ -13,13 +13,11 @@ df = pd.DataFrame(columns= ["Issuer_Name", "Name", "Category", "Rewards_rate", "
                             "Recommended_Credit_Score", "Pros", "Cons", "Image_URL"])
 
 
-def load_lottiefile(filepath: str):
-    with open(filepath, "r") as f:
+def lottie_sidebar(path):
+    with open(path, "r") as f:
         return json.load(f)
-
-lottie = load_lottiefile("CardsHub\\images\\lottie1.json")  # replace link to local lottie file
-with st.sidebar:
-	st_lottie(lottie, height = 60, quality = "high")
+st_lottie(lottie_sidebar("CardsHub/images/lottie1.json"), height = 100, quality = "high")
+     
 
 st.title("Fill card details on the form below:")
 # card form
