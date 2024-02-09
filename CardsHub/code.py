@@ -29,7 +29,7 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     
     # submit button, save cards data
     if st.form_submit_button("Submit"):
-        form_data = pd.Series([Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL])
+        form_data = [Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL]
         df.concat([df, form_data])
         
 if st.button("Show cards"):
