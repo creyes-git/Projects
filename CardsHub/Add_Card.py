@@ -8,7 +8,7 @@ st.set_page_config(page_icon= "💳",page_title= "CardsHwub", layout= "wide", in
 
 st_lottie(json.load(open("CardsHub//lottie1.json")), height = 100, quality = "high")
 
-connection = sql.connect("C:\\Users\\Carlos Reyes\\Desktop\\carticas.db")
+connection = sql.connect("Cards.db")
 cursor = connection.cursor()
 
 # func
