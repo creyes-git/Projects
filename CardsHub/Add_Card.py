@@ -34,5 +34,10 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
         cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
         st.dataframe(cursor.execute("SELECT * FROM cards"))
         connection.commit()
-        sql_to_csv("cards")
-        st.success("Card added successfully")
+        
+        try:
+            sql_to_csv("cards")
+            st.success("Card added successfully")
+            
+        except:
+            st.error("Something went wrong saving the data")
