@@ -6,7 +6,7 @@ import json
 
 st.set_page_config(page_icon= "💳",page_title= "CardsHwub", layout= "wide", initial_sidebar_state= "expanded")
 
-st_lottie(json.load(open("C:\\Users\\Carlos Reyes\Downloads\\lottie card.json")), height = 100, quality = "high")
+#st_lottie(json.load(open("C:\\Users\\Carlos Reyes\Downloads\\lottie card.json")), height = 100, quality = "high")
 
 connection = sql.connect("Cards.db")
 cursor = connection.cursor()
