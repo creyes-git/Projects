@@ -10,7 +10,7 @@ cursor = connection.cursor()
 # functions:
 def sql_to_csv(table: str):
     df = pd.read_sql(f"SELECT * FROM {table}", connection)
-    df.to_csv("CardsHub/cards_table.csv", index= False)
+    df.to_csv("cards_table.csv", index= False)
     
 
 
