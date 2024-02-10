@@ -6,19 +6,19 @@ import json
 
 st.set_page_config(page_icon= "💳",page_title= "CardsHwub", layout= "wide", initial_sidebar_state= "expanded")
 
-st_lottie(json.load(open("CardsHub//lottie1.json")), height = 100, quality = "high")
+st_lottie(json.load(open("CardsHub/lottie1.json")), height = 100, quality = "high")
 
 connection = sql.connect("Cards.db")
 cursor = connection.cursor()
 
-# func
+# functions:
 def sql_to_csv(table: str):
     df = pd.read_sql(f"SELECT * FROM {table}", connection)
     df.to_csv("CardsHub/cards_table.csv", index= False)
     
 
 
-# card form
+# card form:
 with st.form(key="card_form", clear_on_submit= True) as card_form:
     Issuer_Name = st.selectbox("Select the issuer", options=  ["Discover", "Chase", "Bank of America","Wells Fargo","Citi", "Capital One", "Credit One Bank", "American Express", "VISA", "Mastercard"])
     Name = st.text_area("Enter the card name")
@@ -32,7 +32,7 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     Image_URL = st.text_input("Enter the URL of the card image")
     
 
-    # submit button, save cards data
+    # submit button, save cards data:
     if st.form_submit_button("Submit"):
         cursor.execute("CREATE TABLE IF NOT EXISTS cards (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL)")  
         cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Image_URL))
@@ -40,6 +40,3 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
         connection.commit()
         sql_to_csv("cards")
         st.success("Card added successfully")
-
-
-if
