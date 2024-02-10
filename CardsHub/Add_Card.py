@@ -1,12 +1,8 @@
 import pandas as pd
 import sqlite3 as sql
 import streamlit as st
-import streamlit_lottie as st_lottie
-import json
 
 st.set_page_config(page_icon= "💳",page_title= "CardsHwub", layout= "wide", initial_sidebar_state= "expanded")
-
-#st_lottie(json.load(open("C:\\Users\\Carlos Reyes\Downloads\\lottie card.json")), height = 100, quality = "high")
 
 connection = sql.connect("Cards.db")
 cursor = connection.cursor()
