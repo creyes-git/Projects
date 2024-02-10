@@ -41,3 +41,8 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
             
         except:
             st.error("Something went wrong saving the data")
+            
+
+# clear button:
+if st.button("Clear"):
+    cursor.execute("DELETE FROM cards")
