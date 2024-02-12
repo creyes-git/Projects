@@ -19,7 +19,7 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     Issuer_Name = st.selectbox("Select the issuer", options=  ["Discover", "Chase", "Bank of America","Wells Fargo","Citi", "Capital One", "Credit One Bank", "American Express", "VISA", "Mastercard"])
     Name = st.text_area("Enter the card name")
     Category = st.selectbox("Choose the category", options=  ["Travel","Cash Back","Store","Hotel","Student","Secured", "Business", "Balance Transfer", "Other"])
-    Rewards_rate = st.text_area("Enter the rewards rate")
+    Top_rewards_rate = st.text_area("Enter the top rewards rate")
     Welcome_Bonus = st.number_input("Enter the welcome bonus in dollars", min_value= 0) 
     Annual_Fee = st.number_input("Enter the annual fee", min_value= 0)
     Recommended_Credit_Score = st.selectbox("Choose the recommended credit score range", options=["Bad (0-649)", "Fair (650-699)", "Good (700-749) ", "Excellent (750+)"])
