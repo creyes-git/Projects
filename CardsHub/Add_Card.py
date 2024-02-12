@@ -43,9 +43,8 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
             st.error("Something went wrong saving the data")
 
 if st.button("View all cards"):
-    st.dataframe(pd.read_csv("cards_table.csv"))
-    st.table(pd.read_sql("SELECT * FROM cards", connection))
-
+    st.dataframe(cursor.execute("SELECT * FROM cards"))
+    
 # clear button:
 if st.button("Clear"):
     cursor.execute("DELETE FROM cards")
