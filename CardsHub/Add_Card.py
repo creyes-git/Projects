@@ -18,7 +18,7 @@ def sql_to_csv(table: str):
 with st.form(key="card_form", clear_on_submit= True) as card_form:
     Issuer_Name = st.selectbox("Select the issuer", options=  ["Discover", "Chase", "Bank of America","Wells Fargo","Citi", "Capital One", "Credit One Bank", "American Express", "VISA", "Mastercard"])
     Name = st.text_area("Enter the card name")
-    Category = st.selectbox("Choose the category", options=  ["Travel", "Cash Back", "0% APR","Student","Secured", "Business", "Balance Transfer", "Rewards"])
+    Category = st.selectbox("Choose the category", options=  ["Travel","Cash Back","Store","Hotel","Student","Secured", "Business", "Balance Transfer", "Other"])
     Rewards_rate = st.text_area("Enter the rewards rate")
     Welcome_Bonus = st.number_input("Enter the welcome bonus in dollars", min_value= 0) 
     Annual_Fee = st.number_input("Enter the annual fee", min_value= 0)
