@@ -44,7 +44,9 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
 
 if st.button("View all cards"):
     st.dataframe(cursor.execute("SELECT * FROM cards"))
+    connection.commit()
     
 # clear button:
 if st.button("Clear"):
     cursor.execute("DELETE FROM cards")
+    connection.commit()
