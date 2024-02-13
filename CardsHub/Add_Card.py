@@ -48,8 +48,5 @@ if st.button("View all cards"):
     
 # clear button:
 if st.button("Clear"):
-    try:
-        cursor.execute("DELETE FROM cards")
-    except:
-        cursor.execute("DROP TABLE cards")
+    cursor.execute("DROP TABLE cards")
     connection.commit()
