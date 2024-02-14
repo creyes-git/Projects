@@ -14,23 +14,19 @@
     transition:opacity .4s;
     border-radius: 76px;
     background: #e0e0e0;
-    box-shadow:  20px 20px 60px #bebebe,
-                -20px -20px 60px #ffffff;
+    box-shadow:  01px 01px 05px #bebebe,
+                -01px -01px 05px #ffffff;
 }
 
-.type-text{
-    background-color:rgb(175, 4, 4)
+.type-text1{
+    background-color:rgb(214, 9, 191)
 }
 
 .type-text2{
-    background-color:rgb(254, 217, 71)
+    background-color:rgb(94, 40, 230)
 }
 
 .type-text3{
-    background-color:rgb(75, 120, 11)
-}
-
-.type-text4{
-    background-color:rgb(210, 97, 33)
+    background-color:rgb(170, 16, 231)
 }
 
