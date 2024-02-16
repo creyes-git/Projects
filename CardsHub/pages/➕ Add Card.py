@@ -1,6 +1,8 @@
 import pandas as pd
 import sqlite3 as sql
 import streamlit as st
+from streamlit_lottie import st_lottie
+import json
 
 st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
 
@@ -12,6 +14,13 @@ def sql_to_csv(table: str):
     df = pd.read_sql(f"SELECT * FROM {table}", connection)
     df.to_csv("cards_table.csv", index= False)
     
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
+
+c1, c2,c3 = st.columns(3)
+with c2:
+    st_lottie(load_lottiefile("lottie1.json"), height = 100, quality = "high")
 
 
 # card form:

@@ -23,23 +23,21 @@ def load_lottiefile(filepath: str):
         return json.load(f)
 
 
-st_lottie(load_lottiefile("lottie1.json"), height = 60, quality = "high")
-
+c1, c2,c3 = st.columns(3)
 card_name_list = cursor.execute("SELECT name FROM cards").fetchall()[0]
 
+with st.container():
+    with c2:
+        st_lottie(load_lottiefile("lottie2.json"), height = 185, quality = "high")
 
-c1,c2,c3 = st.columns(3)
+with st.container():
+    with c1:
+        st.write('<span class="icon type-text2">Card 1</span>',unsafe_allow_html=True)
+        card1_name = st.selectbox(options= card_name_list, label= "Select Card 1")
+            
+    with c3:
+        st.write('<span class="icon type-text3">Card 2</span>',unsafe_allow_html=True)
+            
 
-    
-with c1:
-    st.write('<span class="icon type-text2">Card 1</span>',unsafe_allow_html=True)
-    #card1_name = st.selectbox(options= card_name_list)
-    
-with c2:
-    st.write('<span class="icon type-text3">Card 2</span>',unsafe_allow_html=True)
-    
-with c3:
-    st.write('<span class="icon type-text1">Card 3</span>',unsafe_allow_html=True)
-        
         
 local_css('style.css')
