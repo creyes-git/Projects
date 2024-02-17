@@ -1,62 +1,33 @@
-import streamlit as st 
 import pandas as pd
 import sqlite3 as sql
+import streamlit as st 
+import streamlit_lottie as st_lottie
+import json
 
 connection = sql.connect("Cards.db")
 cursor = connection.cursor()
 
-# Fxn Make Execution
-def sql_executor(raw_code):
-	cursor.execute(raw_code)
-	data = cursor.fetchall()
-	return data 
+# functions:
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
 
+def sql_interpreter(sql_code: str):
+    try:
+        cursor.execute(sql_code)
+        df = pd.DataFrame(cursor.fetchall())
+        return df
+    except:
+        return st.error("You have an error in your SQL syntax; check your query and try again.")
+    
+    
+c1, c2,c3 = st.columns(3)
+with c2:
+    st_lottie(load_lottiefile("images/SQL.json"), height = 111, quality = "high")
 
-city = ['ID,', 'Name,', 'CountryCode,', 'District,', 'Population']
-country = ['Code,', 'Name,', 'Continent,', 'Region,', 'SurfaceArea,', 'IndepYear,', 'Population,', 'LifeExpectancy,', 'GNP,', 'GNPOld,', 'LocalName,', 'GovernmentForm,', 'HeadOfState,', 'Capital,', 'Code2']
-countrylanguage = ['CountryCode,', 'Language,', 'IsOfficial,', 'Percentage']
+with c2:
+    st.title(":rainbow[**SQL Interpreter**]")
+    sql_code = st.text_area("Enter your SQL code here")
+    run = st.button(":rainbow[**Run Query**]")
 
-
-
-
-def main():
-	st.title("SQLPlayground")
-
-	menu = ["Home","About"]
-	choice = st.sidebar.selectbox("Menu",menu)
-
-	if choice == "Home":
-		st.subheader("HomePage")
-
-		# Columns/Layout
-		col1,col2 = st.beta_columns(2)
-
-		with col1:
-			with st.form(key='query_form'):
-				raw_code = st.text_area("SQL Code Here")
-				submit_code = st.form_submit_button("Execute")
-
-			# Table of Info
-
-			with st.beta_expander("Table Info"):
-				table_info = {'city':city,'country':country,'countrylanguage':countrylanguage}
-				st.json(table_info)
-			
-		# Results Layouts
-		with col2:
-			if submit_code:
-				st.info("Query Submitted")
-				st.code(raw_code)
-
-				# Results 
-				query_results = sql_executor(raw_code)
-				with st.beta_expander("Results"):
-					st.write(query_results)
-
-				with st.beta_expander("Pretty Table"):
-					query_df = pd.DataFrame(query_results)
-					st.dataframe(query_df)
-
-
-	else:
-		st.subheader("About")
+    

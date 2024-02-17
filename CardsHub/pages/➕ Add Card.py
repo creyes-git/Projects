@@ -10,10 +10,6 @@ connection = sql.connect("Cards.db")
 cursor = connection.cursor()
 
 # functions:
-def sql_to_csv(table: str):
-    df = pd.read_sql(f"SELECT * FROM {table}", connection)
-    df.to_csv("cards_table.csv", index= False)
-    
 def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
