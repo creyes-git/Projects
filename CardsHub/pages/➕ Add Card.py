@@ -20,7 +20,7 @@ def load_lottiefile(filepath: str):
 
 c1, c2,c3 = st.columns(3)
 with c2:
-    st_lottie(load_lottiefile("images/lottie1.json"), height = 100, quality = "high")
+    st_lottie(load_lottiefile("images/lottie1.json"), height = 111, quality = "high")
 
 
 # card form:
@@ -31,7 +31,7 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     Top_rewards_rate = st.text_area("Enter the top rewards rate")
     Welcome_Bonus = st.number_input("Enter the welcome bonus in dollars", min_value= 0) 
     Annual_Fee = st.number_input("Enter the annual fee", min_value= 0)
-    Recommended_Credit_Score = st.selectbox("Choose the recommended credit score range", options=["Bad (0-649)", "Fair (650-699)", "Good (700-749) ", "Excellent (750+)"])
+    Recommended_Credit_Score = st.selectbox("Choose the recommended credit score range", options=["Bad (0-649)", "Fair (650-699)", "Good (700-749)", "Excellent (750+)"])
     Pros = st.text_area("Enter 3 PROS of the card separated by line breaks")
     Cons =  st.text_area("Enter 3 CONS of the card separated by line breaks")
     Review = st.text_area("Enter a review of the card")
