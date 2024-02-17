@@ -20,7 +20,7 @@ def load_lottiefile(filepath: str):
 
 c1, c2,c3 = st.columns(3)
 with c2:
-    st_lottie(load_lottiefile("lottie1.json"), height = 100, quality = "high")
+    st_lottie(load_lottiefile("images/lottie1.json"), height = 100, quality = "high")
 
 
 # card form:
@@ -41,21 +41,11 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     # submit button, save cards data:
     if st.form_submit_button("Submit"):
         cursor.execute("CREATE TABLE IF NOT EXISTS cards (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Review, Image_URL)")  
-        cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name, Name, Category, Top_rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Review, Image_URL))
+        cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name.strip(), Name.strip(), Category.strip(), Top_rewards_rate.strip(), Welcome_Bonus, Annual_Fee, Recommended_Credit_Score.strip(), Pros.strip(), Cons.strip(), Review.strip(), Image_URL.strip()))
         connection.commit()
-        
-        try:
-            sql_to_csv("cards")
-            st.success("Card added successfully")
+        st.success("Card added successfully")
             
-        except:
-            st.error("Something went wrong saving the data")
-
 if st.button("View all cards"):
     st.dataframe(cursor.execute("SELECT * FROM cards"))
     connection.commit()
     
-# clear button:
-if st.button("Clear"):
-    cursor.execute("DROP TABLE cards")
-    connection.commit()
