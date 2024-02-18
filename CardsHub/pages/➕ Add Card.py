@@ -14,10 +14,13 @@ def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
 
+
 c1, c2,c3 = st.columns(3)
 with c2:
     st_lottie(load_lottiefile("images/lottie1.json"), height = 111, quality = "high")
 
+# warning:
+st.warning("Enter the details of the card you want to add")
 
 # card form:
 with st.form(key="card_form", clear_on_submit= True) as card_form:
@@ -40,8 +43,3 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
         cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name.strip(), Name.strip(), Category.strip(), Top_rewards_rate.strip(), Welcome_Bonus, Annual_Fee, Recommended_Credit_Score.strip(), Pros.strip(), Cons.strip(), Review.strip(), Image_URL.strip()))
         connection.commit()
         st.success("Card added successfully")
-            
-if st.button("View all cards"):
-    st.dataframe(cursor.execute("SELECT * FROM cards"))
-    connection.commit()
-    

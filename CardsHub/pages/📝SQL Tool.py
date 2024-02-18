@@ -14,20 +14,28 @@ def load_lottiefile(filepath: str):
 
 def sql_interpreter(sql_code: str):
     try:
-        cursor.execute(sql_code)
-        df = pd.DataFrame(cursor.fetchall())
+        df = pd.DataFrame(cursor.execute(sql_code), columns=[i[0] for i in cursor.description])
         return df
     except:
         return st.error("You have an error in your SQL syntax; check your query and try again.")
-    
-    
-c1, c2,c3 = st.columns(3)
-with c2:
-    st_lottie(load_lottiefile("images/SQL.json"), height = 111, quality = "high")
+  
 
-with c2:
-    st.title(":rainbow[**SQL Interpreter**]")
+st.title(":rainbow[**SQL Interpreter**]🗄️")
+
+with st.form(key="sql_query_form", clear_on_submit= True):
     sql_code = st.text_area("Enter your SQL code here")
-    run = st.button(":rainbow[**Run Query**]")
+    
+    with st.expander("Check the Table Info before querying"):
+        st.warning(f":rainbow[**Table Name: Cards**]")
+        df = pd.DataFrame(cursor.execute("SELECT * FROM cards"), columns=[i[0] for i in cursor.description])
+        st.dataframe(df)
 
     
+    run = st.form_submit_button(":rainbow[**Run Query**]")
+
+if run:  
+    st.dataframe(sql_interpreter(sql_code))
+
+
+
+
