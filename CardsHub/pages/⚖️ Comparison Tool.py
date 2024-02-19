@@ -85,8 +85,8 @@ with cc3:
                 
 with cc2:
     with st.container():
-        for i in range(15):
+        for i in range(3):
             st.write("  ")
-        st.image(Image.open("images/vs.png"), use_column_width= True)
+        st.image(Image.open("images/versus.png"), use_column_width= True)
             
 local_css('style.css')
