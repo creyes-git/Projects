@@ -1,4 +1,3 @@
 pandas
 streamlit
 streamlit-lottie
-sqlite3
