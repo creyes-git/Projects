@@ -4,17 +4,14 @@ import streamlit as st
 from PIL import Image
 from io import BytesIO
 
+# check API details bellow:
 url = "https://anime-db.p.rapidapi.com/anime"
-
 headers = {"X-RapidAPI-Key": "8af8022ddcmsh06e9119b8cc13f3p1a0e1fjsn8138c83b2c3b",
             "X-RapidAPI-Host": "anime-db.p.rapidapi.com"}
-
 query = {"page": "1", "size": "10000"}
-
 list_genders = ["Fantasy", "Drama", "Action", "Award Winning", "Slice of Life", "Suspense", "Horror", "Ecchi", "Avant Garde", "Erotica"
                 "Comedy", "Hentai", "Boys Love", "Gourmet", "Girls Love", "Romance", "Adventure", "Mystery", "Supernatural", "Sci-Fi"]
 
-key = True
 
 # Streamlit APP:
 picture = Image.open("Anime_recomendation/kimetsu.jpg")

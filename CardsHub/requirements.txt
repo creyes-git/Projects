@@ -1,5 +1,4 @@
 pandas
 streamlit
 streamlit-lottie
-streamlit-extras
-plotly
+sqlite3
