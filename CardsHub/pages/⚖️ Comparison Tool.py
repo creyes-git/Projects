@@ -48,7 +48,7 @@ with cc1:
     st.metric(":red[**Annual fee**]", str(cursor.execute("SELECT Annual_Fee FROM cards WHERE name = ?", (card1_name,)).fetchall()[0][0])+"$")
     # Recommended credit score
     st.write(":red[**Recommended credit score**]")
-    st.image(Image.open(f"images/{str(cursor.execute('SELECT Recommended_Credit_Score FROM cards WHERE name = ?', (card1_name,)).fetchall()[0][0]).strip()}.png"), width= 55)
+    st.image(Image.open(f"images/{str(cursor.execute('SELECT Recommended_Credit_Score FROM cards WHERE name = ?', (card1_name,)).fetchall()[0][0]).strip()}.png"), width= 250)
     # Review
     st.text_area(":red[**Review**]", cursor.execute("SELECT Review FROM cards WHERE name = ?", (card1_name,)).fetchall()[0][0], height= 300)
     # Pros and Cons
@@ -73,7 +73,7 @@ with cc3:
     st.metric(":blue[**Annual fee**]", str(cursor.execute("SELECT Annual_Fee FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0])+"$")
     # Recommended credit score
     st.write(":blue[**Recommended credit score**]")
-    st.image(Image.open(f"images/{str(cursor.execute('SELECT Recommended_Credit_Score FROM cards WHERE name = ?', (card2_name,)).fetchall()[0][0]).strip()}.png"), use_column_width= True)
+    st.image(Image.open(f"images/{str(cursor.execute('SELECT Recommended_Credit_Score FROM cards WHERE name = ?', (card2_name,)).fetchall()[0][0]).strip()}.png"), width= 250)
     # Review
     st.text_area(":blue[**Review**]", cursor.execute("SELECT Review FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0], height= 300)
     # Pros and Cons
@@ -83,10 +83,4 @@ with cc3:
         st.write(":blue[**Cons**]")
         st.write(cursor.execute("SELECT Cons FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0]) 
                 
-with cc2:
-    with st.container():
-        for i in range(3):
-            st.write("  ")
-        st.image(Image.open("images/versus.png"), use_column_width= True)
-            
 local_css('style.css')
