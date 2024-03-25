@@ -33,7 +33,6 @@ for i in cursor.execute("SELECT name FROM cards").fetchall():
 cc1, cc2, cc3 = st.columns(3)
 
 with cc1:
-    st.write('<span class="icon type-text1">Card 1</span>',unsafe_allow_html=True)
     card1_name = st.selectbox(options= card_name_list, label= " ")
     # Image
     st.image(Image.open(requests.get(cursor.execute("SELECT Image_URL FROM cards WHERE name = ?", (card1_name,)).fetchall()[0][0], stream=True).raw)) 
@@ -48,7 +47,7 @@ with cc1:
     st.metric(":red[**Annual fee**]", str(cursor.execute("SELECT Annual_Fee FROM cards WHERE name = ?", (card1_name,)).fetchall()[0][0])+"$")
     # Recommended credit score
     st.write(":red[**Recommended credit score**]")
-    st.image(Image.open(f"images/{str(cursor.execute('SELECT Recommended_Credit_Score FROM cards WHERE name = ?', (card1_name,)).fetchall()[0][0]).strip()}.png"), width= 250)
+    st.image(Image.open(f"images/{str(cursor.execute('SELECT Recommended_Credit_Score FROM cards WHERE name = ?', (card1_name,)).fetchall()[0][0]).strip()}.png"), width= 200)
     # Review
     st.text_area(":red[**Review**]", cursor.execute("SELECT Review FROM cards WHERE name = ?", (card1_name,)).fetchall()[0][0], height= 300)
     # Pros and Cons
@@ -59,7 +58,6 @@ with cc1:
         st.write(cursor.execute("SELECT Cons FROM cards WHERE name = ?", (card1_name,)).fetchall()[0][0])
          
 with cc3:
-    st.write('<span class="icon type-text2">Card 2</span>',unsafe_allow_html=True)
     card2_name = st.selectbox(options= card_name_list, label= "  ")
     st.image(Image.open(requests.get(cursor.execute("SELECT Image_URL FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0], stream=True).raw)) 
     # Category
@@ -73,7 +71,7 @@ with cc3:
     st.metric(":blue[**Annual fee**]", str(cursor.execute("SELECT Annual_Fee FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0])+"$")
     # Recommended credit score
     st.write(":blue[**Recommended credit score**]")
-    st.image(Image.open(f"images/{str(cursor.execute('SELECT Recommended_Credit_Score FROM cards WHERE name = ?', (card2_name,)).fetchall()[0][0]).strip()}.png"), width= 250)
+    st.image(Image.open(f"images/{str(cursor.execute('SELECT Recommended_Credit_Score FROM cards WHERE name = ?', (card2_name,)).fetchall()[0][0]).strip()}.png"), width= 200)
     # Review
     st.text_area(":blue[**Review**]", cursor.execute("SELECT Review FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0], height= 300)
     # Pros and Cons

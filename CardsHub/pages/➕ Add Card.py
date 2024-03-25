@@ -35,11 +35,14 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     Cons =  st.text_area("Enter 3 CONS of the card separated by line breaks")
     Review = st.text_area("Enter a review of the card")
     Image_URL = st.text_input("Enter the URL of the card image")
-    
 
     # submit button, save cards data:
     if st.form_submit_button("Submit"):
-        cursor.execute("CREATE TABLE IF NOT EXISTS cards (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Review, Image_URL)")  
-        cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name.strip(), Name.strip(), Category.strip(), Top_rewards_rate.strip(), Welcome_Bonus, Annual_Fee, Recommended_Credit_Score.strip(), Pros.strip(), Cons.strip(), Review.strip(), Image_URL.strip()))
-        connection.commit()
-        st.success("Card added successfully", icon= "✅")
+        if cursor.execute(f"SELECT Name FROM cards where Name = '{Name}'").fetchone():
+            st.warning("Card already exists", icon= "⚠️")
+        else:
+            cursor.execute("CREATE TABLE IF NOT EXISTS cards (Issuer_Name, Name, Category, Rewards_rate, Welcome_Bonus, Annual_Fee, Recommended_Credit_Score, Pros, Cons, Review, Image_URL)")  
+            cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name.strip(), Name.strip(), Category.strip(), Top_rewards_rate.strip(), Welcome_Bonus, Annual_Fee, Recommended_Credit_Score.strip(), Pros.strip(), Cons.strip(), Review.strip(), Image_URL.strip()))
+            connection.commit()
+            st.success("Card added successfully", icon= "✅")
+    

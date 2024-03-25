@@ -49,7 +49,7 @@ def get_data_and_loaddf():
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=4&status=Active&limit=500"]
     
     # checking if the csv file of the current month already exists
-    if not os.path.exists(f"Looking_My_Home/rentcast_data_{current_month_year}.csv"):
+    if not os.path.exists(f"rentcast_data_{current_month_year}.csv"):
         df = pd.DataFrame()
 
         for i in list_calls:
@@ -58,13 +58,13 @@ def get_data_and_loaddf():
             df = pd.concat([df, pd.DataFrame(response)], ignore_index=True)
                    
         #saving the dataframe to a csv file       
-        df.to_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv", index=False)
+        df.to_csv(f"rentcast_data_{current_month_year}.csv", index=False)
         
         # creating and cleaning the dataframe
-        df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+        df = pd.read_csv(f"rentcast_data_{current_month_year}.csv")
     
     else:
-        df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+        df = pd.read_csv(f"rentcast_data_{current_month_year}.csv")
 
     df.dropna(subset= "bathrooms", how="any", inplace=True)
     df["bathrooms"] = df["bathrooms"].astype(int)
@@ -154,7 +154,7 @@ def display_avg_stats(dataframe):
 
 
 # General info and functions
-local_css('Looking_My_Home/style.css')
+local_css('style.css')
 st.title(":rainbow[**General information on GA properties market**]")
 st.markdown(" ")
 
@@ -185,7 +185,7 @@ st.markdown(":rainbow[**Search Results Information **] ")
 with st.sidebar:
     df = get_data_and_loaddf()
        
-    lottie_sidebar("Looking_My_Home/home1.json")
+    lottie_sidebar("home1.json")
         
     st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
                 '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
