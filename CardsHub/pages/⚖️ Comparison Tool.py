@@ -12,17 +12,10 @@ st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", ini
 connection = sql.connect("Cards.db")
 cursor = connection.cursor()
 
-
-# css file loading
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
 # load lottie animation
 def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
-
 
 #cards list
 card_name_list = list()
@@ -33,7 +26,7 @@ for i in cursor.execute("SELECT name FROM cards").fetchall():
 cc1, cc2, cc3 = st.columns(3)
 
 with cc1:
-    card1_name = st.selectbox(options= card_name_list, label= " ")
+    card1_name = st.selectbox(options= card_name_list, label= " ", index = 2)
     # Image
     st.image(Image.open(requests.get(cursor.execute("SELECT Image_URL FROM cards WHERE name = ?", (card1_name,)).fetchall()[0][0], stream=True).raw)) 
     # Category
@@ -58,7 +51,7 @@ with cc1:
         st.write(cursor.execute("SELECT Cons FROM cards WHERE name = ?", (card1_name,)).fetchall()[0][0])
          
 with cc3:
-    card2_name = st.selectbox(options= card_name_list, label= "  ")
+    card2_name = st.selectbox(options= card_name_list, label= "  ", index = 3)
     st.image(Image.open(requests.get(cursor.execute("SELECT Image_URL FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0], stream=True).raw)) 
     # Category
     st.write(":blue[**Category**]")
@@ -80,5 +73,6 @@ with cc3:
         st.write(cursor.execute("SELECT Pros FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0])
         st.write(":blue[**Cons**]")
         st.write(cursor.execute("SELECT Cons FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0]) 
-                
-local_css('style.css')
+ 
+with cc2:
+    st.image(Image.open("images/versus.png"))

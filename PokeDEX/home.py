@@ -9,7 +9,7 @@ from streamlit_lottie import st_lottie
 import json
 
 # page configuration
-st.set_page_config(page_title = "Pokédex",page_icon= "🎴", layout = "wide")
+st.set_page_config(page_title = "Pokédex",page_icon= "🎴", layout = "wide", theme = "light")
 
 # css file for displaying Pokemon type (fire, water etc.)
 def local_css(file_name):

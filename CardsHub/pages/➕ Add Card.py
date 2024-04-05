@@ -14,7 +14,6 @@ def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
 
-
 c1, c2,c3 = st.columns(3)
 with c2:
     st_lottie(load_lottiefile("images/lottie1.json"), height = 111, quality = "high")
@@ -37,7 +36,7 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     Image_URL = st.text_input("Enter the URL of the card image")
 
     # submit button, save cards data:
-    if st.form_submit_button("Submit"):
+    if st.form_submit_button(":rainbow[**Submit**]"):
         if cursor.execute(f"SELECT Name FROM cards where Name = '{Name}'").fetchone():
             st.warning("Card already exists", icon= "⚠️")
         else:
@@ -45,4 +44,3 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
             cursor.execute("INSERT INTO cards VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", (Issuer_Name.strip(), Name.strip(), Category.strip(), Top_rewards_rate.strip(), Welcome_Bonus, Annual_Fee, Recommended_Credit_Score.strip(), Pros.strip(), Cons.strip(), Review.strip(), Image_URL.strip()))
             connection.commit()
             st.success("Card added successfully", icon= "✅")
-    

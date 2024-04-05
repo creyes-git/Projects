@@ -31,7 +31,7 @@ with st.form(key="card_match_form", clear_on_submit= True) as form:
     bank = st.radio("What kind of bank account do you have? ", ("Checking", "Savings", "None", "Both"))
     
     
-    submit = st.form_submit_button("Submit")
+    submit = st.form_submit_button(":rainbow[**Submit**]")
 
 
 if submit:
