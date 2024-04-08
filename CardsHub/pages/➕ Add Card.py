@@ -17,9 +17,7 @@ def load_lottiefile(filepath: str):
 c1, c2,c3 = st.columns(3)
 with c2:
     st_lottie(load_lottiefile("images/lottie1.json"), height = 111, quality = "high")
-
-# warning:
-st.warning("Enter the details of the card you want to add")
+    st.warning("Enter the details of the card you want to add")
 
 # card form:
 with st.form(key="card_form", clear_on_submit= True) as card_form:

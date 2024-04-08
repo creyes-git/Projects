@@ -75,4 +75,4 @@ with cc3:
         st.write(cursor.execute("SELECT Cons FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0]) 
  
 with cc2:
-    st.image(Image.open("images/versus.png"))
+    st.image(Image.open("images/competition.png"), width= 300)

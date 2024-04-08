@@ -1,15 +1,22 @@
 import streamlit as st
+from streamlit_lottie import st_lottie
 import sqlite3 as sql
 import pandas as pd
 from PIL import Image
 import requests
+import json
 
 # Connect to the SQLite database containing credit card data
 connection = sql.connect("Cards.db")
 cursor = connection.cursor()
 
-c1, c2, c3 = st.columns(3)
-c2.image(Image.open("images/scanner.png"), width = 150, clamp=True)
+def load_lottiefile(filepath: str):
+    with open(filepath, "r") as f:
+        return json.load(f)
+
+cc1, cc2,cc3 = st.columns(3)
+with cc2:
+    st_lottie(load_lottiefile("images/match.json"), height = 200, quality = "high")
 
 # Card match form
 with st.form(key="card_match_form", clear_on_submit= True) as form:
