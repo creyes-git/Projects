@@ -3,6 +3,8 @@ import streamlit as st
 import plotly.express as px
 from PIL import Image
 
+st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
+
 cc1, cc2, cc3 = st.columns(3)
 
 cc1.image(Image.open("images/fico.png"),width= 200, clamp=True)

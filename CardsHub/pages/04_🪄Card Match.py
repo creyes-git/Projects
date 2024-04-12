@@ -6,6 +6,8 @@ from PIL import Image
 import requests
 import json
 
+st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
+
 # Connect to the SQLite database containing credit card data
 connection = sql.connect("Cards.db")
 cursor = connection.cursor()

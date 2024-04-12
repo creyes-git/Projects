@@ -24,13 +24,14 @@ with st.form(key="card_form", clear_on_submit= True) as card_form:
     Issuer_Name = st.selectbox("Select the issuer", options=  ["Discover", "Chase", "Bank of America","Wells Fargo","Citi", "Capital One", "Credit One Bank", "American Express","U.S. Bank","VISA", "Mastercard"])
     Name = st.text_input("Enter the card name")
     Category = st.selectbox("Choose the category", options=  ["Travel","Cash Back","Store","Hotel","Student","Secured", "Business", "Balance Transfer", "Other"])
-    Top_rewards_rate = st.text_area("Enter the top rewards rate")
-    Welcome_Bonus = st.number_input("Enter the welcome bonus in dollars", min_value= 0) 
+    Top_rewards_rate = st.text_area("Enter the card rewards")
+    Welcome_Bonus = st.number_input("Enter the minimum welcome bonus in dollars", min_value= 0) 
     Annual_Fee = st.number_input("Enter the annual fee", min_value= 0)
-    Recommended_Credit_Score = st.selectbox("Choose the recommended credit score range", options=["Bad (0-649)", "Fair (650-699)", "Good (700-749)", "Excellent (750+)"])
+    APR = st.text_input("Enter the APR", min_value= 0)
+    Recommended_Credit_Score = st.selectbox("Choose the recommended credit score range", options=["Poor (330-579)", "Fair (580-669)", "Good (670-739)", "Excellent (740-850)"])
     Pros = st.text_area("Enter 3 PROS of the card separated by line breaks")
     Cons =  st.text_area("Enter 3 CONS of the card separated by line breaks")
-    Review = st.text_area("Enter a review of the card")
+    Highlights = st.text_area("Enter a review of the card")
     Image_URL = st.text_input("Enter the URL of the card image")
 
     # submit button, save cards data:

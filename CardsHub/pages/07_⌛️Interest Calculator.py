@@ -3,6 +3,8 @@ import streamlit as st
 import pandas as pd
 import json
 
+st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
+
 connection = sql.connect("Cards.db")
 cursor = connection.cursor()
 
