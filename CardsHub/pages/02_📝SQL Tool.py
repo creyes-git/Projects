@@ -14,9 +14,11 @@ with st.form(key="sql_query_form", clear_on_submit= True):
     
     with st.expander("Check the Table Info before querying"):
         st.warning(f":rainbow[**Table Name: Cards**]")
-        df = pd.DataFrame(cursor.execute("SELECT * FROM cards"), columns=[i[0] for i in cursor.description])
-        st.dataframe(df)
-
+        try:
+            df = pd.DataFrame(cursor.execute("SELECT * FROM cards"), columns=[i[0] for i in cursor.description])
+            st.dataframe(df)
+        except:
+            st.error("Table not found")
     
     run = st.form_submit_button(":rainbow[**Run Query**]")
     x = sql_code.strip()
