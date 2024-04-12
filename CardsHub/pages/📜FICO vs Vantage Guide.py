@@ -33,13 +33,13 @@ c1, c2, c3 = st.columns(3)
 
 name = ["Payment History", "Credit Age", "Credit Utilization", "Credit MIX", "Enquiries", "Available Credit"]
 fico = [35,15,30,10,10,0]
-vantage = [40,21,20,11,5,3]
+vantage = [41,20,20,11,6,2]
 
 # FICO
 c1.plotly_chart(px.pie(names=name, values=fico, title="F I C O   S C O R E", color_discrete_sequence=px.colors.sequential.Sunset_r, hole=0.3), use_container_width=True)
 c1.dataframe(pd.DataFrame({"Score Rating": ["Exceptional/Excellent", "Very Good/Good", "Good/Fair", "Fair/Poor", "Poor/Very Poor"], "Range": ["800-850", "740-799", "670-739", "580-669", "300-579"]}), hide_index=True)
 
 # Vantage
-c3.plotly_chart(px.pie(names=name, values=vantage, title="V A N T A G E   S C O R E", color_discrete_sequence=px.colors.sequential.Sunset, hole=0.3), use_container_width=True)
+c3.plotly_chart(px.pie(names=name, values=vantage, title="V A N T A G E   S C O R E   4.0", color_discrete_sequence=px.colors.sequential.Sunset, hole=0.3), use_container_width=True)
 c3.dataframe(pd.DataFrame({"Score Rating": ["Exceptional/Excellent", "Very Good/Good", "Good/Fair", "Fair/Poor", "Poor/Very Poor"], "Range": ["781-850", "661-780", "601-660", "500-600", "300-499"]}), hide_index=True)
 
