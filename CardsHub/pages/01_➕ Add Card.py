@@ -21,7 +21,7 @@ with c2:
 
 # card form:
 with st.form(key="card_form", clear_on_submit= True) as card_form:
-    Issuer_Name = st.selectbox("Select the issuer", options=  ["Discover", "Chase", "Bank of America","Wells Fargo","Citi", "Capital One", "Credit One Bank", "American Express","U.S. Bank","VISA", "Mastercard"])
+    Issuer_Name = st.selectbox("Select the issuer", options=  ["Discover", "Chase", "Bank of America","Wells Fargo","Citi", "Capital One", "Credit One Bank", "American Express","U.S. Bank", "Penfed", "Other"])
     Name = st.text_input("Enter the card name")
     Category = st.selectbox("Choose the category", options=  ["Travel","Cash Back","Store","Hotel","Student","Secured", "Business", "Balance Transfer", "Other"])
     Top_rewards_rate = st.text_area("Enter the card rewards separated by line breaks")

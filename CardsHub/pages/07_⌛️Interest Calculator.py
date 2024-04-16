@@ -8,7 +8,7 @@ st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", ini
 connection = sql.connect("Cards.db")
 cursor = connection.cursor()
 
-st.title(":green[**Credit Card**] :red[**Interest Calculator**]")
+st.title(":red[**Credit Card**] :green[**Interest Calculator**]")
 
 def calc_interest(balance, apr, days_billing_period):
     interest = balance * (apr / 100) * (days_billing_period / 365)
