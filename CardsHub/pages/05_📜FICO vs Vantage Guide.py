@@ -39,9 +39,22 @@ vantage = [41,20,20,11,6,2]
 
 # FICO
 c1.plotly_chart(px.pie(names=name, values=fico, title="F I C O   S C O R E", color_discrete_sequence=px.colors.sequential.Sunset_r, hole=0.3), use_container_width=True)
+c1.write("**FICO Scores Levels**")
 c1.dataframe(pd.DataFrame({"Score Rating": ["Exceptional/Excellent", "Very Good/Good", "Good/Fair", "Fair/Poor", "Poor/Very Poor"], "Range": ["800-850", "740-799", "670-739", "580-669", "300-579"]}), hide_index=True)
+c1.write("**Scoring Requirements**")
+c1.markdown("In order to create a credit score for an individual, FICO requires at least six months of credit history and at least one credit account reported within the last six months.")
+c1.write("**Rate Shopping**")
+c1.markdown('''FICO’s shopping window is larger, allowing 45 days to compare rates.''')
+c1.write("**Late Payments**")
+c1.markdown("FICO treats all late payments the same, whether it’s your credit card or mortgage.")
 
 # Vantage
 c3.plotly_chart(px.pie(names=name, values=vantage, title="V A N T A G E   S C O R E   4.0", color_discrete_sequence=px.colors.sequential.Sunset, hole=0.3), use_container_width=True)
+c3.write("**Vantage Scores Levels**")
 c3.dataframe(pd.DataFrame({"Score Rating": ["Exceptional/Excellent", "Very Good/Good", "Good/Fair", "Fair/Poor", "Poor/Very Poor"], "Range": ["781-850", "661-780", "601-660", "500-600", "300-499"]}), hide_index=True)
-
+c3.write("**Scoring Requirements**")
+c3.markdown("VantageScore only requires one month of credit history and one account reported within the past two years.")
+c3.write("**Rate Shopping**")
+c3.markdown('''VantageScore allows just 14 days for rate-shopping.''')
+c3.write("**Late Payments**")
+c3.markdown("VantageScore judges late payments differently – with mortgages carrying a heavier penalty than a credit card or other type of credit. For consumers whose creditors note that they have been affected by a natural or declared disaster, VantageScore counts negative information as “neutral” during that time but continues to reflect positive information in their score calculations.")
