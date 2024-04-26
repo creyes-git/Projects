@@ -1,19 +1,9 @@
-import sqlite3 as sql
 import streamlit as st
-import pandas as pd
-import json
 
 st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
 
-connection = sql.connect("Cards.db")
-cursor = connection.cursor()
 
-st.title(":red[**Credit Card**] :green[**Interest Calculator**]")
-
-def calc_interest(balance, apr, days_billing_period):
-    interest = balance * (apr / 100) * (days_billing_period / 365)
-    return interest
-
+st.title(":red[**Interest**] :green[**Calculator**]")
 
 with st.form(key="interest_form", clear_on_submit= True):
     st.warning("Enter the balance on the card, the interest rate and the number of days in the statement cycle and Calculate.")
@@ -28,5 +18,30 @@ with st.form(key="interest_form", clear_on_submit= True):
     c1.write("---")  
     
 if Calculate:
-    interest = calc_interest(balance, apr, days_billing_period)
-    st.metric("- CHARGE FOR THIS STATEMENT CYCLE", f"${round(interest,2)}")
+    st.metric("- CHARGE FOR THIS STATEMENT CYCLE", f"{} $")
+    
+    
+    
+    
+    
+st.title(":green[**Payoff**] :red[**Calculator**]")
+c1, c2 = st.columns(2)
+
+with c1.form(key="payoff_form", clear_on_submit= True):
+    st.warning("When you want to be debt-free in order to calculate your payoff.")
+    
+    balance = st.number_input("Credit Card Balance ($): ", value= None)
+    st.write("---")                 
+    interest = st.number_input("Interest rate (%): ", value= None)
+    st.write("---")  
+    desired_monthly = st.number_input("Desired months to payoff: ", value= None)
+    st.write("---")  
+    
+    button = st.form_submit_button(":rainbow[**Calculate**]")
+ 
+if button:
+    with st.container():
+        c2.title("Your Results")
+        c2.metric("Total Principal Paid",f"{int(balance)} $")
+        c2.write(" ")
+        c2.metric("Total Interest Paid", f"$")

@@ -17,22 +17,20 @@ with st.form(key="balance_transfer_form", clear_on_submit= True):
     
     c1.write("Debt you want to transfer to the new card")
     debt =c1.number_input("  ", min_value = 0)
-   
+    c1.write("---")  
     c1.write("Balance transfer fee on new card")
     fee = c1.selectbox(" ", ["0%", "1%", "2%", "3%", "4%", "5%"], index = 0)
     
     c2.write("Interest rate charged on that current debt")
     apr = c2.number_input("", min_value=0, help="Do not include percent sign. For example, 15% would be ''15,'' while 14.25% would be ''14.25.''")
-    
+    c2.write("---")  
     c2.write("Months in new card's 0% interest period")
     months = c2.number_input(" ", min_value = 0)
     
+    c1.write("---")   
     
     button = st.form_submit_button(":green[**Calculate**]")
-    
-    
-    
-    
+
 if button:
     st.write("If you moved your debt to the balance transfer card and paid it off within the 0% intro period, your only cost would be your balance transfer fee: ")
     st.markdown(f"**${round(debt * int(fee[0]) / 100)}**")
