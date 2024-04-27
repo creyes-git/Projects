@@ -142,7 +142,7 @@ def display_avg_stats(dataframe):
 
 # General info and functions
 st.title(":rainbow[**General information on GA properties market**]")
-
+'''
 with st.container():
     c1, c2 = st.columns(2)
     with c2:
@@ -161,7 +161,7 @@ with st.container():
 
 st.markdown(":rainbow[**Search Results Information **] ")
 
-
+'''
 # Dynamic charts functions for user choices:
    
         
