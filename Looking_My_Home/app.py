@@ -11,19 +11,6 @@ import os
 #setting the page config and creating the functions
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
 
-# loading css file
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
-
-# load lottie animation
-def lottie_sidebar(path):
-    with open(path, "r") as f:
-        lottie_home = json.load(f)
-    with st.sidebar:
-	    st_lottie(lottie_home, height = 100, quality = "high")
-     
 
 # calling the api, 1 time per month, saving the data in a csv file and loading it and returning a dataframe
 def get_data_and_loaddf():
@@ -58,14 +45,14 @@ def get_data_and_loaddf():
             df = pd.concat([df, pd.DataFrame(response)], ignore_index=True)
                    
         #saving the dataframe to a csv file       
-        df.to_csv(f"rentcast_data_{current_month_year}.csv", index=False)
+        df.to_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv", index=False)
         
         # creating and cleaning the dataframe
         df = pd.read_csv(f"rentcast_data_{current_month_year}.csv")
     
     else:
-        df = pd.read_csv(f"rentcast_data_{current_month_year}.csv")
-
+        df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+        
     df.dropna(subset= "bathrooms", how="any", inplace=True)
     df["bathrooms"] = df["bathrooms"].astype(int)
     
@@ -154,9 +141,7 @@ def display_avg_stats(dataframe):
 
 
 # General info and functions
-local_css('style.css')
 st.title(":rainbow[**General information on GA properties market**]")
-st.markdown(" ")
 
 with st.container():
     c1, c2 = st.columns(2)
@@ -185,7 +170,8 @@ st.markdown(":rainbow[**Search Results Information **] ")
 with st.sidebar:
     df = get_data_and_loaddf()
        
-    lottie_sidebar("home1.json")
+    st_lottie(json.load(open("Looking_My_Home/home1.json")), height = 100, quality = "high")
+     
         
     st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
                 '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
