@@ -165,7 +165,7 @@ st.markdown(":rainbow[**Search Results Information **] ")
 # Dynamic charts functions for user choices:
    
         
-
+'''
 #sidebar configuration
 with st.sidebar:
     df = get_data_and_loaddf()
@@ -203,7 +203,7 @@ if st.sidebar.button("**Search**", type= "primary"):
     
     st.balloons()    
     st.dataframe(df, use_container_width=True)
-       
+'''
        
 # Info and sources
 with st.sidebar.container():
