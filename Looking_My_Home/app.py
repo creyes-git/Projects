@@ -143,7 +143,7 @@ with st.container():
     c1, c2 = st.columns(2)
     with c2:
         st.markdown(" Basic Property Stats:  ")
-        display_avg_stats(get_data_and_loaddf())
+        "display_avg_stats(get_data_and_loaddf())"
     with c1:
         st.markdown(" AVG Price County Ranking:  ")
         "display_counties_ranking(get_data_and_loaddf())"
