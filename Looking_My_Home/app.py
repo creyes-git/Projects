@@ -35,7 +35,7 @@ def get_data_and_loaddf():
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=4&status=Active&limit=500"]
     
     # checking if the csv file of the current month already exists
-    if not os.path.exists(f"rentcast_data_{current_month_year}.csv"):
+    if not os.path.exists(f"Looking_My_Home/rentcast_data_{current_month_year}.csv"):
         df = pd.DataFrame()
 
         for i in list_calls:
@@ -47,7 +47,7 @@ def get_data_and_loaddf():
         df.to_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv", index=False)
         
         # creating and cleaning the dataframe
-        df = pd.read_csv(f"rentcast_data_{current_month_year}.csv")
+        df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
     
     else:
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
@@ -132,4 +132,4 @@ def display_avg_stats(dataframe):
             st.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)} days")
 
 
-    
+st.dataframe(get_data_and_loaddf())
