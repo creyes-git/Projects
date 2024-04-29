@@ -137,12 +137,8 @@ def display_avg_stats(dataframe):
             st.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)} days")
 
 
-
-
-
 # General info and functions
 st.title(":rainbow[**General information on GA properties market**]")
-'''
 with st.container():
     c1, c2 = st.columns(2)
     with c2:
@@ -150,22 +146,17 @@ with st.container():
         display_avg_stats(get_data_and_loaddf())
     with c1:
         st.markdown(" AVG Price County Ranking:  ")
-        display_counties_ranking(get_data_and_loaddf())
+        "display_counties_ranking(get_data_and_loaddf())"
         
 with st.container():
     c1, c2 = st.columns(2)
     with c2:
-        display_scatter_map(get_data_and_loaddf())
+        "display_scatter_map(get_data_and_loaddf())"
     with c1:
-        display_ga_map(get_data_and_loaddf())
+        "display_ga_map(get_data_and_loaddf())"
 
-st.markdown(":rainbow[**Search Results Information **] ")
+st.markdown(":rainbow[**Search Results Information **] ") 
 
-'''
-# Dynamic charts functions for user choices:
-   
-        
-'''
 #sidebar configuration
 with st.sidebar:
     df = get_data_and_loaddf()
@@ -203,7 +194,7 @@ if st.sidebar.button("**Search**", type= "primary"):
     
     st.balloons()    
     st.dataframe(df, use_container_width=True)
-'''
+
        
 # Info and sources
 with st.sidebar.container():
