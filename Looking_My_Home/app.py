@@ -57,5 +57,5 @@ def get_data_and_loaddf():
     
     return df
 
-
-st.dataframe(get_data_and_loaddf())
+current_month_year = str(date.today()).split("-")[1] + "-" + str(date.today()).split("-")[0]
+st.write(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
