@@ -131,8 +131,29 @@ def display_avg_stats(dataframe):
             st.metric(f" :green[**Bedrooms/Bathrooms**]", f"{str(avg_beds)}/{str(avg_baths)}")
             st.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)} days")
 
+'''
 # General info and functions
+st.title(":rainbow[**General information on GA properties market**]")
+with st.container():
+    c1, c2 = st.columns(2)
+    with c2:
+        st.markdown(" Basic Property Stats:  ")
+        display_avg_stats(get_data_and_loaddf())
+    with c1:
+        st.markdown(" AVG Price County Ranking:  ")
+        display_counties_ranking(get_data_and_loaddf())
+             
+with st.container():
+    c1, c2 = st.columns(2)
+    with c2:
+        display_scatter_map(get_data_and_loaddf())
+    with c1:
+        display_ga_map(get_data_and_loaddf())
+        
+st.markdown(":rainbow[**Search Results Information **] ")
+'''
 
+'''
 #sidebar configuration
 with st.sidebar:
     df = get_data_and_loaddf()
@@ -153,7 +174,9 @@ with st.sidebar:
         baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)  
 
     st.markdown("") 
-            
+'''
+ 
+'''          
 # button!!!      
 if st.sidebar.button("**Search**", type= "primary"):
     # dataset configuration
@@ -178,4 +201,4 @@ with st.sidebar.container():
     st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
     st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
     st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
-          
+'''        
