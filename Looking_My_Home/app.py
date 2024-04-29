@@ -11,7 +11,6 @@ import os
 #setting the page config and creating the functions
 st.set_page_config(page_title="Looking My Home ", page_icon=":house:", layout="wide")
 
-
 # calling the api, 1 time per month, saving the data in a csv file and loading it and returning a dataframe
 def get_data_and_loaddf():
     #getting the current date
@@ -19,7 +18,7 @@ def get_data_and_loaddf():
     
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-            "authorization": st.secrets["api_key"]}
+            "authorization": "32f4a4cf6b4b4078b8f00d0bd185d850"}
     
     # list of urls to call
     list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
@@ -58,7 +57,6 @@ def get_data_and_loaddf():
     
     return df
 
-
 # displaying the scatter map
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
@@ -81,7 +79,6 @@ def display_ga_map(dataframe):
     
     st.plotly_chart(fig)
 
-
 # displaying the counties table
 def display_counties_ranking(dataframe):
     counties = dataframe[["county", "price"]]
@@ -102,7 +99,6 @@ def display_counties_ranking(dataframe):
                         min_value=0,
                         max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
 
-
 def display_scatter_map(dataframe):
     dataframe = dataframe[dataframe["squareFootage"] <= 10000]
     dataframe = dataframe[dataframe["price"] <= 7500000] 
@@ -120,7 +116,6 @@ def display_scatter_map(dataframe):
 
     return st.plotly_chart(fig)
 
-
 # get average properties stats of price, bathrooms, bedrooms, days on market and size
 def display_avg_stats(dataframe):
     
@@ -136,7 +131,6 @@ def display_avg_stats(dataframe):
             st.metric(f" :green[**Bedrooms/Bathrooms**]", f"{str(avg_beds)}/{str(avg_baths)}")
             st.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)} days")
 
-
 # General info and functions
 st.title(":rainbow[**General information on GA properties market**]")
 with st.container():
@@ -146,15 +140,13 @@ with st.container():
         "display_avg_stats(get_data_and_loaddf())"
     with c1:
         st.markdown(" AVG Price County Ranking:  ")
-        "display_counties_ranking(get_data_and_loaddf())"
-        
+        "display_counties_ranking(get_data_and_loaddf())"       
 with st.container():
     c1, c2 = st.columns(2)
     with c2:
         "display_scatter_map(get_data_and_loaddf())"
     with c1:
         "display_ga_map(get_data_and_loaddf())"
-
 st.markdown(":rainbow[**Search Results Information **] ") 
 
 #sidebar configuration
@@ -194,8 +186,7 @@ if st.sidebar.button("**Search**", type= "primary"):
     
     st.balloons()    
     st.dataframe(df, use_container_width=True)
-
-       
+ 
 # Info and sources
 with st.sidebar.container():
     st.markdown(" ")
