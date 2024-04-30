@@ -119,7 +119,7 @@ def display_ga_map(dataframe):
         lat=dataframe['latitude'],
         lon=dataframe['longitude'],
         mode='markers',
-        marker=dict(size=7, color = dataframe['price'], cmin=200000, cmax=1000000, colorscale='Sunset', colorbar_title="Price"),
+        marker=dict(size=7, color = dataframe['price'], cmin=200000, cmax=1000000, colorscale="Viridis", colorbar_title="Price"),
         text=str(dataframe['price'])+"$"))
 
     # Update the layout of the scatter mapbox
@@ -179,26 +179,25 @@ def display_avg_stats(dataframe):
     avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
     
     with st.container():
-            st.metric(f" :red[**Average Price**]", f"{str(avg_price)}$",)
-            st.metric(f" :blue[**Average Size**]", f"{str(avg_size)} sqft")
-            st.metric(f" :green[**Bedrooms/Bathrooms**]", f"{str(avg_beds)}/{str(avg_baths)}")
-            st.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)} days")
+            st.metric(f" :rainbow[**Average Price**]", f"{str(avg_price)}$",)
+            st.metric(f" :rainbow[**Average Size**]", f"{str(avg_size)} sqft")
+            st.metric(f" :rainbow[**Bedrooms/Bathrooms**]", f"{str(avg_beds)}/{str(avg_baths)}")
+            st.metric(f" :rainbow[**Average Days on Market**]", f"{str(avg_days_market)} days")
+
+def display_type_pie(dataframe):
+    df = dataframe.groupby("propertyType")["propertyType"].count().rename("Count").reset_index()
+    with st.container():
+        st.plotly_chart(px.pie(df, values="Count",names="propertyType", title="Property Type", 
+                        color_discrete_sequence=px.colors.sequential.Viridis_r, hole=0.7))
 
 
 # DASHBOARD CALLING:
+st.warning("Welcome to 'My Home in GA Dashboard'. Check the Georgia Properties Market information and filter the results based on your preferences :smile:! ")
 with st.container():
     c1, c2, c3, c4 = st.columns(4)
-    cc1, cc2, cc3 = st.columns(3)
-    with c2:
-        st.markdown(" Basic Property Stats:  ")
-        display_avg_stats(df)
     with c1:
-        st.markdown(" AVG Price County Ranking:  ")
-        display_counties_ranking(df)
+        display_type_pie(df)
         
 with st.container():
     c1, c2 = st.columns(2)
-    with c2:
-        display_scatter_map(df)
-    with c1:
-        display_ga_map(df)
+    
