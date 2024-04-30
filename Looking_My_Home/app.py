@@ -4,11 +4,18 @@ from streamlit_lottie import st_lottie
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import date
+import json
 import requests
 import os
 
 #setting the page config and creating the functions
-st.set_page_config(page_title="Looking My Home", page_icon=":house:", layout="wide")
+st.set_page_config(page_title="My Home in GA", page_icon=":house:", layout="wide")
+
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+# load cssp
+local_css('style.css')
 
 # calling the api, 1 time per month, saving the data in a csv file and loading it and returning a dataframe
 def get_data_and_loaddf():
@@ -17,21 +24,61 @@ def get_data_and_loaddf():
     
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-                "X-Api-Key": "9f3c938b8f2844ef88bc452bd9262e43"}
+                "X-Api-Key": "b047031a86a545b7bb6e5d5a82ce6d95"}
     
     # list of urls to call
-    list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=2&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=3&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=4&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=1&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=2&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=3&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=4&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=1&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=2&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=3&status=Active&limit=500",
-                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=4&status=Active&limit=500"]
+    list_calls = [
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500&offset=0",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=2&status=Active&limit=500&offset=1000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=3&status=Active&limit=500&offset=10000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=4&status=Active&limit=500&offset=20000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=1&status=Active&limit=500&offset=30000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=2&status=Active&limit=500&offset=40000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=3&status=Active&limit=500&offset=50000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=4&status=Active&limit=500&offset=60000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=1&status=Active&limit=500&offset=70000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=2&status=Active&limit=500&offset=80000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=3&status=Active&limit=500&offset=90000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=4&status=Active&limit=500&offset=100000",
+                
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500&offset=15000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=2&status=Active&limit=500&offset=160000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=3&status=Active&limit=500&offset=100000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=4&status=Active&limit=500&offset=200000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=1&status=Active&limit=500&offset=300000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=2&status=Active&limit=500&offset=400000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=3&status=Active&limit=500&offset=500000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=4&status=Active&limit=500&offset=600000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=1&status=Active&limit=500&offset=700000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=2&status=Active&limit=500&offset=800000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=3&status=Active&limit=500&offset=900000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=4&status=Active&limit=500&offset=1000000",
+                
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500&offset=155555",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=2&status=Active&limit=500&offset=150000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=3&status=Active&limit=500&offset=1000000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=4&status=Active&limit=500&offset=2000000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=1&status=Active&limit=500&offset=3000000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=2&status=Active&limit=500&offset=4000000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=3&status=Active&limit=500&offset=5000000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=4&status=Active&limit=500&offset=6000000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=1&status=Active&limit=500&offset=7000000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=2&status=Active&limit=500&offset=8000000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=3&status=Active&limit=500&offset=9000000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=4&status=Active&limit=500&offset=10000000",
+                
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500&offset=180000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=2&status=Active&limit=500&offset=190000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=3&status=Active&limit=500&offset=1200000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=4&status=Active&limit=500&offset=2200000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=1&status=Active&limit=500&offset=3200000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=2&status=Active&limit=500&offset=4100000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=3&status=Active&limit=500&offset=510000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Townhouse&bedrooms=4&status=Active&limit=500&offset=6100000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=1&status=Active&limit=500&offset=7100000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=2&status=Active&limit=500&offset=8100000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=3&status=Active&limit=500&offset=9100000",
+                "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=4&status=Active&limit=500&offset=11000000"]
     
     # checking if the csv file of the current month already exists
     if os.path.exists(f"rentcast_data_{current_month_year}.csv"):
@@ -56,6 +103,51 @@ def get_data_and_loaddf():
     return df
 
 
+#sidebar configuration
+with st.sidebar:
+    df = get_data_and_loaddf()
+    
+    st_lottie(json.load(open("home1.json")), height = 100, quality = "high")
+     
+    st.markdown('<span class="icon type-red">Search</span>' + "  " '<span class="icon type-yellow">Your</span>'+ "  "
+                '<span class="icon type-normal">GA</span>' + "  " '<span class="icon type-green">Property</span>', unsafe_allow_html=True)
+       
+    prop_type = st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one:")
+    county = st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county:")
+    price_range = st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
+        
+    with st.container():
+        c1,c2 = st.columns(2)
+        beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
+        baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)  
+    
+    st.markdown(" ")
+    # button
+    button = st.button("**Filter & Search**", type= "primary")
+    
+    st.markdown("---")
+    # Info and sources
+    with st.container():
+        st.write("- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app)")
+        st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
+        st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
+        st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
+        
+# button!!!      
+if button:
+    # dataset configuration
+    if prop_type is not None:
+        df = df[df["propertyType"] == prop_type]
+    if county is not None:
+        df = df[df["county"] == county]
+    if price_range is not None:
+        df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
+    if beds is not None:
+        df = df[df["bedrooms"] == beds]
+    if baths is not None:
+        df = df[df["bathrooms"] == baths]
+    
+    
 # displaying the scatter map
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
@@ -131,72 +223,20 @@ def display_avg_stats(dataframe):
             st.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)} days")
 
 
-
-
-# General info and functions
-st.title(":rainbow[**General information on GA properties market**]")
+# DASHBOARD CALLING:
 with st.container():
-    c1, c2 = st.columns(2)
+    c1, c2, c3, c4 = st.columns(4)
+    cc1, cc2, cc3 = st.columns(3)
     with c2:
         st.markdown(" Basic Property Stats:  ")
-        display_avg_stats(get_data_and_loaddf())
+        display_avg_stats(df)
     with c1:
         st.markdown(" AVG Price County Ranking:  ")
-        display_counties_ranking(get_data_and_loaddf())
+        display_counties_ranking(df)
         
 with st.container():
     c1, c2 = st.columns(2)
     with c2:
-        display_scatter_map(get_data_and_loaddf())
+        display_scatter_map(df)
     with c1:
-        display_ga_map(get_data_and_loaddf())
-        
-st.markdown(":rainbow[**Search Results Information **] ") 
-
-#sidebar configuration
-with st.sidebar:
-    df = get_data_and_loaddf()
-       
-    st_lottie(json.load(open("Looking_My_Home/home1.json")), height = 100, quality = "high")
-     
-        
-    st.markdown('<span class="icon type-text">Search</span>' + "  " '<span class="icon type-text2">Your</span>'+ "  "
-                '<span class="icon type-text3">GA</span>' + "  " '<span class="icon type-text4">Property</span>', unsafe_allow_html=True)
-       
-    prop_type = st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one:")
-    county = st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county:")
-    price_range = st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
-        
-    with st.container():
-        c1,c2 = st.columns(2)
-        beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
-        baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)  
-
-    st.markdown("") 
-  
-          
-# button!!!      
-if st.sidebar.button("**Search**", type= "primary"):
-    # dataset configuration
-    if prop_type is not None:
-        df = df[df["propertyType"] == prop_type]
-    if county is not None:
-        df = df[df["county"] == county]
-    if price_range is not None:
-        df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
-    if beds is not None:
-        df = df[df["bedrooms"] == beds]
-    if baths is not None:
-        df = df[df["bathrooms"] == baths]
-    
-    st.balloons()    
-    st.dataframe(df, use_container_width=True)
- 
-# Info and sources
-with st.sidebar.container():
-    st.markdown(" ")
-    st.write("- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app)")
-    st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
-    st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
-    st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
-      
+        display_ga_map(df)
