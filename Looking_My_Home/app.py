@@ -58,3 +58,4 @@ def get_data_and_loaddf():
     return df
 
 st.dataframe(get_data_and_loaddf())
+st.write(os.path.exists(f"Looking_My_Home/rentcast_data_{str(date.today()).split("-")[1] + "-" + str(date.today()).split("-")[0]}.csv"))
