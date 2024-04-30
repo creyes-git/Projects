@@ -5,7 +5,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import date
 import requests
-import json
 import os
 
 #setting the page config and creating the functions
@@ -18,7 +17,7 @@ def get_data_and_loaddf():
     
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-                "X-Api-Key": "32f4a4cf6b4b4078b8f00d0bd185d850"}
+                "X-Api-Key": "9f3c938b8f2844ef88bc452bd9262e43"}
     
     # list of urls to call
     list_calls = ["https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Condo&bedrooms=1&status=Active&limit=500",
@@ -35,7 +34,11 @@ def get_data_and_loaddf():
                 "https://api.rentcast.io/v1/listings/sale?state=GA&propertyType=Single%20Family&bedrooms=4&status=Active&limit=500"]
     
     # checking if the csv file of the current month already exists
-    if not os.path.exists(f"Looking_My_Home/rentcast_data_{current_month_year}.csv"):
+    if os.path.exists(f"Looking_My_Home/rentcast_data_{current_month_year}.csv"):
+        
+        df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+           
+    else:
         df = pd.DataFrame()
 
         for i in list_calls:
@@ -48,14 +51,10 @@ def get_data_and_loaddf():
         
         # creating and cleaning the dataframe
         df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-    
-    else:
-        df = pd.read_csv(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
-        
+       
     df.dropna(subset= "bathrooms", how="any", inplace=True)
     df["bathrooms"] = df["bathrooms"].astype(int)
     
     return df
 
-current_month_year = str(date.today()).split("-")[1] + "-" + str(date.today()).split("-")[0]
-st.write(f"Looking_My_Home/rentcast_data_{current_month_year}.csv")
+st.dataframe(get_data_and_loaddf())
