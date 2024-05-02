@@ -67,7 +67,7 @@ def get_data_and_loaddf():
 # displaying the scatter map
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
-    fig = go.Figure(layout=go.Layout(height=500, width=500))
+    fig = go.Figure(layout=go.Layout(height=500, width=530))
 
     fig.add_trace(go.Scattermapbox(
         lat=dataframe['latitude'],
@@ -84,7 +84,7 @@ def display_ga_map(dataframe):
             zoom=5.30,
             style= "carto-positron"))
     
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True)
 
 # displaying the counties table
 def display_counties_ranking(dataframe):
@@ -92,26 +92,27 @@ def display_counties_ranking(dataframe):
     counties = counties.groupby("county").mean().sort_values("price", ascending=False)
     counties["price"] = counties["price"].astype(int)
 
-
-    st.dataframe(counties,
-                 column_order=("county", "price"),
-                 hide_index=False,
-                 width=250, height=415,
-                 column_config={
-                    "county": st.column_config.TextColumn(
-                        "County"),
-                    "price": st.column_config.ProgressColumn(
-                        "Average Price",
-                        format="$%d",
-                        min_value=0,
-                        max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
-
+    with st.container():
+        st.markdown("**Average Price per County**")
+        st.dataframe(data=counties,
+                        column_order=("county", "price"),
+                        hide_index=False,
+                        width=430, height=385,
+                        column_config={
+                            "county": st.column_config.TextColumn(
+                                "County"),
+                            "price": st.column_config.ProgressColumn(
+                                "Average Price",
+                                format="$%d",
+                                min_value=0,
+                                max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
+    
 def display_scatter_map(dataframe):
     dataframe = dataframe[dataframe["squareFootage"] <= 10000]
     dataframe = dataframe[dataframe["price"] <= 7500000] 
 
-    fig = px.scatter(dataframe, x ="squareFootage" , y="price", width=500, height=500, color="propertyType",
-                    color_discrete_sequence=["red", "green", "orange"], hover_name="addressLine1", 
+    fig = px.scatter(dataframe, x ="squareFootage" , y="price", width=580, height=500, color="propertyType",
+                    color_discrete_sequence=["#a9dc67", "#4b780b", "#fed947"], hover_name="addressLine1", 
                     hover_data=["city","daysOnMarket", "yearBuilt", "bathrooms", "bedrooms"])
     
     fig.update_layout(
@@ -120,8 +121,9 @@ def display_scatter_map(dataframe):
         legend_title="Property Type",
         title = "         Relationship / Square Footage & Price")
     
-
-    return st.plotly_chart(fig)
+    st.write(" ")
+    st.write(" ")
+    st.plotly_chart(fig)
 
 # get average properties stats of price, bathrooms, bedrooms, days on market and size
 def display_avg_stats(dataframe):
@@ -151,10 +153,12 @@ def display_avg_stats(dataframe):
             
 def display_type_pie(dataframe):
     df = dataframe.groupby("propertyType")["propertyType"].count().rename("Count").reset_index()
-    with st.container():
-        st.plotly_chart(px.pie(df, values="Count",names="propertyType", title="Property Type Distribution", 
-                        color_discrete_sequence=px.colors.sequential.Aggrnyl_r, hole=0.5))
-
+    if df.values.any():
+        with st.container():
+            st.plotly_chart(px.pie(df, values="Count",names="propertyType", title="Property Type Distribution", height=455, width=570,
+                            color_discrete_sequence=px.colors.sequential.Aggrnyl_r, hole=0.5))
+    else:
+        st.plotly_chart(px.pie(values=[1],names=["No property"], title="No property found in your search", hole=0.5, height=455, width=570))
 
 # DASHBOARD CALLING:
 st.warning("Welcome to 'My Home in GA Dashboard'. Check the Georgia Properties Market information and filter the results based on your preferences :smile:! ")
@@ -204,5 +208,7 @@ display_avg_stats(df)
 c1, c2 = st.columns(2)
 with c1:
     display_ga_map(df)
+    display_counties_ranking(df)
 with c2:
     display_type_pie(df)
+    display_scatter_map(df)
