@@ -14,9 +14,9 @@ st.set_page_config(page_title="My Home in GA", page_icon=":house:", layout="wide
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-# load cssp
 local_css('style.css')
 
+#FUNCTIONS:
 # calling the api, 1 time per month, saving the data in a csv file and loading it and returning a dataframe
 def get_data_and_loaddf():
     #getting the current date
@@ -63,53 +63,7 @@ def get_data_and_loaddf():
     df["bathrooms"] = df["bathrooms"].astype(int)
     
     return df
-
-
-#sidebar configuration
-with st.sidebar:
-    df = get_data_and_loaddf()
-    
-    st_lottie(json.load(open("home1.json")), height = 100, quality = "high")
-     
-    st.markdown('<span class="icon type-red">Search</span>' + "  " '<span class="icon type-yellow">Your</span>'+ "  "
-                '<span class="icon type-normal">GA</span>' + "  " '<span class="icon type-green">Property</span>', unsafe_allow_html=True)
-       
-    prop_type = st.selectbox("Property Type", df["propertyType"].unique(), index = None, placeholder= "Chose one:")
-    county = st.selectbox("County", df["county"].unique(), index = None, placeholder= "Search your county:")
-    price_range = st.slider("Price Range: ", 0, max(df["price"]), (0, max(df["price"])), format="$%d")
         
-    with st.container():
-        c1,c2 = st.columns(2)
-        beds = c2.radio("Bedrooms: ", df["bedrooms"].sort_values().unique() , index=0)
-        baths = c1.radio("Bathrooms: ", df["bathrooms"].sort_values().unique() , index=0)  
-    
-    st.markdown(" ")
-    # button
-    button = st.button("**Filter & Search**", type= "primary")
-    
-    st.markdown("---")
-    # Info and sources
-    with st.container():
-        st.write("- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app)")
-        st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
-        st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
-        st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
-        
-# button!!!      
-if button:
-    # dataset configuration
-    if prop_type is not None:
-        df = df[df["propertyType"] == prop_type]
-    if county is not None:
-        df = df[df["county"] == county]
-    if price_range is not None:
-        df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
-    if beds is not None:
-        df = df[df["bedrooms"] == beds]
-    if baths is not None:
-        df = df[df["bathrooms"] == baths]
-    
-    
 # displaying the scatter map
 def display_ga_map(dataframe):
     # Create the scatter mapbox layer
@@ -119,7 +73,7 @@ def display_ga_map(dataframe):
         lat=dataframe['latitude'],
         lon=dataframe['longitude'],
         mode='markers',
-        marker=dict(size=7, color = dataframe['price'], cmin=200000, cmax=1000000, colorscale="Viridis", colorbar_title="Price"),
+        marker=dict(size=7, color = dataframe['price'], cmin=200000, cmax=1000000, colorscale="Viridis_r", colorbar_title="Price"),
         text=str(dataframe['price'])+"$"))
 
     # Update the layout of the scatter mapbox
@@ -171,33 +125,84 @@ def display_scatter_map(dataframe):
 
 # get average properties stats of price, bathrooms, bedrooms, days on market and size
 def display_avg_stats(dataframe):
-    
-    avg_price = dataframe["price"].values.mean().astype(int).round(-3)
-    avg_size = dataframe["squareFootage"].dropna(how="any").values.mean().astype(int)
-    avg_beds = dataframe["bedrooms"].values.mean().astype(int)
-    avg_baths = dataframe["bathrooms"].values.mean().astype(int)
-    avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
+    if dataframe["price"].values.any():
+        avg_price = dataframe["price"].values.mean().astype(int).round(-3)
+    else:
+        avg_price = None
+    if dataframe["squareFootage"].values.any():
+        avg_size = dataframe["squareFootage"].dropna(how="any").values.mean().astype(int)
+    else:
+        avg_size = None
+    if dataframe["bedrooms"].values.any():
+        avg_beds = dataframe["bedrooms"].values.mean().astype(int)
+    else:
+        avg_beds = None
+    if dataframe["daysOnMarket"].values.any():
+        avg_days_market = dataframe["daysOnMarket"].values.mean().astype(int)
+    else:
+        avg_days_market = None
     
     with st.container():
-            st.metric(f" :rainbow[**Average Price**]", f"{str(avg_price)}$",)
-            st.metric(f" :rainbow[**Average Size**]", f"{str(avg_size)} sqft")
-            st.metric(f" :rainbow[**Bedrooms/Bathrooms**]", f"{str(avg_beds)}/{str(avg_baths)}")
-            st.metric(f" :rainbow[**Average Days on Market**]", f"{str(avg_days_market)} days")
-
+            c1, c2, c3, c4 = st.columns(4)
+            c1.metric(f" :orange[**Average Price($)**]", f"{str(avg_price)}")
+            c2.metric(f" :orange[**Average Size(sqft)**]", f"{str(avg_size)}")
+            c3.metric(f" :orange[**Average Days on Market**]", f"{str(avg_days_market)}")
+            c4.metric(f" :orange[**Bedrooms**]", f"{str(avg_beds)}")
+            
 def display_type_pie(dataframe):
     df = dataframe.groupby("propertyType")["propertyType"].count().rename("Count").reset_index()
     with st.container():
-        st.plotly_chart(px.pie(df, values="Count",names="propertyType", title="Property Type", 
-                        color_discrete_sequence=px.colors.sequential.Viridis_r, hole=0.7))
+        st.plotly_chart(px.pie(df, values="Count",names="propertyType", title="Property Type Distribution", 
+                        color_discrete_sequence=px.colors.sequential.Aggrnyl_r, hole=0.5))
 
 
 # DASHBOARD CALLING:
 st.warning("Welcome to 'My Home in GA Dashboard'. Check the Georgia Properties Market information and filter the results based on your preferences :smile:! ")
-with st.container():
-    c1, c2, c3, c4 = st.columns(4)
-    with c1:
-        display_type_pie(df)
-        
-with st.container():
-    c1, c2 = st.columns(2)
+temp_df = get_data_and_loaddf()
     
+#sidebar configuration
+with st.sidebar:
+    
+    st_lottie(json.load(open("home1.json")), height = 100, quality = "high")
+     
+    st.markdown('<span class="icon type-red">Search</span>' + "  " '<span class="icon type-yellow">Your</span>'+ "  "
+                '<span class="icon type-normal">GA</span>' + "  " '<span class="icon type-green">Property</span>', unsafe_allow_html=True)
+       
+    prop_type = st.selectbox("Property Type", temp_df["propertyType"].unique(), index = None, placeholder= "Chose one:")
+    county = st.selectbox("County", temp_df["county"].unique(), index = None, placeholder= "Search your county:")
+    price_range = st.slider("Price Range: ", 0, max(temp_df["price"]), (0, max(temp_df["price"])), format="$%d")
+        
+    with st.container():
+        beds = st.radio("Bedrooms: ", temp_df["bedrooms"].sort_values().unique() , index=0)
+        
+    st.markdown(" ")
+    # button
+    button = st.button("**Filter & Search**", type= "primary")
+    
+    st.markdown("---")
+    # Info and sources
+    with st.container():
+        st.write("- :red[**Data Source**]: [RentCast API](https://app.rentcast.io/app)")
+        st.write("- :blue[**Info**]: This app only shows Georgia state properties. The data is updated every month")
+        st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
+        st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
+
+df = get_data_and_loaddf()
+if button:
+    # dataset configuration
+    if prop_type is not None:
+        df = df[df["propertyType"] == prop_type]
+    if county is not None:
+        df = df[df["county"] == county]
+    if price_range is not None:
+        df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
+    if beds is not None:
+        df = df[df["bedrooms"] == beds]
+
+# CALLING FUNCTIONS       
+display_avg_stats(df)
+c1, c2 = st.columns(2)
+with c1:
+    display_ga_map(df)
+with c2:
+    display_type_pie(df)
