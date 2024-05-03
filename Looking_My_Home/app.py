@@ -105,7 +105,7 @@ def display_counties_ranking(dataframe):
                                 "Average Price",
                                 format="$%d",
                                 min_value=0,
-                                max_value=max(counties["price"].sort_values(ascending=False)[2:]))})
+                                max_value=1000000)})
     
 def display_scatter_map(dataframe):
     dataframe = dataframe[dataframe["squareFootage"] <= 10000]
