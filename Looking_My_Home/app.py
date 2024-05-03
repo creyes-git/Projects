@@ -7,7 +7,6 @@ from datetime import date
 import json
 import requests
 import os
-import config
 
 #setting the page config and creating the functions
 st.set_page_config(page_title="My Home in GA", page_icon=":house:", layout="wide")
