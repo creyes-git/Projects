@@ -7,6 +7,7 @@ from datetime import date
 import json
 import requests
 import os
+import config
 
 #setting the page config and creating the functions
 st.set_page_config(page_title="My Home in GA", page_icon=":house:", layout="wide")
@@ -24,7 +25,7 @@ def get_data_and_loaddf():
     
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-                "X-Api-Key": "32f4a4cf6b4b4078b8f00d0bd185d850"}
+                "X-Api-Key": config.API_KEY}
     
     # list of urls to call
     list_calls = [
