@@ -25,7 +25,7 @@ def get_data_and_loaddf():
     
     # st.secrets call the secret api key from streamlit
     headers = {"accept": "application/json",
-                "X-Api-Key": config.API_KEY}
+                "X-Api-Key": os.environ.get('API_KEY')}
     
     # list of urls to call
     list_calls = [
