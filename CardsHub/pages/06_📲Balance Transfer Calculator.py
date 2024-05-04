@@ -28,6 +28,7 @@ with st.form(key="balance_transfer_form", clear_on_submit= True):
     months = c2.number_input(" ", min_value = 0)
     
     c1.write("---")   
+    c2.write("---") 
     
     button = st.form_submit_button(":green[**Calculate**]")
 

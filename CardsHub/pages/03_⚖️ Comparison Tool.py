@@ -6,11 +6,6 @@ import requests
 
 st.set_page_config(page_icon= "💳",page_title= "CardsHub", layout= "wide", initial_sidebar_state= "expanded")
 
-# loading css file
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
 connection = sql.connect("Cards.db")
 cursor = connection.cursor()
 
@@ -92,6 +87,3 @@ with cc4:
     lista = list(str(cons).split("\n"))
     for i in lista:
         st.write(f"- {i}")
-
-
-local_css('style.css')
