@@ -20,7 +20,7 @@ cc1, cc2, cc3, cc4 = st.columns(4)
 with cc1:
     card1_name = st.selectbox(options= card_name_list, label= " ", index = 0)
     # Image
-    st.image(Image.open(requests.get(cursor.execute("SELECT Image_URL FROM cards WHERE name = ?", (card1_name,)).fetchall()[0][0], stream=True).raw)) 
+    st.image(Image.open(requests.get(cursor.execute("SELECT Image_URL FROM cards WHERE name = ?", (card1_name,)).fetchall()[0][0], stream=True).raw), use_column_width= True) 
     # Category
     st.write(":red[**Category**]")
     st.image(Image.open(f"images/{cursor.execute('SELECT Category FROM cards WHERE name = ?', (card1_name,)).fetchall()[0][0]}.png"), width= 75)
@@ -55,7 +55,7 @@ with cc1:
         
 with cc4:
     card2_name = st.selectbox(options= card_name_list, label= "  ", index = 2)
-    st.image(Image.open(requests.get(cursor.execute("SELECT Image_URL FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0], stream=True).raw)) 
+    st.image(Image.open(requests.get(cursor.execute("SELECT Image_URL FROM cards WHERE name = ?", (card2_name,)).fetchall()[0][0], stream=True).raw), use_column_width= True) 
     # Category
     st.write(":blue[**Category**]")
     st.image(Image.open(f"images/{cursor.execute('SELECT Category FROM cards WHERE name = ?', (card2_name,)).fetchall()[0][0]}.png"), width= 75)
