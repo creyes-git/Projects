@@ -1,7 +1,0 @@
-pandas
-streamlit
-python-dotenv
-groq
-langchain
-langchain_groq
-plotly
