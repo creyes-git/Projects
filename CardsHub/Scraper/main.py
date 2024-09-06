@@ -5,45 +5,47 @@ import pandas as pd
 
 
 # URL of the website to scrape, change every time
-url  = "https://www.lampsplus.com/products/chandeliers/"
+url  = "https://www.creditcards.com/american-express/"
 
 content = get_html_content(url) # get the HTML content and store it in a html file
 
 soup = bs(content, 'html.parser') # parse the HTML content
 
-sku_list, titles_list, category_list, price_list, images_list = [], [], [], [], []
+card_name, card_image, multipliers, signup_bonus, signup_bonus_requirement, annual_fee = [], [], [], [], [], []
 
-
-# get al the "div" tags with some specific attributes
-div_tags = soup.find_all('div', {'class': 'jsResultContainer sortResultContainer',
-                                    'data-sku-input-type': "1"})
+div_tags = soup.find_all('div', {'class': 'product-box__inner'}) # getting all cards containers
 
 for i in div_tags:
     
     try:
-        sku = i.get('data-sku')
         
-        product_tag = i.find('a', {'class': 'sortResultLink'})
+        card = i.find('a', {'class': 'product-box__title-link'}).text.strip()
+        card_name.append(card) # name
         
-        product_link = product_tag.get('href')
-        image = scrape_image(f"https://www.lampsplus.com{product_link}")
+        card_image.append(i.find('img', {'alt': f'{card}'}).get('data-src')) # image
         
-        sku_list.append(sku)
-        images_list.append(image)
+        multipliers_tag = i.find('section', {'class': 'product-box__benefits'}).find_all('dd')
         
-        print(":)")
+        s = ""
+        for m in multipliers_tag:
+            s += m.text.strip() + ".. "
+        
+        multipliers.append(s) # multipliers
+        
+        dd_tags = i.find_all('dd', {'class': 'f-title-5 product-box__features-text u-margin-0'})
+        signup_bonus = dd_tags[0].find('span').text
+        annual_fee = dd_tags[1].find('span').text
+        pepe = dd_tags[3].find('span').text
+        juan = dd_tags[4].find('span').text
+        
+        
+        
+        signup_bonus_requirement.append(i.find('dd', {'class': 'f-title-5 product-box__features-text u-margin-0'}).find('span', {'class': 'c-tooltip u-margin-top-15 u-remove-child-margin focus-white js-product-box__tooltip-content'}).text)
+            
+        
+        
+        print(f"{pepe} \n")
     
     except(Exception) as e:
         pass
         print(e)
-    
-df = pd.DataFrame({'sku': sku_list, 'image_url': images_list}) # creating a dataframe with the scraped data
-df.to_csv('scraped_data.csv', index=False)
-   
-   
-   
-"""data_tag = product_tag.find('div', {'class': 'sortResultImgContainer'}).find('img')
-sku_list.append(str(data_tag.get('data-sku'))) # catching all "sku" values and saving them in a empty list
-titles_list.append(str(data_tag.get('title'))) # titles
-category_list.append(str(data_tag.get('data-primary-category'))) # category
-price_list.append(str(data_tag.get('data-price'))) # price"""
