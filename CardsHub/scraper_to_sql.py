@@ -97,19 +97,19 @@ for issuer in ["american-express", "bank-of-america", "capital-one", "chase", "c
         
 
     df_new = pd.DataFrame({
-            'Card Name': card_name,
-            'Card Image': card_image,
+            'Card_Name': card_name,
+            'Card_Image': card_image,
             'Multipliers': multipliers,
-            'Signup Bonus Requirement': signup_bonus_requirement,
-            'Signup Bonus': signup_bonus,
-            'Annual Fee': annual_fee,
-            'APR Range': apr_range,
-            'Recommended Score': recommended_score,
-            'Why Get': why_get,
+            'Signup_Bonus_Requirement': signup_bonus_requirement,
+            'Signup_Bonus': signup_bonus,
+            'Annual_Fee': annual_fee,
+            'APR_Range': apr_range,
+            'Recommended_Score': recommended_score,
+            'Why_Get': why_get,
             'Pros': pros,
             'Cons': cons,
-            'Bottom Line': bottom_line,
-            'All Benefits': all_benefits})
+            'Bottom_Line': bottom_line,
+            'All_Benefits': all_benefits})
 
     try:
         df.describe() # check if dataframe exists
@@ -121,11 +121,21 @@ for issuer in ["american-express", "bank-of-america", "capital-one", "chase", "c
 
 
 # Final Dataframe cleaning to transform to Database:
-df = df.drop_duplicates(subset=['Card Name'])
+df = df.drop_duplicates(subset=['Card_Name'])
 
-df['APR Range'] = df['APR Range'].str.replace("variable", "").str.replace("APR on purchases and balance transfers", "")
+df['APR_Range'] = df['APR_Range'].str.replace("variable", "").str.replace("APR on purchases and balance transfers", "")
 
-df["Recommended Score"] = df["Recommended Score"].apply(lambda row: row.split("(")[0])
+df["Recommended_Score"] = df["Recommended_Score"].apply(lambda row: row.split("(")[0])
 
-df.loc[df['Recommended Score'].str.lower() == " ".lower(), 'Recommended Score'] = "No Credit Nedded"
+df.loc[df['Recommended_Score'].str.lower() == " ".lower(), 'Recommended_Score'] = "No Credit Nedded"
 
+
+conn = sql.connect('/workspaces/Projects/CardsHub/data/Cards.db') # create a connection to the sqlitedatabase using sqlite3
+
+column_definitions = ', '.join([f'{col} TEXT' for col in df.columns]) # create a string of column definitions
+
+conn.execute(f'''CREATE TABLE IF NOT EXISTS cards_table ({column_definitions})''') # create a table in the database
+
+df.to_sql('cards_table', conn, if_exists='replace', index=False) # write the dataframe to the database
+
+conn.close() # close the connection
