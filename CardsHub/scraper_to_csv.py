@@ -1,5 +1,4 @@
 from bs4 import BeautifulSoup as bs
-import sqlite3 as sql
 import pandas as pd
 import requests
 
@@ -120,7 +119,7 @@ for issuer in ["american-express", "bank-of-america", "capital-one", "chase", "c
     print(f"{issuer.upper()} credit cards scraped successfully!")
 
 
-# Final Dataframe cleaning to transform to Database:
+# Final Dataframe cleaning to import the data:
 df = df.drop_duplicates(subset=['Card_Name'])
 
 df['APR_Range'] = df['APR_Range'].str.replace("variable", "").str.replace("APR on purchases and balance transfers", "")
@@ -130,12 +129,4 @@ df["Recommended_Score"] = df["Recommended_Score"].apply(lambda row: row.split("(
 df.loc[df['Recommended_Score'].str.lower() == " ".lower(), 'Recommended_Score'] = "No Credit Nedded"
 
 
-conn = sql.connect('/workspaces/Projects/CardsHub/data/Cards.db') # create a connection to the sqlitedatabase using sqlite3
-
-column_definitions = ', '.join([f'{col} TEXT' for col in df.columns]) # create a string of column definitions
-
-conn.execute(f'''CREATE TABLE IF NOT EXISTS cards_table ({column_definitions})''') # create a table in the database
-
-df.to_sql('cards_table', conn, if_exists='replace', index=False) # write the dataframe to the database
-
-conn.close() # close the connection
+df.to_csv("/workspaces/Projects/CardsHub/data/cards_data.csv", index = False)
