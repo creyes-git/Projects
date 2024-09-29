@@ -1,3 +1,8 @@
 pandas
 langchain
-langchan
+langchain_chroma
+langchain_groq
+langchain_voyageai
+langchain_text_splitters
+langchainhub
+dotenv
