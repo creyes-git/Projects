@@ -1,9 +1,0 @@
-pandas
-numpy
-streamlit
-streamlit-lottie
-streamlit-extras
-plotly
-matplotlib
-seaborn
-
