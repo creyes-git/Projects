@@ -1,3 +1,4 @@
+streamlit
 pandas
 langchain
 langchain_chroma
