@@ -30,7 +30,7 @@ for file in files_names[:3]:
     
     if not os.path.exists("Hayek&You/chroma-db"): # Check if the database exists
         chroma_db = Chroma.from_documents(documents = splitted_documents, embedding = embeddings, persist_directory = "Hayek&You/chroma-db")
+        chroma_db.persist() 
     else:
         chroma_db = Chroma(persist_directory = "Hayek&You/chroma-db")
         chroma_db.add_documents(documents = splitted_documents, embedding_function = embeddings)
-    
