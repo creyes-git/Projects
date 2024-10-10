@@ -1,0 +1,7 @@
+streamlit
+streamlit_lottie
+pandas
+reportlab
+openpyxl
+zipfile
+json
