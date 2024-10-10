@@ -2,8 +2,3 @@ streamlit
 streamlit_lottie
 pandas
 reportlab
-openpyxl
-json
-shutil
-time
-os
