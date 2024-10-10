@@ -141,3 +141,7 @@ if generate_pdf:
     file_path = 'data/saved_pdf'
     output_path = 'data/Your_Pdfs'
     shutil.make_archive(output_path, 'zip', file_path)
+
+    # Clear the Pdf folder
+    shutil.rmtree(r'data/saved_pdf')
+    os.makedirs(r'data/saved_pdf')
