@@ -9,7 +9,7 @@ import requests
 
 def get_url_img(url):
    
-   no_img = ImageReader(r"/workspaces/Projects/Pdf_Generator/images/no_picture_url.png")
+   no_img = ImageReader(r"Pdf_Generator/images/no_picture_url.png")
    
    if not url or url.strip() == "":
       return no_img
@@ -38,14 +38,14 @@ def gen_pdf(sku, brand, name, upc = " ", finish = " ", collection = " ",
    # CREATING THE CANVAS AND USING THE ACTUAL SKU AS PDF NAME ON THE DIRECTORY ---------------------------------------------
    
    try:
-      pdf = canvas.Canvas(fr"/workspaces/Projects/Pdf_Generator/data/saved_pdf/Speec_sheet-{sku}.pdf", pagesize=letter)
+      pdf = canvas.Canvas(fr"Pdf_Generator/data/saved_pdf/Speec_sheet-{sku}.pdf", pagesize=letter)
    except:
       print(f"Path not found, creating a new one")
    
    # LAYOUT: TOP BRAND LOGO ------------------------------------------------------------------------------------------------
    
    try:
-      logo = ImageReader(fr"/workspaces/Projects/Pdf_Generator/images/{brand}.png")
+      logo = ImageReader(fr"Pdf_Generator/images/{brand}.png")
       pdf.drawImage(logo, x = 251, y = 685, width = 110, height = 110, mask='auto') # mask = 'auto' to preserve transparency
    except:
       print(f"No logo for {brand} on the images folder")
