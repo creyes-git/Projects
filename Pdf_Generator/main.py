@@ -22,12 +22,12 @@ def load_lottiefile(filepath: str):
         
 with st.sidebar: # Sidebar
     
-    st_lottie(load_lottiefile("/workspaces/Projects/Pdf_Generator/my_lottie.json"), height = 150, quality = "high")
+    st_lottie(load_lottiefile("Pdf_Generator/my_lottie.json"), height = 150, quality = "high")
 
     st.write(":orange[Check template and import a valid file:]")
     
     template_button = st.download_button(label = "Download Template", 
-                                         data = open(r"/workspaces/Projects/Pdf_Generator/data/import_template.csv", "r").read(), 
+                                         data = open(r"Pdf_Generator/data/import_template.csv", "r").read(), 
                                          use_container_width = True,
                                          file_name = "import_template.csv",
                                          help = "See the template file to import your data",
@@ -54,13 +54,13 @@ with st.sidebar: # Sidebar
     placeholder3 = st.empty()
     if uploaded_file is not None:
         dowload_zip = placeholder3.download_button(label = "Download PDF", 
-                                                   data = open(r"/workspaces/Projects/Pdf_Generator/data/Your_Pdfs.zip", "rb"), 
+                                                   data = open(r"Pdf_Generator/data/Your_Pdfs.zip", "rb"), 
                                                    use_container_width = True,
                                                    type = "secondary",
                                                    mime="application/zip")
     else:
         dowload_zip = placeholder3.download_button(label = "Download PDF", 
-                                                   data = open(r"/workspaces/Projects/Pdf_Generator/data/Your_Pdfs.zip", "rb"),
+                                                   data = open(r"Pdf_Generator/data/Your_Pdfs.zip", "rb"),
                                                    use_container_width = True,
                                                    type = "secondary",
                                                    disabled = True)
@@ -134,10 +134,10 @@ if generate_pdf:
     time.sleep(1)
     my_bar.empty()
     
-    if os.path.exists("/workspaces/Projects/Pdf_Generator/data/Your_Pdfs.zip"):
-        os.remove("/workspaces/Projects/Pdf_Generator/data/Your_Pdfs.zip")
+    if os.path.exists("Pdf_Generator/data/Your_Pdfs.zip"):
+        os.remove("Pdf_Generator/data/Your_Pdfs.zip")
     
     # Zip the PDF's to a single file ready to dowload by the user
-    file_path = '/workspaces/Projects/Pdf_Generator/data/saved_pdf'
-    output_path = '/workspaces/Projects/Pdf_Generator/data/Your_Pdfs'
+    file_path = 'Projects/Pdf_Generator/data/saved_pdf'
+    output_path = 'Projects/Pdf_Generator/data/Your_Pdfs'
     shutil.make_archive(output_path, 'zip', file_path)
