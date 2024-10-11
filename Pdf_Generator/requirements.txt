@@ -1,4 +1,0 @@
-streamlit
-streamlit_lottie
-pandas
-reportlab
