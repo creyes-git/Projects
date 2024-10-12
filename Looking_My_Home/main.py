@@ -4,8 +4,8 @@ from streamlit_lottie import st_lottie
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import date
-import json
 import requests
+import json
 import os
 
 
@@ -191,7 +191,10 @@ with st.sidebar:
         st.write("- :green[**Sample limit**]: The sample of the total data is 5000 properties per month")
         st.write("- :orange[**Made by**]: [**Carlos Reyes**](https://github.com/carlosreyes98)")
 
+
 df = get_data_and_loaddf()
+
+
 if button:
     # dataset configuration
     if prop_type is not None:
@@ -202,6 +205,7 @@ if button:
         df = df[(df["price"] >= price_range[0]) & (df["price"] <= price_range[1])]
     if beds is not None:
         df = df[df["bedrooms"] == beds]
+
 
 # CALLING FUNCTIONS       
 display_avg_stats(df)
