@@ -43,8 +43,8 @@ def get_data_and_loaddf():
                 ]
     
     # checking if the csv file of the current month already exists
-    if os.path.exists(f"rentcast_data_{current_month_year}.csv"):
-        df = pd.read_csv(f"rentcast_data_{current_month_year}.csv")
+    if os.path.exists(f"data/rentcast_data_{current_month_year}.csv"):
+        df = pd.read_csv(f"data/rentcast_data_{current_month_year}.csv")
              
     else:
         df = pd.DataFrame()
@@ -55,9 +55,9 @@ def get_data_and_loaddf():
             df = pd.concat([df, pd.DataFrame(response)], ignore_index=True)
                    
         #saving the dataframe to a csv file       
-        df.to_csv(f"rentcast_data_{current_month_year}.csv", index=False)
+        df.to_csv(f"data/rentcast_data_{current_month_year}.csv", index=False)
         # creating and cleaning the dataframe
-        df = pd.read_csv(f"rentcast_data_{current_month_year}.csv")
+        df = pd.read_csv(f"data/rentcast_data_{current_month_year}.csv")
        
     df.dropna(subset= "bathrooms", how="any", inplace=True)
     df["bathrooms"] = df["bathrooms"].astype(int)

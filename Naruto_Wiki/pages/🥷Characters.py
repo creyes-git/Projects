@@ -4,7 +4,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-st.set_page_config(page_title="Naruverse", page_icon="🍥")
+st.set_page_config(page_title="Naruto Wiki", page_icon="🍥")
 
 url = "https://narutodb.xyz/api/character?page=1&limit=1431"
 response = requests.get(url).json()
@@ -16,7 +16,7 @@ df.drop(index=df.index[0], inplace=True)
 
 st.warning("Choose the character you want to know more about")
 st.title("Naruto Characters")
-st.image(Image.open("Naruto_app/images/characters.jpg"), use_column_width= True, clamp=True)
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/characters.jpg"), use_column_width= True, clamp=True)
 
 # selectbox
 character = st.selectbox(label="Character", options= df["name"].unique())
@@ -73,7 +73,7 @@ c4.markdown("Element Nature: ")
 try:
     for i in picked["natureType"].values[0]:
         if i in elements:
-            c4.image(Image.open(f"Naruto_app/images/{i}.png"),clamp=True,width=100)
+            c4.image(Image.open(f"/workspaces/Projects/Naruto_Wiki/images/{i}.png"),clamp=True,width=100)
         else:
             c4.warning("No Element")
             break

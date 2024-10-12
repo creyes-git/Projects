@@ -2,15 +2,15 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 
-st.set_page_config(page_title="Naruverse", page_icon="🍥")
+st.set_page_config(page_title="Naruto Wiki", page_icon="🍥")
 
 st.title("Chakra System")
-st.image(Image.open("Naruto_app/images/naru.png"), use_column_width= True, clamp=True)
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/naru.png"), use_column_width= True, clamp=True)
 st.header("Origin:")
 st.markdown("On Earth, humans didn't have chakra until Hamura and Hagoromo Ōtsutsuki were born with it, which was a result of their mother Kaguya eating their planet's chakra fruit from the God Tree. Hagoromo spread chakra to others through a practice called ninshū, intending to create peace by using the chakra to connect people's spiritual energy so that they would understand one another without even talking. However, the people did not use chakra in the way Hagoromo hoped, instead using it to connect their inner spiritual and physical energies. They kneaded their inner chakra to amplify and weaponise it, creating what is now known as ninjutsu.")
 st.header("How works:")
 st.markdown("Chakra is essential to even the most basic jutsu. Through various methods, the most common of which is hand seals, chakra can be controlled and manipulated to create an effect that would not be possible otherwise, such as walking on water, exhaling fire, or creating illusions. Chakra is ordinarily not visible to the unaided eye unless it is highly concentrated or manifested in large amounts.")
-st.image(Image.open("Naruto_app/images/chackra molding.png"), use_column_width= True, clamp=True)
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/chackra molding.png"), use_column_width= True, clamp=True)
 st.markdown("Chakra is created when two more primal energies, known collectively as one's stamina, are moulded together. Physical energy is collected from each of the body's cells and can be increased through training, stimulants, and exercise. Spiritual energy is derived from the mind's consciousness and can be increased through studying, meditation, and experience. These two energies becoming more powerful will in turn make the created chakra more powerful.")
 st.header("Chackra Control:")
 st.markdown("Because chakra takes time and a great deal of training to gradually build up, the key to its use is not actually having large amounts of chakra but instead being able to sufficiently control and conserve it. This is called Chakra Control. In order to have good chakra control, a ninja should only mould as much chakra as they need to perform a given ability. If they mould more chakra than is needed, the excess chakra is wasted and they will tire out faster from its loss. If they dont mould enough chakra, a technique will not be performed effectively, if at all, likely creating problems in a combat situation. Because chakra consists in part of spiritual energy, the user is more easily able to mould the correct amount of chakra by remaining calm and focused.")
@@ -33,6 +33,6 @@ st.markdown("In general, every person's chakra has an affinity towards one of th
 st.header("Yin and Yang:")
 st.markdown("Aside from the five elemental nature transformations, there are two nature transformations that are the source of all non-elemental techniques, such as the Shadow Imitation Technique, Multi-Size Technique, medical ninjutsu, genjutsu.There is Yin Release, based on the imagination and spiritual energy of a shinobi, and Yang Release, based on the vitality and physical energy of a shinobi. Together, they are used to perform Yin–Yang Release. The transformation of Yin and Yang has to do with altering the balance between spiritual and physical energy in chakra. As explained by Shikamaru Nara, Tayuya's spirit worms were forms of chakra that mostly consist of spiritual energy, thus they require stability and feed upon the physical energy they lack.")
 
-st.image(Image.open("Naruto_app/images/chackra nature.png"), use_column_width= True, clamp=True)
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/chackra nature.png"), use_column_width= True, clamp=True)
 st.header("Combined Nature Transformations:")
 st.markdown("By using two or three basic nature transformations simultaneously, one can create a completely new elemental nature with unique properties that wouldn't exist on its own. However, doing this requires a kekkei genkai or, if three elements are used, a kekkei tōta.In the anime, it is further stated that those with the ability to combine the elemental nature transformations possess an affinity for the chakra natures they must simultaneously use.")

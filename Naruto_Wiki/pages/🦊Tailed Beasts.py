@@ -1,15 +1,14 @@
-import pandas as pd
 import streamlit as st
 from PIL import Image
 
-st.set_page_config(page_title="Naruverse", page_icon="🍥")
+st.set_page_config(page_title="Naruto Wiki", page_icon="🍥")
 
 st.title("Tailed Beasts Characteristics")
 st.markdown("Shukaku and the tailed beasts first came into being in the waning days of Hagoromo Ōtsutsuki, who used his Creation of All Things Technique to divide the Ten-Tails' chakra into nine separate bodies and giving each a name. Some time after being created, the Sage explained to the young tailed beasts that a link existed between them despite their separation. He also foretold of a day when they would be brought together again - though not as they were - and that at that time someone would emerge to show them what true power is. In the anime, before his death, Hagoromo sent Shukaku to live in a temple built for the purpose of protecting it in a desert region that would later become part of the Land of Wind.")
-st.image(Image.open("Naruto_app/images/all beasts.png"), use_column_width= True, clamp=True)
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/all beasts.png"), use_column_width= True, clamp=True)
 
 st.title("Shukaku")
-st.image(Image.open("Naruto_app/images/1 cola.png"), use_column_width= 100, caption= "Shukaku")
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/1 cola.png"), use_column_width= 100, caption= "Shukaku")
 st.title("Personality")
 st.markdown("Shukaku is characterised as a childish and short-tempered individual, and often speaks in a bombastic and incoherent manner, giving it the demeanour of a drunkard. It uses ore-sama (オレ様, literally meaning: my esteemed self) when referring to itself, as it expresses great pride in its own abilities, especially its sealing techniques and defences. According to Gaara, prior to its introduction, Shukaku relishes the opportunity to kill anyone in sight, even more so during a full moon. Shukaku has also shown to harbour a bitter grudge towards Kurama due to the fox's beliefs that the tailed beasts' strength is measured by the number of tails, therefore viewing the tanuki as the weakest. Because of this, Shukaku strives to find any opportunity to surpass its arrogant rival.")
 st.title("Abilities")
@@ -20,7 +19,7 @@ Nature Transformation: Shukaku can use Wind and Earth Release nature transformat
 
 
 st.title("Matatabi")
-st.image(Image.open("Naruto_app/images/2 cola.png"), use_column_width= 100, caption= "Matatabi")
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/2 cola.png"), use_column_width= 100, caption= "Matatabi")
 st.title("Personality")
 st.markdown("Compared to most of the tailed beasts, Matatabi has shown to be respectful and polite towards others, speaking in a formal manner using watashi (私) when referring to itself and using honourifics when addressing Naruto while introducing itself to the young shinobi.")
 st.title("Abilities")
@@ -29,7 +28,7 @@ st.markdown("As a tailed beast, Matatabi has an enormous supply of chakra that i
 
 
 st.title("Isobu")
-st.image(Image.open("Naruto_app/images/3 cola.png"), use_column_width= 100, caption= "Isobu")
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/3 cola.png"), use_column_width= 100, caption= "Isobu")
 st.title("Personality")
 st.markdown("Isobu speaks in a timid manner, referring to itself as boku (ボク) which is usually used by young boys. Seeing as Yagura had full control of it and befriended it, it's assumed that Isobu isn't as rude or outspoken as some of the other tailed beasts and got along with its jinchūriki.")
 st.title("Abilities")
@@ -40,7 +39,7 @@ st.markdown("Nature Transformation: As a turtle, Isobu has an affinity for Water
 
 
 st.title("Son Gokū")
-st.image(Image.open("Naruto_app/images/4 cola.png"), use_column_width= 100, caption= "Son Gokū")
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/4 cola.png"), use_column_width= 100, caption= "Son Gokū")
 st.title("Personality")
 st.markdown("Son Gokū is a very prideful tailed beast, as it detests being called by the name Four-Tails and boasts about its lineage. It uses ore (オレ) when referring to itself. It also hated humans, due to the fact that humans had enslaved it, and believes that apes are more intelligent than humans. However, when talking about the Sage of Six Paths, it showed him great respect, being that also had, apparently, a very deep relationship with him, never forgetting his final words. It also seems to have taken a liking to Naruto Uzumaki, as it was moved by his actions for truly trying to save it from being controlled by Tobi and even gave him some of its chakra before being sealed away. He also treats his fellow tailed beasts with much respect, as he addresses them by their name, as seen with Kurama. Son also has a high amount of respect for those who respect the tailed beasts.")
 st.title("Abilities")
@@ -49,7 +48,7 @@ st.markdown("Ninjutsu: Son has the ability to use Fire and Earth Release simulta
 
 
 st.title("Kokuō")
-st.image(Image.open("Naruto_app/images/5 cola.png"), use_column_width= 100, caption= "Kokuō")
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/5 cola.png"), use_column_width= 100, caption= "Kokuō")
 st.title("Personality")
 st.markdown("Kokuō seems to be a quiet and reserved individual. Though it does not speak much, Kokuō uses the rather old-fashioned watakushi (私) when referring to itself, causing it to come across as very polite. It also has pride as a tailed beast, being dismayed at being controlled and being used as Tobi's puppet during the Fourth Shinobi World War. After the end of the war, Kokuō declared that it wants to seclude itself in the forest, which implies it is a pacifistic individual, not wanting confrontations anymore.")
 st.title("Abilities")
@@ -58,7 +57,7 @@ st.markdown("Nature Transformation: By combining water and fire-natured chakra t
 
 
 st.title("Saiken")
-st.image(Image.open("Naruto_app/images/6 cola.png"), use_column_width= 100, caption= "Saiken")
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/6 cola.png"), use_column_width= 100, caption= "Saiken")
 st.title("Personality")
 st.markdown('''Though much has not been seen of Saiken's personality, the giant slug uses ore (オレ) when referring to itself, ore being a boastful way of saying "I". It also speaks with a dialect which may possibly be Ōsakaben in origin. In the anime, Saiken also seemed to be kinder and not as self-serving and malicious as most other tailed beasts, as when Utakata asked for its help to save Hotaru it seemed to willingly comply; and later it simply receded back into Utakata without trying to take him over. However, it was not above killing for self-preservation, as seen when it killed Harusame when he attempted to extract it from its jinchūriki. In the anime, it speaks with a high pitched voice and appears to be very energetic.''')
 st.title("Abilities")
@@ -67,7 +66,7 @@ st.markdown("As a tailed beast, Saiken has a massive amount of chakra that it ca
 
 
 st.title("Chōmei")
-st.image(Image.open("Naruto_app/images/7 cola.webp"), use_column_width= 100, caption= "Chōmei")
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/7 cola.webp"), use_column_width= 100, caption= "Chōmei")
 st.title("Personality")
 st.markdown("Chōmei seems to have a happy-go-lucky personality — which it seemingly shares with its jinchūriki as shown when it introduced itself to Naruto, referring to itself as Lucky Seven Chōmei (ラッキーセブン重明, Rakkī sebun Chōmei), which might be an allusion to the fact that it has seven tails and the number seven having long been seen as a lucky as well as a happy number. It also had a habit of using the word lucky in conversation, reflecting its personality.")
 st.title("Abilities")
@@ -76,7 +75,7 @@ st.markdown("As a tailed beast, Chōmei possesses extremely large amounts of cha
 
 
 st.title("Gyūki")
-st.image(Image.open("Naruto_app/images/8 cola.png"), use_column_width= 100, caption= "Gyūki")
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/8 cola.png"), use_column_width= 100, caption= "Gyūki")
 st.title("Personality")
 st.markdown("Gyūki is characterised as a tough and serious individual. It uses ore (オレ) when referring to itself and often speaks in a somewhat rude dialect. Gyūki was also shown to have a good analytical ability, as it told Killer B that if he left Ponta and Sabu and ran away from them, Kisame Hoshigaki and his water dome would follow him and they (Sabu and Ponta) would be freed. Although Gyūki mentioned that it and its brethren disliked Kurama for its arrogance and belief that their strength are based on their number of tails, it insisted that was no reason for not helping Naruto Uzumaki to control Kurama's power, hinting a benevolent side. Since then, both Gyūki and B have taken a liking to Naruto.")
 st.title("Abilities")
@@ -86,7 +85,7 @@ st.markdown("Ninjutsu: Gyūki can perform the Tailed Beast Ball, being able to f
 
 
 st.title("Kurama")
-st.image(Image.open("Naruto_app/images/9 cola.webp"), use_column_width= 100, caption= "Kurama")
+st.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/9 cola.webp"), use_column_width= 100, caption= "Kurama")
 st.title("Personality")
 st.markdown("Kurama was characterised as a snarky and shrewd individual. It used washi (ワシ) when referring to itself, which is generally used by older men. Kurama expressed great pride in its power, believing itself to be the strongest of the tailed beasts due to its belief that their strength is determined by their number of tails, which earned Kurama nothing but disapproval from its brethren, especially Shukaku. The fox would also react out of jealousy whenever Naruto was not using its power.")
 st.title("Abilities")

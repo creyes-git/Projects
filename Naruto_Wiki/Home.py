@@ -2,16 +2,16 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 
-st.set_page_config(page_title="Naruverse", page_icon="🍥")
+st.set_page_config(page_title="Naruto Wiki", page_icon="🍥")
 
 #Introduction
 c1, c2 , c3, c4, c5 = st.columns(5)
 
-c1.image(Image.open("Naruto_app/images/wp2725528-naruto-kakashi-wallpaper.png"), width=150, clamp=True)
-c2.image(Image.open("Naruto_app/images/wp10367350-minato-minimalist-wallpapers.jpg"), width=150, clamp=True)
-c3.image(Image.open("Naruto_app/images/Landing Page.png"), width=150, clamp=True)
-c4.image(Image.open("Naruto_app/images/wp10926937-minimalist-4k-naruto-wallpapers.png"), width=150, clamp=True)
-c5.image(Image.open("Naruto_app/images/wp5129198-anime-lambang-uciha-wallpapers.jpg"), width=150, clamp=True)
+c1.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/wp2725528-naruto-kakashi-wallpaper.png"), width=150, clamp=True)
+c2.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/wp10367350-minato-minimalist-wallpapers.jpg"), width=150, clamp=True)
+c3.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/Landing Page.png"), width=150, clamp=True)
+c4.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/wp10926937-minimalist-4k-naruto-wallpapers.png"), width=150, clamp=True)
+c5.image(Image.open("/workspaces/Projects/Naruto_Wiki/images/wp5129198-anime-lambang-uciha-wallpapers.jpg"), width=150, clamp=True)
 
 st.title("About Naruto:")
 st.markdown('''NARUTO is a manga series created by Masashi Kishimoto that was serialized in Weekly ShonenJump. 
@@ -36,5 +36,5 @@ st.markdown("- Naruto is also a popular anime series. On the MyAnimeList website
 
 #chart
 st.header("Top 10 Manga's by Sales:")
-df = pd.read_csv("Naruto_app/data_anime.csv")
-st.bar_chart(data = df.head(10).sort_values(by = "Approximate sales", ascending = False), x = "Manga series", y = "Approximate sales")
+df = pd.read_csv("/workspaces/Projects/Naruto_Wiki/data/data_anime.csv")
+st.bar_chart(data = df.head(10).sort_values(by = "Approximate sales", ascending = False), x = "Manga series", y = "Approximate sales", color="#ff9900")
