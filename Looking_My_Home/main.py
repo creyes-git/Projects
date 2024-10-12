@@ -16,7 +16,7 @@ st.set_page_config(page_title="My Home in GA", page_icon=":house:", layout="wide
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-local_css(r'/workspaces/Projects/Looking_My_Home/style.css')
+local_css('style.css')
 
 
 #Calling the API, 1 time per month, saving the data in a csv file and loading it and returning a dataframe
@@ -44,8 +44,8 @@ def get_data_and_loaddf():
     
     
     # checking if the csv file of the current month already exists
-    if os.path.exists(f"/workspaces/Projects/Looking_My_Home/data/rentcast_data_{current_month_year}.csv"):
-        df = pd.read_csv(f"/workspaces/Projects/Looking_My_Home/data/rentcast_data_{current_month_year}.csv")
+    if os.path.exists(f"data/rentcast_data_{current_month_year}.csv"):
+        df = pd.read_csv(f"data/rentcast_data_{current_month_year}.csv")
              
     else:
         df = pd.DataFrame()
@@ -59,7 +59,7 @@ def get_data_and_loaddf():
         df.dropna(subset= "bathrooms", how="any", inplace=True)
         df["bathrooms"] = df["bathrooms"].astype(int)
         
-        df.to_csv(f"/workspaces/Projects/Looking_My_Home/data/rentcast_data_{current_month_year}.csv", index=False)
+        df.to_csv(f"data/rentcast_data_{current_month_year}.csv", index=False)
        
     return df
 
