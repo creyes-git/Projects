@@ -2,6 +2,3 @@ pandas
 streamlit
 streamlit-lottie
 plotly
-python-dotenv
-groq
-langchain_groq

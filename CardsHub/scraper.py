@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 import requests
+import sqlite3 as sql
 
 
 for issuer in ["american-express", "bank-of-america", "capital-one", "chase", "citi", "discover"]: # list of issuers
@@ -121,12 +122,12 @@ for issuer in ["american-express", "bank-of-america", "capital-one", "chase", "c
 
 # Final Dataframe cleaning to import the data:
 df = df.drop_duplicates(subset=['Card_Name'])
-
 df['APR_Range'] = df['APR_Range'].str.replace("variable", "").str.replace("APR on purchases and balance transfers", "")
-
 df["Recommended_Score"] = df["Recommended_Score"].apply(lambda row: row.split("(")[0])
-
 df.loc[df['Recommended_Score'].str.lower() == " ".lower(), 'Recommended_Score'] = "No Credit Nedded"
 
 
-df.to_csv("/workspaces/Projects/CardsHub/data/cards_data.csv", index = False)
+# Connect to the database and import the dataframe
+connection = sql.connect(r"/workspaces/Projects/CardsHub/Cards.db")
+
+df.to_sql(name = 'cards', con = connection, if_exists = 'replace', index = False)
