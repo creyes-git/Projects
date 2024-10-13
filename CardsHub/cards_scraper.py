@@ -80,11 +80,6 @@ for issuer in ["american-express", "bank-of-america", "capital-one", "chase", "c
             except:
                 cons.append("") # cons
 
-
-            try:
-                bottom_line.append(i.find('div', {'class': 'f-body-4 u-color-gray-100 product-box__bottom-line-content u-remove-child-margin'}).text)
-            except:
-                bottom_line.append("") # bottom line description
             
             try :
                 all_benefits_tag = i.find('div', {'class': 'product-box__highlights-content'}).find_all('li')
@@ -97,8 +92,10 @@ for issuer in ["american-express", "bank-of-america", "capital-one", "chase", "c
         
 
     df_new = pd.DataFrame({
+            'Issuer_Name': " ".join(issuer.split("-")).title(),
             'Card_Name': card_name,
             'Card_Image': card_image,
+            'Category' : "Other",
             'Multipliers': multipliers,
             'Signup_Bonus_Requirement': signup_bonus_requirement,
             'Signup_Bonus': signup_bonus,
@@ -108,7 +105,6 @@ for issuer in ["american-express", "bank-of-america", "capital-one", "chase", "c
             'Why_Get': why_get,
             'Pros': pros,
             'Cons': cons,
-            'Bottom_Line': bottom_line,
             'All_Benefits': all_benefits})
 
     try:
@@ -125,7 +121,16 @@ df = df.drop_duplicates(subset=['Card_Name'])
 df['APR_Range'] = df['APR_Range'].str.replace("variable", "").str.replace("APR on purchases and balance transfers", "")
 df["Recommended_Score"] = df["Recommended_Score"].apply(lambda row: row.split("(")[0])
 df.loc[df['Recommended_Score'].str.lower() == " ".lower(), 'Recommended_Score'] = "No Credit Nedded"
-
+# Category
+df["Category"] = df.apply(lambda row: "Secured" if "secured" in row["Why_Get"].lower() else row["Category"], axis=1)
+df["Category"] = df.apply(lambda row: "Hotel" if "hotel" in row["Why_Get"].lower() else row["Category"], axis=1)
+df["Category"] = df.apply(lambda row: "Store" if "store" in row["Why_Get"].lower() else row["Category"], axis=1)
+df["Category"] = df.apply(lambda row: "Cash Back" if "cash back" in row["Why_Get"].lower() or "cashback" in row["Why_Get"].lower() else row["Category"], axis=1)
+df["Category"] = df.apply(lambda row: "Travel" if "travel" in row["Why_Get"].lower() or "miles" in row["Why_Get"].lower() or "vacation" in row["Why_Get"].lower() or "flight" in row["Why_Get"].lower() else row["Category"], axis=1)
+df["Category"] = df.apply(lambda row: "Business" if "business" in row["Why_Get"].lower() else row["Category"], axis=1)
+df["Category"] = df.apply(lambda row: "Balance Transfer" if "balance transfer" in row["Why_Get"].lower() else row["Category"], axis=1)
+# Annual Fee
+df["Annual_Fee"] = df["Annual_Fee"].str.replace("No annual fee", "$0").str.replace("‡", "").str.strip()
 
 # Connect to the database and import the dataframe
 connection = sql.connect(r"/workspaces/Projects/CardsHub/Cards.db")

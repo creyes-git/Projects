@@ -108,31 +108,36 @@ if submit:
     
     # Printing all cards
     for i in df.values:
-        with st.container():
-            c1, c2, c3, c4 = st.columns(4)
-                
-            with c1.container():
-                c1.write(f"**{i[1]}**")
-                c1.image(Image.open(requests.get(i[-1], stream=True).raw))
+        c1, c2, c3, c4 = st.columns(4)
             
-            with c2.container():
-                c2.write("**Annual Fee:**")
-                c2.markdown(f"{i[5]}$")
-                c2.write("**Welcome Bonus:**")
-                c2.markdown(f"{i[4]} Points")
-                c2.write("**Recommended Credit Score:**")
-                c2.markdown(i[6])
-                
-            with c3.container():
-                c3.write("**Category:**")
-                c3.image(Image.open(f"images/{i[2]}.png"), width= 100, clamp=True)
-    
-            with c4.container():
-                c4.write("**Highlights:**")
-                c4.markdown(f"{i[9]}")
+        with c1.container():
+            c1.write(f"**{i[1]}**")
+            c1.image(Image.open(requests.get(i[2], stream=True).raw))
+        
+        with c2.container():
+            c2.write("**Annual Fee:**")
+            c2.text(f"{i[7]}")
+            c2.write("**Welcome Bonus:**")
+            c2.markdown(f"{i[6]}")
+            c2.write("**Recommended Credit Score:**")
+            c2.markdown(i[9])
             
+        with c3.container():
+            c3.write("**Category:**")
+            c3.image(Image.open(f"images/{i[3]}.png"), width= 100, clamp=True)
+            
+        rewards = i[4].split("\n")
+        try:
+            c4.text_area(label = "**Highlights**", 
+                            value = "\n".join(rewards), 
+                            height= 250,
+                            key = i[4])
+        except:
+            c4.text_area(label = "**Highlights**", 
+                            value = "N/A", 
+                            height= 250)
 
-            st.markdown("---")
+        st.markdown("---")
             
                 
            

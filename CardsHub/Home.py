@@ -24,7 +24,7 @@ with st.container():
 with st.expander(":rainbow[**About this app and who made it**]"):
     with st.container():
         st.write("- :red[**Data Source**]: [Bankrate](https://www.bankrate.com/), [The Ascent](https://www.fool.com/the-ascent/), [The Point's Guy](https://thepointsguy.com/credit-cards/hilton/)")
-        st.write("- :blue[**Info**]: The data is collected from these websites and will be updated every month")
+        st.write("- :blue[**Info**]: The data is collected from these websites, using web scrapping techniques.")
         st.write("- :green[**Source Code**]: [GitHub](https://github.com/carlosreyes98/Projects/tree/main/CardsHub)")
         st.write("- :orange[**Made by**]: **Carlos Reyes**")
             
