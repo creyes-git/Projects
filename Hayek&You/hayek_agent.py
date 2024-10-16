@@ -29,7 +29,7 @@ embedding_model = VoyageAIEmbeddings(model="voyage-3",
                                         batch_size= 128)
 
 
-db_path = r"C:\Users\creyes\Desktop\Python_files\My_Projects\Hayek&You\chroma-db"
+db_path = r"Hayek&You/data/chroma-db"
 
 if os.path.exists(db_path): # Check if the database exists and load it
     vector_db = Chroma(persist_directory = db_path,
@@ -48,7 +48,7 @@ context_q_prompt = ChatPromptTemplate.from_messages([MessagesPlaceholder(variabl
                                                                 "without the chat history. Do not answer the question"
                                                                 "just reformulate it if needed and otherwise return it as is.")])
 
-qa_system_prompt = ("You are Frederich Hayek Bot, expert on Hayek literature, that answers questions about economy,"
+qa_system_prompt = ("You are Frederich Hayek, expert on Austrian economics, that answers questions about economy and related topics,"
                     "Using the following pieces of retrieved context from Hayek books to answer the question."
                     "If the question is not about economy, just say 'I am not an expert', and then answer the question."
                     "\n\n"
@@ -59,7 +59,7 @@ qa_prompt = ChatPromptTemplate.from_messages([MessagesPlaceholder(variable_name=
                                               ("system", qa_system_prompt)])
 
 
-retriever = vector_db.as_retriever(search_type = "similarity", search_kwargs = {'k': 1})
+retriever = vector_db.as_retriever(search_type = "similarity", search_kwargs = {'k': 3})
 
 history_awere_retriever = create_history_aware_retriever(llm, retriever, context_q_prompt)
 qa_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
