@@ -6,7 +6,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains.retrieval import create_retrieval_chain
 from langchain.chains.history_aware_retriever import create_history_aware_retriever
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain.memory import ConversationBufferMemory
+from langchain_community.chat_message_histories import StreamlitChatMessageHistory
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from dotenv import load_dotenv
 import os 
@@ -55,28 +55,45 @@ qa_system_prompt = ("You are Frederich Hayek, expert on Austrian economics, that
                     "{context}")
 
 qa_prompt = ChatPromptTemplate.from_messages([MessagesPlaceholder(variable_name="chat_history"),
-                                              ("human", "{input}"),
-                                              ("system", qa_system_prompt)])
+                                                                 ("human", "{input}"),
+                                                                 ("system", qa_system_prompt)])
+
 
 
 retriever = vector_db.as_retriever(search_type = "similarity", search_kwargs = {'k': 3})
+
 
 history_awere_retriever = create_history_aware_retriever(llm, retriever, context_q_prompt)
 qa_answer_chain = create_stuff_documents_chain(llm, qa_prompt)
 rag_chain = create_retrieval_chain(history_awere_retriever, qa_answer_chain)
 
 
-# This library stores the conversation history in memory, allowing the agent to mantain context during the conversation
-memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-memory.chat_memory.add_message(SystemMessage(content=qa_system_prompt)) # Add the system message to the memory
+# This library stores the conversation history in streamlit memory, allowing the agent to mantain context during the conversation
+memory = StreamlitChatMessageHistory()
+memory.add_message(SystemMessage(content = qa_system_prompt)) # Start the conversation with the system message
 
 
-while True:
-    user_input = input("You: ")
-    memory.chat_memory.add_message(HumanMessage(content=user_input))
+def ask_to_hayek(user_input : str):
+    """
+    Ask a question to the Hayek agent, and print the response as well as storing it in memory.
     
-    response = rag_chain.invoke({"input":user_input, "chat_history": memory.chat_memory.messages})
-    print(f"Assistant: {response["answer"]}")
+    Args:
+        user_input (str): The user's question to the agent
+    """
     
-    memory.chat_memory.add_message(AIMessage(content=response["answer"]))
+    memory.add_message(HumanMessage(content = user_input))
+    
+    response = rag_chain.invoke({"input":user_input, "chat_history": memory.messages})
+    print(f"Assistant: {response['answer']}")
+    
+    memory.add_message(AIMessage(content = response['answer']))
+    
+
+def clear_memory():
+    """
+    Clear the conversation history and reset the agent to the initial state by adding the system message again to the memory.
+    """
+    memory.clear()
+    
+    memory.add_message(SystemMessage(content = qa_system_prompt))
     
