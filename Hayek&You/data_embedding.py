@@ -1,4 +1,4 @@
-#from settings import *
+from settings import *
 from langchain_chroma import Chroma
 from langchain_voyageai import VoyageAIEmbeddings
 from langchain_text_splitters import CharacterTextSplitter
@@ -9,7 +9,7 @@ import os
 load_dotenv()
 
 # Get a list of all files in the folder
-books_folder = r"C:\Users\creyes\Desktop\Python_files\My_Projects\Hayek&You\data"
+books_folder = r"data"
 files_names = os.listdir(books_folder)
 
 all_documents = []
@@ -17,7 +17,7 @@ all_documents = []
 for file in files_names:
     
     if file.endswith(".pdf"): # If the file is .pdf then use PyPDFLoader and TextLoader for txt files 
-        document = PyPDFLoader(fr"{books_folder}\{file}").load()
+        document = PyPDFLoader(fr"{books_folder}/{file}").load()
     else:
         pass
         
@@ -31,7 +31,7 @@ for file in files_names:
 embeddings = VoyageAIEmbeddings(model="voyage-3", batch_size= 128) # Embedding model from VoyageAI
     
     
-db_path = r"C:\Users\creyes\Desktop\Python_files\My_Projects\Hayek&You\chroma-db"
+db_path = r"data/chroma-db"
     
 if not os.path.exists(db_path): # Check if the database exists
     chroma_db = Chroma.from_documents(documents = all_documents, embedding = embeddings, persist_directory = db_path)
