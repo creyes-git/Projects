@@ -1,4 +1,4 @@
-#from settings import *
+from settings import *
 from langchain_groq import ChatGroq
 from langchain_chroma import Chroma
 from langchain_voyageai import VoyageAIEmbeddings
