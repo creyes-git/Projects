@@ -29,7 +29,7 @@ embedding_model = VoyageAIEmbeddings(model="voyage-3",
                                         batch_size= 128)
 
 
-db_path = r"Hayek&You/data/chroma-db"
+db_path = r"/workspaces/Projects/Hayek&You/data/chroma-db"
 
 if os.path.exists(db_path): # Check if the database exists and load it
     vector_db = Chroma(persist_directory = db_path,
@@ -80,13 +80,14 @@ def ask_to_hayek(user_input : str):
     Args:
         user_input (str): The user's question to the agent
     """
-    
     memory.add_message(HumanMessage(content = user_input))
     
     response = rag_chain.invoke({"input":user_input, "chat_history": memory.messages})
-    print(f"Assistant: {response['answer']}")
     
     memory.add_message(AIMessage(content = response['answer']))
+    
+    
+    return response["answer"]
     
 
 def clear_memory():
@@ -96,4 +97,3 @@ def clear_memory():
     memory.clear()
     
     memory.add_message(SystemMessage(content = qa_system_prompt))
-    
