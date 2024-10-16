@@ -5,6 +5,6 @@ langchain_chroma
 langchain_groq
 langchain_voyageai
 langchain_text_splitters
-langchainhub
-dotenv
-sqlite3 >= 3.35.0
+langchain_community
+python-dotenv
+pypdf

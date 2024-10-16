@@ -9,7 +9,7 @@ import os
 load_dotenv()
 
 # Get a list of all files in the folder
-books_folder = r"data"
+books_folder = r"Hayek&You/data"
 files_names = os.listdir(books_folder)
 
 all_documents = []
@@ -31,7 +31,7 @@ for file in files_names:
 embeddings = VoyageAIEmbeddings(model="voyage-3", batch_size= 128) # Embedding model from VoyageAI
     
     
-db_path = r"data/chroma-db"
+db_path = r"Hayek&You/data/chroma-db"
     
 if not os.path.exists(db_path): # Check if the database exists
     chroma_db = Chroma.from_documents(documents = all_documents, embedding = embeddings, persist_directory = db_path)
