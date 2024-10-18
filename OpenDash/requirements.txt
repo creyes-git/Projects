@@ -1,0 +1,4 @@
+openbb
+streamlit
+streamlit_lottie
+pandas
