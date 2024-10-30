@@ -1,4 +1,4 @@
-from stock_funcs import *
+from index import *
 import streamlit as st
 
 
