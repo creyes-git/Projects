@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+obb.user.credentials.tiingo_token = "aac0353367e16bc038f4b460f150f36e02eead94"
+
 last_week = (datetime.today() - timedelta(days=7)).strftime("%Y-%m-%d")
 
 
