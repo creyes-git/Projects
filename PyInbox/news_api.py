@@ -1,22 +1,18 @@
 from newsapi import NewsApiClient
 from datetime import datetime, timedelta
-import pandas as pd
 import os
 
-newsapi = NewsApiClient(api_key = os.getenv('NEWS_API_KEY'))
+api = NewsApiClient(api_key = os.getenv('NEWS_API_KEY'))
 
-last_week = (datetime.today() - timedelta(days=7)).strftime("%Y-%m-%d")
+last_week = (datetime.today() - timedelta(days = 7)).strftime("%Y-%m-%d")
 
 
-def get_df_weekly_news(keyword, category):
+def get_weekly_news(keyword, category):
     
-    news = newsapi.get_top_headlines(q = keyword, category = category.lower(), country = "us")
+    response = api.get_top_headlines(q = keyword, category = category.lower(), country = "us")
+    news_list = []
     
-    df = pd.DataFrame(news["articles"])
-    #df = df[["title", "description", "url", "urlToImage"]]
+    for i in response["articles"]:
+        news_list.append(i["description"])
     
-    return df
-
-df = get_df_weekly_news("Trump", "Business")
-
-print(df)
+    return {"top_news": news_list}
