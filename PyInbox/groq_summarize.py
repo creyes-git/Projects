@@ -12,8 +12,7 @@ template = PromptTemplate(input_variables = ["top_news"],
                                         When summarizing, aim to preserve the original meaning and tone of the news articles. 
                                         Consider adding only necessary context or transitional phrases to enhance clarity. 
                                         The summary should be approximately 500-1000 words in length. 
-                                        Here are the top news articles for this week: {top_news}"""
-)
+                                        Here are the top news articles for this week: {top_news}""")
    
 llm = ChatGroq(model = "llama-3.1-70b-versatile",
                temperature = 1,

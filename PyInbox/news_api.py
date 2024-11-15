@@ -15,4 +15,4 @@ def get_weekly_news(keyword, category):
     for i in response["articles"]:
         news_list.append(i["description"])
     
-    return {"top_news": news_list}
+    return news_list
