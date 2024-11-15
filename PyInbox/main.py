@@ -1,8 +1,13 @@
 from email_sender import send_email
 from groq_summarize import summarize_news
 from news_api import get_weekly_news
+from datetime import datetime, timedelta
 import sqlite3 as sql
 import pandas as pd
+
+
+today = datetime.today().strftime("%m-%d")
+last_week = (datetime.today() - timedelta(days = 7)).strftime("%m-%d")
 
 
 connection = sql.connect("PyInbox/data/PyInbox.db")
@@ -28,10 +33,6 @@ for i in df_users.index:
     llm_summary = summarize_news(top_news)
     
     
-    send_email(title = "PyInbox Weekly News!",
-                   email_receiver = email, 
-                   body = f'''Hello {str(name.split()[0]).capitalize()}!,
-                              \n\n
-                              {llm_summary}
-                              \n\n
-                              Best regards, have a great week!''')
+    send_email(title = f"PyInbox Weekly News for {last_week} TO {today}",
+               email_receiver = email, 
+               body = f'''Hello {str(name.split()[0]).capitalize()}!\n\n{llm_summary}\n\nBest regards, have a great week!''')
