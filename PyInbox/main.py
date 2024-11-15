@@ -21,21 +21,17 @@ for i in df_users.index:
     category = df_users["Category"][i]
     keyword = df_users["Keyword"][i]
     
+    
     top_news = get_weekly_news(keyword = keyword, category = category.lower())
     
-    llm_summary = summarize_news(top_news["top_news"])
     
-    try:
-        send_email(title = "PyInbox Weekly News!",
+    llm_summary = summarize_news(top_news)
+    
+    
+    send_email(title = "PyInbox Weekly News!",
                    email_receiver = email, 
                    body = f'''Hello {str(name.split()[0]).capitalize()}!,
                               \n\n
                               {llm_summary}
                               \n\n
                               Best regards, have a great week!''')
-        
-        print("Email sent successfully!")
-                    
-    except:
-        print(f"Failed to send email to {email}")
-        pass
