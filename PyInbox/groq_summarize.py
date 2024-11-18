@@ -22,13 +22,18 @@ llm = ChatGroq(model = "llama-3.1-70b-versatile",
                stop_sequences = None)
 
 
-def summarize_news(top_news):
+def summarize_news(top_news : str):
     
-    try:
-        chain = template | llm
-        response = chain.invoke({"top_news": top_news})
+    if top_news != "No news found":
+    
+        try:
+            chain = template | llm
+            response = chain.invoke({"top_news": top_news})
+            
+            return response.content
         
-        return response.content
+        except:
+            raise Exception("An error occurred while summarizing the news articles. Please try again later.")
     
-    except:
-        raise Exception("An error occurred while summarizing the news articles. Please try again later.")
+    else:
+        raise Exception("No news found. Please try again later.")

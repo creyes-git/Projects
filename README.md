@@ -1,1 +1,1 @@
-These are my Data-Science/AI projects 😄... give me a ⭐ if like any!
+These are my Data-Science/AI "FOR FUN PROJECTS"😄... give me a ⭐ if like any!

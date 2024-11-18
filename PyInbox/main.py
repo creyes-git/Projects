@@ -20,19 +20,19 @@ connection.close()
 
 
 for i in df_users.index:
-    
-    email = df_users["Email"][i]
-    name = df_users["Name"][i]
-    category = df_users["Category"][i]
-    keyword = df_users["Keyword"][i]
-    
-    
-    top_news = get_weekly_news(keyword = keyword, category = category.lower())
-    
-    
-    llm_summary = summarize_news(top_news)
-    
-    
-    send_email(email_receiver = email,
-               title = f"PyInbox Weekly News for {last_week} TO {today}", 
-               body = f'''Hello {str(name.split()[0]).capitalize()}!\n\n{llm_summary}\n\nBest regards, have a great week!''')
+    try:
+        email = df_users["Email"][i]
+        name = df_users["Name"][i]
+        category = df_users["Category"][i]
+        keyword = df_users["Keyword"][i]
+        
+        top_news = get_weekly_news(keyword = keyword, category = category.lower())
+        
+        llm_summary = summarize_news(top_news)
+        
+        send_email(email_receiver = email,
+                title = f"PyInbox Weekly News for {last_week} TO {today}", 
+                body = f'''Hello {str(name.split()[0]).capitalize()}!\n\n{llm_summary}\n\nBest regards, have a great week!''')
+        
+    except:
+        continue

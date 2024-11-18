@@ -5,20 +5,24 @@ api = NewsApiClient(api_key = os.getenv('NEWS_API_KEY'))
 
 def get_weekly_news(keyword = None, category = None):
     
-    response = api.get_top_headlines(q = keyword, category = category, country = "us")
-    news_list = ""
-    n = 1
-    
-    for i in response["articles"]:
+    try:
+        response = api.get_top_headlines(q = keyword, category = category, country = "us")
+        news_list = ""
+        n = 1
         
-        description = i["description"]
-        
-        if description and description != "[Removed]":
-        
-            news_list += str(n) + "-" + description + "\n"
-            n += 1
-        
-        else:
-            continue
+        for i in response["articles"]:
+            
+            description = i["description"]
+            
+            if description and description != "[Removed]":
+            
+                news_list += str(n) + "-" + description + "\n"
+                n += 1
+            
+            else:
+                continue
+            
+    except:
+        news_list = "No news found"
     
     return news_list
