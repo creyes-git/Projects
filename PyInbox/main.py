@@ -33,6 +33,6 @@ for i in df_users.index:
     llm_summary = summarize_news(top_news)
     
     
-    send_email(title = f"PyInbox Weekly News for {last_week} TO {today}",
-               email_receiver = email, 
+    send_email(email_receiver = email,
+               title = f"PyInbox Weekly News for {last_week} TO {today}", 
                body = f'''Hello {str(name.split()[0]).capitalize()}!\n\n{llm_summary}\n\nBest regards, have a great week!''')
