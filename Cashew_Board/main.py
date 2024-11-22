@@ -1,7 +1,10 @@
-import pandas as pd 
-import plotly.graph_objects as go
-from datetime import datetime
+from scripts.plotly_charts import *
+import streamlit as st
+import pandas as pd
 import os
+
+st.set_page_config(page_title = "Cashew Board", page_icon = ":moneybag:", layout = "wide", initial_sidebar_state = "expanded")
+
 
 data_folder = r"/workspaces/Projects/Cashew_Board/data"
 file_on_folder = os.listdir(data_folder)[0]
@@ -13,4 +16,12 @@ def android_to_hex(color_code):
 df = pd.read_csv(fr"{data_folder}/{file_on_folder}", engine = "pyarrow", keep_default_na = False)
 df["color"] = df["color"].apply(android_to_hex)
 df['amount'] = df['amount'].abs() # Transform negative values to positive
-df["date"] = df["date"].dt.strftime("%Y-%m")
+
+
+with st.sidebar:
+    c1, c2 = st.columns(2)
+    c1.write("Welcome")
+    c1.write("Welcome to Cashew Board")
+    c2.image("/workspaces/Projects/Cashew_Board/assets/icon/icon.png", width = 100, clamp = True)
+    st.markdown("---")
+    st.image("/workspaces/Projects/Cashew_Board/assets/images/empty.png", use_column_width = True)

@@ -28,6 +28,7 @@ def plot_pie_categories(df):
 
 def plot_hist_income_expense(df):
     
+    df["date"] = df["date"].dt.strftime("%Y-%m") # Format date to keep only year and month
     df_income = df[df["income"] == True] # Keeps only incomes
     df_expense = df[df["income"] == False] # Keeps only expenses
     df_income = df_income[["amount", "date"]].groupby(["date"]).agg({"amount": "sum"}).reset_index() # Group by date and sum amount
