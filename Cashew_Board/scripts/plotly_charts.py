@@ -23,6 +23,12 @@ def plot_pie_categories(df):
                          hole = 0.4,
                          marker = dict(colors = df["color"],)))
     
+    fig.add_annotation(x = 0.5, 
+                       y = 1.20,
+                       text = "Expenses by Category",
+                       showarrow = False, 
+                       font = dict(size = 18, color = 'white'))
+    
     return fig
 
 
@@ -79,9 +85,9 @@ def plot_saving_rate(df):
                          marker = dict(colors = ["#ff7043", "#4caf50"])))
     
     fig.add_annotation(x = 0.5, 
-                       y = 1.25,
+                       y = 1.20,
                        text = f"Savings Rate: {round(((df['amount'][1] - df['amount'][0]) / df['amount'][1]) * 100, 2)} %",
                        showarrow = False, 
-                       font = dict(size = 16, color = 'black'))
+                       font = dict(size = 18, color = 'white'))
 
     return fig
