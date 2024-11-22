@@ -17,7 +17,6 @@ def plot_pie_categories(df):
         The pie chart figure."""
     
     df = df[df["income"] == False] # Keeps only expenses
-    df['amount'] = df['amount'].abs() # Transform negative values to positive
     df["category name"] = df.apply(lambda row: row["category name"] if row["subcategory name"] == "" else row["subcategory name"], axis = 1) # Keep subcategory if not empty
     df = df[["category name", "amount", "color"]].groupby(["category name"]).agg({"amount": "sum", "color": "first"}).reset_index() # Group by category name and sum amount
     

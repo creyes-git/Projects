@@ -13,3 +13,4 @@ def android_to_hex(color_code):
 
 df = pd.read_csv(fr"{data_folder}/{file_on_folder}", engine = "pyarrow", keep_default_na = False)
 df["color"] = df["color"].apply(android_to_hex)
+df['amount'] = df['amount'].abs() # Transform negative values to positive
