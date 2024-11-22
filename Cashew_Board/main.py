@@ -29,7 +29,11 @@ df['amount'] = df['amount'].abs() # Transform negative values to positive
 
 with st.sidebar:
     c1, c2 = st.columns(2)
-    c1.markdown('<span class="icon type-red">Cashew</span>', unsafe_allow_html = True)
-    c2.image("assets/images/icon.png", width = 100, clamp = True)
+    c1.markdown('<span class="icon type-beiche">Welcome</span>', unsafe_allow_html = True)
+    c1.markdown('<span class="icon type-blue">TO</span>', unsafe_allow_html = True)
+    c1.markdown('<span class="icon type-green">Cashew</span>', unsafe_allow_html = True)
+    c1.markdown('<span class="icon type-red">Board</span>', unsafe_allow_html = True)
+
+    c2.image("assets/images/icon.png", width = 115, clamp = True)
     st.markdown("---")
-    st.image("assets/images/empty.png", use_column_width = True)
+    #st.image("assets/images/empty.png", use_column_width = True)
