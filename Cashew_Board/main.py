@@ -30,6 +30,6 @@ df['amount'] = df['amount'].abs() # Transform negative values to positive
 with st.sidebar:
     c1, c2 = st.columns(2)
     c1.markdown('<span class="icon type-red">Cashew</span>', unsafe_allow_html = True)
-    c2.image("/workspaces/Projects/Cashew_Board/assets/icon/icon.png", width = 100, clamp = True)
+    c2.image("assets/images/icon.png", width = 100, clamp = True)
     st.markdown("---")
-    st.image("/workspaces/Projects/Cashew_Board/assets/images/empty.png", use_column_width = True)
+    st.image("assets/images/empty.png", use_column_width = True)

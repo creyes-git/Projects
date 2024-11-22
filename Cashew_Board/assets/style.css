@@ -16,15 +16,15 @@
     transition:opacity .4s
 }
 
-.type-green{
-    background-color:#4b780b
+.type-beiche{
+    background-color:#ffce8a
 }
 .type-red{
-    background-color:#f42
+    background-color:#e17683
 }
-.type-yellow{
-    background-color:#fed947
+.type-blue{
+    background-color:#86cef6
 }
-.type-normal{
-    background-color:#f0f2f6
+.type-green{
+    background-color:#8fd379
 }
