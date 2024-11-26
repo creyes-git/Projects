@@ -91,3 +91,23 @@ def plot_saving_rate(df):
                        font = dict(size = 18, color = 'white'))
 
     return fig
+
+
+def plot_category_map(df: pd.DataFrame, category : str):
+    
+    df = df[df["category name"] == category]
+    df["subcategory name"] = df["subcategory name"].apply(lambda row: "None" if row == "" else row)
+    
+    fig = go.Figure(layout = go.Layout(height = 500, width = 750, title = "Expenses Map by Category", template = "plotly_dark"))
+    fig.add_trace(go.Scatter(x = df["date"],
+                             x0= df["subcategory name"],
+                             y = df["amount"],
+                             hovertext=df["subcategory name"],
+                             hoverlabel=dict(font_size = 15),
+                             hovertemplate="$%{y} On %{x} <extra></extra>: Subcategory: %{hovertext}",
+                             mode = "markers",
+                             marker_color = df["color"],
+                             marker_size = df["amount"].apply(lambda row: row / 5 if row >= 100 else row / 3),
+                             showlegend = False))
+    
+    return fig

@@ -46,10 +46,14 @@ with st.container():
     c4.markdown(f'<span class="bubble-container type-beiche">Total Transactions: {len(df)}</span>', unsafe_allow_html = True)
     
 
-with st.container():
-    
-    st.plotly_chart(plot_hist_income_expense(df), use_container_width = True)
+# PLOTLY CHARTS
+st.plotly_chart(plot_hist_income_expense(df), use_container_width = True)
 
+with st.container():
     c1, c2 = st.columns(2)
     c1.plotly_chart(plot_pie_categories(df), use_container_width = True)
     c2.plotly_chart(plot_saving_rate(df), use_container_width = True)
+    
+with st.container():
+    category = st.selectbox("Category", df["Category"].unique())
+    st.plotly_chart(plot_category_map(df, category), use_container_width = True)
