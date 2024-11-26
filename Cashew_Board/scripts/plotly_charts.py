@@ -3,35 +3,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-def plot_pie_categories(df):
-    
-    df = df[df["income"] == False] # Keeps only expenses
-    df["category name"] = df.apply(lambda row: row["category name"] if row["subcategory name"] == "" else row["subcategory name"], axis = 1) # Keep subcategory if not empty
-    df = df[["category name", "amount", "color"]].groupby(["category name"]).agg({"amount": "sum", "color": "first"}).reset_index() # Group by category name and sum amount
-    
-    fig = go.Figure(layout = go.Layout(height = 500, width = 500))
-    fig.add_trace(go.Pie(labels = df["category name"],
-                         values = df["amount"],
-                         hoverinfo = "value+percent",
-                         hovertemplate = "$%{value} = %{percent} <extra></extra>",
-                         hoverlabel = dict(font_size = 15),
-                         textinfo = "label",
-                         textposition = "inside",
-                         insidetextorientation = "radial",
-                         insidetextfont = dict(color = "black"),
-                         showlegend = False,
-                         hole = 0.4,
-                         marker = dict(colors = df["color"],)))
-    
-    fig.add_annotation(x = 0.5, 
-                       y = 1.20,
-                       text = "Expenses by Category",
-                       showarrow = False, 
-                       font = dict(size = 18, color = 'white'))
-    
-    return fig
-
-
 def plot_hist_income_expense(df):
     
     df["date"] = df["date"].dt.strftime("%Y-%m") # Format date to keep only year and month
@@ -65,6 +36,35 @@ def plot_hist_income_expense(df):
                           hoverlabel = dict(font_size = 15),
                           showlegend = False,
                           line_color = "#FFBE04")) # Saving Trace
+    
+    return fig
+
+
+def plot_pie_categories(df):
+    
+    df = df[df["income"] == False] # Keeps only expenses
+    df["category name"] = df.apply(lambda row: row["category name"] if row["subcategory name"] == "" else row["subcategory name"], axis = 1) # Keep subcategory if not empty
+    df = df[["category name", "amount", "color"]].groupby(["category name"]).agg({"amount": "sum", "color": "first"}).reset_index() # Group by category name and sum amount
+    
+    fig = go.Figure(layout = go.Layout(height = 500, width = 500))
+    fig.add_trace(go.Pie(labels = df["category name"],
+                         values = df["amount"],
+                         hoverinfo = "value+percent",
+                         hovertemplate = "$%{value} = %{percent} <extra></extra>",
+                         hoverlabel = dict(font_size = 15),
+                         textinfo = "label",
+                         textposition = "inside",
+                         insidetextorientation = "radial",
+                         insidetextfont = dict(color = "black"),
+                         showlegend = False,
+                         hole = 0.4,
+                         marker = dict(colors = df["color"],)))
+    
+    fig.add_annotation(x = 0.5, 
+                       y = 1.20,
+                       text = "Expenses by Category",
+                       showarrow = False, 
+                       font = dict(size = 18, color = 'white'))
     
     return fig
 
