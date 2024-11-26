@@ -3,7 +3,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-def plot_hist_income_expense(df):
+def plot_hist_income_expense(df: pd.DataFrame):
     
     df["date"] = df["date"].dt.strftime("%Y-%m") # Format date to keep only year and month
     df_income = df[df["income"] == True] # Keeps only incomes
@@ -40,7 +40,7 @@ def plot_hist_income_expense(df):
     return fig
 
 
-def plot_pie_categories(df):
+def plot_pie_categories(df: pd.DataFrame):
     
     df = df[df["income"] == False] # Keeps only expenses
     df["category name"] = df.apply(lambda row: row["category name"] if row["subcategory name"] == "" else row["subcategory name"], axis = 1) # Keep subcategory if not empty
@@ -69,7 +69,7 @@ def plot_pie_categories(df):
     return fig
 
 
-def plot_saving_rate(df):
+def plot_saving_rate(df: pd.DataFrame):
     
     df = df[["income", "amount"]].groupby(["income"]).agg({"amount": "sum"}).reset_index() # Group by type and sum amount
     df["income"] = df["income"].replace({True: "Income", False: "Expense"})
@@ -95,19 +95,21 @@ def plot_saving_rate(df):
 
 def plot_category_map(df: pd.DataFrame, category : str):
     
+    df = df[df["income"] == False]
     df = df[df["category name"] == category]
     df["subcategory name"] = df["subcategory name"].apply(lambda row: "None" if row == "" else row)
+    df = df.groupby(by = ["date", "color", "category name", "subcategory name"]).agg({"amount": "sum"}).reset_index()
     
     fig = go.Figure(layout = go.Layout(height = 500, width = 750, title = "Expenses Map by Category", template = "plotly_dark"))
     fig.add_trace(go.Scatter(x = df["date"],
                              x0= df["subcategory name"],
                              y = df["amount"],
-                             hovertext=df["subcategory name"],
-                             hoverlabel=dict(font_size = 15),
-                             hovertemplate="$%{y} On %{x} <extra></extra>: Subcategory: %{hovertext}",
+                             hovertext = df["subcategory name"],
+                             hoverlabel = dict(font_size = 15),
+                             hovertemplate = "$%{y} On %{x} <extra></extra>: Subcategory: %{hovertext}",
                              mode = "markers",
                              marker_color = df["color"],
-                             marker_size = df["amount"].apply(lambda row: row / 5 if row >= 100 else row / 3),
+                             marker_size = df["amount"] / 5,
                              showlegend = False))
     
     return fig

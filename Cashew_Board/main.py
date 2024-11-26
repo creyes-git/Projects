@@ -1,29 +1,23 @@
 from scripts.plotly_charts import *
+from scripts.utils import *
 import streamlit as st
 import pandas as pd
 import os
 
 
-st.set_page_config(page_title = "Cashew Board", page_icon = ":moneybag:", layout = "wide", initial_sidebar_state = "expanded")
+local_css("assets/style.css") # Local CSS Style
 
 
-def local_css(file_name):
-    with open(file_name) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-local_css('assets/style.css')
-
-
-def android_to_hex(color_code):
-    hex_code = "#{:06x}".format(color_code & 0xffffff)
-    return hex_code
+st.set_page_config(page_title = "Cashew Board", page_icon = ":moneybag:", layout = "wide", initial_sidebar_state = "expanded") # Setting Streamlit Main Page Config
 
 
 data_folder = r"/workspaces/Projects/Cashew_Board/data"
 file_on_folder = os.listdir(data_folder)[0]
 
 df = pd.read_csv(fr"{data_folder}/{file_on_folder}", engine = "pyarrow", keep_default_na = False)
-df["color"] = df["color"].apply(android_to_hex)
+df["color"] = df["color"].apply(android_to_hex) # Transform color code to hex
 df['amount'] = df['amount'].abs() # Transform negative values to positive
+df["date"] = pd.to_datetime(df["date"].dt.strftime("%m-%d-%Y")) # Format date to keep only month-day-year
 
 
 with st.sidebar:
@@ -55,5 +49,6 @@ with st.container():
     c2.plotly_chart(plot_saving_rate(df), use_container_width = True)
     
 with st.container():
-    category = st.selectbox("Category", df["Category"].unique())
-    st.plotly_chart(plot_category_map(df, category), use_container_width = True)
+    c1, c2 = st.columns(2)
+    category = c1.selectbox(label = "Category", options = df["category name"].unique(), index = None)
+    c1.plotly_chart(plot_category_map(df, category), use_container_width = True)
