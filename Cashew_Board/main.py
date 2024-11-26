@@ -1,5 +1,5 @@
+from scripts.utils import android_to_hex, local_css
 from scripts.plotly_charts import *
-from scripts.utils import *
 import streamlit as st
 import pandas as pd
 import os
