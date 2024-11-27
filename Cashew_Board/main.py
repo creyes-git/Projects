@@ -50,6 +50,6 @@ with st.container():
     
 with st.container(): # Categories Charts Container
     c1, c2 = st.columns(2)
-    category = c1.selectbox(label = "Category", options = df[df["income"] == False]["category name"].unique(), index = None) # Select Expense Category
+    category = c1.selectbox(label = "", options = df[df["income"] == False]["category name"].unique(), index = None) # Select Expense Category
     c1.image(plot_category_map(df, category), use_column_width = True)
-    c2.plotly_chart(plot_pie_categories(df), use_container_width = True)#FFD9A4
+    c2.plotly_chart(plot_pie_categories(df), use_container_width = True)

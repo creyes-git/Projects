@@ -12,7 +12,7 @@ def plot_hist_income_expense(df: pd.DataFrame):
     df_income = df_income[["amount", "date"]].groupby(["date"]).agg({"amount": "sum"}).reset_index() # Group by date and sum amount
     df_expense = df_expense[["amount", "date"]].groupby(["date"]).agg({"amount": "sum"}).reset_index()
     
-    fig = go.Figure(layout = go.Layout(height = 500, width = 1500)).update_layout(title = "Monthly Income-Expenses Evolution")
+    fig = go.Figure(layout = go.Layout(height = 450, width = 1500)).update_layout(title = "Monthly Income-Expenses Evolution")
     
     fig.add_trace(go.Bar(x = df_income["date"],
                          y = df_income["amount"],
@@ -47,7 +47,7 @@ def plot_pie_categories(df: pd.DataFrame):
     df["category name"] = df.apply(lambda row: row["category name"] if row["subcategory name"] == "" else row["subcategory name"], axis = 1) # Keep subcategory if not empty
     df = df[["category name", "amount", "color"]].groupby(["category name"]).agg({"amount": "sum", "color": "first"}).reset_index() # Group by category name and sum amount
     
-    fig = go.Figure(layout = go.Layout(height = 500, width = 500))
+    fig = go.Figure(layout = go.Layout(height = 450, width = 450))
     fig.add_trace(go.Pie(labels = df["category name"],
                          values = df["amount"],
                          hoverinfo = "value+percent",
@@ -75,7 +75,7 @@ def plot_saving_rate(df: pd.DataFrame):
     df = df[["income", "amount"]].groupby(["income"]).agg({"amount": "sum"}).reset_index() # Group by type and sum amount
     df["income"] = df["income"].replace({True: "Income", False: "Expense"})
     
-    fig = go.Figure(layout = go.Layout(height = 500, width = 500))
+    fig = go.Figure(layout = go.Layout(height = 450, width = 450))
     
     fig.add_trace(go.Pie(labels = df["income"],
                          values = df["amount"],
@@ -100,7 +100,7 @@ def plot_category_map(df: pd.DataFrame, category : str):
     df["subcategory name"] = df["subcategory name"].apply(lambda row: "None" if row == "" else row)
     df = df.groupby(by = ["date", "color", "category name", "subcategory name"]).agg({"amount": "sum"}).reset_index()
     
-    fig = go.Figure(layout = go.Layout(height = 500, width = 750, title = "Expenses Map by Category", template = "plotly_dark"))
+    fig = go.Figure(layout = go.Layout(height = 450, width = 700, title = "Expenses Map by Category", template = "plotly_dark"))
     fig.add_trace(go.Scatter(x = df["date"],
                              x0= df["subcategory name"],
                              y = df["amount"],
