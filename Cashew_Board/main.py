@@ -5,7 +5,7 @@ import pandas as pd
 import os
 
 
-st.set_page_config(page_title = "Cashew Board", page_icon = ":moneybag:", layout = "wide", initial_sidebar_state = "expanded") # Setting Streamlit Main Page Config
+st.set_page_config(page_title = "Cashew Board", page_icon = "🥠", layout = "wide", initial_sidebar_state = "expanded") # Setting Streamlit Main Page Config
 
 
 with open("assets/style.css") as f:
