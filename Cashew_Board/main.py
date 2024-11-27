@@ -46,6 +46,7 @@ st.plotly_chart(plot_hist_income_expense(df), use_container_width = True) # Hist
 
 with st.container():
     c1, c2 = st.columns(2)
+    c1.plotly_chart(plot_income_funnel(df), use_container_width = True)
     c2.plotly_chart(plot_saving_rate(df), use_container_width = True)
     
 with st.container(): # Categories Charts Container
