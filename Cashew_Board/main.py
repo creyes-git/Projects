@@ -1,13 +1,15 @@
-from scripts.utils import android_to_hex, local_css
+from scripts.utils import android_to_hex
 from scripts.plotly_charts import *
 import streamlit as st
 import pandas as pd
 import os
 
+
 st.set_page_config(page_title = "Cashew Board", page_icon = ":moneybag:", layout = "wide", initial_sidebar_state = "expanded") # Setting Streamlit Main Page Config
 
 
-local_css("assets/style.css") # Local CSS Style
+with open("assets/style.css") as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html = True)
 
 
 data_folder = r"/workspaces/Projects/Cashew_Board/data"
@@ -44,10 +46,11 @@ st.plotly_chart(plot_hist_income_expense(df), use_container_width = True)
 
 with st.container():
     c1, c2 = st.columns(2)
-    c1.plotly_chart(plot_pie_categories(df), use_container_width = True)
+    #c1.plotly_chart(plot_pie_categories(df), use_container_width = True)
     c2.plotly_chart(plot_saving_rate(df), use_container_width = True)
     
 with st.container():
     c1, c2 = st.columns(2)
-    category = c1.selectbox(label = "Category", options = df["category name"].unique(), index = None)
+    category = c1.selectbox(label = "Category", options = df[df["income"] == False]["category name"].unique(), index = None) # Select Expense Category
     c1.plotly_chart(plot_category_map(df, category), use_container_width = True)
+    c2.plotly_chart(plot_pie_categories(df), use_container_width = True)

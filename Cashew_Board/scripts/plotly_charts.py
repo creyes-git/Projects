@@ -95,7 +95,6 @@ def plot_saving_rate(df: pd.DataFrame):
 
 def plot_category_map(df: pd.DataFrame, category : str):
     
-    df = df[df["income"] == False]
     df = df[df["category name"] == category]
     df["subcategory name"] = df["subcategory name"].apply(lambda row: "None" if row == "" else row)
     df = df.groupby(by = ["date", "color", "category name", "subcategory name"]).agg({"amount": "sum"}).reset_index()
