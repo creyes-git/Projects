@@ -104,12 +104,15 @@ def plot_category_map(df: pd.DataFrame, category : str):
     fig.add_trace(go.Scatter(x = df["date"],
                              x0= df["subcategory name"],
                              y = df["amount"],
-                             hovertext = df["subcategory name"],
-                             hoverlabel = dict(font_size = 15),
-                             hovertemplate = "$%{y} On %{x} <extra></extra>: Subcategory: %{hovertext}",
+                             #hovertext = df["subcategory name"],
+                             #hoverlabel = dict(font_size = 15),
+                             #hovertemplate = "$%{y} On %{x} <extra></extra>: Subcategory: %{hovertext}",
                              mode = "markers",
                              marker_color = df["color"],
                              marker_size = df["amount"] / 5,
                              showlegend = False))
     
-    return fig
+    image_file = "assets/scatter_chart.png"
+    fig.write_image(image_file, engine = "kaleido")
+    
+    return image_file
