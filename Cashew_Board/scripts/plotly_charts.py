@@ -99,7 +99,7 @@ def plot_income_funnel(df: pd.DataFrame):
     df = df[df["income"] == True] # Keeps only incomes
     df = df.groupby(by = ["category name", "subcategory name", "color"]).agg({"amount": "sum"}).reset_index().sort_values(by = "amount", ascending = False)
     
-    fig = go.Figure(layout = go.Layout(height = 450, width = 750, title = "Income Funnel Chart", template = "plotly_dark"))
+    fig = go.Figure(layout = go.Layout(height = 450, width = 700, title = "Income Funnel Chart", template = "plotly_dark"))
     
     fig.add_trace(go.Funnel(x = df["amount"],
                             y = df["category name"],
@@ -117,7 +117,7 @@ def plot_category_map(df: pd.DataFrame, category : str):
     df["subcategory name"] = df["subcategory name"].apply(lambda row: "None" if row == "" else row)
     df = df.groupby(by = ["date", "color", "category name", "subcategory name"]).agg({"amount": "sum"}).reset_index()
     
-    fig = go.Figure(layout = go.Layout(height = 450, width = 650, title = "Expenses Map by Category", template = "plotly_dark"))
+    fig = go.Figure(layout = go.Layout(height = 450, width = 700, title = "Expenses Map by Category", template = "plotly_dark"))
     fig.add_trace(go.Scatter(x = df["date"],
                              x0= df["subcategory name"],
                              y = df["amount"],
