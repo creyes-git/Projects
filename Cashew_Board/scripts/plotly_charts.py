@@ -1,13 +1,14 @@
 import pandas as pd 
-import plotly.express as px
 import plotly.graph_objects as go
 
 
 def plot_hist_income_expense(df: pd.DataFrame):
     
-    df["date"] = df["date"].dt.strftime("%Y-%m") # Format date to keep only year and month
-    df_income = df[df["income"] == True] # Keeps only incomes
-    df_expense = df[df["income"] == False] # Keeps only expenses
+    df_temp = df.copy()
+    
+    df_temp["date"] = df_temp["date"].dt.strftime("%Y-%m") # Format date to keep only year and month
+    df_income = df_temp[df_temp["income"] == True] # Keeps only incomes
+    df_expense = df_temp[df_temp["income"] == False] # Keeps only expenses
     df_income = df_income[["amount", "date"]].groupby(["date"]).agg({"amount": "sum"}).reset_index() # Group by date and sum amount
     df_expense = df_expense[["amount", "date"]].groupby(["date"]).agg({"amount": "sum"}).reset_index()
     

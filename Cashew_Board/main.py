@@ -18,7 +18,7 @@ file_on_folder = os.listdir(data_folder)[0]
 df = pd.read_csv(fr"{data_folder}/{file_on_folder}", engine = "pyarrow", keep_default_na = False)
 df["color"] = df["color"].apply(android_to_hex) # Transform color code to hex
 df['amount'] = df['amount'].abs() # Transform negative values to positive
-#df["date"] = pd.to_datetime(df["date"].dt.strftime("%m-%d-%Y")) # Format date to keep only month-day-year
+df["date"] = pd.to_datetime(df["date"].dt.strftime("%m-%d-%Y")) # Format date to keep only month-day-year
 
 
 with st.sidebar:

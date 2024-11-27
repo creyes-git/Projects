@@ -16,7 +16,7 @@
 
 .bubble-container{display:inline-block;
                   width:410px;
-                  margin-bottom:4px;
+                  margin-bottom:1px;
                   background:#dbdbdb;
                   border:1px solid #a3a3a3;
                   border-radius:45px;
@@ -24,7 +24,7 @@
                   color:#000000;
                   font-size:.95rem;
                   font-weight:normal;
-                  line-height:3rem;
+                  line-height:2.7rem;
                   text-align:center;
                   text-shadow:2px 2px 2px rgba(255, 255, 255, 0.9);
                   text-transform:uppercase;
