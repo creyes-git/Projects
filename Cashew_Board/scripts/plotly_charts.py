@@ -95,10 +95,11 @@ def plot_saving_rate(df: pd.DataFrame):
 
 def plot_income_funnel(df: pd.DataFrame):
     
-    df = df[df["income"] == True] # Keeps only incomes
+    df = df[df["income"] == True] # Keeps only incomes and subcategory if not empty
+    df["category name"] = df.apply(lambda row: row["subcategory name"] if row["subcategory name"] != "" else row["category name"], axis = 1)
     df = df.groupby(by = ["category name", "subcategory name", "color"]).agg({"amount": "sum"}).reset_index().sort_values(by = "amount", ascending = False)
     
-    fig = go.Figure(layout = go.Layout(height = 450, width = 700, title = "Income Funnel Chart", template = "plotly_dark"))
+    fig = go.Figure(layout = go.Layout(height = 450, width = 700, title = "Income Distribution Funnel Chart", template = "plotly_dark"))
     
     fig.add_trace(go.Funnel(x = df["amount"],
                             y = df["category name"],
@@ -117,16 +118,21 @@ def plot_category_map(df: pd.DataFrame, category : str):
     df = df.groupby(by = ["date", "color", "category name", "subcategory name"]).agg({"amount": "sum"}).reset_index()
     
     fig = go.Figure(layout = go.Layout(height = 450, width = 700, title = "Expenses Map by Category", template = "plotly_dark"))
+    
     fig.add_trace(go.Scatter(x = df["date"],
                              x0= df["subcategory name"],
                              y = df["amount"],
-                             #hovertext = df["subcategory name"],
-                             #hoverlabel = dict(font_size = 15),
-                             #hovertemplate = "$%{y} On %{x} <extra></extra>: Subcategory: %{hovertext}",
                              mode = "markers",
                              marker_color = df["color"],
-                             marker_size = df["amount"] / 5,
+                             marker_size = 7,
                              showlegend = False))
+    
+    fig.add_hline(y = df["amount"].mean(),
+                  line_dash = "dot",
+                  line_color = "white",
+                  line_width = 1,
+                  annotation = dict(text = "Mean", x = 1.1, y = df["amount"].mean(), showarrow = False, font = dict(size = 15, color = "white")))
+    
     
     image_file = "assets/scatter_chart.png"
     fig.write_image(image_file, engine = "kaleido")

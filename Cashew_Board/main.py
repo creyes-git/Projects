@@ -65,12 +65,13 @@ if df.empty == False:
         category = c1.selectbox(label = "", options = df[df["income"] == False]["category name"].unique(), index = None) # Select Expense Category
         c1.image(plot_category_map(df, category), use_container_width = True)
         c2.plotly_chart(plot_pie_categories(df), use_container_width = True)
+    
         
 else:
     c1, c2, c3, c4, c5 = st.columns(5)
     c2.title("_Upload Your_")
     c3.title(":orange[CASHEW]:sunglasses:")
-    c4.title("_CSV To Start_")
+    c4.title("_CSV To_ :green[_Start_]")
     c2.write("\n")
     c1, c2, c3 = st.columns(3)
     c2.image("assets/images/no-search.png")
