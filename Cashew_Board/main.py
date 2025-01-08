@@ -1,6 +1,5 @@
-from scripts.utils import android_to_hex
+from scripts.utils import android_to_hex, validate_csv_df
 from scripts.plotly_charts import *
-from scripts.csv_validation import validate_csv_df
 import streamlit as st
 import pandas as pd
 
