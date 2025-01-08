@@ -58,7 +58,6 @@ def plot_pie_categories(df: pd.DataFrame):
                          insidetextorientation = "radial",
                          insidetextfont = dict(color = "black"),
                          showlegend = False,
-                         hole = 0.4,
                          marker = dict(colors = df["color"],)))
     
     fig.add_annotation(x = 0.5, 
@@ -82,7 +81,7 @@ def plot_saving_rate(df: pd.DataFrame):
                          hovertemplate = "%{label}: $%{value} <extra></extra>",
                          hoverlabel = dict(font_size = 15),
                          showlegend = False,
-                         hole = 0.4,
+                         hole = 0.5,
                          marker = dict(colors = ["#ff7043", "#4caf50"])))
     
     fig.add_annotation(x = 0.5, 
