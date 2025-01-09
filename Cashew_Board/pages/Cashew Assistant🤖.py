@@ -48,6 +48,10 @@ else:
             
             if validate_csv_df(df): # Validate CSV Columns
                 st.success(body = "Data Loaded Successfully!", icon = "🥳")
+                df_smart = SmartDataframe(df, 
+                              name = "My DataFrame", 
+                              description = "Brief description of what the dataframe contains",
+                              config={"llm": llm})
             else:
                 st.error(body = "Data validation failed, check your CSV file and try again!", icon = "😢")
                 df = pd.DataFrame()
@@ -56,11 +60,12 @@ else:
             df = pd.DataFrame()
 
 
-user_input = st.chat_input(placeholder = "Ask me anything about your Cashew data...")
+if df.empty == False:
+    user_input = st.chat_input(placeholder = "Ask me anything about your Cashew data...")
 
-if user_input:
-    
-    st.chat_message("human").write(user_input)
-    
-    response = df_smart.chat(query = user_input)
-    st.chat_message("ai").write(response)
+    if user_input:
+        
+        st.chat_message("human").write(user_input)
+        
+        response = df_smart.chat(query = user_input)
+        st.chat_message("ai").write(response)
