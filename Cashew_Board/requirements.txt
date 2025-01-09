@@ -2,3 +2,5 @@ plotly
 pandas
 streamlit
 kaleido
+pandasai
+pygwalker

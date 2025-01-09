@@ -1,5 +1,5 @@
-from scripts.utils import android_to_hex, validate_csv_df
-from scripts.plotly_charts import *
+from modules.utils import android_to_hex, validate_csv_df
+from modules.plotly_charts import *
 import streamlit as st
 import pandas as pd
 
@@ -13,15 +13,6 @@ with open("assets/style.css") as f:
 
 # SIDEBAR------------------------------------------------------------------------------------------------------------------------------------------------------------
 with st.sidebar:
-    c1, c2 = st.columns(2)
-    
-    c2.markdown('<span class="bubble type-beiche">Welcome</span>', unsafe_allow_html = True)
-    c2.markdown('<span class="bubble type-blue">TO</span>', unsafe_allow_html = True)
-    c2.markdown('<span class="bubble type-green">Cashew</span>', unsafe_allow_html = True)
-    c2.markdown('<span class="bubble type-red">Board</span>', unsafe_allow_html = True)
-
-    c1.image("assets/images/icon.png", width = 115, clamp = True)
-    st.markdown("---")
     
     # READ CASH APP CSV TO DATAFRAME
     cashew_csv_file = st.file_uploader(label = "Your Cashew CSV Data Here", type = ["csv"], accept_multiple_files = False, help = "Go to Cashew App > Settings > Export Data > Export CSV")
@@ -68,10 +59,22 @@ if df.empty == False:
     
         
 else:
+    c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
+    #c1.markdown('<span class="bubble type-beiche">Welcome</span>', unsafe_allow_html = True)
+    #c2.markdown('<span class="bubble type-blue">TO</span>', unsafe_allow_html = True)
+    c4.image("assets/images/icon.png", use_container_width = True, clamp = True) # Cashew Board Icon
+    #c4.markdown('<span class="bubble type-green">Cashew</span>', unsafe_allow_html = True)
+    #c5.markdown('<span class="bubble type-red">Board</span>', unsafe_allow_html = True)
+    
     c1, c2, c3, c4, c5 = st.columns(5)
     c2.title("_Upload Your_")
     c3.title(":orange[CASHEW]:sunglasses:")
     c4.title("_CSV To_ :green[_Start_]")
-    c2.write("\n")
+    
+    st.write("\n")
     c1, c2, c3 = st.columns(3)
     c2.image("assets/images/no-search.png")
+    
+    
+
+
