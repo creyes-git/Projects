@@ -1,23 +1,23 @@
 from modules.utils import android_to_hex, validate_csv_df
-from modules.plotly_charts import *
 import streamlit as st
-from pandasai import SmartDataframe
-from langchain_groq import ChatGroq
 import pandas as pd
+from pandasai import SmartDataframe, clear_cache
+from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 import os
 
 
-load_dotenv()
-
-
 st.set_page_config(page_title = "Cashew Board", page_icon = "🥠", layout = "wide", initial_sidebar_state = "expanded")
+
+
+load_dotenv()
 
 
 st.title("_Talk Your Data With_ :green[PandasAI🐼]")
 st.write("---")
 
 
+# Load the Groq Model to use with PandasAI
 llm = ChatGroq(model = "llama-3.1-70b-versatile",
                temperature = 1,
                max_tokens = 300,
@@ -25,6 +25,11 @@ llm = ChatGroq(model = "llama-3.1-70b-versatile",
                stop_sequences = ["stop", "quit", "exit"])
 
 
+with st.sidebar:
+    st.write("If you want to start over, clear the cache:")
+    clear_cache_button = st.button(label = "Clear Chat Cache", help = "Clear the cache and start over")
+    
+    
 if os.path.exists("data/cashew_user_data.csv"): # Read the data if already exists
     
     df = pd.read_csv(r"data/cashew_user_data.csv", engine = "pyarrow", keep_default_na = False)
@@ -36,7 +41,7 @@ if os.path.exists("data/cashew_user_data.csv"): # Read the data if already exist
 
 else:
     with st.sidebar:
-        
+
         # READ CASH APP CSV TO DATAFRAME
         cashew_csv_file = st.file_uploader(label = "Your Cashew CSV Data Here", type = ["csv"], accept_multiple_files = False, help = "Go to Cashew App > Settings > Export Data > Export CSV")
         
@@ -69,3 +74,8 @@ if df.empty == False:
         
         response = df_smart.chat(query = user_input)
         st.chat_message("ai").write(response)
+        
+        
+if clear_cache_button:
+    clear_cache()
+        
