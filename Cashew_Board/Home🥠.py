@@ -5,7 +5,7 @@ import pandas as pd
 
 
 st.set_page_config(page_title = "Cashew Board", page_icon = "🥠", layout = "wide", initial_sidebar_state = "expanded") # Setting Streamlit Main Page Config
-
+    
 
 with open("assets/style.css") as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html = True) # Setting Custom CSS
