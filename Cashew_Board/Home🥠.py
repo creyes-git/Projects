@@ -25,6 +25,7 @@ with st.sidebar:
         
         if validate_csv_df(df): # Validate CSV Columns
             st.success(body = "Data Loaded Successfully!", icon = "🥳")
+            df.to_csv(r"data/cashew_user_data.csv", index = False) # Save the data to a CSV file
         else:
             st.error(body = "Data validation failed, check your CSV file and try again!", icon = "😢")
             df = pd.DataFrame()
