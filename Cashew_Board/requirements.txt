@@ -1,6 +1,5 @@
-plotly
-pandas
 streamlit
+plotly
 kaleido
 pandasai
 pygwalker
