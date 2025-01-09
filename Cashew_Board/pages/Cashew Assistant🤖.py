@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 import os
 
 
-st.set_page_config(page_title = "Cashew Board", page_icon = "🥠", layout = "wide", initial_sidebar_state = "expanded")
+st.set_page_config(page_title = "Cashew Board", page_icon = "🥠", layout = "centered", initial_sidebar_state = "expanded")
 
 
 load_dotenv()
@@ -19,15 +19,15 @@ st.write("---")
 
 # Load the Groq Model to use with PandasAI
 llm = ChatGroq(model = "llama-3.1-70b-versatile",
-               temperature = 1,
+               temperature = 0,
                max_tokens = 300,
                max_retries = 2,
                stop_sequences = ["stop", "quit", "exit"])
 
 
-with st.sidebar:
-    st.write("If you want to start over, clear the cache:")
-    clear_cache_button = st.button(label = "Clear Chat Cache", help = "Clear the cache and start over")
+#with st.sidebar:
+#    st.write("If you want to start over, clear the cache:")
+#    clear_cache_button = st.button(label = "Clear Chat Cache", help = "Clear the cache and start over")
     
     
 if os.path.exists("data/cashew_user_data.csv"): # Read the data if already exists
@@ -37,7 +37,7 @@ if os.path.exists("data/cashew_user_data.csv"): # Read the data if already exist
     df_smart = SmartDataframe(df, 
                               name = "My DataFrame", 
                               description = "Brief description of what the dataframe contains",
-                              config={"llm": llm})
+                              config = {"llm": llm, "enable_cache": False})
 
 else:
     with st.sidebar:
@@ -56,7 +56,7 @@ else:
                 df_smart = SmartDataframe(df, 
                               name = "My DataFrame", 
                               description = "Brief description of what the dataframe contains",
-                              config={"llm": llm})
+                              config = {"llm": llm, "enable_cache": False})
             else:
                 st.error(body = "Data validation failed, check your CSV file and try again!", icon = "😢")
                 df = pd.DataFrame()
@@ -71,11 +71,15 @@ if df.empty == False:
     if user_input:
         
         st.chat_message("human").write(user_input)
+        os.remove("exports/charts/temp_chart.png") if os.path.exists("exports/charts/temp_chart.png") else None
         
         response = df_smart.chat(query = user_input)
+        
         st.chat_message("ai").write(response)
+        if os.path.exists("exports/charts/temp_chart.png"):
+            st.image(r"exports/charts/temp_chart.png", use_container_width = True, clamp = True)
         
         
-if clear_cache_button:
-    clear_cache()
+#if clear_cache_button:
+#    clear_cache()
         

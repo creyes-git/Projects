@@ -393,3 +393,1522 @@ result = {'type': 'number', 'value': average_expenditure}
 2025-01-09 16:40:09 [INFO] Executing Step 7: ResultValidation
 2025-01-09 16:40:09 [INFO] Answer: {'type': 'number', 'value': 19.75}
 2025-01-09 16:40:09 [INFO] Executing Step 8: ResultParsing
+2025-01-09 16:53:58 [INFO] Question: Give me the highest expense in the year 2024
+2025-01-09 16:53:58 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-01-09 16:53:58 [INFO] Prompt ID: e200d1ac-57c5-4402-8f85-0d1fe3ea30d4
+2025-01-09 16:53:58 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-01-09 16:53:58 [INFO] Executing Step 0: ValidatePipelineInput
+2025-01-09 16:53:58 [INFO] Executing Step 1: CacheLookup
+2025-01-09 16:53:58 [INFO] Executing Step 2: PromptGeneration
+2025-01-09 16:53:58 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,600.0,USD,,WF Journey de Mima,2024-07-09,True,null,Fast Food,Cleanliness,#66bb6a,gift.png,,Gordi,
+Main,133.0,USD,,"Proton Mail
+",2024-04-02,False,null,Gifts,Tip,#ffee58,taxi(1).png,,Colectivo,
+Main,562.0,USD,,OnePlus 11 Bill,2024-02-12,True,null,Shopping,Beauty,#ef5350,subscription.png,,,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Give me the highest expense in the year 2024
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-01-09 16:53:58 [INFO] Executing Step 3: CodeGenerator
+2025-01-09 16:54:04 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 503 Service Unavailable"
+2025-01-09 16:54:04 [ERROR] Pipeline failed on step 3: Error code: 503 - {'error': {'message': 'Service Unavailable', 'type': 'internal_server_error'}}
+2025-01-09 16:54:19 [INFO] Question: Average expenses
+2025-01-09 16:54:19 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-01-09 16:54:19 [INFO] Prompt ID: 621131a3-940f-4fce-8255-fee075f5083e
+2025-01-09 16:54:19 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-01-09 16:54:19 [INFO] Executing Step 0: ValidatePipelineInput
+2025-01-09 16:54:19 [INFO] Executing Step 1: CacheLookup
+2025-01-09 16:54:19 [INFO] Executing Step 2: PromptGeneration
+2025-01-09 16:54:19 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,11.5,USD,,Monitor Amazon 139$ con rebaja y mi gift card + Hdmi,2024-07-25,True,null,Other Expense,Home Items,#26c6da,subscription.png,,Gordi,
+Main,103.5,USD,,"Pendientes otra dirección:
+66 Agua 
+60 Corriente
+
+Actuales (15 días):
+30 Corriente
+30 Otros Bills",2024-12-23,False,null,Other Income,Gas,#26a69a,shopping.png,,,
+Main,27.0,USD,,Equifax,2024-11-18,True,null,Health Insurance,Bills & Fees,#ab47bc,groceries.png,,Colectivo,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Average expenses
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-01-09 16:54:19 [INFO] Executing Step 3: CodeGenerator
+2025-01-09 16:54:21 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 16:54:21 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,11.5,USD,,Monitor Amazon 139$ con rebaja y mi gift card + Hdmi,2024-07-25,True,null,Other Expense,Home Items,#26c6da,subscription.png,,Gordi,
+Main,103.5,USD,,"Pendientes otra dirección:
+66 Agua 
+60 Corriente
+
+Actuales (15 días):
+30 Corriente
+30 Otros Bills",2024-12-23,False,null,Other Income,Gas,#26a69a,shopping.png,,,
+Main,27.0,USD,,Equifax,2024-11-18,True,null,Health Insurance,Bills & Fees,#ab47bc,groceries.png,,Colectivo,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Average expenses
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-01-09 16:54:21 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+# Assuming dfs is a list of dataframes and we want to calculate average expenses for each dataframe
+average_expenses = []
+
+for df in dfs:
+    # Filter rows where income is False (i.e., expenses)
+    expenses_df = df[df['income'] == False]
+    
+    # Calculate average expense
+    avg_expense = expenses_df['amount'].mean()
+    
+    average_expenses.append(avg_expense)
+
+# Calculate overall average expense
+overall_avg_expense = sum(average_expenses) / len(average_expenses)
+
+# Plot a bar chart of average expenses for each dataframe
+plt.figure(figsize=(10,6))
+plt.bar(range(len(average_expenses)), average_expenses)
+plt.xlabel('Dataframe Index')
+plt.ylabel('Average Expense')
+plt.title('Average Expenses by Dataframe')
+plt.savefig('average_expenses_plot.png')
+
+# Declare result var: 
+result = {
+    "type": "number", 
+    "value": overall_avg_expense
+}
+            ```
+            
+2025-01-09 16:54:21 [INFO] Executing Step 4: CachePopulation
+2025-01-09 16:54:21 [INFO] Executing Step 5: CodeCleaning
+2025-01-09 16:54:21 [INFO] Saving charts to /workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png
+2025-01-09 16:54:21 [INFO] 
+Code running:
+```
+average_expenses = []
+for df in dfs:
+    expenses_df = df[df['income'] == False]
+    avg_expense = expenses_df['amount'].mean()
+    average_expenses.append(avg_expense)
+overall_avg_expense = sum(average_expenses) / len(average_expenses)
+plt.figure(figsize=(10, 6))
+plt.bar(range(len(average_expenses)), average_expenses)
+plt.xlabel('Dataframe Index')
+plt.ylabel('Average Expense')
+plt.title('Average Expenses by Dataframe')
+plt.savefig('/workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png')
+result = {'type': 'number', 'value': overall_avg_expense}
+        ```
+2025-01-09 16:54:21 [INFO] Executing Step 6: CodeExecution
+2025-01-09 16:54:22 [INFO] Executing Step 7: ResultValidation
+2025-01-09 16:54:22 [INFO] Answer: {'type': 'number', 'value': 24.338740458015266}
+2025-01-09 16:54:22 [INFO] Executing Step 8: ResultParsing
+2025-01-09 16:54:32 [INFO] Question: Average expenses on 2025
+2025-01-09 16:54:32 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-01-09 16:54:32 [INFO] Prompt ID: d2f24c85-7291-4553-92c1-a4901b29fb68
+2025-01-09 16:54:32 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-01-09 16:54:32 [INFO] Executing Step 0: ValidatePipelineInput
+2025-01-09 16:54:32 [INFO] Executing Step 1: CacheLookup
+2025-01-09 16:54:32 [INFO] Executing Step 2: PromptGeneration
+2025-01-09 16:54:32 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,42.0,USD,,Tia tita,2024-01-14,True,null,Subscription,Coin Saving,#26a69a,subscription.png,,Gordi,
+Main,330.0,USD,,"Proton Mail
+",2024-11-27,True,null,Taxi,Beauty,#ef5350,home2.png,,Colectivo,
+Main,100.0,USD,,"Tuta Mail
+",2024-05-31,False,null,Fast Food,Gifts,#ff7043,fast-food.png,,,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Average expenses on 2025
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-01-09 16:54:32 [INFO] Executing Step 3: CodeGenerator
+2025-01-09 16:54:34 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 16:54:34 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,42.0,USD,,Tia tita,2024-01-14,True,null,Subscription,Coin Saving,#26a69a,subscription.png,,Gordi,
+Main,330.0,USD,,"Proton Mail
+",2024-11-27,True,null,Taxi,Beauty,#ef5350,home2.png,,Colectivo,
+Main,100.0,USD,,"Tuta Mail
+",2024-05-31,False,null,Fast Food,Gifts,#ff7043,fast-food.png,,,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Average expenses on 2025
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-01-09 16:54:34 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Filter data for year 2025 and calculate average expenses
+df = dfs[0]
+df['date'] = pd.to_datetime(df['date'])
+df_2025 = df[df['date'].dt.year == 2025]
+average_expenses = df_2025['amount'][df_2025['income'] == False].mean()
+
+# Declare result var: 
+result = {
+    "type": "number", 
+    "value": average_expenses
+}
+
+# If you want to plot a chart, uncomment the following code
+# plt.figure(figsize=(10,6))
+# plt.bar(df_2025['date'].dt.month, df_2025['amount'][df_2025['income'] == False])
+# plt.title('Monthly Expenses in 2025')
+# plt.xlabel('Month')
+# plt.ylabel('Expenses')
+# plt.savefig('expenses_2025.png')
+# result = {
+#     "type": "plot", 
+#     "value": "expenses_2025.png"
+# }
+            ```
+            
+2025-01-09 16:54:34 [INFO] Executing Step 4: CachePopulation
+2025-01-09 16:54:34 [INFO] Executing Step 5: CodeCleaning
+2025-01-09 16:54:34 [INFO] Saving charts to /workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png
+2025-01-09 16:54:34 [INFO] 
+Code running:
+```
+df = dfs[0]
+df['date'] = pd.to_datetime(df['date'])
+df_2025 = df[df['date'].dt.year == 2025]
+average_expenses = df_2025['amount'][df_2025['income'] == False].mean()
+result = {'type': 'number', 'value': average_expenses}
+        ```
+2025-01-09 16:54:34 [INFO] Executing Step 6: CodeExecution
+2025-01-09 16:54:34 [INFO] Executing Step 7: ResultValidation
+2025-01-09 16:54:34 [INFO] Answer: {'type': 'number', 'value': 64.0576923076923}
+2025-01-09 16:54:34 [INFO] Executing Step 8: ResultParsing
+2025-01-09 16:56:51 [INFO] Question: What is my Savings Rate for the year 2024?
+2025-01-09 16:56:51 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-01-09 16:56:51 [INFO] Prompt ID: 138fe4a6-4b37-42c5-a8ed-30801cd6a971
+2025-01-09 16:56:51 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-01-09 16:56:51 [INFO] Executing Step 0: ValidatePipelineInput
+2025-01-09 16:56:51 [INFO] Executing Step 1: CacheLookup
+2025-01-09 16:56:51 [INFO] Executing Step 2: PromptGeneration
+2025-01-09 16:56:51 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,1462.0,USD,,Canal Cesar,2024-07-19,True,null,Fast Food,Gas,#ab47bc,taxi(1).png,,Colectivo,
+Main,73.0,USD,,Mechanical Keyboard,2024-07-24,False,null,Salary,Beauty,#ff7043,heart.png,,,
+Main,30.0,USD,,Codigo Facilito 1 Year Premium,2024-09-29,False,null,401k - 25% Match,Home Security,#4caf50,home2.png,,Gordi,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is my Savings Rate for the year 2024?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-01-09 16:56:51 [INFO] Executing Step 3: CodeGenerator
+2025-01-09 16:56:52 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 16:56:52 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,1462.0,USD,,Canal Cesar,2024-07-19,True,null,Fast Food,Gas,#ab47bc,taxi(1).png,,Colectivo,
+Main,73.0,USD,,Mechanical Keyboard,2024-07-24,False,null,Salary,Beauty,#ff7043,heart.png,,,
+Main,30.0,USD,,Codigo Facilito 1 Year Premium,2024-09-29,False,null,401k - 25% Match,Home Security,#4caf50,home2.png,,Gordi,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is my Savings Rate for the year 2024?
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-01-09 16:56:52 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Filter the dataframe for the year 2024
+df_2024 = dfs[0][dfs[0]['date'].dt.year == 2024]
+
+# Calculate total income and total expenses
+total_income = df_2024[df_2024['income'] == True]['amount'].sum()
+total_expenses = df_2024[df_2024['income'] == False]['amount'].sum()
+
+# Calculate savings rate
+savings_rate = (total_income - total_expenses) / total_income
+
+# Plot a pie chart to visualize the savings rate
+plt.figure(figsize=(10,6))
+plt.pie([total_income - total_expenses, total_expenses], labels=['Savings', 'Expenses'], autopct='%1.1f%%')
+plt.title('Savings Rate for 2024')
+plt.savefig('savings_rate_2024.png')
+
+# Declare result var: 
+result = { 
+    "type": "plot", 
+    "value": "savings_rate_2024.png" 
+}
+            ```
+            
+2025-01-09 16:56:52 [INFO] Executing Step 4: CachePopulation
+2025-01-09 16:56:52 [INFO] Executing Step 5: CodeCleaning
+2025-01-09 16:56:52 [INFO] Saving charts to /workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png
+2025-01-09 16:56:52 [INFO] 
+Code running:
+```
+df_2024 = dfs[0][dfs[0]['date'].dt.year == 2024]
+total_income = df_2024[df_2024['income'] == True]['amount'].sum()
+total_expenses = df_2024[df_2024['income'] == False]['amount'].sum()
+savings_rate = (total_income - total_expenses) / total_income
+plt.figure(figsize=(10, 6))
+plt.pie([total_income - total_expenses, total_expenses], labels=['Savings', 'Expenses'], autopct='%1.1f%%')
+plt.title('Savings Rate for 2024')
+plt.savefig('/workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png')
+result = {'type': 'plot', 'value': '/workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png'}
+        ```
+2025-01-09 16:56:52 [INFO] Executing Step 6: CodeExecution
+2025-01-09 16:56:52 [INFO] Executing Step 7: ResultValidation
+2025-01-09 16:56:52 [INFO] Answer: {'type': 'plot', 'value': '/workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png'}
+2025-01-09 16:56:52 [INFO] Executing Step 8: ResultParsing
+2025-01-09 17:00:38 [INFO] Question: What is my Saving Rate for the year 2024
+2025-01-09 17:00:38 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-01-09 17:00:38 [INFO] Prompt ID: ffbcc229-bd50-4856-9505-c1468ed45354
+2025-01-09 17:00:38 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-01-09 17:00:38 [INFO] Executing Step 0: ValidatePipelineInput
+2025-01-09 17:00:38 [INFO] Executing Step 1: CacheLookup
+2025-01-09 17:00:38 [INFO] Executing Step 2: PromptGeneration
+2025-01-09 17:00:38 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,146.0,USD,,Remesas Tía Tita Wi,2024-12-29,True,null,Health Insurance,Tickets,#26a69a,subscription.png,,Colectivo,
+Main,200.0,USD,,"Pendientes otra dirección:
+66 Agua 
+60 Corriente
+
+Actuales (15 días):
+30 Corriente
+30 Otros Bills",2024-05-22,False,null,Subscription,Gifts,#26c6da,investment.png,,,
+Main,27.5,USD,,Coursera Lite,2024-09-05,True,null,Gifts,Coin Saving,#f44336,groceries.png,,Gordi,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is my Saving Rate for the year 2024
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-01-09 17:00:38 [INFO] Executing Step 3: CodeGenerator
+2025-01-09 17:00:40 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 17:00:40 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,146.0,USD,,Remesas Tía Tita Wi,2024-12-29,True,null,Health Insurance,Tickets,#26a69a,subscription.png,,Colectivo,
+Main,200.0,USD,,"Pendientes otra dirección:
+66 Agua 
+60 Corriente
+
+Actuales (15 días):
+30 Corriente
+30 Otros Bills",2024-05-22,False,null,Subscription,Gifts,#26c6da,investment.png,,,
+Main,27.5,USD,,Coursera Lite,2024-09-05,True,null,Gifts,Coin Saving,#f44336,groceries.png,,Gordi,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ What is my Saving Rate for the year 2024
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-01-09 17:00:40 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+
+# Calculate total income for the year 2024
+total_income_2024 = dfs[0][dfs[0]['date'].str.contains('2024')][dfs[0]['income'] == True]['amount'].sum()
+
+# Calculate total expenditure for the year 2024
+total_expenditure_2024 = dfs[0][dfs[0]['date'].str.contains('2024')][dfs[0]['income'] == False]['amount'].sum()
+
+# Calculate saving rate
+saving_rate = (total_income_2024 - total_expenditure_2024) / total_income_2024 * 100 if total_income_2024 != 0 else 0
+
+# Plot a simple bar chart to visualize the result
+plt.bar(['Total Income', 'Total Expenditure'], [total_income_2024, total_expenditure_2024])
+plt.xlabel('Category')
+plt.ylabel('Amount (USD)')
+plt.title('Total Income and Expenditure in 2024')
+plt.savefig('saving_rate_2024.png')
+plt.close()
+
+# Declare result var: 
+result = {
+    "type": "number", 
+    "value": saving_rate
+}
+            ```
+            
+2025-01-09 17:00:40 [INFO] Executing Step 4: CachePopulation
+2025-01-09 17:00:40 [INFO] Executing Step 5: CodeCleaning
+2025-01-09 17:00:40 [INFO] Saving charts to /workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png
+2025-01-09 17:00:40 [INFO] 
+Code running:
+```
+total_income_2024 = dfs[0][dfs[0]['date'].str.contains('2024')][dfs[0]['income'] == True]['amount'].sum()
+total_expenditure_2024 = dfs[0][dfs[0]['date'].str.contains('2024')][dfs[0]['income'] == False]['amount'].sum()
+saving_rate = (total_income_2024 - total_expenditure_2024) / total_income_2024 * 100 if total_income_2024 != 0 else 0
+plt.bar(['Total Income', 'Total Expenditure'], [total_income_2024, total_expenditure_2024])
+plt.xlabel('Category')
+plt.ylabel('Amount (USD)')
+plt.title('Total Income and Expenditure in 2024')
+plt.savefig('/workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png')
+plt.close()
+result = {'type': 'number', 'value': saving_rate}
+        ```
+2025-01-09 17:00:40 [INFO] Executing Step 6: CodeExecution
+2025-01-09 17:00:40 [ERROR] Failed with error: Traceback (most recent call last):
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandasai/pipelines/chat/code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandasai/pipelines/chat/code_execution.py", line 174, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/generic.py", line 5902, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/accessor.py", line 182, in __get__
+    accessor_obj = self._accessor(obj)
+                   ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/strings/accessor.py", line 181, in __init__
+    self._inferred_dtype = self._validate(data)
+                           ^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/strings/accessor.py", line 235, in _validate
+    raise AttributeError("Can only use .str accessor with string values!")
+AttributeError: Can only use .str accessor with string values!
+
+2025-01-09 17:00:40 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2025-01-09 17:00:40 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2025-01-09 17:00:40 [INFO] Executing Step 0: ErrorPromptGeneration
+2025-01-09 17:00:40 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,146.0,USD,,Remesas Tía Tita Wi,2024-12-29,True,null,Health Insurance,Tickets,#26a69a,subscription.png,,Colectivo,
+Main,200.0,USD,,"Pendientes otra dirección:
+66 Agua 
+60 Corriente
+
+Actuales (15 días):
+30 Corriente
+30 Otros Bills",2024-05-22,False,null,Subscription,Gifts,#26c6da,investment.png,,,
+Main,27.5,USD,,Coursera Lite,2024-09-05,True,null,Gifts,Coin Saving,#f44336,groceries.png,,Gordi,
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ What is my Saving Rate for the year 2024
+
+You generated this python code:
+total_income_2024 = dfs[0][dfs[0]['date'].str.contains('2024')][dfs[0]['income'] == True]['amount'].sum()
+total_expenditure_2024 = dfs[0][dfs[0]['date'].str.contains('2024')][dfs[0]['income'] == False]['amount'].sum()
+saving_rate = (total_income_2024 - total_expenditure_2024) / total_income_2024 * 100 if total_income_2024 != 0 else 0
+plt.bar(['Total Income', 'Total Expenditure'], [total_income_2024, total_expenditure_2024])
+plt.xlabel('Category')
+plt.ylabel('Amount (USD)')
+plt.title('Total Income and Expenditure in 2024')
+plt.savefig('/workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png')
+plt.close()
+result = {'type': 'number', 'value': saving_rate}
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandasai/pipelines/chat/code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandasai/pipelines/chat/code_execution.py", line 174, in execute_code
+    exec(code, environment)
+  File "<string>", line 1, in <module>
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/generic.py", line 5902, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/accessor.py", line 182, in __get__
+    accessor_obj = self._accessor(obj)
+                   ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/strings/accessor.py", line 181, in __init__
+    self._inferred_dtype = self._validate(data)
+                           ^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/strings/accessor.py", line 235, in _validate
+    raise AttributeError("Can only use .str accessor with string values!")
+AttributeError: Can only use .str accessor with string values!
+
+
+Fix the python code above and return the new python code:
+2025-01-09 17:00:40 [INFO] Executing Step 1: CodeGenerator
+2025-01-09 17:00:41 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 17:00:41 [ERROR] Pipeline failed on step 1: No code found in the response
+2025-01-09 17:00:41 [ERROR] Pipeline failed on step 6: No code found in the response
+2025-01-09 17:00:56 [INFO] Question: My Savings Rate of 2024
+2025-01-09 17:00:56 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-01-09 17:00:56 [INFO] Prompt ID: 4600d37d-669e-40ff-a7d0-6200611ffae8
+2025-01-09 17:00:56 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-01-09 17:00:56 [INFO] Executing Step 0: ValidatePipelineInput
+2025-01-09 17:00:56 [INFO] Executing Step 1: CacheLookup
+2025-01-09 17:00:56 [INFO] Executing Step 2: PromptGeneration
+2025-01-09 17:00:56 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,42.0,USD,,Yude Cumple Regalo Wi,2024-07-07,False,null,Shopping,Cleanliness,#ef5350,groceries.png,,Colectivo,
+Main,1198.0,USD,,Cosas para el bano nuevo,2024-08-05,False,null,Taxi,Home Wifi,#26c6da,subscription.png,,,
+Main,666.0,USD,,34 Turmeric y Magnesio,2024-07-12,True,null,Rent,Beauty,#78909c,bills.png,,Gordi,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ My Savings Rate of 2024
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-01-09 17:00:56 [INFO] Executing Step 3: CodeGenerator
+2025-01-09 17:00:58 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 17:00:58 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,42.0,USD,,Yude Cumple Regalo Wi,2024-07-07,False,null,Shopping,Cleanliness,#ef5350,groceries.png,,Colectivo,
+Main,1198.0,USD,,Cosas para el bano nuevo,2024-08-05,False,null,Taxi,Home Wifi,#26c6da,subscription.png,,,
+Main,666.0,USD,,34 Turmeric y Magnesio,2024-07-12,True,null,Rent,Beauty,#78909c,bills.png,,Gordi,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ My Savings Rate of 2024
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-01-09 17:00:58 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+dfs_income = dfs[0][dfs[0]['income'] == True]
+dfs_expense = dfs[0][dfs[0]['income'] == False]
+
+total_income = dfs_income['amount'].sum()
+total_expense = dfs_expense['amount'].sum()
+
+savings_rate = (total_income - total_expense) / total_income
+
+# Plotting the savings rate
+plt.bar(['Income', 'Expense'], [total_income, total_expense])
+plt.xlabel('Category')
+plt.ylabel('Amount (USD)')
+plt.title('Income vs Expense')
+plt.savefig('savings_rate_chart.png')
+
+# Declare result var: 
+result = {
+    "type": "number", 
+    "value": savings_rate
+}
+            ```
+            
+2025-01-09 17:00:58 [INFO] Executing Step 4: CachePopulation
+2025-01-09 17:00:58 [INFO] Executing Step 5: CodeCleaning
+2025-01-09 17:00:58 [INFO] Saving charts to /workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png
+2025-01-09 17:00:58 [INFO] 
+Code running:
+```
+dfs_income = dfs[0][dfs[0]['income'] == True]
+dfs_expense = dfs[0][dfs[0]['income'] == False]
+total_income = dfs_income['amount'].sum()
+total_expense = dfs_expense['amount'].sum()
+savings_rate = (total_income - total_expense) / total_income
+plt.bar(['Income', 'Expense'], [total_income, total_expense])
+plt.xlabel('Category')
+plt.ylabel('Amount (USD)')
+plt.title('Income vs Expense')
+plt.savefig('/workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png')
+result = {'type': 'number', 'value': savings_rate}
+        ```
+2025-01-09 17:00:58 [INFO] Executing Step 6: CodeExecution
+2025-01-09 17:00:58 [INFO] Executing Step 7: ResultValidation
+2025-01-09 17:00:58 [INFO] Answer: {'type': 'number', 'value': 0.4595699781344814}
+2025-01-09 17:00:58 [INFO] Executing Step 8: ResultParsing
+2025-01-09 17:02:33 [INFO] Question: Savings Rate of 2024
+2025-01-09 17:02:33 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-01-09 17:02:33 [INFO] Prompt ID: 556ed82d-bbc7-45f0-85be-ed50a4d4f53c
+2025-01-09 17:02:33 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-01-09 17:02:33 [INFO] Executing Step 0: ValidatePipelineInput
+2025-01-09 17:02:33 [INFO] Executing Step 1: CacheLookup
+2025-01-09 17:02:33 [INFO] Executing Step 2: PromptGeneration
+2025-01-09 17:02:33 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,53.0,USD,,Ayudantes de Mudanza y Carro,2024-07-14,False,null,Subscription,Home Items,#ffee58,money-bag2.png,,,
+Main,76.0,USD,,Luffy Figure,2024-03-15,True,null,Rent,Credit Card Fee,#26c6da,price-tag.png,,Colectivo,
+Main,176.0,USD,,Referido Chime 100+100,2024-07-30,True,null,Fast Food,Sells,#ab47bc,bills.png,,Gordi,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Savings Rate of 2024
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-01-09 17:02:33 [INFO] Executing Step 3: CodeGenerator
+2025-01-09 17:02:35 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 17:02:35 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,53.0,USD,,Ayudantes de Mudanza y Carro,2024-07-14,False,null,Subscription,Home Items,#ffee58,money-bag2.png,,,
+Main,76.0,USD,,Luffy Figure,2024-03-15,True,null,Rent,Credit Card Fee,#26c6da,price-tag.png,,Colectivo,
+Main,176.0,USD,,Referido Chime 100+100,2024-07-30,True,null,Fast Food,Sells,#ab47bc,bills.png,,Gordi,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+### QUERY
+ Savings Rate of 2024
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-01-09 17:02:35 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+def calculate_savings_rate(df):
+    """
+    Calculate the savings rate of 2024.
+
+    Parameters:
+    df (pd.DataFrame): DataFrame containing the financial data.
+
+    Returns:
+    float: Savings rate of 2024.
+    """
+    # Filter data for 2024
+    df_2024 = df[df['date'].str.contains('2024')]
+    
+    # Calculate total income and expenses
+    total_income = df_2024[df_2024['income'] == True]['amount'].sum()
+    total_expenses = df_2024[df_2024['income'] == False]['amount'].sum()
+    
+    # Calculate savings
+    savings = total_income - total_expenses
+    
+    # Calculate savings rate
+    if total_income == 0:
+        savings_rate = 0
+    else:
+        savings_rate = (savings / total_income) * 100
+    
+    return savings_rate
+
+# Get savings rate for 2024
+savings_rate = calculate_savings_rate(dfs[0])
+
+# Plot a bar chart to visualize the savings rate
+plt.bar(['Savings Rate'], [savings_rate])
+plt.xlabel('Year')
+plt.ylabel('Savings Rate (%)')
+plt.title('Savings Rate of 2024')
+plt.savefig('savings_rate_2024.png')
+
+# Declare result var
+            ```
+            
+2025-01-09 17:02:35 [INFO] Executing Step 4: CachePopulation
+2025-01-09 17:02:35 [INFO] Executing Step 5: CodeCleaning
+2025-01-09 17:02:35 [INFO] Saving charts to /workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png
+2025-01-09 17:02:35 [INFO] 
+Code running:
+```
+def calculate_savings_rate(df):
+    """
+    Calculate the savings rate of 2024.
+
+    Parameters:
+    df (pd.DataFrame): DataFrame containing the financial data.
+
+    Returns:
+    float: Savings rate of 2024.
+    """
+    df_2024 = df[df['date'].str.contains('2024')]
+    total_income = df_2024[df_2024['income'] == True]['amount'].sum()
+    total_expenses = df_2024[df_2024['income'] == False]['amount'].sum()
+    savings = total_income - total_expenses
+    if total_income == 0:
+        savings_rate = 0
+    else:
+        savings_rate = savings / total_income * 100
+    return savings_rate
+
+
+savings_rate = calculate_savings_rate(dfs[0])
+plt.bar(['Savings Rate'], [savings_rate])
+plt.xlabel('Year')
+plt.ylabel('Savings Rate (%)')
+plt.title('Savings Rate of 2024')
+plt.savefig('/workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png')
+        ```
+2025-01-09 17:02:35 [INFO] Executing Step 6: CodeExecution
+2025-01-09 17:02:35 [ERROR] Failed with error: Traceback (most recent call last):
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandasai/pipelines/chat/code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandasai/pipelines/chat/code_execution.py", line 174, in execute_code
+    exec(code, environment)
+  File "<string>", line 22, in <module>
+  File "<string>", line 11, in calculate_savings_rate
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/generic.py", line 5902, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/accessor.py", line 182, in __get__
+    accessor_obj = self._accessor(obj)
+                   ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/strings/accessor.py", line 181, in __init__
+    self._inferred_dtype = self._validate(data)
+                           ^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/strings/accessor.py", line 235, in _validate
+    raise AttributeError("Can only use .str accessor with string values!")
+AttributeError: Can only use .str accessor with string values!
+
+2025-01-09 17:02:35 [WARNING] Failed to execute code retrying with a correction framework [retry number: 1]
+2025-01-09 17:02:35 [INFO] Executing Pipeline: ErrorCorrectionPipeline
+2025-01-09 17:02:35 [INFO] Executing Step 0: ErrorPromptGeneration
+2025-01-09 17:02:35 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,53.0,USD,,Ayudantes de Mudanza y Carro,2024-07-14,False,null,Subscription,Home Items,#ffee58,money-bag2.png,,,
+Main,76.0,USD,,Luffy Figure,2024-03-15,True,null,Rent,Credit Card Fee,#26c6da,price-tag.png,,Colectivo,
+Main,176.0,USD,,Referido Chime 100+100,2024-07-30,True,null,Fast Food,Sells,#ab47bc,bills.png,,Gordi,
+</dataframe>
+
+
+The user asked the following question:
+### QUERY
+ Savings Rate of 2024
+
+You generated this python code:
+def calculate_savings_rate(df):
+    """
+    Calculate the savings rate of 2024.
+
+    Parameters:
+    df (pd.DataFrame): DataFrame containing the financial data.
+
+    Returns:
+    float: Savings rate of 2024.
+    """
+    df_2024 = df[df['date'].str.contains('2024')]
+    total_income = df_2024[df_2024['income'] == True]['amount'].sum()
+    total_expenses = df_2024[df_2024['income'] == False]['amount'].sum()
+    savings = total_income - total_expenses
+    if total_income == 0:
+        savings_rate = 0
+    else:
+        savings_rate = savings / total_income * 100
+    return savings_rate
+
+
+savings_rate = calculate_savings_rate(dfs[0])
+plt.bar(['Savings Rate'], [savings_rate])
+plt.xlabel('Year')
+plt.ylabel('Savings Rate (%)')
+plt.title('Savings Rate of 2024')
+plt.savefig('/workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png')
+
+It fails with the following error:
+Traceback (most recent call last):
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandasai/pipelines/chat/code_execution.py", line 85, in execute
+    result = self.execute_code(code_to_run, code_context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandasai/pipelines/chat/code_execution.py", line 174, in execute_code
+    exec(code, environment)
+  File "<string>", line 22, in <module>
+  File "<string>", line 11, in calculate_savings_rate
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/generic.py", line 5902, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/accessor.py", line 182, in __get__
+    accessor_obj = self._accessor(obj)
+                   ^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/strings/accessor.py", line 181, in __init__
+    self._inferred_dtype = self._validate(data)
+                           ^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/Projects/Cashew_Board/.venv/lib/python3.11/site-packages/pandas/core/strings/accessor.py", line 235, in _validate
+    raise AttributeError("Can only use .str accessor with string values!")
+AttributeError: Can only use .str accessor with string values!
+
+
+Fix the python code above and return the new python code:
+2025-01-09 17:02:35 [INFO] Executing Step 1: CodeGenerator
+2025-01-09 17:02:36 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 17:02:36 [ERROR] Pipeline failed on step 1: No code found in the response
+2025-01-09 17:02:36 [ERROR] Pipeline failed on step 6: No code found in the response
+2025-01-09 17:06:59 [INFO] Question: Expenses this month
+2025-01-09 17:06:59 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-01-09 17:06:59 [INFO] Prompt ID: f33edaec-e18b-4df8-8b0c-6e582858266f
+2025-01-09 17:06:59 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-01-09 17:06:59 [INFO] Executing Step 0: ValidatePipelineInput
+2025-01-09 17:06:59 [INFO] Executing Step 1: CacheLookup
+2025-01-09 17:06:59 [INFO] Executing Step 2: PromptGeneration
+2025-01-09 17:07:01 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,102.0,USD,,Shoes Bruno Marc 2X1,2024-06-16,False,null,Other Expense,Bills & Fees,#26a69a,gift.png,,,
+Main,1497.0,USD,,Locos de Wallstreet Curso 2do Pago,2024-07-16,True,null,Dining,Credit Card Fee,#f44336,home2.png,,Colectivo,
+Main,57.0,USD,,Ayudantes de Mudanza y Carro,2024-05-13,False,null,Subscription,Mobile,#ab47bc,taxi(1).png,,Gordi,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Expenses this month
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-01-09 17:07:01 [INFO] Executing Step 3: CodeGenerator
+2025-01-09 17:07:02 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 17:07:02 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,102.0,USD,,Shoes Bruno Marc 2X1,2024-06-16,False,null,Other Expense,Bills & Fees,#26a69a,gift.png,,,
+Main,1497.0,USD,,Locos de Wallstreet Curso 2do Pago,2024-07-16,True,null,Dining,Credit Card Fee,#f44336,home2.png,,Colectivo,
+Main,57.0,USD,,Ayudantes de Mudanza y Carro,2024-05-13,False,null,Subscription,Mobile,#ab47bc,taxi(1).png,,Gordi,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Expenses this month
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-01-09 17:07:02 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Extract the first dataframe from the list
+df = dfs[0]
+
+# Convert date to datetime
+df['date'] = pd.to_datetime(df['date'])
+
+# Get the current month
+current_month = pd.to_datetime('today').month
+
+# Filter expenses for this month
+this_month_expenses = df[(df['date'].dt.month == current_month) & (~df['income'])]
+
+# Calculate total expenses this month
+total_expenses = this_month_expenses['amount'].sum()
+
+# Declare result var: 
+result = { "type": "number", "value": total_expenses }
+
+# Optional: plot a bar chart of top 5 categories by expense amount
+# top_categories = this_month_expenses.groupby('category name')['amount'].sum().sort_values(ascending=False).head(5)
+# plt.figure(figsize=(10,6))
+# plt.bar(top_categories.index, top_categories.values)
+# plt.xlabel('Category')
+# plt.ylabel('Expense Amount')
+# plt.title('Top 5 Categories by Expense Amount')
+# plt.savefig('expenses_by_category.png')
+# result = { "type": "plot", "value": "expenses_by_category.png" }
+            ```
+            
+2025-01-09 17:07:02 [INFO] Executing Step 4: CachePopulation
+2025-01-09 17:07:02 [INFO] Executing Step 5: CodeCleaning
+2025-01-09 17:07:02 [INFO] Saving charts to /workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png
+2025-01-09 17:07:02 [INFO] 
+Code running:
+```
+df = dfs[0]
+df['date'] = pd.to_datetime(df['date'])
+current_month = pd.to_datetime('today').month
+this_month_expenses = df[(df['date'].dt.month == current_month) & ~df['income']]
+total_expenses = this_month_expenses['amount'].sum()
+result = {'type': 'number', 'value': total_expenses}
+        ```
+2025-01-09 17:07:02 [INFO] Executing Step 6: CodeExecution
+2025-01-09 17:07:02 [INFO] Executing Step 7: ResultValidation
+2025-01-09 17:07:02 [INFO] Answer: {'type': 'number', 'value': 3337.25}
+2025-01-09 17:07:02 [INFO] Executing Step 8: ResultParsing
+2025-01-09 17:07:16 [INFO] Question: Income this year
+2025-01-09 17:07:16 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-01-09 17:07:16 [INFO] Prompt ID: 254f1419-338f-48c3-a880-da0f36591152
+2025-01-09 17:07:16 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-01-09 17:07:16 [INFO] Executing Step 0: ValidatePipelineInput
+2025-01-09 17:07:16 [INFO] Executing Step 1: CacheLookup
+2025-01-09 17:07:16 [INFO] Executing Step 2: PromptGeneration
+2025-01-09 17:07:17 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,37.0,USD,,Proton Mail 1 month ,2024-04-06,True,null,Gifts,Mail,#78909c,investment.png,,Colectivo,
+Main,100.0,USD,,Marvis cumple ,2024-07-08,False,null,Dining,Sells,#f44336,taxi(1).png,,Gordi,
+Main,45.0,USD,,Tita Conver tenis ,2024-05-27,True,null,Groceries,,#ab47bc,shopping.png,,,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Income this year
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-01-09 17:07:17 [INFO] Executing Step 3: CodeGenerator
+2025-01-09 17:07:18 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 17:07:18 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,37.0,USD,,Proton Mail 1 month ,2024-04-06,True,null,Gifts,Mail,#78909c,investment.png,,Colectivo,
+Main,100.0,USD,,Marvis cumple ,2024-07-08,False,null,Dining,Sells,#f44336,taxi(1).png,,Gordi,
+Main,45.0,USD,,Tita Conver tenis ,2024-05-27,True,null,Groceries,,#ab47bc,shopping.png,,,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Income this year
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-01-09 17:07:18 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+# Filter the dataframe for this year's data
+this_year = pd.to_datetime('today').year
+df = dfs[0]
+df['date'] = pd.to_datetime(df['date'])
+df_this_year = df[df['date'].dt.year == this_year]
+
+# Filter the dataframe for income
+income_this_year = df_this_year[df_this_year['income'] == True]
+
+# Calculate the total income this year
+total_income = income_this_year['amount'].sum()
+
+# Declare result var: 
+result = { "type": "number", "value": total_income }
+
+# If you want to plot a chart
+# plt.figure(figsize=(10,6))
+# plt.bar(income_this_year['date'].dt.month, income_this_year['amount'])
+# plt.xlabel('Month')
+# plt.ylabel('Income')
+# plt.title('Income this year')
+# plt.savefig('income_this_year.png')
+# result = { "type": "plot", "value": "income_this_year.png" }
+            ```
+            
+2025-01-09 17:07:18 [INFO] Executing Step 4: CachePopulation
+2025-01-09 17:07:18 [INFO] Executing Step 5: CodeCleaning
+2025-01-09 17:07:18 [INFO] Saving charts to /workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png
+2025-01-09 17:07:18 [INFO] 
+Code running:
+```
+this_year = pd.to_datetime('today').year
+df = dfs[0]
+df['date'] = pd.to_datetime(df['date'])
+df_this_year = df[df['date'].dt.year == this_year]
+income_this_year = df_this_year[df_this_year['income'] == True]
+total_income = income_this_year['amount'].sum()
+result = {'type': 'number', 'value': total_income}
+        ```
+2025-01-09 17:07:18 [INFO] Executing Step 6: CodeExecution
+2025-01-09 17:07:19 [INFO] Executing Step 7: ResultValidation
+2025-01-09 17:07:19 [INFO] Answer: {'type': 'number', 'value': 986.0}
+2025-01-09 17:07:19 [INFO] Executing Step 8: ResultParsing
+2025-01-09 17:07:34 [INFO] Question: Saving Rate this year
+2025-01-09 17:07:34 [INFO] Running PandasAI with langchain_groq-chat LLM...
+2025-01-09 17:07:34 [INFO] Prompt ID: d9e9bc67-9202-4199-94db-f1e27dc4c1ab
+2025-01-09 17:07:34 [INFO] Executing Pipeline: GenerateChatPipeline
+2025-01-09 17:07:34 [INFO] Executing Step 0: ValidatePipelineInput
+2025-01-09 17:07:34 [INFO] Executing Step 1: CacheLookup
+2025-01-09 17:07:34 [INFO] Executing Step 2: PromptGeneration
+2025-01-09 17:07:35 [INFO] Using prompt: <dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,434.0,USD,,Tia tita ,2024-02-08,True,null,401k - 25% Match,Home Items,#26a69a,money-bag2.png,,Gordi,
+Main,11.0,USD,,Monitor Amazon 139$ con rebaja y mi gift card + Hdmi,2024-04-28,True,null,Groceries,Gas,#f44336,gift.png,,,
+Main,83.0,USD,,Snowball 1Year Starter 30%OFF,2024-03-19,False,null,Health Insurance,Cleanliness,#26c6da,taxi(1).png,,Colectivo,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Saving Rate this year
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+2025-01-09 17:07:35 [INFO] Executing Step 3: CodeGenerator
+2025-01-09 17:07:37 [INFO] HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-01-09 17:07:37 [INFO] Prompt used:
+            
+<dataframe>
+dfs[0]:1464x15
+account,amount,currency,title,note,date,income,type,category name,subcategory name,color,icon,emoji,budget,objective
+Main,434.0,USD,,Tia tita ,2024-02-08,True,null,401k - 25% Match,Home Items,#26a69a,money-bag2.png,,Gordi,
+Main,11.0,USD,,Monitor Amazon 139$ con rebaja y mi gift card + Hdmi,2024-04-28,True,null,Groceries,Gas,#f44336,gift.png,,,
+Main,83.0,USD,,Snowball 1Year Starter 30%OFF,2024-03-19,False,null,Health Insurance,Cleanliness,#26c6da,taxi(1).png,,Colectivo,
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+# Write code here
+
+# Declare result var: 
+type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }
+
+```
+
+
+
+
+
+
+
+### QUERY
+ Saving Rate this year
+
+Variable `dfs: list[pd.DataFrame]` is already declared.
+
+At the end, declare "result" variable as a dictionary of type and value.
+
+If you are asked to plot a chart, use "matplotlib" for charts, save as png.
+
+
+Generate python code and return full updated code:
+            
+2025-01-09 17:07:37 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Write code here
+# Calculate total income and total expenses
+total_income = dfs[0][dfs[0]['income'] == True]['amount'].sum()
+total_expenses = dfs[0][dfs[0]['income'] == False]['amount'].sum()
+
+# Calculate saving rate
+saving_rate = (total_income - total_expenses) / total_income
+
+# Plot a pie chart to visualize the saving rate
+plt.figure(figsize=(8, 8))
+plt.pie([total_income - total_expenses, total_expenses], labels=['Savings', 'Expenses'], autopct='%1.1f%%')
+plt.title('Saving Rate this Year')
+plt.savefig('saving_rate.png')
+
+# Declare result var: 
+result = { 
+    "type": "string", 
+    "value": f"Your saving rate this year is {saving_rate * 100:.2f}%." 
+}
+            ```
+            
+2025-01-09 17:07:37 [INFO] Executing Step 4: CachePopulation
+2025-01-09 17:07:37 [INFO] Executing Step 5: CodeCleaning
+2025-01-09 17:07:37 [INFO] Saving charts to /workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png
+2025-01-09 17:07:37 [INFO] 
+Code running:
+```
+total_income = dfs[0][dfs[0]['income'] == True]['amount'].sum()
+total_expenses = dfs[0][dfs[0]['income'] == False]['amount'].sum()
+saving_rate = (total_income - total_expenses) / total_income
+plt.figure(figsize=(8, 8))
+plt.pie([total_income - total_expenses, total_expenses], labels=['Savings', 'Expenses'], autopct='%1.1f%%')
+plt.title('Saving Rate this Year')
+plt.savefig('/workspaces/Projects/Cashew_Board/exports/charts/temp_chart.png')
+result = {'type': 'string', 'value': f'Your saving rate this year is {saving_rate * 100:.2f}%.'}
+        ```
+2025-01-09 17:07:37 [INFO] Executing Step 6: CodeExecution
+2025-01-09 17:07:37 [INFO] Executing Step 7: ResultValidation
+2025-01-09 17:07:37 [INFO] Answer: {'type': 'string', 'value': 'Your saving rate this year is 45.96%.'}
+2025-01-09 17:07:37 [INFO] Executing Step 8: ResultParsing
