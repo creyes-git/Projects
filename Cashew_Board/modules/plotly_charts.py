@@ -134,7 +134,7 @@ def plot_category_map(df: pd.DataFrame, category : str):
                   annotation = dict(text = "Mean", x = 1.1, y = df["amount"].mean(), showarrow = False, font = dict(size = 15, color = "white")))
     
     
-    image_file = "assets/scatter_chart.png"
+    image_file = "assets/images/scatter_chart.png"
     fig.write_image(image_file, engine = "kaleido")
     
     return image_file
