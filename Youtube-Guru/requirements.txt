@@ -1,0 +1,8 @@
+streamlit
+langchain
+langchain_groq
+langchain-community
+python-dotenv
+replicate
+deepgram-sdk
+wikipedia
